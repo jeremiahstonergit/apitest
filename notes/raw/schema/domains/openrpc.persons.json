@@ -1,0 +1,713 @@
+{
+  "openrpc": "1.0.0-rc1",
+  "info": {
+    "title": "API Spaceweb",
+    "description": "Документация по API Spaceweb",
+    "version": "1.185"
+  },
+  "servers": [
+    {
+      "name": "Доменные персоны",
+      "summary": "Операции с доменными персонами",
+      "description": "Основные функции:\n\nинформация о доменных персонах\nдобавление/редактирование",
+      "url": "https://api.sweb.ru/domains/persons"
+    }
+  ],
+  "methods": [
+    {
+      "name": "index",
+      "description": "Cписок доменных персон у пользователя",
+      "params": [],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultindex"
+      },
+      "examples": [
+        {
+          "name": "exampleIndex",
+          "params": [],
+          "result": {
+            "$ref": "#/components/examples/resultindex"
+          }
+        }
+      ]
+    },
+    {
+      "name": "getinfo",
+      "description": "Подробная информация по ID персоны",
+      "params": [
+        {
+          "name": "id",
+          "description": "ID персоны",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultgetInfo"
+      },
+      "examples": [
+        {
+          "name": "exampleGetInfo",
+          "params": [
+            {
+              "$ref": "#/components/examples/getinfoid"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultgetInfo"
+          }
+        }
+      ]
+    },
+    {
+      "name": "createFizIp",
+      "description": "Создание доменной персоны физ. лица и ИП",
+      "params": [
+        {
+          "name": "name",
+          "description": "Наименование организации (ФИО)",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "resident",
+          "description": "Резидент РФ",
+          "schema": {
+            "$ref": "#/components/schemas/Boolean"
+          },
+          "required": true
+        },
+        {
+          "name": "phones",
+          "description": "Телефон",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "emails",
+          "description": "E-mail представителя",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "postIndex",
+          "description": "Индекс",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "postCity",
+          "description": "Город",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "postAddress",
+          "description": "Адрес",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "birthdate",
+          "description": "Дата рождения",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "passSeries",
+          "description": "Серия паспорта",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        },
+        {
+          "name": "passNum",
+          "description": "Номер паспорта",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        },
+        {
+          "name": "passDate",
+          "description": "Дата выдачи",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        },
+        {
+          "name": "passOrg",
+          "description": "Кем выдан",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        },
+        {
+          "name": "inn",
+          "description": "ИНН",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        },
+        {
+          "name": "id",
+          "description": "ID персоны (передается в случае редактирования)",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleCreateFizIp",
+          "params": [
+            {
+              "$ref": "#/components/examples/name"
+            },
+            {
+              "$ref": "#/components/examples/resident"
+            },
+            {
+              "$ref": "#/components/examples/phones"
+            },
+            {
+              "$ref": "#/components/examples/emails"
+            },
+            {
+              "$ref": "#/components/examples/postIndex"
+            },
+            {
+              "$ref": "#/components/examples/postCity"
+            },
+            {
+              "$ref": "#/components/examples/postAddress"
+            },
+            {
+              "$ref": "#/components/examples/birthdate"
+            },
+            {
+              "$ref": "#/components/examples/passSeries"
+            },
+            {
+              "$ref": "#/components/examples/passNum"
+            },
+            {
+              "$ref": "#/components/examples/passDate"
+            },
+            {
+              "$ref": "#/components/examples/passOrg"
+            },
+            {
+              "$ref": "#/components/examples/createFizIpInn"
+            },
+            {
+              "$ref": "#/components/examples/createFizIpid"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/integerOne"
+          }
+        }
+      ]
+    },
+    {
+      "name": "createJur",
+      "description": "Создание доменной персоны юр. лица",
+      "params": [
+        {
+          "name": "name",
+          "description": "Наименование организации",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "nameTrans",
+          "description": "Наименование организации на латинице",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "resident",
+          "description": "Резидент РФ",
+          "schema": {
+            "$ref": "#/components/schemas/Boolean"
+          },
+          "required": true
+        },
+        {
+          "name": "phones1",
+          "description": "Телефон для уведомлений",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "phones2",
+          "description": "Телефон",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "faxes",
+          "description": "Факс",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "emails",
+          "description": "E-mail представителя",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "postIndex",
+          "description": "Индекс (почтовый адрес)",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "postCity",
+          "description": "Город (почтовый адрес)",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "postAddress",
+          "description": "Адрес (почтовый адрес)",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "jurIndex",
+          "description": "Индекс (юридический адрес)",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "jurCity",
+          "description": "Город (юридический адрес)",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "jurAddress",
+          "description": "Адрес (юридический адрес)",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "inn",
+          "description": "ИНН",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "kpp",
+          "description": "КПП",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "persName",
+          "description": "ФИО контактного представителя",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleCreateJur",
+          "params": [
+            {
+              "$ref": "#/components/examples/createJurname"
+            },
+            {
+              "$ref": "#/components/examples/nameTrans"
+            },
+            {
+              "$ref": "#/components/examples/resident"
+            },
+            {
+              "$ref": "#/components/examples/phones1"
+            },
+            {
+              "$ref": "#/components/examples/phones2"
+            },
+            {
+              "$ref": "#/components/examples/faxes"
+            },
+            {
+              "$ref": "#/components/examples/emails"
+            },
+            {
+              "$ref": "#/components/examples/postIndex"
+            },
+            {
+              "$ref": "#/components/examples/postCity"
+            },
+            {
+              "$ref": "#/components/examples/postAddress"
+            },
+            {
+              "$ref": "#/components/examples/jurIndex"
+            },
+            {
+              "$ref": "#/components/examples/jurIndex"
+            },
+            {
+              "$ref": "#/components/examples/jurCity"
+            },
+            {
+              "$ref": "#/components/examples/jurAddress"
+            },
+            {
+              "$ref": "#/components/examples/createJurInn"
+            },
+            {
+              "$ref": "#/components/examples/kpp"
+            },
+            {
+              "$ref": "#/components/examples/persName"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/integerOne"
+          }
+        }
+      ]
+    }
+  ],
+  "components": {
+    "contentDescriptors": {
+      "resultInt": {
+        "name": "resultInt",
+        "description": "1 - успешно, 0 - ошибка",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultindex": {
+        "name": "resultIndex",
+        "description": "'props_filled' int Заполнены реквизиты\n\n'persons' array Список доменных персон со свойствами:\n\n'name' string Имя\n\n'sweb_handle' string Идентификатор\n\n'str' string Идентификатор строкой\n\n'id' int ID персоны\n\n'type' string Тип\n\n'resident' int Резидент РФ\n\n'used' int Использовалась\n\n'valid' int Валидная",
+        "schema": {
+          "type": "array"
+        }
+      },
+      "resultgetInfo": {
+        "name": "resultGetInfo",
+        "description": "Для физ лица:\n\n'name' string\n\n'nameTrans' string\n\n'resident' bool\n\n'phones' string\n\n'emails' string\n\n'postIndex' string\n\n'postCity' string\n\n'postAddress' string\n\n'birthdate' string\n\n'passSeries' string\n\n'passNum' string\n\n'passDate' string\n\n'passOrg' string\n\n'inn' string|null\n\n'type' string\n\n'used' int\n\nДля юр.лица:\n\n'name' string\n\n'nameTrans' string\n\n'resident' bool\n\n'phones' string\n\n'faxes' string\n\n'emails' string\n\n'postIndex' string\n\n'postCity' string\n\n'postAddress' string\n\n'jurIndex' string\n\n'jurCity' string\n\n'jurAddress' string\n\n'inn' string|null\n\n'kpp' string|null\n\n'persName' string\n\n'persNameTrans' string\n\n'type' string\n\n'used' int",
+        "schema": {
+          "type": "array"
+        }
+      }
+    },
+    "schemas": {
+      "Integer": {
+        "type": "integer"
+      },
+      "String": {
+        "type": "string"
+      },
+      "Boolean": {
+        "type": "boolean"
+      },
+      "Array": {
+        "type": "array"
+      },
+      "Object": {
+        "type": "object"
+      }
+    },
+    "examples": {
+      "resultindex": {
+        "name": "resultIndex",
+        "summary": "resultIndex",
+        "description": "Возвращаемые значения в свойствах объекта",
+        "value": [
+          {
+            "props_filled": 1,
+            "persons": [
+              {
+                "name": "Иванов Иван Иванович",
+                "sweb_handle": "SWEB-FIZ-III-2168",
+                "str": "[SWEB-FIZ-III-2168] Иванов Иван Иванович",
+                "id": 367684,
+                "type": "f",
+                "resident": 0,
+                "used": 0,
+                "valid": 1
+              },
+              {
+                "name": "ИП Иванов Иван Иванович",
+                "sweb_handle": "SWEB-IP-IIII-15",
+                "str": "[SWEB-IP-IIII-15] ИП Иванов Иван Иванович",
+                "id": 368973,
+                "type": "ip",
+                "resident": 1,
+                "used": 0,
+                "valid": 1
+              },
+              {
+                "name": "ООО \"Ромашка\"",
+                "sweb_handle": "SWEB-ORG-R-1424",
+                "str": "[SWEB-ORG-R-1424] ООО \"Ромашка\"",
+                "id": 368972,
+                "type": "u",
+                "resident": 0,
+                "used": 0,
+                "valid": 1
+              }
+            ]
+          }
+        ]
+      },
+      "getinfoid": {
+        "name": "id",
+        "summary": "id",
+        "description": "ID персоны",
+        "value": 367684
+      },
+      "resultgetInfo": {
+        "name": "resultGetInfo",
+        "summary": "resultGetInfo",
+        "description": "Подробная информация по ID персоны",
+        "value": [
+          {
+            "name": "Иванов Иван Иванович",
+            "nameTrans": "Ivanov Ivan Ivanovich",
+            "resident": false,
+            "phones": [
+              "+7 999 9999999"
+            ],
+            "emails": [
+              "test@sweb.ru"
+            ],
+            "postIndex": "197376",
+            "postCity": "Санкт-Петербург",
+            "postAddress": "наб. р. Карповки, д. 5, корп. 3",
+            "birthdate": "1990-01-01",
+            "passSeries": "4502",
+            "passNum": "987432",
+            "passDate": "2010-01-01",
+            "passOrg": "ОВД района Южное Бутово города Москвы",
+            "inn": null,
+            "type": "f",
+            "used": 0
+          }
+        ]
+      },
+      "name": {
+        "name": "name",
+        "summary": "name",
+        "description": "Наименование организации (ФИО)",
+        "value": "ИП Иванов Иван Иванович"
+      },
+      "resident": {
+        "name": "resident",
+        "summary": "resident",
+        "description": "Резидент РФ",
+        "value": true
+      },
+      "phones": {
+        "name": "phones",
+        "summary": "phones",
+        "description": "Телефон",
+        "value": "+7 999 9999999"
+      },
+      "emails": {
+        "name": "emails",
+        "summary": "emails",
+        "description": "E-mail представителя",
+        "value": "test@sweb.ru"
+      },
+      "postIndex": {
+        "name": "postIndex",
+        "summary": "postIndex",
+        "description": "Индекс",
+        "value": "197376"
+      },
+      "postCity": {
+        "name": "postCity",
+        "summary": "postCity",
+        "description": "Город",
+        "value": "Санкт-Петербург"
+      },
+      "postAddress": {
+        "name": "postAddress",
+        "summary": "postAddress",
+        "description": "Адрес",
+        "value": "наб. р. Карповки, д. 5, корп. 3"
+      },
+      "birthdate": {
+        "name": "birthdate",
+        "summary": "birthdate",
+        "description": "Дата рождения",
+        "value": "1990-01-01"
+      },
+      "passSeries": {
+        "name": "passSeries",
+        "summary": "passSeries",
+        "description": "Серия паспорта",
+        "value": "4502"
+      },
+      "passNum": {
+        "name": "passNum",
+        "summary": "passNum",
+        "description": "Номер паспорта",
+        "value": "987432"
+      },
+      "passDate": {
+        "name": "passDate",
+        "summary": "passDate",
+        "description": "Дата выдачи",
+        "value": "2010-01-01"
+      },
+      "passOrg": {
+        "name": "passOrg",
+        "summary": "passOrg",
+        "description": "Кем выдан",
+        "value": "ОВД района Южное Бутово города Москвы"
+      },
+      "createFizIpInn": {
+        "name": "inn",
+        "summary": "inn",
+        "description": "ИНН",
+        "value": "123456789123"
+      },
+      "createFizIpid": {
+        "name": "id",
+        "summary": "id",
+        "description": "ID персоны (передается в случае редактирования)",
+        "value": null
+      },
+      "integerOne": {
+        "name": "one",
+        "summary": "успех",
+        "description": "Ответ при успешно выполненной операции",
+        "value": 1
+      },
+      "createJurname": {
+        "name": "name",
+        "summary": "name",
+        "description": "Наименование организации",
+        "value": "ООО Ромашка"
+      },
+      "nameTrans": {
+        "name": "nameTrans",
+        "summary": "nameTrans",
+        "description": "Наименование организации на латинице",
+        "value": "ООО Romashka"
+      },
+      "phones1": {
+        "name": "phones1",
+        "summary": "phones1",
+        "description": "Телефон для уведомлений",
+        "value": "+7 930 7654323"
+      },
+      "phones2": {
+        "name": "phones2",
+        "summary": "phones2",
+        "description": "Телефон",
+        "value": "+7 930 7654323"
+      },
+      "faxes": {
+        "name": "faxes",
+        "summary": "faxes",
+        "description": "Факс",
+        "value": "+7 930 7654323"
+      },
+      "jurIndex": {
+        "name": "jurIndex",
+        "summary": "jurIndex",
+        "description": "Индекс (юридический адрес)",
+        "value": "197376"
+      },
+      "jurCity": {
+        "name": "jurCity",
+        "summary": "jurCity",
+        "description": "Город (юридический адрес)",
+        "value": "Санкт-Петербург"
+      },
+      "jurAddress": {
+        "name": "jurAddress",
+        "summary": "jurAddress",
+        "description": "Адрес (юридический адрес)",
+        "value": "наб. р. Карповки, д.5, корп.3"
+      },
+      "createJurInn": {
+        "name": "inn",
+        "summary": "inn",
+        "description": "ИНН",
+        "value": "3664069397"
+      },
+      "kpp": {
+        "name": "kpp",
+        "summary": "kpp",
+        "description": "КПП",
+        "value": "3664069397"
+      },
+      "persName": {
+        "name": "persName",
+        "summary": "kpppersName",
+        "description": "ФИО контактного представителя",
+        "value": "Иванов Иван Иванович"
+      }
+    }
+  }
+}

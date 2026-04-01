@@ -1,0 +1,13 @@
+---
+description: Client adapter rules
+alwaysApply: false
+globs:
+  - "client/python/**"
+  - "client/ts/**"
+---
+
+For client adapters:
+- Execute only against real upstream paths.
+- Keep JSON-RPC envelope strict.
+- Use operation maps as method/path source.
+- Do not hardcode method/path when operation map is available.

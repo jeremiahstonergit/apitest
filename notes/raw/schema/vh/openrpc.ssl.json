@@ -1,0 +1,638 @@
+{
+  "openrpc": "1.0.0-rc1",
+  "info": {
+    "title": "API Spaceweb",
+    "description": "Документация по API Spaceweb",
+    "version": "1.185"
+  },
+  "servers": [
+    {
+      "name": "SSL",
+      "summary": "SSL для виртуального хостинга",
+      "description": "Основные функции:\n\nзаказ и продление сертификата,\n\nустановка собственного сертификата",
+      "url": "https://api.sweb.ru/vh/ssl"
+    }
+  ],
+  "methods": [
+    {
+      "name": "index",
+      "description": "Возвращает список сертификатов пользователя",
+      "params": [
+        {
+          "name": "page",
+          "description": "страница (с 1-й)",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "description": "количество записей на странице",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": false
+        },
+        {
+          "name": "orderField",
+          "description": "поле для сортировки: 'id', 'valid_to', 'fqdn', 'status', 'ip'",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        },
+        {
+          "name": "orderDirect",
+          "description": "направление сортировки: 'asc' или 'desc'",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultIndex"
+      },
+      "examples": [
+        {
+          "name": "exampleIndex",
+          "params": [
+            {
+              "$ref": "#/components/examples/intPage"
+            },
+            {
+              "$ref": "#/components/examples/intPerPage"
+            },
+            {
+              "$ref": "#/components/examples/stringOrderField"
+            },
+            {
+              "$ref": "#/components/examples/stringOrderDirect"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultIndex"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "getOrderList",
+      "description": "Получение списка сертификатов доступных для заказа",
+      "params": [],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultGetOrderList"
+      },
+      "examples": [
+        {
+          "name": "exampleGetOrderList",
+          "params": [],
+          "result": {
+            "$ref": "#/components/examples/resultGetOrderList"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "download",
+      "description": "Возвращает архив с файлами сертификата",
+      "params": [
+        {
+          "name": "id",
+          "description": "идентификатор сертификата",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        },
+        {
+          "name": "password",
+          "description": "пароль от аккаунта",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultDownload"
+      },
+      "examples": [
+        {
+          "name": "exampleDownload",
+          "params": [
+            {
+              "$ref": "#/components/examples/intIDssl"
+            },
+            {
+              "$ref": "#/components/examples/stringPassword"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultDownload"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "editAutoprolong",
+      "description": "Изменение режима автопродления сертификата",
+      "params": [
+        {
+          "name": "certificateId",
+          "description": "идентификатор сертификата",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        },
+        {
+          "name": "autoprolong",
+          "description": "автопроделние",
+          "schema": {
+            "$ref": "#/components/schemas/Boolean"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleEditAutoprolong",
+          "params": [
+            {
+              "$ref": "#/components/examples/intIDssl"
+            },
+            {
+              "$ref": "#/components/examples/boolAutoprolong"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultIntegerOne"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "removeCertificate",
+      "description": "Удаляет сертификат",
+      "params": [
+        {
+          "name": "certificateId",
+          "description": "идентификатор сертификата",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleRemoveCertificate",
+          "params": [
+            {
+              "$ref": "#/components/examples/intIDssl"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultIntegerOne"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "getProlongInfo",
+      "description": "Получение информации о вариантах продления сертификата",
+      "params": [
+        {
+          "name": "certificateId",
+          "description": "идентификатор сертификата",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultGetProlongInfo"
+      },
+      "examples": [
+        {
+          "name": "exampleGetProlongInfo",
+          "params": [
+            {
+              "$ref": "#/components/examples/intIDssl"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultGetProlongInfo"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "prolongCertificate",
+      "description": "Продлевает сертификат",
+      "params": [
+        {
+          "name": "currentCertificateId",
+          "description": "текущий сертификат",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        },
+        {
+          "name": "certificateProlongId",
+          "description": "новый сертификат",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleProlongCertificate",
+          "params": [
+            {
+              "$ref": "#/components/examples/intIDssl"
+            },
+            {
+              "$ref": "#/components/examples/intIDnewSsl"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultIntegerOne"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "installLetsEncrypt",
+      "description": "Установка сертификата LetsEncrypt",
+      "params": [
+        {
+          "name": "domain",
+          "description": "домен",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "virtdom",
+          "description": "поддомен",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        },
+        {
+          "name": "ip",
+          "description": "ip",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        },
+        {
+          "name": "wildcard",
+          "description": "wildcard-сертификат или нет",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        },
+        {
+          "name": "challenge",
+          "description": "тип подтверждения ('acme' , 'dns')",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleProlongCertificate",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/stringVirtdom"
+            },
+            {
+              "$ref": "#/components/examples/stringIP"
+            },
+            {
+              "$ref": "#/components/examples/intWildcard"
+            },
+            {
+              "$ref": "#/components/examples/stringChallenge"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultIntegerOne"
+          }
+        }
+      ],
+      "links": []
+    }
+  ],
+  "components": {
+    "contentDescriptors": {
+      "resultDownload": {
+        "name": "resultDownload",
+        "description": "'mimetype' string MIME-тип данных (application/zip;base64)\n\n'metadata' array мета-данные\n\n'content' string содержимое в base64\n\n'name' string название файла",
+        "schema": {
+          "type": "array"
+        }
+      },
+      "resultInt": {
+        "name": "resultInt",
+        "description": "1 - успешно, 0 - ошибка",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultIndex": {
+        "name": "resultIndex",
+        "description": "'list' array список сертификатов, со следующими свойствами:\n\n'id' int ID сертификата\n\n'status' string Статус\n\n'ip' string|null IP (только для VH)\n\n'domain' string Домен\n\n'name' string Название\n\n'valid_to' string Дата действия\n\n'prolong_available' int Доступно продление\n\n'autoprolong' bool Включено автопродление\n\n'autoprolongAllowed' bool Доступно автопродление\n\n'autoprolongAddition' array Дополнительная информация по автопродлению:\n\n'id' int ID сертификата\n\n'name' string Сокращенное название сертификата\n\n'full_name' string Полное название сертификата\n\n'price' int Стоимость продления\n\n'filterInfo' array Информация о странице\n\n'page' int номер текущей страницы\n\n'perPage' int кол-во элементов на странице (20 по умолчанию)\n\n'orderField' string название поля для сортировки ('id', 'valid_to', 'fqdn', 'status', 'ip')\n\n'orderDirect' string тип сортировки (asc - прямая; desc - обратная)\n\n'totalCount' int общее кол-во",
+        "schema": {
+          "type": "object"
+        }
+      },
+      "resultGetOrderList": {
+        "name": "resultGetOrderList",
+        "description": "'id' int ID сертификата\n\n'name' string Название\n\n'type' string Тип\n\n'advantage_text' string Описание\n\n'persons' array Для каких доменных персон\n\n'advantages' string[] Описание по-строчно\n\n'periods' array Периоды\n\n'prices' array|null Цены\n\n'prices_old' array|null Старые цены\n\n'autoprolongAddition' array|null Дополнительная информация по автопродлению",
+        "schema": {
+          "type": "array"
+        }
+      },
+      "resultGetProlongInfo": {
+        "name": "resultGetProlongInfo",
+        "description": "'currentCertificateId' int Идентификатор сертификата\n\n'orderData' array Информация для заказа:\n\n'domain' string Домен\n\n'sub_domain' string|null Доддомен\n\n'person_id' string ID персоны\n\n'mailbox' string Почтовый ящик\n\n'company_link' string Ссылка на компанию\n\n'nic_customer_id' string ID клиента\n\n'auth_type' string Тип аутентификации\n\n'nic_order_id' string|null ID заказа\n\n'is_machine' string Поддомен (N - если отсутствует)\n\n'prices' array Цены:\n\n'12' string стоимость за год\n\n'ids' array ID сертификатов\n\n'title' string Название\n\n'isFreeCertificate' bool Флаг бесплатного сертификата",
+        "schema": {
+          "type": "object"
+        }
+      }
+    },
+    "schemas": {
+      "Integer": {
+        "type": "integer"
+      },
+      "String": {
+        "type": "string"
+      },
+      "Boolean": {
+        "type": "boolean"
+      },
+      "Array": {
+        "type": "array"
+      },
+      "Object": {
+        "type": "object"
+      }
+    },
+    "examples": {
+      "resultDownload": {
+        "name": "resultDownload",
+        "summary": "resultDownload",
+        "description": "'mimetype' string MIME-тип данных (application/zip;base64)\n\n'metadata' array мета-данные\n\n'content' string содержимое в base64\n\n'name' string название файла",
+        "value": {
+          "mimetype": "application/zip;base64",
+          "metadata": [],
+          "content": "......",
+          "name": "my_cert.zip"
+        }
+      },
+      "stringDomain": {
+        "name": "domain",
+        "summary": "domain",
+        "description": "домен",
+        "value": "mysite.ru"
+      },
+      "stringVirtdom": {
+        "name": "virtdom",
+        "summary": "virtdom",
+        "description": "поддомен",
+        "value": "poddomen.mysite.ru"
+      },
+      "stringIP": {
+        "name": "ip",
+        "summary": "ip",
+        "description": "ip",
+        "value": "sni"
+      },
+      "intWildcard": {
+        "name": "wildcard",
+        "summary": "wildcard",
+        "description": "wildcard-сертификат или нет",
+        "value": 0
+      },
+      "stringChallenge": {
+        "name": "challenge",
+        "summary": "challenge",
+        "description": "тип подтверждения ('acme' , 'dns')",
+        "value": "dns"
+      },
+      "intPage": {
+        "name": "page",
+        "summary": "page",
+        "description": "страница (с 1-й)",
+        "value": 1
+      },
+      "boolAutoprolong": {
+        "name": "autoprolong",
+        "summary": "autoprolong",
+        "description": "автопроделние",
+        "value": true
+      },
+      "intIDssl": {
+        "name": "id",
+        "summary": "id",
+        "description": "ID сертификата",
+        "value": 466893
+      },
+      "intIDnewSsl": {
+        "name": "certificateProlongId",
+        "summary": "certificateProlongId",
+        "description": "ID нового сертификата",
+        "value": 987234
+      },
+      "intPerPage": {
+        "name": "perPage",
+        "summary": "perPage",
+        "description": "кол-во записей на странице",
+        "value": 20
+      },
+      "stringOrderField": {
+        "name": "orderField",
+        "summary": "orderField",
+        "description": "поле для сортировки: 'id', 'valid_to', 'fqdn', 'status', 'ip'",
+        "value": "id"
+      },
+      "stringOrderDirect": {
+        "name": "orderDirect",
+        "summary": "orderDirect",
+        "description": "направление сортировки: 'asc' или 'desc'",
+        "value": "desc"
+      },
+      "stringPassword": {
+        "name": "password",
+        "summary": "password",
+        "description": "пароль от аккаунта",
+        "value": "......."
+      },
+      "resultIndex": {
+        "name": "resultIndex",
+        "summary": "список сертификатов пользователя",
+        "description": "'list' array список сертификатов, со следующими свойствами:\n\n'id' int ID сертификата\n\n'status' string Статус\n\n'ip' string|null IP (только для VH)\n\n'domain' string Домен\n\n'name' string Название\n\n'valid_to' string Дата действия\n\n'prolong_available' int Доступно продление\n\n'autoprolong' bool Включено автопродление\n\n'autoprolongAllowed' bool Доступно автопродление\n\n'autoprolongAddition' array Дополнительная информация по автопродлению:\n\n'id' int ID сертификата\n\n'name' string Сокращенное название сертификата\n\n'full_name' string Полное название сертификата\n\n'price' int Стоимость продления\n\n'filterInfo' array Информация о странице\n\n'page' int номер текущей страницы\n\n'perPage' int кол-во элементов на странице (20 по умолчанию)\n\n'orderField' string название поля для сортировки ('id', 'valid_to', 'fqdn', 'status', 'ip')\n\n'orderDirect' string тип сортировки (asc - прямая; desc - обратная)\n\n'totalCount' int общее кол-во",
+        "value": {
+          "list": [
+            {
+              "id": "525686",
+              "status": "waiting",
+              "ip": "sni",
+              "domain": "mysite.ru",
+              "name": null,
+              "valid_to": null,
+              "prolong_available": 0,
+              "autoprolong": false,
+              "autoprolongAllowed": false,
+              "autoprolongAddition": null
+            },
+            {
+              "id": "466893",
+              "status": "issued",
+              "ip": "sni",
+              "domain": "mysite.ru",
+              "name": "Let's Encrypt",
+              "valid_to": "2023-01-23",
+              "prolong_available": 0,
+              "autoprolong": true,
+              "autoprolongAllowed": false,
+              "autoprolongAddition": null
+            }
+          ],
+          "filterInfo": {
+            "page": 1,
+            "perPage": 20,
+            "orderField": "id",
+            "orderDirect": "desc",
+            "totalCount": 6
+          }
+        }
+      },
+      "resultGetOrderList": {
+        "name": "resultGetOrderList",
+        "summary": "список сертификатов, достунпых для заказа",
+        "description": "'id' int ID сертификата\n\n'name' string Название\n\n'type' string Тип\n\n'advantage_text' string Описание\n\n'persons' array Для каких доменных персон\n\n'advantages' string[] Описание по-строчно\n\n'periods' array Периоды\n\n'prices' array|null Цены\n\n'prices_old' array|null Старые цены\n\n'autoprolongAddition' array|null Дополнительная информация по автопродлению",
+        "value": [
+          {
+            "id": "12",
+            "name": "GlobalSign AlphaSSL",
+            "type": "dv",
+            "advantage_text": "Подтверждает домен",
+            "persons": [
+              "u",
+              "f",
+              "ip"
+            ],
+            "advantages": [
+              "для <b>юр.</b>/<b>физ.</b> <b>лиц</b> и <b>ИП</b>",
+              "количество доменов <b>1d + www</b>",
+              "гарантия <b>$10K</b>"
+            ],
+            "periods": [
+              "12"
+            ],
+            "prices": {
+              "12": 0
+            },
+            "prices_old": null,
+            "autoprolongAddition": null
+          },
+          {
+            "id": "7",
+            "name": "GlobalSign DomainSSL",
+            "type": "dv",
+            "advantage_text": "Подтверждает домен",
+            "persons": [
+              "u",
+              "f",
+              "ip"
+            ],
+            "advantages": [
+              "для <b>юр.</b>/<b>физ.</b> <b>лиц</b> и <b>ИП</b>",
+              "количество доменов <b>1d + www</b>",
+              "гарантия <b>$10K</b>"
+            ],
+            "periods": [
+              "12"
+            ],
+            "prices": {
+              "12": "4100.00"
+            },
+            "prices_old": null,
+            "autoprolongAddition": null
+          }
+        ]
+      },
+      "resultIntegerOne": {
+        "name": "one",
+        "summary": "успех",
+        "description": "ответ при успешно выполненной операции",
+        "value": 1
+      },
+      "resultGetProlongInfo": {
+        "name": "resultGetProlongInfo",
+        "summary": "информация о вариантах продления сертификата",
+        "description": "'currentCertificateId' int Идентификатор сертификата\n\n'orderData' array Информация для заказа:\n\n'domain' string Домен\n\n'sub_domain' string|null Доддомен\n\n'person_id' string ID персоны\n\n'mailbox' string Почтовый ящик\n\n'company_link' string Ссылка на компанию\n\n'nic_customer_id' string ID клиента\n\n'auth_type' string Тип аутентификации\n\n'nic_order_id' string|null ID заказа\n\n'is_machine' string Поддомен (N - если отсутствует)\n\n'prices' array Цены:\n\n'12' string стоимость за год\n\n'ids' array ID сертификатов\n\n'title' string Название\n\n'isFreeCertificate' bool Флаг бесплатного сертификата",
+        "value": {
+          "currentCertificateId": 348397,
+          "orderData": {
+            "domain": "testetste.com",
+            "sub_domain": null,
+            "person_id": "359688",
+            "mailbox": "admin@dfhbvjd.org.ru",
+            "company_link": "",
+            "nic_customer_id": "777",
+            "auth_type": "dns",
+            "nic_order_id": null,
+            "is_machine": "N"
+          },
+          "prices": {
+            "12": "4100.00"
+          },
+          "ids": {
+            "12": "27"
+          },
+          "title": "GlobalSign DomainSSL",
+          "isFreeCertificate": false
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,267 @@
+{
+  "openrpc": "1.0.0-rc1",
+  "info": {
+    "title": "API Spaceweb",
+    "description": "Документация по API Spaceweb",
+    "version": "1.185"
+  },
+  "servers": [
+    {
+      "name": "Реферальные сайты",
+      "summary": "Реферальные сайты",
+      "description": "Основные функции:\n\nдобавление и управление сайтами с реферальными ссылками",
+      "url": "https://api.sweb.ru/vh/referralProgram"
+    }
+  ],
+  "methods": [
+    {
+      "name": "index",
+      "description": "Возвращает список реферальных сайтов клиента",
+      "params": [
+        {
+          "name": "page",
+          "description": "номер страницы, начиная с 1",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": false
+        },
+        {
+          "name": "limit",
+          "description": "количество записей на странице",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": false
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultIndex"
+      },
+      "examples": [
+        {
+          "name": "exampleIndex",
+          "params": [
+            {
+              "$ref": "#/components/examples/intPage"
+            },
+            {
+              "$ref": "#/components/examples/intLimit"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultIndex"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "removeReferralSite",
+      "description": "Удаляет реферальный сайт клиента",
+      "params": [
+        {
+          "name": "id",
+          "description": "идентификатор сайта",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleRemoveReferralSite",
+          "params": [
+            {
+              "$ref": "#/components/examples/intID"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultIntegerOne"
+          }
+        }
+      ],
+      "links": [
+        {
+          "name": "addReferralSite",
+          "description": "добавляет реферальный сайт",
+          "method": "addReferralSite",
+          "params": {
+            "domain": "$params.domain"
+          }
+        }
+      ]
+    },
+    {
+      "name": "confirmReferralSite",
+      "description": "Попытка подтверждения реферального сайта",
+      "params": [
+        {
+          "name": "id",
+          "description": "id реферального сайта",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleConfirmReferralSite",
+          "params": [
+            {
+              "$ref": "#/components/examples/intID"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultIntegerOne"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "addReferralSite",
+      "description": "Добавляет реферальный сайт",
+      "params": [
+        {
+          "name": "domain",
+          "description": "домен реферального сайта",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleAddReferralSite",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomen"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultIntegerOne"
+          }
+        }
+      ],
+      "links": [
+        {
+          "name": "removeReferralSite",
+          "description": "удаляет реферальный сайт",
+          "method": "removeReferralSite",
+          "params": {
+            "id": "$params.id"
+          }
+        }
+      ]
+    }
+  ],
+  "components": {
+    "contentDescriptors": {
+      "resultInt": {
+        "name": "resultInt",
+        "description": "1 - успешно, 0 - ошибка",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultIndex": {
+        "name": "resultIndex",
+        "description": "'list' array Список реферальных сайтов:\n\n'id' string ID реферального сайта\n\n'partner_id' string ID партнера\n\n'domain' string домен\n\n'verification_code' string код подтверждения\n\n'confirmed' bool подтвержден или нет сайт\n\n'created' string дата и время сохранения записи в формате YYYY-MM-DD HH:MM:SS\n\n'clientsCount' int кол-во клиентов\n\n'confirmationFile' array массив с информацией о файле для подтверждения:\n\n'mimetype' string MIME-тип данных\n\n'metadata' array метаданные\n\n'content' string контент в base64\n\n'name' string название файла\n\n'filterInfo' array Информация о странице:\n\n'page' int текущий номер странцы\n\n'limit' int кол-во элементов на странице\n\n'totalCount' int общее кол-во реферальных сайтов",
+        "schema": {
+          "type": "object"
+        }
+      }
+    },
+    "schemas": {
+      "Integer": {
+        "type": "integer"
+      },
+      "String": {
+        "type": "string"
+      },
+      "Boolean": {
+        "type": "boolean"
+      },
+      "Array": {
+        "type": "array"
+      },
+      "Object": {
+        "type": "object"
+      }
+    },
+    "examples": {
+      "intPage": {
+        "name": "page",
+        "summary": "page",
+        "description": "номер страницы, начиная с 1",
+        "value": 1
+      },
+      "stringDomen": {
+        "name": "domain",
+        "summary": "domain",
+        "description": "домен",
+        "value": "mysite.ru"
+      },
+      "intID": {
+        "name": "id",
+        "summary": "id",
+        "description": "id сайта",
+        "value": 1664
+      },
+      "intLimit": {
+        "name": "limit",
+        "summary": "limit",
+        "description": "количество записей на странице",
+        "value": 20
+      },
+      "resultIndex": {
+        "name": "resultIndex",
+        "summary": "список реферальных сайтов клиента",
+        "description": "'list' array Список реферальных сайтов:\n\n'id' string ID реферального сайта\n\n'partner_id' string ID партнера\n\n'domain' string домен\n\n'verification_code' string код подтверждения\n\n'confirmed' bool подтвержден или нет сайт\n\n'created' string дата и время сохранения записи в формате YYYY-MM-DD HH:MM:SS\n\n'clientsCount' int кол-во клиентов\n\n'confirmationFile' array массив с информацией о файле для подтверждения:\n\n'mimetype' string MIME-тип данных\n\n'metadata' array метаданные\n\n'content' string контент в base64\n\n'name' string название файла\n\n'filterInfo' array Информация о странице:\n\n'page' int текущий номер странцы\n\n'limit' int кол-во элементов на странице\n\n'totalCount' int общее кол-во реферальных сайтов",
+        "value": {
+          "list": [
+            {
+              "id": "911",
+              "partner_id": "3523",
+              "domain": "2rush.ru",
+              "verification_code": "bb0e9b68fafc5c8a85661d28d751c0bd",
+              "confirmed": true,
+              "created": "2019-12-09 12:35:07",
+              "clientsCount": 0,
+              "confirmationFile": {
+                "mimetype": "application/plain;base64",
+                "metadata": [],
+                "content": "YmIwZTliNjhmYWZjNWM4YTg1NjYxZDI4ZDc1MWMwYmQ=",
+                "name": "bb0e9b68fafc5c8a85661d28d751c0bd.txt"
+              }
+            }
+          ],
+          "filterInfo": {
+            "page": 1,
+            "limit": 20,
+            "totalCount": 2
+          }
+        }
+      },
+      "resultIntegerOne": {
+        "name": "one",
+        "summary": "успех",
+        "description": "ответ при успешно выполненной операции",
+        "value": 1
+      }
+    }
+  }
+}

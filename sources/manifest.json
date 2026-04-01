@@ -1,0 +1,46 @@
+{
+  "updated_at": "2026-04-01T11:24:29.364503+00:00",
+  "snapshot_source": null,
+  "raw_schema_dir": "notes/raw/schema",
+  "raw_schema_files": [
+    {
+      "name": "openrpc.dns.json",
+      "sha256": "32a203064246f652b00f121c9bfdf36ec0a722b77acc84372f23fa165e9ade39",
+      "bytes": 26012
+    },
+    {
+      "name": "openrpc.domains.json",
+      "sha256": "4d2855850fa94807fe9e7b9c5ff65d3a9e9ef2aa310852102531df47c03787dd",
+      "bytes": 45310
+    },
+    {
+      "name": "openrpc.pay.json",
+      "sha256": "c11a2ec28de0703fef68106cef8ae40ffb083f25296049ab8dc8f835757fd328",
+      "bytes": 20613
+    },
+    {
+      "name": "openrpc.sites.json",
+      "sha256": "71dff8ae6d55a3856ceffb5f8bfb070596322ed7f182f482794a30f0e06cf204",
+      "bytes": 21542
+    },
+    {
+      "name": "openrpc.tariff.json",
+      "sha256": "8fe933da076b61e1b283b941b30e5e29d3e4448df758dafdb6193bd90415d246",
+      "bytes": 10599
+    },
+    {
+      "name": "openrpc.vps.json",
+      "sha256": "9a2324f99ee1e22e3df6a650ff5b121c57cf0cfb97865cd7b511a2a8772de54d",
+      "bytes": 76804
+    }
+  ],
+  "artifacts": {
+    "projection_spec": "spec/openapi.llm-projection.yaml",
+    "transport_spec": "spec/openapi.transport.yaml",
+    "operation_count": 275,
+    "transport_path_count": 29,
+    "examples": "examples/examples.jsonl",
+    "python_operations_map": "client/python/operations.generated.json",
+    "ts_operations_map": "client/ts/operations.generated.json"
+  }
+}

@@ -1,0 +1,14 @@
+openapi: 3.0.3
+info:
+  title: SpaceWeb API (deprecated entrypoint)
+  version: 0.4.0
+  description: |
+    DEPRECATED: do not use this file as source of truth.
+
+    Use one of these instead:
+    - spec/openapi.llm-projection.yaml  (virtual planning spec)
+    - spec/openapi.transport.yaml       (executable transport spec)
+
+    This file is intentionally kept minimal to avoid accidental stale usage.
+servers: []
+paths: {}

@@ -1,0 +1,2579 @@
+{
+  "openrpc": "1.0.0-rc1",
+  "info": {
+    "title": "API Spaceweb",
+    "description": "Документация по API Spaceweb",
+    "version": "1.227"
+  },
+  "servers": [
+    {
+      "name": "Mail",
+      "summary": "Объект для работы с почтовыми ящиками",
+      "description": "Объект для работы с почтовыми ящиками",
+      "url": "https://api.sweb.ru/vh/mail"
+    }
+  ],
+  "methods": [
+    {
+      "name": "getDomainsList",
+      "description": "Получение списка доменов клиента с почтовыми ящиками",
+      "params": [
+        {
+          "name": "page",
+          "description": "номер страницы",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": false
+        },
+        {
+          "name": "limit",
+          "description": "кол-во записей на странице",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": false
+        },
+        {
+          "name": "orderBy",
+          "description": "номер поля для сортировки",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": false
+        },
+        {
+          "name": "orderDirect",
+          "description": "'asc' или 'desc'",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultGetDomainsList"
+      },
+      "examples": [
+        {
+          "name": "exampleGetDomainsList",
+          "params": [
+            {
+              "$ref": "#/components/examples/intPage"
+            },
+            {
+              "$ref": "#/components/examples/intLimit"
+            },
+            {
+              "$ref": "#/components/examples/intOrderBy"
+            },
+            {
+              "$ref": "#/components/examples/stringOrderDirect"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultGetDomainsList"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "getMailboxesList",
+      "description": "Получение списка ящиков для домена",
+      "params": [
+        {
+          "name": "domain",
+          "description": "название домена",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "page",
+          "description": "номер страницы",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": false
+        },
+        {
+          "name": "limit",
+          "description": "кол-во записей на странице",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": false
+        },
+        {
+          "name": "orderBy",
+          "description": "номер поля для сортировки",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": false
+        },
+        {
+          "name": "orderDirect",
+          "description": "'asc' или 'desc'",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        },
+        {
+          "name": "searchMbox",
+          "description": "название ящика (для поиска по нему)",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultGetMailboxesList"
+      },
+      "examples": [
+        {
+          "name": "exampleGetMailboxesList",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/intPage"
+            },
+            {
+              "$ref": "#/components/examples/intLimit"
+            },
+            {
+              "$ref": "#/components/examples/intOrderBy"
+            },
+            {
+              "$ref": "#/components/examples/stringOrderDirect"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultGetMailboxesList"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "getMailQuota",
+      "description": "Возвращает общий размер (мб) почтовых ящиков клиента",
+      "params": [],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultGetMailQuota"
+      },
+      "examples": [
+        {
+          "name": "exampleGetMailQuota",
+          "params": [],
+          "result": {
+            "$ref": "#/components/examples/resultGetMailQuota"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "createMbox",
+      "description": "Создание почтового ящика",
+      "params": [
+        {
+          "name": "domain",
+          "description": "название домена",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "mbox",
+          "description": "название",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "password",
+          "description": "пароль",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "comment",
+          "description": "комментарий",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultCreateMbox"
+      },
+      "examples": [
+        {
+          "name": "exampleCreateMbox",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/stringMbox"
+            },
+            {
+              "$ref": "#/components/examples/stringPassword"
+            },
+            {
+              "$ref": "#/components/examples/stringComment"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultCreateMbox"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "sendRequisitesToEmail",
+      "description": "Отправка реквизитов созданного почтового ящика на почту",
+      "params": [
+        {
+          "name": "email",
+          "description": "email на который отправляются реквизиты",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "login",
+          "description": "email реквизиты которого передаются на почту",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "password",
+          "description": "пароль от ящика",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultSendRequisitesToEmail"
+      },
+      "examples": [
+        {
+          "name": "exampleSendRequisitesToEmail",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringEmail"
+            },
+            {
+              "$ref": "#/components/examples/stringLogin"
+            },
+            {
+              "$ref": "#/components/examples/stringPassword"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultSendRequisitesToEmail"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "dropMbox",
+      "description": "Удаление почтового ящика",
+      "params": [
+        {
+          "name": "domain",
+          "description": "название домена",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "mbox",
+          "description": "название",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultDropMbox"
+      },
+      "examples": [
+        {
+          "name": "exampleDropMbox",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/stringMbox"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultDropMbox"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "updateAntispamState",
+      "description": "Изменяет состояние антиспам фильтра",
+      "params": [
+        {
+          "name": "domain",
+          "description": "название домена",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "mbox",
+          "description": "название",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "value",
+          "description": "состояние антиспам-фильтра (5 - жесткий, 8 - средний, 10 - мягкий, 0 - выключен)",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultUpdateAntispamState"
+      },
+      "examples": [
+        {
+          "name": "exampleUpdateAntispamState",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/stringMbox"
+            },
+            {
+              "$ref": "#/components/examples/intValue"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultUpdateAntispamState"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "updateComment",
+      "description": "Обновляет комментарий ящика",
+      "params": [
+        {
+          "name": "domain",
+          "description": "название домена",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "mbox",
+          "description": "название",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "comment",
+          "description": "комментарий",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultUpdateComment"
+      },
+      "examples": [
+        {
+          "name": "exampleUpdateComment",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/stringMbox"
+            },
+            {
+              "$ref": "#/components/examples/stringComment"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultUpdateComment"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "getAutoreply",
+      "description": "Возвращает текст автоответчика",
+      "params": [
+        {
+          "name": "domain",
+          "description": "название домена",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "mbox",
+          "description": "название",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultGetAutoreply"
+      },
+      "examples": [
+        {
+          "name": "exampleGetAutoreply",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/stringMbox"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultGetAutoreply"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "changeAutoreply",
+      "description": "Изменяет текст автоответчика",
+      "params": [
+        {
+          "name": "domain",
+          "description": "название домена",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "mbox",
+          "description": "название",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "text",
+          "description": "текст автоответчика",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultChangeAutoreply"
+      },
+      "examples": [
+        {
+          "name": "exampleChangeAutoreply",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/stringMbox"
+            },
+            {
+              "$ref": "#/components/examples/stringText"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultChangeAutoreply"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "changeMailboxSpf",
+      "description": "Вкл/выкл spf ящика",
+      "params": [
+        {
+          "name": "domain",
+          "description": "название домена",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "mbox",
+          "description": "название",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "turnOn",
+          "description": "режим (true - включен, false - выключен)",
+          "schema": {
+            "$ref": "#/components/schemas/Boolean"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultChangeMailboxSpf"
+      },
+      "examples": [
+        {
+          "name": "exampleChangeMailboxSpf",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/stringMbox"
+            },
+            {
+              "$ref": "#/components/examples/booleanTurnOn"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultChangeMailboxSpf"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "changeDomainSpf",
+      "description": "Вкл/выкл spf для всех почтовых ящиков домена",
+      "params": [
+        {
+          "name": "domain",
+          "description": "название домена",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "turnOn",
+          "description": "режим (true - включен, false - выключен)",
+          "schema": {
+            "$ref": "#/components/schemas/Boolean"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultChangeDomainSpf"
+      },
+      "examples": [
+        {
+          "name": "exampleChangeDomainSpf",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/booleanTurnOn"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultChangeDomainSpf"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "getForwardingEmailsList",
+      "description": "Возвращает список адресов для пересылки",
+      "params": [
+        {
+          "name": "domain",
+          "description": "название домена",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "mbox",
+          "description": "название",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultGetForwardingEmailsList"
+      },
+      "examples": [
+        {
+          "name": "exampleGetForwardingEmailsList",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/stringMbox"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultGetForwardingEmailsList"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "addForwardingEmail",
+      "description": "Добавление адреса для пересылки",
+      "params": [
+        {
+          "name": "domain",
+          "description": "название домена",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "mbox",
+          "description": "название",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "email",
+          "description": "email адрес",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultAddForwardingEmail"
+      },
+      "examples": [
+        {
+          "name": "exampleAddForwardingEmail",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/stringMbox"
+            },
+            {
+              "$ref": "#/components/examples/stringEmail"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultAddForwardingEmail"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "removeForwardingEmail",
+      "description": "Удаление адресов для пересылки",
+      "params": [
+        {
+          "name": "domain",
+          "description": "название домена",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "mbox",
+          "description": "название",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "email",
+          "description": "email адрес",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultRemoveForwardingEmail"
+      },
+      "examples": [
+        {
+          "name": "exampleRemovForwardingEmaile",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/stringMbox"
+            },
+            {
+              "$ref": "#/components/examples/stringEmail"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultRemoveForwardingEmail"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "isEnabledDeletingAfterForwarding",
+      "description": "Проверяет, включено ли удаление писем из исходного ящика после пересылки",
+      "params": [
+        {
+          "name": "domain",
+          "description": "название домена",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "mbox",
+          "description": "название",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultIsEnabledDeletingAfterForwarding"
+      },
+      "examples": [
+        {
+          "name": "exampleIsEnabledDeletingAfterForwarding",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/stringMbox"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultIsEnabledDeletingAfterForwarding"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "changeDeletingAfterForwarding",
+      "description": "Вкл/выкл удаления из исходного ящика после пересылки",
+      "params": [
+        {
+          "name": "domain",
+          "description": "название домена",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "mbox",
+          "description": "название",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "turnOn",
+          "description": "режим (true - включен, false - выключен)",
+          "schema": {
+            "$ref": "#/components/schemas/Boolean"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultChangeDeletingAfterForwarding"
+      },
+      "examples": [
+        {
+          "name": "exampleChangeDeletingAfterForwarding",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/stringMbox"
+            },
+            {
+              "$ref": "#/components/examples/booleanTurnOn"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultChangeDeletingAfterForwarding"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "getDeliveryAddressesList",
+      "description": "Возвращает список адресов рассылки",
+      "params": [
+        {
+          "name": "domain",
+          "description": "название домена",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "mbox",
+          "description": "название",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "page",
+          "description": "страница",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": false
+        },
+        {
+          "name": "limit",
+          "description": "кол-во на странице",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": false
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultGetDeliveryAddressesList"
+      },
+      "examples": [
+        {
+          "name": "exampleGetDeliveryAddressesList",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/stringMbox"
+            },
+            {
+              "$ref": "#/components/examples/intPage"
+            },
+            {
+              "$ref": "#/components/examples/intLimit"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultGetDeliveryAddressesList"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "getDeliveryInfo",
+      "description": "Возвращает информацию о кол-ве списков и адресов рассылки",
+      "params": [
+        {
+          "name": "domain",
+          "description": "название домена",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "mbox",
+          "description": "название",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultGetDeliveryInfo"
+      },
+      "examples": [
+        {
+          "name": "exampleGetDeliveryInfo",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/stringMbox"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultGetDeliveryInfo"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "addDeliveryAddress",
+      "description": "Добавить адрес рассылки",
+      "params": [
+        {
+          "name": "domain",
+          "description": "название домена",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "mbox",
+          "description": "название",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "email",
+          "description": "email адрес",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultAddDeliveryAddress"
+      },
+      "examples": [
+        {
+          "name": "exampleAddDeliveryAddress",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/stringMbox"
+            },
+            {
+              "$ref": "#/components/examples/stringEmail"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultAddDeliveryAddress"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "dropDeliveryAddress",
+      "description": "Удалить адрес рассылки",
+      "params": [
+        {
+          "name": "domain",
+          "description": "название домена",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "mbox",
+          "description": "название",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "email",
+          "description": "email адрес",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultDropDeliveryAddress"
+      },
+      "examples": [
+        {
+          "name": "exampleDropDeliveryAddress",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/stringMbox"
+            },
+            {
+              "$ref": "#/components/examples/stringEmail"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultDropDeliveryAddress"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "getMailsCollector",
+      "description": "Возвращает адрес сборщика писем, если он добавлен",
+      "params": [
+        {
+          "name": "domain",
+          "description": "название домена",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultGetMailsCollector"
+      },
+      "examples": [
+        {
+          "name": "exampleGetMailsCollector",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultGetMailsCollector"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "changeMailsCollector",
+      "description": "Изменяет адрес сборщика писем",
+      "params": [
+        {
+          "name": "domain",
+          "description": "название домена",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "email",
+          "description": "email адрес сборщика писем",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultChangeMailsCollector"
+      },
+      "examples": [
+        {
+          "name": "exampleChangeMailsCollector",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/stringEmail"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultChangeMailsCollector"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "removeMailsCollector",
+      "description": "Удаление адреса сборщика писем у домена",
+      "params": [
+        {
+          "name": "domain",
+          "description": "название домена",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultRemoveMailsCollector"
+      },
+      "examples": [
+        {
+          "name": "exampleRemoveMailsCollector",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultRemoveMailsCollector"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "confirmMailsCollectorEmail",
+      "description": "Подтверждает ящик, который не находится на доменах аккаунта клиента",
+      "params": [
+        {
+          "name": "domain",
+          "description": "название домена",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "token",
+          "description": "токен",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultConfirmMailsCollectorEmail"
+      },
+      "examples": [
+        {
+          "name": "exampleConfirmMailsCollectorEmail",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/stringToken"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultConfirmMailsCollectorEmail"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "changeSenderVerify",
+      "description": "Вкл/выкл SenderVerify (проверку отправителя)",
+      "params": [
+        {
+          "name": "domain",
+          "description": "название домена",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "turnOn",
+          "description": "вкл/выкл (true - включить, false - выключить)",
+          "schema": {
+            "$ref": "#/components/schemas/Boolean"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultChangeSenderVerify"
+      },
+      "examples": [
+        {
+          "name": "exampleChangeSenderVerify",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/booleanTurnOn"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultChangeSenderVerify"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "changeAutoDiscover",
+      "description": "Вкл/выкл автонастройку почтовых программ",
+      "params": [
+        {
+          "name": "domain",
+          "description": "название домена",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "turnOn",
+          "description": "вкл/выкл (true - включить, false - выключить)",
+          "schema": {
+            "$ref": "#/components/schemas/Boolean"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultChangeAutoDiscover"
+      },
+      "examples": [
+        {
+          "name": "exampleChangeAutoDiscover",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/booleanTurnOn"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultChangeAutoDiscover"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "deleteMails",
+      "description": "Удаляет письма ящика старше $days дней",
+      "params": [
+        {
+          "name": "domain",
+          "description": "название домена",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "mbox",
+          "description": "название",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "days",
+          "description": "кол-во дней",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultDeleteMails"
+      },
+      "examples": [
+        {
+          "name": "exampleDeleteMails",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/stringMbox"
+            },
+            {
+              "$ref": "#/components/examples/intDays"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultDeleteMails"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "changeMailboxPassword",
+      "description": "Изменяет пароль почтового ящика",
+      "params": [
+        {
+          "name": "domain",
+          "description": "название домена",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "mbox",
+          "description": "название",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "password",
+          "description": "пароль",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultChangeMailboxPassword"
+      },
+      "examples": [
+        {
+          "name": "exampleChangeMailboxPassword",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/stringMbox"
+            },
+            {
+              "$ref": "#/components/examples/stringPassword"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultChangeMailboxPassword"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "getWhitelist",
+      "description": "Возвращает белый список",
+      "params": [
+        {
+          "name": "domain",
+          "description": "название домена",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "mbox",
+          "description": "название",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "page",
+          "description": "номер страницы",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        },
+        {
+          "name": "limit",
+          "description": "кол-во на странице",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultGetWhitelist"
+      },
+      "examples": [
+        {
+          "name": "exampleGetWhitelist",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/stringMbox"
+            },
+            {
+              "$ref": "#/components/examples/intPage"
+            },
+            {
+              "$ref": "#/components/examples/intLimit"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultGetWhitelist"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "getBlacklist",
+      "description": "Возвращает черный список",
+      "params": [
+        {
+          "name": "domain",
+          "description": "название домена",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "mbox",
+          "description": "название",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "page",
+          "description": "номер страницы",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        },
+        {
+          "name": "limit",
+          "description": "кол-во на странице",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultGetBlacklist"
+      },
+      "examples": [
+        {
+          "name": "exampleGetBlacklist",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/stringMbox"
+            },
+            {
+              "$ref": "#/components/examples/intPage"
+            },
+            {
+              "$ref": "#/components/examples/intLimit"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultGetBlacklist"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "addToWhitelist",
+      "description": "Добавляет исключение в белый список",
+      "params": [
+        {
+          "name": "domain",
+          "description": "название домена",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "mbox",
+          "description": "название",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "address",
+          "description": "email адрес",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "all",
+          "description": "применить ко всем ящикам домена",
+          "schema": {
+            "$ref": "#/components/schemas/Boolean"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultAddToWhitelist"
+      },
+      "examples": [
+        {
+          "name": "exampleAddToWhitelist",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/stringMbox"
+            },
+            {
+              "$ref": "#/components/examples/stringAddress"
+            },
+            {
+              "$ref": "#/components/examples/booleanAll"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultAddToWhitelist"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "addToBlacklist",
+      "description": "Добавляет исключение в черный список",
+      "params": [
+        {
+          "name": "domain",
+          "description": "название домена",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "mbox",
+          "description": "название",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "email",
+          "description": "email адрес",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "all",
+          "description": "применить ко всем ящикам домена",
+          "schema": {
+            "$ref": "#/components/schemas/Boolean"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultAddToBlacklist"
+      },
+      "examples": [
+        {
+          "name": "exampleAddToBlacklist",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/stringMbox"
+            },
+            {
+              "$ref": "#/components/examples/stringEmail"
+            },
+            {
+              "$ref": "#/components/examples/booleanAll"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultAddToBlacklist"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "dropFromWhitelist",
+      "description": "Удаляет исключение из белого списка",
+      "params": [
+        {
+          "name": "domain",
+          "description": "название домена",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "mbox",
+          "description": "ящик клиента (часть адреса до @)",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "address",
+          "description": "фильтруемый адрес",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultDropFromWhitelist"
+      },
+      "examples": [
+        {
+          "name": "exampleDropFromWhitelist",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/stringMbox"
+            },
+            {
+              "$ref": "#/components/examples/stringAddress"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultDropFromWhitelist"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "dropFromBlacklist",
+      "description": "Удаляет исключение из черного списка",
+      "params": [
+        {
+          "name": "domain",
+          "description": "название домена",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "mbox",
+          "description": "ящик клиента (часть адреса до @)",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "email",
+          "description": "фильтруемый адрес",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultDropFromBlacklist"
+      },
+      "examples": [
+        {
+          "name": "exampleDropFromBlacklist",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/stringMbox"
+            },
+            {
+              "$ref": "#/components/examples/stringEmail"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultDropFromBlacklist"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "enableDkim",
+      "description": "Включение DKIM",
+      "params": [
+        {
+          "name": "domain",
+          "description": "название домена",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultEnableDkim"
+      },
+      "examples": [
+        {
+          "name": "exampleEnableDkim",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultEnableDkim"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "disableDkim",
+      "description": "Выключение DKIM",
+      "params": [
+        {
+          "name": "domain",
+          "description": "название домена",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultDisableDkim"
+      },
+      "examples": [
+        {
+          "name": "exampleDisableDkim",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultDisableDkim"
+          }
+        }
+      ],
+      "links": []
+    }
+  ],
+  "components": {
+    "contentDescriptors": {
+      "resultRemoveForwardingEmail": {
+        "name": "resultRemoveForwardingEmail",
+        "description": "1 - успешно",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultDropFromWhitelist": {
+        "name": "resultDropFromWhitelist",
+        "description": "1 - успешно",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultEnableDkim": {
+        "name": "resultEnableDkim",
+        "description": "1 - успешно",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultDisableDkim": {
+        "name": "resultDisableDkim",
+        "description": "1 - успешно",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultDropFromBlacklist": {
+        "name": "resultDropFromBlacklist",
+        "description": "1 - успешно",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultGetWhitelist": {
+        "name": "resultGetWhitelist",
+        "description": "'list' array список адресов\n\n'filterInfo' array информация о странице:\n\n'page' int текущая страница\n\n'limit' int кол-во не странице\n\n'totalCount' int общее кол-во",
+        "schema": {
+          "type": "object"
+        }
+      },
+      "resultGetBlacklist": {
+        "name": "resultGetWhitelist",
+        "description": "'list' array список адресов\n\n'filterInfo' array информация о странице:\n\n'page' int текущая страница\n\n'limit' int кол-во не странице\n\n'totalCount' int общее кол-во",
+        "schema": {
+          "type": "object"
+        }
+      },
+      "resultChangeMailboxPassword": {
+        "name": "resultChangeMailboxPassword",
+        "description": "1 - успешно",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultAddToBlacklist": {
+        "name": "resultAddToBlacklist",
+        "description": "1 - успешно",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultDeleteMails": {
+        "name": "resultDeleteMails",
+        "description": "1 - успешное изменение",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultChangeSenderVerify": {
+        "name": "resultChangeSenderVerify",
+        "description": "1 - успешное изменение",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultChangeAutoDiscover": {
+        "name": "resultChangeAutoDiscover",
+        "description": "1 - успешное изменение",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultConfirmMailsCollectorEmail": {
+        "name": "resultConfirmMailsCollectorEmail",
+        "description": "1 - успешно, 0 - не успешно",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultRemoveMailsCollector": {
+        "name": "resultRemoveMailsCollector",
+        "description": "1 - успешно",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultAddToWhitelist": {
+        "name": "resultAddToWhitelist",
+        "description": "1 - успешно",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultChangeMailsCollector": {
+        "name": "resultChangeMailsCollector",
+        "description": "1 - успешно (домен на аккаунте); 2 - успешно (почта домена включается для адреса из домена, не пренадлежащего клиенту, требуется подтверждение)",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultGetMailsCollector": {
+        "name": "resultGetMailsCollector",
+        "description": "email адрес сборщика писем",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "resultDropDeliveryAddress": {
+        "name": "resultDropDeliveryAddress",
+        "description": "1 - успешное удаление",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultAddDeliveryAddress": {
+        "name": "resultAddDeliveryAddress",
+        "description": "1 - успешное добавление",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultGetDeliveryInfo": {
+        "name": "resultGetDeliveryInfo",
+        "description": "'groups' array информация о списках:\n\n'current' int текущее кол-во\n\n'max' int максимальное кол-во\n\n'addresses' array информация адресов рассылки\n\n'current' int текущее кол-во\n\n'max' int максимальное кол-во",
+        "schema": {
+          "type": "object"
+        }
+      },
+      "resultGetDeliveryAddressesList": {
+        "name": "resultGetDeliveryAddressesList",
+        "description": "'list' array список адресов рассылки\n\n'filterInfo' array информация о странице:\n\n'page' int текущая страница\n\n'limit' int кол-во не странице\n\n'totalCount' int общее кол-во",
+        "schema": {
+          "type": "array"
+        }
+      },
+      "resultChangeDeletingAfterForwarding": {
+        "name": "resultChangeDeletingAfterForwarding",
+        "description": "1 - успешное вкл/выкл",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultIsEnabledDeletingAfterForwarding": {
+        "name": "resultIsEnabledDeletingAfterForwarding",
+        "description": "1 - включено, 0 - выключено",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultAddForwardingEmail": {
+        "name": "resultAddForwardingEmail",
+        "description": "1 - успешно",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultGetForwardingEmailsList": {
+        "name": "resultGetForwardingEmailsList",
+        "description": "массив строк (адресов)",
+        "schema": {
+          "type": "array"
+        }
+      },
+      "resultChangeDomainSpf": {
+        "name": "resultChangeDomainSpf",
+        "description": "1 - успешно",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultChangeAutoreply": {
+        "name": "resultChangeAutoreply",
+        "description": "1 - успешно",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultGetDomainsList": {
+        "name": "resultGetDomainsList",
+        "description": "'list' array список доменов:\n\n'fqdn_readable' string домен\n\n'mailboxesCnt' int кол-во ящиков\n\n'spf' int SPF фильтрация (1 - включена, 0 - выключена)\n\n'quota' int размер, MB\n\n'senderVerify' int проверка существования адреса отправителя (1 - включена, 0 - выключена)\n\n'autoDiscover' int автонастройка почтовых программ (1 - включена, 0 - выключена)\n\n'emailCollector' string|null email сборщик писем\n\n'dkim' string добавление цифровой подписи при отправке писем (on - включено, off - выключено)\n\n'filterInfo' array информация о странице:\n\n'page' int текущая страница\n\n'limit' int кол-во не странице\n\n'orderField' int поле сортировки\n\n'orderDirect' string тип сортировки ('asc', 'desc')\n\n'totalCount' int общее кол-во",
+        "schema": {
+          "type": "object"
+        }
+      },
+      "resultGetAutoreply": {
+        "name": "resultGetAutoreply",
+        "description": "текст автоответчика (ответного письма)",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "resultCreateMbox": {
+        "name": "resultCreateMbox",
+        "description": "'login' string почтовый ящик пример: example@test.ru\n\n'password' string пароль\n\n'webMail' string адрес веб-интерфейса для доступа к ящику\n\n'mailProgramSettings' array настройка почтовых программ:\n\n'name' string название сервера\n\n'server' string адрес сервера\n\n'port' string порт\n\n'detailed' string адрес на страницу подробнее\n\n'pdf' file pdf реквизиты",
+        "schema": {
+          "type": "object"
+        }
+      },
+      "resultGetMailboxesList": {
+        "name": "resultGetMailboxesList",
+        "description": "'list' array список доменов:\n\n'mbox' string название\n\n'spf' int SPF фильтрация (1 - включена, 0 - выключена)\n\n'quota' int размер, MB\n\n'purpose' string назначение\n\n'antispam' int настройка антиспам-фильтра (5 - жесткий, 8 - средний, 10 - мягкий, 0 - выключен)\n\n'comment' string комментарий\n\n'filterInfo' array информация о странице:\n\n'page' int текущая страница\n\n'limit' int кол-во не странице\n\n'orderField' int поле сортировки\n\n'orderDirect' string тип сортировки ('asc', 'desc')\n\n'totalCount' int общее кол-во",
+        "schema": {
+          "type": "object"
+        }
+      },
+      "resultGetMailQuota": {
+        "name": "resultGetMailQuota",
+        "description": "общий размер (мб) почтовых ящиков клиента",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultSendRequisitesToEmail": {
+        "name": "resultSendRequisitesToEmail",
+        "description": "1 - успешная отправка",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultDropMbox": {
+        "name": "resultDropMbox",
+        "description": "1 - успешное удаление",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultUpdateAntispamState": {
+        "name": "resultUpdateAntispamState",
+        "description": "1 - успешно",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultUpdateComment": {
+        "name": "resultUpdateComment",
+        "description": "1 - успешно",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultChangeMailboxSpf": {
+        "name": "resultChangeMailboxSpf",
+        "description": "1 - успешно",
+        "schema": {
+          "type": "integer"
+        }
+      }
+    },
+    "schemas": {
+      "Integer": {
+        "type": "integer"
+      },
+      "String": {
+        "type": "string"
+      },
+      "Boolean": {
+        "type": "boolean"
+      },
+      "Array": {
+        "type": "array"
+      },
+      "Object": {
+        "type": "object"
+      }
+    },
+    "examples": {
+      "stringAddress": {
+        "name": "address",
+        "summary": "address",
+        "description": "email адрес",
+        "value": "test@test.ru"
+      },
+      "booleanAll": {
+        "name": "all",
+        "summary": "all",
+        "description": "применить ко всем ящикам домена",
+        "value": false
+      },
+      "stringToken": {
+        "name": "token",
+        "summary": "token",
+        "description": "токен",
+        "value": "dhbvjwse97s8wh"
+      },
+      "intDays": {
+        "name": "days",
+        "summary": "days",
+        "description": "кол-во дней",
+        "value": 7
+      },
+      "booleanTurnOn": {
+        "name": "turnOn",
+        "summary": "turnOn",
+        "description": "режим (true - включен, false - выключен)",
+        "value": true
+      },
+      "stringText": {
+        "name": "text",
+        "summary": "text",
+        "description": "текст автоответчика",
+        "value": "текст автоответчика"
+      },
+      "intValue": {
+        "name": "value",
+        "summary": "value",
+        "description": "состояние антиспам-фильтра (5 - жесткий, 8 - средний, 10 - мягкий, 0 - выключен)",
+        "value": 5
+      },
+      "stringEmail": {
+        "name": "email",
+        "summary": "email",
+        "description": "email на который отправляются реквизиты",
+        "value": "test@gmail.com"
+      },
+      "stringLogin": {
+        "name": "login",
+        "summary": "login",
+        "description": "email реквизиты которого передаются на почту",
+        "value": "testmbox@test.ru"
+      },
+      "stringMbox": {
+        "name": "mbox",
+        "summary": "mbox",
+        "description": "название",
+        "value": "testmbox"
+      },
+      "stringPassword": {
+        "name": "password",
+        "summary": "password",
+        "description": "пароль",
+        "value": "Тест123!"
+      },
+      "stringComment": {
+        "name": "comment",
+        "summary": "comment",
+        "description": "комментарий",
+        "value": "тест"
+      },
+      "intPage": {
+        "name": "page",
+        "summary": "page",
+        "description": "номер страницы",
+        "value": 1
+      },
+      "stringDomain": {
+        "name": "domain",
+        "summary": "domain",
+        "description": "название домена",
+        "value": "test.ru"
+      },
+      "intLimit": {
+        "name": "searchMbox",
+        "summary": "searchMbox",
+        "description": "название ящика (для поиска по нему)",
+        "value": 20
+      },
+      "intOrderBy": {
+        "name": "orderBy",
+        "summary": "orderBy",
+        "description": "номер поля для сортировки",
+        "value": 0
+      },
+      "stringOrderDirect": {
+        "name": "orderDirect",
+        "summary": "orderDirect",
+        "description": "'asc' или 'desc'",
+        "value": "asc"
+      },
+      "resultGetDomainsList": {
+        "name": "resultGetDomainsListsultEdit",
+        "summary": "resultGetDomainsList",
+        "description": "'list' array список доменов:\n\n'fqdn_readable' string домен\n\n'mailboxesCnt' int кол-во ящиков\n\n'spf' int SPF фильтрация (1 - включена, 0 - выключена)\n\n'quota' int размер, MB\n\n'senderVerify' int проверка существования адреса отправителя (1 - включена, 0 - выключена)\n\n'autoDiscover' int автонастройка почтовых программ (1 - включена, 0 - выключена)\n\n'emailCollector' string|null email сборщик писем\n\n'dkim' string добавление цифровой подписи при отправке писем (on - включено, off - выключено)\n\n'filterInfo' array информация о странице:\n\n'page' int текущая страница\n\n'limit' int кол-во не странице\n\n'orderField' int поле сортировки\n\n'orderDirect' string тип сортировки ('asc', 'desc')\n\n'totalCount' int общее кол-во",
+        "value": {
+          "list": [
+            {
+              "fqdn_readable": "test.ru",
+              "mailboxesCnt": 4,
+              "spf": 0,
+              "quota": 0,
+              "senderVerify": 0,
+              "autoDiscover": 0,
+              "emailCollector": null,
+              "dkim": "on"
+            }
+          ],
+          "filterInfo": {
+            "page": 1,
+            "limit": 20,
+            "orderField": 0,
+            "orderDirect": "asc",
+            "totalCount": 1
+          }
+        }
+      },
+      "resultGetMailboxesList": {
+        "name": "resultGetMailboxesList",
+        "summary": "resultGetMailboxesList",
+        "description": "'list' array список доменов:\n\n'mbox' string название\n\n'spf' int SPF фильтрация (1 - включена, 0 - выключена)\n\n'quota' int размер, MB\n\n'purpose' string назначение\n\n'antispam' int настройка антиспам-фильтра (5 - жесткий, 8 - средний, 10 - мягкий, 0 - выключен)\n\n'comment' string комментарий\n\n'filterInfo' array информация о странице:\n\n'page' int текущая страница\n\n'limit' int кол-во не странице\n\n'orderField' int поле сортировки\n\n'orderDirect' string тип сортировки ('asc', 'desc')\n\n'totalCount' int общее кол-во",
+        "value": {
+          "list": [
+            {
+              "mbox": "test",
+              "quota": 0,
+              "purpose": "mail",
+              "spf": 1,
+              "antispam": 10,
+              "comment": "тест"
+            },
+            {
+              "mbox": "test1",
+              "quota": 0,
+              "purpose": "mail",
+              "spf": 1,
+              "antispam": 0,
+              "comment": ""
+            },
+            {
+              "mbox": "test2",
+              "quota": 0,
+              "purpose": "mail",
+              "spf": 1,
+              "antispam": 5,
+              "comment": ""
+            }
+          ],
+          "filterInfo": {
+            "page": 1,
+            "limit": 20,
+            "orderField": 0,
+            "orderDirect": "asc",
+            "totalCount": 3
+          }
+        }
+      },
+      "resultGetMailQuota": {
+        "name": "resultGetMailQuota",
+        "summary": "resultGetMailQuota",
+        "description": "общий размер (мб) почтовых ящиков клиента",
+        "value": 1
+      },
+      "resultCreateMbox": {
+        "name": "resultCreateMbox",
+        "summary": "resultCreateMbox",
+        "description": "'login' string почтовый ящик пример: example@test.ru\n\n'password' string пароль\n\n'webMail' string адрес веб-интерфейса для доступа к ящику\n\n'mailProgramSettings' array настройка почтовых программ:\n\n'name' string название сервера\n\n'server' string адрес сервера\n\n'port' string порт\n\n'detailed' string адрес на страницу подробнее\n\n'pdf' file pdf реквизиты",
+        "value": {
+          "login": "testmbox@test.ru",
+          "password": "Тест123!",
+          "webMail": "https://webmail.sweb.ru",
+          "mailProgramSettings": [
+            {
+              "name": "IMAP",
+              "server": "imap.spaceweb.ru",
+              "port": "Порт 143 (Для SSL 993)"
+            },
+            {
+              "name": "POP3",
+              "server": "pop3.spaceweb.ru",
+              "port": "Порт 110 (Для SSL 995)"
+            },
+            {
+              "name": "SMTP",
+              "server": "smtp.spaceweb.ru",
+              "port": "Порт 25 или 2525 (Для SSL 465)"
+            }
+          ],
+          "detailed": "https://help.sweb.ru/29/",
+          "pdf": {
+            "mimetype": "application/pdf;base64",
+            "metadata": [],
+            "content": "JVBERi0xLjQKJeLjz9MKMyAwIG9iago8PC9UeXBlIC9QYWdlCi9QYXJlbnQgMSAwI...",
+            "name": "requisites.pdf"
+          }
+        }
+      },
+      "resultSendRequisitesToEmail": {
+        "name": "resultSendRequisitesToEmail",
+        "summary": "resultSendRequisitesToEmail",
+        "description": "1 - успешная отправка",
+        "value": 1
+      },
+      "resultDropMbox": {
+        "name": "resultDropMbox",
+        "summary": "resultDropMbox",
+        "description": "1 - успешное удаление",
+        "value": 1
+      },
+      "resultUpdateAntispamState": {
+        "name": "resultUpdateAntispamState",
+        "summary": "resultUpdateAntispamState",
+        "description": "1 - успешно",
+        "value": 1
+      },
+      "resultUpdateComment": {
+        "name": "resultUpdateComment",
+        "summary": "resultUpdateComment",
+        "description": "1 - успешно",
+        "value": 1
+      },
+      "resultGetAutoreply": {
+        "name": "resultGetAutoreply",
+        "summary": "resultGetAutoreply",
+        "description": "текст автоответчика (ответного письма)",
+        "value": "тест"
+      },
+      "resultChangeAutoreply": {
+        "name": "resultChangeAutoreply",
+        "summary": "resultChangeAutoreply",
+        "description": "1 - успешно",
+        "value": 1
+      },
+      "resultChangeMailboxSpf": {
+        "name": "resultChangeMailboxSpf",
+        "summary": "resultChangeMailboxSpf",
+        "description": "1 - успешно",
+        "value": 1
+      },
+      "resultChangeDomainSpf": {
+        "name": "resultChangeDomainSpf",
+        "summary": "resultChangeDomainSpf",
+        "description": "1 - успешно",
+        "value": 1
+      },
+      "resultAddForwardingEmail": {
+        "name": "resultAddForwardingEmail",
+        "summary": "resultAddForwardingEmail",
+        "description": "1 - успешно",
+        "value": 1
+      },
+      "resultRemoveForwardingEmail": {
+        "name": "resultRemoveForwardingEmail",
+        "summary": "resultRemoveForwardingEmail",
+        "description": "1 - успешно",
+        "value": 1
+      },
+      "resultRemoveMailsCollector": {
+        "name": "resultRemoveMailsCollector",
+        "summary": "resultRemoveMailsCollector",
+        "description": "1 - успешно",
+        "value": 1
+      },
+      "resultAddToBlacklist": {
+        "name": "resultAddToBlacklist",
+        "summary": "resultAddToBlacklist",
+        "description": "1 - успешно",
+        "value": 1
+      },
+      "resultIsEnabledDeletingAfterForwarding": {
+        "name": "resultIsEnabledDeletingAfterForwarding",
+        "summary": "resultIsEnabledDeletingAfterForwarding",
+        "description": "1 - включено, 0 - выключено",
+        "value": 0
+      },
+      "resultChangeDeletingAfterForwarding": {
+        "name": "resultChangeDeletingAfterForwarding",
+        "summary": "resultChangeDeletingAfterForwarding",
+        "description": "1 - успешное вкл/выкл",
+        "value": 1
+      },
+      "resultAddDeliveryAddress": {
+        "name": "resultAddDeliveryAddress",
+        "summary": "resultAddDeliveryAddress",
+        "description": "1 - успешное добавление",
+        "value": 1
+      },
+      "resultEnableDkim": {
+        "name": "resultEnableDkim",
+        "summary": "resultEnableDkim",
+        "description": "1 - успешно",
+        "value": 1
+      },
+      "resultDisableDkim": {
+        "name": "resultDisableDkim",
+        "summary": "resultDisableDkim",
+        "description": "1 - успешно",
+        "value": 1
+      },
+      "resultChangeSenderVerify": {
+        "name": "resultChangeSenderVerify",
+        "summary": "resultChangeSenderVerify",
+        "description": "1 - успешное изменение",
+        "value": 1
+      },
+      "resultChangeAutoDiscover": {
+        "name": "resultChangeAutoDiscover",
+        "summary": "resultChangeAutoDiscover",
+        "description": "1 - успешное изменение",
+        "value": 1
+      },
+      "resultGetWhitelist": {
+        "name": "resultGetWhitelist",
+        "summary": "resultGetWhitelist",
+        "description": "'list' array список адресов\n\n'filterInfo' array информация о странице:\n\n'page' int текущая страница\n\n'limit' int кол-во не странице\n\n'totalCount' int общее кол-во",
+        "value": {
+          "list": [
+            "test2@test.ru"
+          ],
+          "filterInfo": {
+            "page": 1,
+            "limit": 20,
+            "totalCount": 1
+          }
+        }
+      },
+      "resultGetBlacklist": {
+        "name": "resultGetBlacklist",
+        "summary": "resultGetBlacklist",
+        "description": "'list' array список адресов\n\n'filterInfo' array информация о странице:\n\n'page' int текущая страница\n\n'limit' int кол-во не странице\n\n'totalCount' int общее кол-во",
+        "value": {
+          "list": [
+            "test2@test.ru"
+          ],
+          "filterInfo": {
+            "page": 1,
+            "limit": 20,
+            "totalCount": 1
+          }
+        }
+      },
+      "resultDeleteMails": {
+        "name": "resultDeleteMails",
+        "summary": "resultDeleteMails",
+        "description": "1 - успешное изменение",
+        "value": 1
+      },
+      "resultConfirmMailsCollectorEmail": {
+        "name": "resultConfirmMailsCollectorEmail",
+        "summary": "resultConfirmMailsCollectorEmail",
+        "description": "1 - успешно, 0 - не успешно",
+        "value": 1
+      },
+      "resultDropDeliveryAddress": {
+        "name": "resultDropDeliveryAddress",
+        "summary": "resultDropDeliveryAddress",
+        "description": "1 - успешное удаление",
+        "value": 1
+      },
+      "resultChangeMailboxPassword": {
+        "name": "resultChangeMailboxPassword",
+        "summary": "resultChangeMailboxPassword",
+        "description": "1 - успешно",
+        "value": 1
+      },
+      "resultAddToWhitelist": {
+        "name": "resultAddToWhitelist",
+        "summary": "resultAddToWhitelist",
+        "description": "1 - успешно",
+        "value": 1
+      },
+      "resultDropFromWhitelist": {
+        "name": "resultDropFromWhitelist",
+        "summary": "resultDropFromWhitelist",
+        "description": "1 - успешно",
+        "value": 1
+      },
+      "resultDropFromBlacklist": {
+        "name": "resultDropFromBlacklist",
+        "summary": "resultDropFromBlacklist",
+        "description": "1 - успешно",
+        "value": 1
+      },
+      "resultChangeMailsCollector": {
+        "name": "resultChangeMailsCollector",
+        "summary": "resultChangeMailsCollector",
+        "description": "1 - успешно (домен на аккаунте); 2 - успешно (почта домена включается для адреса из домена, не пренадлежащего клиенту, требуется подтверждение)",
+        "value": 1
+      },
+      "resultGetMailsCollector": {
+        "name": "resultGetMailsCollector",
+        "summary": "resultGetMailsCollector",
+        "description": "email адрес сборщика писем",
+        "value": "test@gmail.com"
+      },
+      "resultGetForwardingEmailsList": {
+        "name": "resultGetForwardingEmailsList",
+        "summary": "resultGetForwardingEmailsList",
+        "description": "массив строк (адресов)",
+        "value": [
+          "test1@test.ru"
+        ]
+      },
+      "resultGetDeliveryInfo": {
+        "name": "resultGetDeliveryInfo",
+        "summary": "resultGetDeliveryInfo",
+        "description": "'groups' array информация о списках:\n\n'current' int текущее кол-во\n\n'max' int максимальное кол-во\n\n'addresses' array информация адресов рассылки\n\n'current' int текущее кол-во\n\n'max' int максимальное кол-во",
+        "value": {
+          "groups": {
+            "current": 0,
+            "max": 10
+          },
+          "addresses": {
+            "current": 0,
+            "max": 100
+          }
+        }
+      },
+      "resultGetDeliveryAddressesList": {
+        "name": "resultGetDeliveryAddressesList",
+        "summary": "resultGetDeliveryAddressesList",
+        "description": "'list' array список адресов рассылки\n\n'filterInfo' array информация о странице:\n\n'page' int текущая страница\n\n'limit' int кол-во не странице\n\n'totalCount' int общее кол-во",
+        "value": {
+          "list": [
+            "test1@test.ru"
+          ],
+          "filterInfo": {
+            "page": 1,
+            "limit": 20,
+            "totalCount": "1"
+          }
+        }
+      }
+    }
+  }
+}

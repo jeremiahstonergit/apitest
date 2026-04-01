@@ -1,0 +1,475 @@
+{
+  "openrpc": "1.0.0-rc1",
+  "info": {
+    "title": "API Spaceweb",
+    "description": "Документация по API Spaceweb",
+    "version": "1.185"
+  },
+  "servers": [
+    {
+      "name": "Бэкапы",
+      "summary": "Бэкапы для VPS",
+      "description": "Основные функции:\n\nсоздание и управление бэкапами,\nвосстановление из бэкапа,\nрасписание автоматических бэкапов",
+      "url": "https://api.sweb.ru/vps/backup"
+    }
+  ],
+  "methods": [
+    {
+      "name": "index",
+      "description": "Список бэкапов для VPS",
+      "params": [
+        {
+          "name": "billingId",
+          "description": "Идентификатор услуги",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultindex"
+      },
+      "examples": [
+        {
+          "name": "exampleIndex",
+          "params": [
+            {
+              "$ref": "#/components/examples/billingId"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultindex"
+          }
+        }
+      ]
+    },
+    {
+      "name": "updateIndex",
+      "description": "Обновление индекса бэкапов",
+      "params": [
+        {
+          "name": "billingId",
+          "description": "Идентификатор услуги",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleUpdateIndex",
+          "params": [
+            {
+              "$ref": "#/components/examples/billingId"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/integerOne"
+          }
+        }
+      ]
+    },
+    {
+      "name": "create",
+      "description": "Создание бэкапа VPS",
+      "params": [
+        {
+          "name": "billingId",
+          "description": "Идентификатор услуги",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleCreate",
+          "params": [
+            {
+              "$ref": "#/components/examples/billingId"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/integerOne"
+          }
+        }
+      ]
+    },
+    {
+      "name": "restore",
+      "description": "Восстановление из бэкапа",
+      "params": [
+        {
+          "name": "billingId",
+          "description": "Идентификатор услуги",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "backupName",
+          "description": "Название бэкапа",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleRestore",
+          "params": [
+            {
+              "$ref": "#/components/examples/billingId"
+            },
+            {
+              "$ref": "#/components/examples/backupName"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/integerOne"
+          }
+        }
+      ]
+    },
+    {
+      "name": "attach",
+      "description": "Подключение бэкапа как диска к VPS",
+      "params": [
+        {
+          "name": "billingId",
+          "description": "Идентификатор услуги",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "backupName",
+          "description": "Название бэкапа",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleAttach",
+          "params": [
+            {
+              "$ref": "#/components/examples/billingId"
+            },
+            {
+              "$ref": "#/components/examples/backupName"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/integerOne"
+          }
+        }
+      ]
+    },
+    {
+      "name": "detach",
+      "description": "Отключение бэкапа как диска",
+      "params": [
+        {
+          "name": "billingId",
+          "description": "Идентификатор услуги",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "backupName",
+          "description": "Название бэкапа",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleDetach",
+          "params": [
+            {
+              "$ref": "#/components/examples/billingId"
+            },
+            {
+              "$ref": "#/components/examples/backupName"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/integerOne"
+          }
+        }
+      ]
+    },
+    {
+      "name": "remove",
+      "description": "Удаление бэкапа",
+      "params": [
+        {
+          "name": "billingId",
+          "description": "Идентификатор услуги",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "backupName",
+          "description": "Название бэкапа",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleRemove",
+          "params": [
+            {
+              "$ref": "#/components/examples/billingId"
+            },
+            {
+              "$ref": "#/components/examples/backupName"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/integerOne"
+          }
+        }
+      ]
+    },
+    {
+      "name": "getSettings",
+      "description": "Получение настроек создания бэкапов",
+      "params": [
+        {
+          "name": "billingId",
+          "description": "Идентификатор услуги",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultgetSettings"
+      },
+      "examples": [
+        {
+          "name": "exampleGetSettings",
+          "params": [
+            {
+              "$ref": "#/components/examples/billingId"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultgetSettings"
+          }
+        }
+      ]
+    },
+    {
+      "name": "saveSettings",
+      "description": "Сохранение настроек бэкапа",
+      "params": [
+        {
+          "name": "billingId",
+          "description": "Идентификатор услуги",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "mode",
+          "description": "Режим: 'manual' или 'auto'",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "frequency",
+          "description": "Частота создания",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": false
+        },
+        {
+          "name": "time",
+          "description": "Время создания",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": false
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleSaveSettings",
+          "params": [
+            {
+              "$ref": "#/components/examples/billingId"
+            },
+            {
+              "$ref": "#/components/examples/mode"
+            },
+            {
+              "$ref": "#/components/examples/frequency"
+            },
+            {
+              "$ref": "#/components/examples/time"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/integerOne"
+          }
+        }
+      ]
+    }
+  ],
+  "components": {
+    "contentDescriptors": {
+      "resultInt": {
+        "name": "resultInt",
+        "description": "1 - успешно, 0 - ошибка",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultindex": {
+        "name": "resultIndex",
+        "description": "'name' string Имя бэкапа\n\n'prettyName' string Понятное имя бэкапа\n\n'unic_id' string ID бэкапа\n\n'attach_btn' string Можно ли подключить\n\n'restore_btn' string Можно ли восстановить\n\n'delete_btn' string Можно ли удалить\n\n'attach_type' string Тип подключения\n\n'updatedAt' string Дата создания",
+        "schema": {
+          "type": "array"
+        }
+      },
+      "resultgetSettings": {
+        "name": "resultGetSettings",
+        "description": "'mode' string Режим: 'manual' или 'auto'\n\n'frequency' int|null Частота создания\n\n'time' int|null Время создания\n\n'next_data_backup' string Дата следующего бэкапа",
+        "schema": {
+          "type": "array"
+        }
+      }
+    },
+    "schemas": {
+      "Integer": {
+        "type": "integer"
+      },
+      "String": {
+        "type": "string"
+      },
+      "Boolean": {
+        "type": "boolean"
+      },
+      "Array": {
+        "type": "array"
+      },
+      "Object": {
+        "type": "object"
+      }
+    },
+    "examples": {
+      "billingId": {
+        "name": "billingId",
+        "summary": "billingId",
+        "description": "Идентификатор услуги",
+        "value": "lnpetrov93_vps_2"
+      },
+      "resultindex": {
+        "name": "resultIndex",
+        "summary": "resultindex",
+        "description": "Список бэкапов для VPS",
+        "value": [
+          {
+            "name": "b67d4085c72cca7fa909e275b3fd6b52-2023-03-13-13-37",
+            "prettyName": "13:37 13-03-2023",
+            "unic_id": "133713032023",
+            "attach_btn": "on",
+            "restore_btn": "on",
+            "delete_btn": "on",
+            "attach_type": "attach",
+            "updatedAt": "2023-03-13 13:40:03"
+          }
+        ]
+      },
+      "integerOne": {
+        "name": "one",
+        "summary": "успех",
+        "description": "Ответ при успешно выполненной операции",
+        "value": 1
+      },
+      "backupName": {
+        "name": "backupName",
+        "summary": "backupName",
+        "description": "Название бэкапа",
+        "value": "b67d4085c72cca7fa909e275b3fd6b52-2023-03-13-13-37"
+      },
+      "resultgetSettings": {
+        "name": "resultGetSettings",
+        "summary": "resultgetSettings",
+        "description": "Настройки создания бэкапов",
+        "value": [
+          {
+            "mode": "manual",
+            "frequency": 3,
+            "time": 0,
+            "next_data_backup": ""
+          }
+        ]
+      },
+      "mode": {
+        "name": "mode",
+        "summary": "mode",
+        "description": "Режим: 'manual' или 'auto'",
+        "value": "auto"
+      },
+      "frequency": {
+        "name": "frequency",
+        "summary": "frequency",
+        "description": "Частота создания",
+        "value": 3
+      },
+      "time": {
+        "name": "time",
+        "summary": "time",
+        "description": "Время создания",
+        "value": "16"
+      }
+    }
+  }
+}

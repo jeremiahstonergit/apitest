@@ -1,0 +1,862 @@
+{
+  "openrpc": "1.0.0-rc1",
+  "info": {
+    "title": "API Spaceweb",
+    "description": "Документация по API Spaceweb",
+    "version": "1.182"
+  },
+  "servers": [
+    {
+      "name": "Ip",
+      "summary": "IP-адреса",
+      "description": "Основные функции работы с IP",
+      "url": "https://api.sweb.ru/vps/ip"
+    }
+  ],
+  "methods": [
+    {
+      "name": "index",
+      "description": "Получение информации о IP",
+      "params": [
+        {
+          "name": "billingId",
+          "description": "идентификатор услуги (в формате login_vps_1)",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultIndex"
+      },
+      "examples": [
+        {
+          "name": "exampleIndex",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringIP"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultIndex"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "getAllIpList",
+      "description": "Получение списка всех IP на аккаунте пользователя",
+      "params": [],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultGetAllIpList"
+      },
+      "examples": [
+        {
+          "name": "exampleGetAllIpList",
+          "params": [],
+          "result": {
+            "$ref": "#/components/examples/resultGetAllIpList"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "getOrderInfo",
+      "description": "Возвращает информацию по лимитам заказов ip",
+      "params": [],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultGetOrderInfo"
+      },
+      "examples": [
+        {
+          "name": "exampleGetOrderInfo",
+          "params": [],
+          "result": {
+            "$ref": "#/components/examples/resultGetOrderInfo"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "addProtected",
+      "description": "Добавляет защищенный IP на VPS",
+      "params": [
+        {
+          "name": "billingId",
+          "description": "Идентификатор услуги (в формате login_vps_number)",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "planIds",
+          "description": "ID тарифов защищенных IP",
+          "schema": {
+            "$ref": "#/components/schemas/Array"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultAddProtected"
+      },
+      "examples": [
+        {
+          "name": "exampleAddProtected",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringBillingId"
+            },
+            {
+              "$ref": "#/components/examples/arrayplanIdsIP"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultAddProtected"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "removeProtected",
+      "description": "Удаляет защищенный IP",
+      "params": [
+        {
+          "name": "ip",
+          "description": "Защищенный IP адрес",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultAdd"
+      },
+      "examples": [
+        {
+          "name": "exampleRemoveProtected",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringRemoveProtected"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/boolRemoveProtected"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "updateProtected",
+      "description": "Изменяет тариф защищенного IP",
+      "params": [
+        {
+          "name": "ip",
+          "description": "Защищенный IP адрес",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "planId",
+          "description": "ID нового тарифа защищенного IP",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultUpdateProtected"
+      },
+      "examples": [
+        {
+          "name": "exampleUpdateProtected",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringIpUpdateProtected"
+            },
+            {
+              "$ref": "#/components/examples/intPlanIdUpdateProtected"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultUpdateProtected"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "moveProtected",
+      "description": "Перемещает между VPS или открепляет/прикрепляет от/к VPS защищенный IP",
+      "params": [
+        {
+          "name": "ip",
+          "description": "защищенный IP адрес",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "billingId",
+          "description": "Идентификатор услуги, null - открепить услугу",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultMoveProtected"
+      },
+      "examples": [
+        {
+          "name": "exampleMoveProtected",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringIp"
+            },
+            {
+              "$ref": "#/components/examples/stringBillingId"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultMoveProtected"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "add",
+      "description": "Добавить необходимое количество доп. IP на VPS",
+      "params": [
+        {
+          "name": "billingId",
+          "description": "идентификатор услуги",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "number",
+          "description": "кол-во добавляемых адресов",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultAdd"
+      },
+      "examples": [
+        {
+          "name": "exampleAdd",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringBillingId"
+            },
+            {
+              "$ref": "#/components/examples/IntegerNumber"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultAdd"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "addLocal",
+      "description": "Подключение VPS к локальной сети",
+      "params": [
+        {
+          "name": "billingId",
+          "description": "идентификатор услуги",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultAddLocal"
+      },
+      "examples": [
+        {
+          "name": "exampleAddLocal",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringBillingId"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultAddLocal"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "removeLocal",
+      "description": "Удаление локального IP",
+      "params": [
+        {
+          "name": "billingId",
+          "description": "идентификатор услуги",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultRemoveLocal"
+      },
+      "examples": [
+        {
+          "name": "exampleRemoveLocal",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringBillingId"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultRemoveLocal"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "remove",
+      "description": "Удаление IP. Нельзя удалять связанный IP передавая при этом пустой $billingId.",
+      "params": [
+        {
+          "name": "billingId",
+          "description": "идентификатор услуги - для удаления несвязанных с услугой IP должна быть передана пустая строка",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "ip",
+          "description": "ip адрес",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultRemove"
+      },
+      "examples": [
+        {
+          "name": "exampleRemove",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringBillingId"
+            },
+            {
+              "$ref": "#/components/examples/stringIp"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultRemove"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "move",
+      "description": "Перемещение IP между услугами VPS и прикрепление/открепление IP от услуги VPS",
+      "params": [
+        {
+          "name": "ip",
+          "description": "ip адрес",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "billingId",
+          "description": "идентификатор услуги, на которую нужно перенести данный IP. Если null, то IP будет откреплен от услуги",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultMove"
+      },
+      "examples": [
+        {
+          "name": "exampleMove",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringIp"
+            },
+            {
+              "$ref": "#/components/examples/stringBillingId"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultMove"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "editPtr",
+      "description": "Редактирование PTR",
+      "params": [
+        {
+          "name": "ip",
+          "description": "ip адрес",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "ptr",
+          "description": "обратная зона",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultEditPtr"
+      },
+      "examples": [
+        {
+          "name": "exampleEditPtr",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringIp"
+            },
+            {
+              "$ref": "#/components/examples/stringPtr"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultEditPtr"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "getPtr",
+      "description": "Получение обратной зоны для IP-адреса",
+      "params": [
+        {
+          "name": "ip",
+          "description": "ip адрес",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultGetPtr"
+      },
+      "examples": [
+        {
+          "name": "exampleGetPtr",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringIp"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultGetPtr"
+          }
+        }
+      ],
+      "links": []
+    }
+  ],
+  "components": {
+    "contentDescriptors": {
+      "resultIndex": {
+        "name": "resultIndex",
+        "description": "'ips' array\n\n'ip' string IP-адрес\n\n'gateway' string шлюз\n\n'netmask' string маска подсети\n\n'datacenter' int дата центр\n\n'canBeDeclined' int можно ли отказаться от этого IP\n\n'ptr' string обратная зона\n\n'price' int стоимость платного доп. IP на VPSn\n\n'protected_ips' array\n\n'ip' string IP-адрес\n\n'gateway' string шлюзn\n\n'netmask' string маска подсетиn\n\n'canBeDeclined' int можно ли отказаться от этого IP\n\n'ptr' string обратная зонаn\n\n'price' int стоимость IP на VPSn\n\n'planId' int ID тарифа\n\n'limit' int Лимит канала (Mбит)\n\n'vps' array информация об услуге VPS\n\n'billingId' string идентификатор услуги VPS\n\n'currentAction' string|null текущая операция над VPS\n\n'isEmpty' string 0|1 Если 0, то услуга была проинициализирована, ОС установлена\n\n'ordered_ip_count' string Количество адресов, заказанных на VPS\n\n'local_ip' array информация о локальном IP для услуги $billingId\n\n'ip' string локальный IP-адрес 'mac' string MAC-адрес интерфейса 'mask' string маска подсети ]\n\n",
+        "schema": {
+          "type": "array"
+        }
+      },
+      "resultGetAllIpList": {
+        "name": "resultGetAllIpList",
+        "description": "'ip' string IP\n\n'name' string|null Имя VPS, может отсутствовать, если IP не привязан к услуге VPS\n\n'billingId' string|null Идентификатор услуги 'login_vps_3'\n\n'datacenter' int id дата-центра\n\n'gateway' string шлюз\n\n'netmask' string маска подсети\n\n'isPrimary' bool является ли IP основным на услуге. false - дополнительные IP\n\n'allowBeDecline' bool доступна ли функция Отказаться от IP (показать/скрыть элемент)\n\n'canBeDecline' bool активна ли функция Отказаться от IP (доступность для использования)\n\n'canBeMove' bool активна ли функция Перенести (доступность для использования)\n\n'currentAction' string|null текущее действие с VPS (такое же, как current_action у метода vps/ index() )\n\n'acceptorBillingIds' array перечень realBillingId, на которые можно переместить данный IP\n\n'name' => 'пользовательское имя vps'\n\n'billingId' => 'user_vps_2'\n\n'price' int может быть цена 0, если стоимость IP входит в тариф\n\n'date' string дата окончания услуги в формате 01.07.2022\n\n'planId' int|null ID тарифа защищенного IP\n\n'limit' int|null Лимит канала защищенного IP (Mбит)\n\n",
+        "schema": {
+          "type": "array"
+        }
+      },
+      "resultGetOrderInfo": {
+        "name": "resultGetOrderInfo",
+        "description": "'ipOrdersLastDay' int кол-во заказанных обычных IP-адресов за последние сутки\n\n'dailyIpLimit' int кол-во разрешенных к заказу обычных IP-адресов за сутки\n\n'protectedIpOrdersLastDay' int кол-во заказанных защищенных IP-адресов за последние сутки\n\n'dailyProtectedIpLimit' int кол-во разрешенных к заказу защищенных IP-адресов за сутки\n\n",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultAddProtected": {
+        "name": "resultAddProtected",
+        "description": "true - если операция прошла успешно,  ошибка 'Неврный тарифный план для защищенного IP' - ошибка в указании id тарифа",
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "resultRemoveProtected": {
+        "name": "resultRemoveProtected",
+        "description": "true - успешно, false - ошибка",
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "resultUpdateProtected": {
+        "name": "resultUpdateProtected",
+        "description": "true - успешно, false - ошибка",
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "resultMoveProtected": {
+        "name": "resultMoveProtected",
+        "description": "true - успешно, false - ошибка",
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "resultAdd": {
+        "name": "resultAdd",
+        "description": "1 - успешно, 0 - не успешно",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultRemove": {
+        "name": "resultRemove",
+        "description": "1 - успешно, 0 - не успешно",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultMove": {
+        "name": "resultMove",
+        "description": "1 - успешно, 0 - не успешно",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultEditPtr": {
+        "name": "resultEditPtr",
+        "description": "1 - успешно, 0 - не успешно",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultGetPtr": {
+        "name": "resultGetPtr",
+        "description": "PTR-запись (обратная DNS-зона), null - если IP не привязан к услуге",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "resultAddLocal": {
+        "name": "resultAddLocal",
+        "description": "1 - успешно, 0 - не успешно",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultRemoveLocal": {
+        "name": "resultRemoveLocal",
+        "description": "1 - успешно, 0 - не успешно",
+        "schema": {
+          "type": "integer"
+        }
+      }
+    },
+    "schemas": {
+      "Integer": {
+        "type": "integer"
+      },
+      "String": {
+        "type": "string"
+      },
+      "Boolean": {
+        "type": "boolean"
+      },
+      "Array": {
+        "type": "array"
+      },
+      "Object": {
+        "type": "object"
+      }
+    },
+    "examples": {
+      "stringIP": {
+        "name": "billingId",
+        "summary": "billingId",
+        "description": "идентификатор услуги (в формате login_vps_1)",
+        "value": "vhp****_vps_1"
+      },
+      "stringBillingId": {
+        "name": "billingId",
+        "summary": "billingId",
+        "description": "идентификатор услуги",
+        "value": "dyasyuc584_vps_1"
+      },
+      "IntegerNumber": {
+        "name": "number",
+        "summary": "number",
+        "description": "кол-во добавляемых адресов",
+        "value": "1"
+      },
+      "resultIndex": {
+        "name": "resultIndex",
+        "summary": "Получение информации о IP",
+        "description": "'ips' array\n\n'ip' string IP-адрес\n\n'gateway' string шлюз\n\n'netmask' string маска подсети\n\n'datacenter' int дата центр\n\n'canBeDeclined' int можно ли отказаться от этого IP\n\n'ptr' string обратная зона\n\n'price' int стоимость платного доп. IP на VPSn\n\n'protected_ips' array\n\n'ip' string IP-адрес\n\n'gateway' string шлюзn\n\n'netmask' string маска подсетиn\n\n'canBeDeclined' int можно ли отказаться от этого IP\n\n'ptr' string обратная зонаn\n\n'price' int стоимость IP на VPSn\n\n'planId' int ID тарифа\n\n'limit' int Лимит канала (Mбит)\n\n'vps' array информация об услуге VPS\n\n'billingId' string идентификатор услуги VPS\n\n'currentAction' string|null текущая операция над VPS\n\n'isEmpty' string 0|1 Если 0, то услуга была проинициализирована, ОС установлена\n\n'ordered_ip_count' string Количество адресов, заказанных на VPS\n\n'local_ip' array информация о локальном IP для услуги $billingId\n\n'ip' string локальный IP-адрес 'mac' string MAC-адрес интерфейса 'mask' string маска подсети ]\n\n",
+        "value": {
+          "ips": [
+            {
+              "ip": "192.168.122.70",
+              "gateway": "192.168.122.1",
+              "netmask": "192.168.122.0/24",
+              "datacenter": 1,
+              "canBeDeclined": 1,
+              "ptr": "192-168-122-70.vps-ptr.clients.spaceweb.ru.",
+              "price": 140
+            }
+          ],
+          "protected_ips": [
+            {
+              "ip": "127.0.105.44",
+              "gateway": "127.0.105.1",
+              "netmask": "127.0.105.0/24",
+              "canBeDeclined": 1,
+              "ptr": "44.105.0.127.in-addr.arpa.",
+              "price": 6000,
+              "planId": 2,
+              "limit": 50
+            }
+          ],
+          "vps_ip": [],
+          "local_ip": [],
+          "vps": {
+            "billingId": "dyasyuc384_vps_1",
+            "currentAction": null,
+            "isEmpty": "0",
+            "ordered_ip_count": 2
+          }
+        }
+      },
+      "resultGetAllIpList": {
+        "name": "resultGetAllIpList",
+        "summary": "Получение списка всех IP на аккаунте пользователя",
+        "description": "'ip' string IP\n\n'name' string|null Имя VPS, может отсутствовать, если IP не привязан к услуге VPS\n\n'billingId' string|null Идентификатор услуги 'login_vps_3'\n\n'datacenter' int id дата-центра\n\n'gateway' string шлюз\n\n'netmask' string маска подсети\n\n'isPrimary' bool является ли IP основным на услуге. false - дополнительные IP\n\n'allowBeDecline' bool доступна ли функция Отказаться от IP (показать/скрыть элемент)\n\n'canBeDecline' bool активна ли функция Отказаться от IP (доступность для использования)\n\n'canBeMove' bool активна ли функция Перенести (доступность для использования)\n\n'currentAction' string|null текущее действие с VPS (такое же, как current_action у метода vps/ index() )\n\n'acceptorBillingIds' array перечень realBillingId, на которые можно переместить данный IP\n\n'name' => 'пользовательское имя vps'\n\n'billingId' => 'user_vps_2'\n\n'price' int может быть цена 0, если стоимость IP входит в тариф\n\n'date' string дата окончания услуги в формате 01.07.2022\n\n'planId' int|null ID тарифа защищенного IP\n\n'limit' int|null Лимит канала защищенного IP (Mбит)\n\n",
+        "value": [
+          {
+            "ip": "192.168.122.70",
+            "name": "dyasyuc384_vps_1",
+            "billingId": "dyasyuc384_vps_1",
+            "datacenter": 1,
+            "gateway": "192.168.122.1",
+            "netmask": "192.168.122.0/24",
+            "isPrimary": false,
+            "allowBeDecline": true,
+            "canBeDecline": true,
+            "canBeMove": true,
+            "currentAction": null,
+            "acceptorBillingIds": [],
+            "price": 140,
+            "date": "11.06.2025",
+            "limit": null,
+            "planId": null
+          },
+          {
+            "ip": "192.168.122.81",
+            "name": null,
+            "billingId": null,
+            "datacenter": 1,
+            "gateway": "192.168.122.1",
+            "netmask": "192.168.122.0/24",
+            "isPrimary": false,
+            "allowBeDecline": true,
+            "canBeDecline": true,
+            "canBeMove": true,
+            "currentAction": null,
+            "acceptorBillingIds": [
+              {
+                "name": "dyasyuc384_vps_1",
+                "billingId": "dyasyuc384_vps_1"
+              }
+            ],
+            "price": 140,
+            "date": "11.06.2025",
+            "limit": null,
+            "planId": null
+          },
+          {
+            "ip": "127.0.105.44",
+            "name": "dyasyuc384_vps_1",
+            "billingId": "dyasyuc384_vps_1",
+            "datacenter": 1,
+            "gateway": "127.0.105.1",
+            "netmask": "127.0.105.0/24",
+            "isPrimary": false,
+            "allowBeDecline": true,
+            "canBeDecline": true,
+            "canBeMove": true,
+            "currentAction": null,
+            "acceptorBillingIds": [],
+            "price": 6000,
+            "date": null,
+            "planId": 2,
+            "limit": 50
+          }
+        ]
+      },
+      "resultGetOrderInfo": {
+        "name": "getOrderInfo",
+        "summary": "getOrderInfo",
+        "description": "'ipOrdersLastDay' int кол-во заказанных обычных IP-адресов за последние сутки\n\n'dailyIpLimit' int кол-во разрешенных к заказу обычных IP-адресов за сутки\n\n'protectedIpOrdersLastDay' int кол-во заказанных защищенных IP-адресов за последние сутки\n\n'dailyProtectedIpLimit' int кол-во разрешенных к заказу защищенных IP-адресов за сутки\n\n",
+        "value": {
+          "ipOrdersLastDay": 0,
+          "dailyIpLimit": 7,
+          "protectedIpOrdersLastDay": 0,
+          "dailyProtectedIpLimit": 7
+        }
+      },
+      "arrayplanIdsIP": {
+        "name": "planIds",
+        "summary": "planIds",
+        "description": "ID тарифов защищенных IP",
+        "value": [
+          2,
+          3
+        ]
+      },
+      "resultAddProtected": {
+        "name": "resultAddProtected",
+        "summary": "resultAddProtected",
+        "description": "Добавляет защищенный IP на VPS",
+        "value": true
+      },
+      "resultAdd": {
+        "name": "resultAdd",
+        "summary": "resultAdd",
+        "description": "Добавить необходимое количество доп. IP на VPS",
+        "value": 1
+      },
+      "resultRemove": {
+        "name": "resultRemove",
+        "summary": "resultRemove",
+        "description": "Удаление IP\n\nНельзя удалять связанный IP передавая при этом пустой $billingId",
+        "value": 1
+      },
+      "resultMove": {
+        "name": "resultMove",
+        "summary": "resultMove",
+        "description": "Перемещение IP между услугами VPS и прикрепление/открепление IP от услуги VPS",
+        "value": 1
+      },
+      "resultEditPtr": {
+        "name": "resultEditPtr",
+        "summary": "resultEditPtr",
+        "description": "Редактирование PTR",
+        "value": 1
+      },
+      "resultGetPtr": {
+        "name": "resultGetPtr",
+        "summary": "resultGetPtr",
+        "description": "Получение обратной зоны для IP-адреса",
+        "value": "192-168-122-192.vps-ptr.clients.spacewb.ru."
+      },
+      "resultAddLocal": {
+        "name": "resultAddLocal",
+        "summary": "resultAddLocal",
+        "description": "Подключение VPS к локальной сети",
+        "value": 1
+      },
+      "resultRemoveLocal": {
+        "name": "resultRemoveLocal",
+        "summary": "resultRemoveLocal",
+        "description": "Удаление локального IP",
+        "value": 1
+      },
+      "stringRemoveProtected": {
+        "name": "removeProtected",
+        "summary": "removeProtected",
+        "description": "Защищенный IP адрес",
+        "value": "127.0.105.54"
+      },
+      "boolRemoveProtected": {
+        "name": "removeProtected",
+        "summary": "removeProtected",
+        "description": "Удаляет защищенный IP",
+        "value": false
+      },
+      "stringIpUpdateProtected": {
+        "name": "ip",
+        "summary": "ip",
+        "description": "Защищенный IP адрес",
+        "value": "127.0.105.44"
+      },
+      "intPlanIdUpdateProtected": {
+        "name": "planId",
+        "summary": "planId",
+        "description": "ID нового тарифа защищенного IP",
+        "value": 1
+      },
+      "resultUpdateProtected": {
+        "name": "resultUpdateProtected",
+        "summary": "resultUpdateProtected",
+        "description": "Изменяет тариф защищенного IP",
+        "value": true
+      },
+      "stringIp": {
+        "name": "ip",
+        "summary": "ip",
+        "description": "IP адрес",
+        "value": "127.0.105.54"
+      },
+      "stringPtr": {
+        "name": "ptr",
+        "summary": "ptr",
+        "description": "Обратная зона",
+        "value": "192-168-122-192.vps-ptr.clients.spacewb.ru."
+      },
+      "resultMoveProtected": {
+        "name": "resultMoveProtected",
+        "summary": "resultMoveProtected",
+        "description": "Перемещает между VPS или открепляет/прикрепляет от/к VPS защищенный IP",
+        "value": true
+      }
+    }
+  }
+}

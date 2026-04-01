@@ -1,0 +1,354 @@
+{
+  "openrpc": "1.0.0-rc1",
+  "info": {
+    "title": "API Spaceweb",
+    "description": "Документация по API Spaceweb",
+    "version": "1.185"
+  },
+  "servers": [
+    {
+      "name": "Crontab",
+      "summary": "Планировщик заданий",
+      "description": "Основные функции:\n\nсоздание и управление заданиями,\nизменение email для уведомлений.",
+      "url": "https://api.sweb.ru/vh/cron"
+    }
+  ],
+  "methods": [
+    {
+      "name": "addTask",
+      "description": "Добавляет задание",
+      "params": [
+        {
+          "name": "minute",
+          "description": "Минута (диапазон от 0 до 59)",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        },
+        {
+          "name": "hour",
+          "description": "Час (диапазон от 0 до 23)",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        },
+        {
+          "name": "day",
+          "description": "День (диапазон от 1 до 31)",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        },
+        {
+          "name": "month",
+          "description": "Месяц (диапазон от 0 до 12)",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        },
+        {
+          "name": "weekday",
+          "description": "День недели (диапазон от 0 до 7, где воскресенье соответствует 0 или 7)",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        },
+        {
+          "name": "command",
+          "description": "Команда для запуска",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleAddTask",
+          "params": [
+            {
+              "$ref": "#/components/examples/intminute"
+            },
+            {
+              "$ref": "#/components/examples/inthour"
+            },
+            {
+              "$ref": "#/components/examples/intday"
+            },
+            {
+              "$ref": "#/components/examples/intmonth"
+            },
+            {
+              "$ref": "#/components/examples/intweekday"
+            },
+            {
+              "$ref": "#/components/examples/stringcommand"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/integerOne"
+          }
+        }
+      ]
+    },
+    {
+      "name": "editTask",
+      "description": "Изменяет задание в кроне",
+      "params": [
+        {
+          "name": "oldTask",
+          "description": "ID старого задания",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        },
+        {
+          "name": "minute",
+          "description": "Минута (диапазон от 0 до 59)",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        },
+        {
+          "name": "hour",
+          "description": "Час (диапазон от 0 до 23)",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        },
+        {
+          "name": "day",
+          "description": "День (диапазон от 1 до 31)",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        },
+        {
+          "name": "month",
+          "description": "Месяц (диапазон от 0 до 12)",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        },
+        {
+          "name": "weekday",
+          "description": "День недели (диапазон от 0 до 7, где воскресенье соответствует 0 или 7)",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        },
+        {
+          "name": "command",
+          "description": "Команда для запуска",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleEditTask",
+          "params": [
+            {
+              "$ref": "#/components/examples/intoldTask"
+            },
+            {
+              "$ref": "#/components/examples/intminute"
+            },
+            {
+              "$ref": "#/components/examples/inthour"
+            },
+            {
+              "$ref": "#/components/examples/intday"
+            },
+            {
+              "$ref": "#/components/examples/intmonth"
+            },
+            {
+              "$ref": "#/components/examples/intweekday"
+            },
+            {
+              "$ref": "#/components/examples/stringcommand"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/integerOne"
+          }
+        }
+      ]
+    },
+    {
+      "name": "removeTask",
+      "description": "Удаляет задание из крона",
+      "params": [
+        {
+          "name": "task",
+          "description": "ID задания",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleRemoveTask",
+          "params": [
+            {
+              "$ref": "#/components/examples/inttask"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/integerOne"
+          }
+        }
+      ]
+    },
+    {
+      "name": "getTasks",
+      "description": "Возвращает список заданий в кроне",
+      "params": [],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultgetTasks"
+      },
+      "examples": [
+        {
+          "name": "exampleGetTasks",
+          "params": [],
+          "result": {
+            "$ref": "#/components/examples/resultgetTasks"
+          }
+        }
+      ]
+    }
+  ],
+  "components": {
+    "contentDescriptors": {
+      "resultInt": {
+        "name": "resultInt",
+        "description": "1 - успешно, 0 - ошибка",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultgetTasks": {
+        "name": "resultGetTasks",
+        "description": "'minute' int Минута (диапазон от 0 до 59),\n\n'hour' int Час (диапазон от 0 до 23)\n\n'day' int День (диапазон от 1 до 31)\n\n'month' int Месяц (диапазон от 0 до 12)\n\n'weekday' int День недели (Диапазон от 0 до 7, где воскресенье соответствует 0 или 7)\n\n'command' string Команда для запуска\n\n'task' int ID задания\n\n'task_escaped' string Значение 'task' только для корректного отображения спецсимволов",
+        "schema": {
+          "type": "array"
+        }
+      }
+    },
+    "schemas": {
+      "Integer": {
+        "type": "integer"
+      },
+      "String": {
+        "type": "string"
+      },
+      "Boolean": {
+        "type": "boolean"
+      },
+      "Array": {
+        "type": "array"
+      },
+      "Object": {
+        "type": "object"
+      }
+    },
+    "examples": {
+      "intoldTask": {
+        "name": "oldTask",
+        "summary": "oldTask",
+        "description": "ID старого задания",
+        "value": "30 12 1 12 7 test"
+      },
+      "intminute": {
+        "name": "minute",
+        "summary": "minute",
+        "description": "",
+        "value": "30"
+      },
+      "inthour": {
+        "name": "hour",
+        "summary": "hour",
+        "description": "",
+        "value": "12"
+      },
+      "intday": {
+        "name": "day",
+        "summary": "day",
+        "description": "",
+        "value": "1"
+      },
+      "intmonth": {
+        "name": "month",
+        "summary": "month",
+        "description": "",
+        "value": "12"
+      },
+      "intweekday": {
+        "name": "weekday",
+        "summary": "weekday",
+        "description": "",
+        "value": "7"
+      },
+      "stringcommand": {
+        "name": "command",
+        "summary": "command",
+        "description": "Команда для запуска",
+        "value": "test"
+      },
+      "integerOne": {
+        "name": "one",
+        "summary": "успех",
+        "description": "Ответ при успешно выполненной операции",
+        "value": 1
+      },
+      "inttask": {
+        "name": "task",
+        "summary": "task",
+        "description": "ID задания",
+        "value": "30 0 31 1 1 test"
+      },
+      "resultgetTasks": {
+        "name": "resultGetTask",
+        "summary": "resultGetTasks",
+        "description": "Список заданий в кроне",
+        "value": [
+          {
+            "minute": "30",
+            "hour": "12",
+            "day": "1",
+            "month": "12",
+            "weekday": "7",
+            "command": "test",
+            "task": "30 12 1 12 7 test",
+            "task_escaped": "30%2012%201%2012%207%20test"
+          }
+        ]
+      }
+    }
+  }
+}

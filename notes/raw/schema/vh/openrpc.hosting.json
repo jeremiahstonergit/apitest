@@ -1,0 +1,905 @@
+{
+  "openrpc": "1.0.0-rc1",
+  "info": {
+    "title": "API Spaceweb",
+    "description": "Документация по API Spaceweb",
+    "version": "1.185"
+  },
+  "servers": [
+    {
+      "name": "Базы данных",
+      "summary": "Управление базами данных хостинга",
+      "description": "Основные функции:\n\nсоздание, управление базами данных,\n\nпользователи и права доступа",
+      "url": "https://api.sweb.ru/vh/hosting"
+    }
+  ],
+  "methods": [
+    {
+      "name": "databaseGetList",
+      "description": "Получение списка баз данных",
+      "params": [
+        {
+          "name": "page",
+          "description": "страница, начиная с 1",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": false
+        },
+        {
+          "name": "sortingType",
+          "description": "тип сортировки (по какому параметру)",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        },
+        {
+          "name": "directOrder",
+          "description": "направление сортировки",
+          "schema": {
+            "$ref": "#/components/schemas/Boolean"
+          },
+          "required": false
+        },
+        {
+          "name": "filter",
+          "description": "фильтр для списка по доменам",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultDatabaseGetList"
+      },
+      "examples": [
+        {
+          "name": "exampleDataBaseGetList",
+          "params": [
+            {
+              "$ref": "#/components/examples/intPage"
+            },
+            {
+              "$ref": "#/components/examples/stringSortingType"
+            },
+            {
+              "$ref": "#/components/examples/boolDirectOrder"
+            },
+            {
+              "$ref": "#/components/examples/stringFilter"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultDatabaseGetList"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "databaseMysqlChangePass",
+      "description": "Изменение пароля к БД mysql",
+      "params": [
+        {
+          "name": "dbName",
+          "description": "название БД",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "dbPassword",
+          "description": "новый пароль для БД",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleDataBaseMysqlChangePass",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDbName"
+            },
+            {
+              "$ref": "#/components/examples/stringDbPassword"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultIntegerOne"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "databaseMysqlCreate",
+      "description": "Создание БД MySQL",
+      "params": [
+        {
+          "name": "dbName",
+          "description": "название БД",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "dbPassword",
+          "description": "пароль для БД",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "dbComment",
+          "description": "комментарий к БД",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        },
+        {
+          "name": "dbVersion",
+          "description": "версия БД",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleDataBaseMysqlCreate",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDbName"
+            },
+            {
+              "$ref": "#/components/examples/stringDbPassword"
+            },
+            {
+              "$ref": "#/components/examples/stringDbComment"
+            },
+            {
+              "$ref": "#/components/examples/stringDbVersion"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultIntegerOne"
+          }
+        }
+      ],
+      "links": [
+        {
+          "name": "databaseMysqlDelete",
+          "description": "удаление базы данных MySql",
+          "method": "databaseMysqlDelete",
+          "params": {
+            "dbName": "$params.dbName"
+          }
+        }
+      ]
+    },
+    {
+      "name": "databaseMysqlImport",
+      "description": "Импорт базы данных MySql из файла",
+      "params": [
+        {
+          "name": "dbName",
+          "description": "название уже имеющейся на акк. БД mysql",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "filePatch",
+          "description": "путь к файлу в папке пользователя",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleDataBaseMysqlImport",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDbName"
+            },
+            {
+              "$ref": "#/components/examples/stringFilePatch"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultIntegerOne"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "databaseMysqlMakeCopy",
+      "description": "Создает задание в очереди на создание архива базы данных MySql",
+      "params": [
+        {
+          "name": "dbName",
+          "description": "полное название БД",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleDataBaseMysqlMakeCopy",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDbName"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultIntegerOne"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "databaseMysqlAccessList",
+      "description": "Вывод списка правил удаленного доступа к БД MySql",
+      "params": [
+        {
+          "name": "dbName",
+          "description": "полное название БД mysql",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultAccessList"
+      },
+      "examples": [
+        {
+          "name": "exampleDataBaseMysqlAccessList",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDbName"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultAccessList"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "databaseMysqlAccessCreate",
+      "description": "Добавление нового правила удаленного доступа к БД MySql",
+      "params": [
+        {
+          "name": "dbName",
+          "description": "полное название БД",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "rule",
+          "description": "правило удаленного доступа к БД MySQL",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleDataBaseMysqlAccessCreate",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDbName"
+            },
+            {
+              "$ref": "#/components/examples/stringRule"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultIntegerOne"
+          }
+        }
+      ],
+      "links": [
+        {
+          "name": "databaseMysqlAccessDelete",
+          "description": "удаление правила удаленного доступа к БД MySql",
+          "method": "databaseMysqlAccessDelete",
+          "params": {
+            "dbName": "$params.dbName",
+            "rule": "$params.rule"
+          }
+        }
+      ]
+    },
+    {
+      "name": "databaseMysqlAccessDelete",
+      "description": "Удаление правила удаленного доступа к БД MySql",
+      "params": [
+        {
+          "name": "dbName",
+          "description": "полное название БД",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "rule",
+          "description": "правило удаленного доступа к БД MySQL",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleDataBaseMysqlAccessDelete",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDbName"
+            },
+            {
+              "$ref": "#/components/examples/stringRule"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultIntegerOne"
+          }
+        }
+      ],
+      "links": [
+        {
+          "name": "databaseMysqlAccessCreate",
+          "description": "добавление правила удаленного доступа к БД MySql",
+          "method": "databaseMysqlAccessCreate",
+          "params": {
+            "dbName": "$params.dbName",
+            "rule": "$params.rule"
+          }
+        }
+      ]
+    },
+    {
+      "name": "databaseMysqlDelete",
+      "description": "Удаление БД MySQL",
+      "params": [
+        {
+          "name": "dbName",
+          "description": "название БД",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleDataBaseMysqlDelete",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDbName"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultIntegerOne"
+          }
+        }
+      ],
+      "links": [
+        {
+          "name": "databaseMysqlCreate",
+          "description": "создание базы данных MySql",
+          "method": "databaseMysqlCreate",
+          "params": {
+            "dbName": "$params.dbName",
+            "dbPassword": "$params.dbPassword",
+            "dbComment": "$params.dbComment"
+          }
+        }
+      ]
+    },
+    {
+      "name": "databasePgsqlCreate",
+      "description": "Создание БД PostgreSQL",
+      "params": [
+        {
+          "name": "dbName",
+          "description": "название БД",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "dbPassword",
+          "description": "пароль для БД",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "dbCharset",
+          "description": "вид кодировки",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "dbComment",
+          "description": "комментарий к БД",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleDataBasePgsqlCreate",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDbName"
+            },
+            {
+              "$ref": "#/components/examples/stringDbPassword"
+            },
+            {
+              "$ref": "#/components/examples/stringDbCharset"
+            },
+            {
+              "$ref": "#/components/examples/stringDbComment"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultIntegerOne"
+          }
+        }
+      ],
+      "links": [
+        {
+          "name": "databasePgsqlDelete",
+          "description": "удаление БД PostgreSQL",
+          "method": "databasePgsqlDelete",
+          "params": {
+            "dbName": "$params.dbName"
+          }
+        }
+      ]
+    },
+    {
+      "name": "databasePgsqlDelete",
+      "description": "Удаление базы данных Pgsql",
+      "params": [
+        {
+          "name": "dbName",
+          "description": "название БД",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleDataBasePgsqlDelete",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDbName"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultIntegerOne"
+          }
+        }
+      ],
+      "links": [
+        {
+          "name": "databasePgsqlCreate",
+          "description": "создание БД PostgreSQL",
+          "method": "databasePgsqlCreate",
+          "params": {
+            "dbName": "$params.dbName",
+            "dbPassword": "$params.dbPassword",
+            "dbCharset": "$params.dbCharset",
+            "dbComment": "$params.dbComment"
+          }
+        }
+      ]
+    },
+    {
+      "name": "databasePgsqlChangePass",
+      "description": "Изменение пароля к БД PostgreSQL",
+      "params": [
+        {
+          "name": "dbName",
+          "description": "название БД",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "dbPassword",
+          "description": "новый пароль для БД",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleDataBasePgsqlChangePass",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDbName"
+            },
+            {
+              "$ref": "#/components/examples/stringDbPassword"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultIntegerOne"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "databaseEditComment",
+      "description": "Добавление/редактирование комментария в БД. Если его не было, то запись создается",
+      "params": [
+        {
+          "name": "dbType",
+          "description": "тип БД (mysql или pgsql)",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "dbName",
+          "description": "полное название БД",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "dbComment",
+          "description": "комментарий, который необходимо сохранить",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleDataBaseEditComment",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDbType"
+            },
+            {
+              "$ref": "#/components/examples/stringDbName"
+            },
+            {
+              "$ref": "#/components/examples/stringDbComment"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultIntegerOne"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "getPmaUser",
+      "description": "Создание временного пользователя",
+      "params": [
+        {
+          "name": "dbName",
+          "description": "название базы данных",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultGetPmaUser"
+      },
+      "examples": [
+        {
+          "name": "exampleGetPmaUser",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDbName"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultGetPmaUser"
+          }
+        }
+      ],
+      "links": []
+    }
+  ],
+  "components": {
+    "contentDescriptors": {
+      "resultInt": {
+        "name": "resultInt",
+        "description": "1 - успешно, 0 - ошибка",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultAccessList": {
+        "name": "resultAccessList",
+        "description": "'params' array параметры удаленного доступа:\n\n'server' string имя сервера\n\n'canCreate' bool можно ли создать ещё одно правило. Если максимальное количество записей об удаленном доступе к БД MySql не превышено, то можно.\n\n'list' array массив значений string прав доступа к БД:\n\n'localhost', IP-адрес или подсеть",
+        "schema": {
+          "type": "object"
+        }
+      },
+      "resultDatabaseGetList": {
+        "name": "resultDatabaseGetList",
+        "description": "'params' array Параметры:\n\n'server' string имя сервера (например, vh1.devel.sweb.ru)\n\n'mysqlCount' int количество баз MySql на акк.\n\n'mysqlMaxCount' int максимально разрешенное количество баз MySql\n\n'mysqlCanCreate' int может ли этот пользователь создать ещё одну БД Mysql\n\n'pgsqlCount' int количество баз PgSql на акк.\n\n'pgsqlMaxCount' int максимально разрешенное количество баз PgSql\n\n'pgsqlCanCreate' int может ли этот пользователь создать ещё одну БД Mysql\n\n'redisAvailable' bool Доступен ли Redis для подключения (по тарифу, серверу, ...)\n\n'redisNeedTransfer' bool True, если Redis можно подключить на другом сервере, т.е. нужен перенос (при этом redisAvailable будет false)\n\n'redisEnabled' bool Подключен ли Redis\n\n'redisCanEnable' bool Возможно ли подключение Redis (определяется по доступности (redisAvailable) и отсутствию текущих операций подключения/отключения)\n\n'redisCanDisable' bool Возможно ли отключение Redis (определяется по доступности (redisAvailable) и отсутствию текущих операций подключения/отключения)\n\n'redisSessionEnabled' bool Включено ли хранение сессий сайтов в Redis\n\n'redisInfo' array Данные об использовании Redis: 'sites' array of string Cписок сайтов (docRoot), для которых включено хранение сессий в Redis 'size' int Размер оперативной памяти процесса Redis 'ip' string|null IP-адрес для подключения, сейчас он статичный - 127.0.0.79 (null вернется, если Redis не подключен) 'protocol' string|null Протокол для подключения, сейчас только TCP (null вернется, если Redis не подключен) 'port' int|null Порт для подключения, определяется uid пользователя на сервере (null вернется, если Redis не подключен)\n\n'page' int текущая страница, на front-end нумерация с 1\n\n'perPage' int количество строк на странице\n\n'totalPages' int количество страниц, сколько займет пагинация\n\n'totalCount' int количество строк всего\n\n'sortingType' string тип сортировки\n\n'directOrder' string направление сортировки (true - по возрастанию, false - по убыванию)]\n\n'list' array Список баз данных:\n\n'type' string тип базы данных mysql/pgsql\n\n'version' string версия mysql. Поле присутствует, если 'type'=mysql\n\n'name' string название базы данных\n\n'login' string логин базы данных\n\n'countTables' int кол-во таблиц\n\n'sizeTables' float размер в Мб\n\n'charset' string кодировка\n\n'comment' string комментарий\n\n'pgAdminUrl' string url для входа в PgMyAdmin, зависитот версии Postgre. Поле присутствует, если 'type'= pgsql",
+        "schema": {
+          "type": "object"
+        }
+      },
+      "resultGetPmaUser": {
+        "name": "resultGetPmaUser",
+        "description": "'url' string Ссылка для входа в PhpMyAdmin\n\n'db' string База данных\n\n'user' string Пользователь\n\n'pass' string Пароль",
+        "schema": {
+          "type": "object"
+        }
+      }
+    },
+    "schemas": {
+      "Integer": {
+        "type": "integer"
+      },
+      "String": {
+        "type": "string"
+      },
+      "Boolean": {
+        "type": "boolean"
+      },
+      "Array": {
+        "type": "array"
+      },
+      "Object": {
+        "type": "object"
+      }
+    },
+    "examples": {
+      "stringDbName": {
+        "name": "dbName",
+        "summary": "dbName",
+        "description": "название базы данных",
+        "value": "mydb"
+      },
+      "stringRule": {
+        "name": "rule",
+        "summary": "rule",
+        "description": "правило удаленного доступа к БД MySQL",
+        "value": "127.0.0.2"
+      },
+      "stringDbType": {
+        "name": "dbType",
+        "summary": "dbType",
+        "description": "тип БД (mysql или pgsql)",
+        "value": "pgsql"
+      },
+      "stringDbPassword": {
+        "name": "dbPassword",
+        "summary": "dbPassword",
+        "description": "новый пароль для БД",
+        "value": "......"
+      },
+      "stringDbVersion": {
+        "name": "dbVersion",
+        "summary": "dbVersion",
+        "description": "версия БД",
+        "value": "8"
+      },
+      "stringDbCharset": {
+        "name": "dbCharset",
+        "summary": "dbCharset",
+        "description": "вид кодировки",
+        "value": "unicode"
+      },
+      "stringDbComment": {
+        "name": "dbComment",
+        "summary": "dbComment",
+        "description": "комментарий к БД",
+        "value": "тестовая БД"
+      },
+      "stringFilePatch": {
+        "name": "filePatch",
+        "summary": "filePatch",
+        "description": "путь к файлу в папке пользователя",
+        "value": "/mydb_mysql_2019-09-11_backup.sql.gz"
+      },
+      "stringFilter": {
+        "name": "filter",
+        "summary": "filter",
+        "description": "фильтр",
+        "value": "inn"
+      },
+      "boolDirectOrder": {
+        "name": "directOrder",
+        "summary": "directOrder",
+        "description": "направление сортировки",
+        "value": true
+      },
+      "stringSortingType": {
+        "name": "sortingType",
+        "summary": "sortingType",
+        "description": "тип сортировки (по какому параметру)",
+        "value": "default"
+      },
+      "intPage": {
+        "name": "page",
+        "summary": "page",
+        "description": "страница (с 1-й)",
+        "value": 1
+      },
+      "resultDatabaseGetList": {
+        "name": "resultDatabaseGetList",
+        "summary": "список баз данных",
+        "description": "'params' array Параметры:\n\n'server' string имя сервера (например, vh1.devel.sweb.ru)\n\n'mysqlCount' int количество баз MySql на акк.\n\n'mysqlMaxCount' int максимально разрешенное количество баз MySql\n\n'mysqlCanCreate' int может ли этот пользователь создать ещё одну БД Mysql\n\n'pgsqlCount' int количество баз PgSql на акк.\n\n'pgsqlMaxCount' int максимально разрешенное количество баз PgSql\n\n'pgsqlCanCreate' int может ли этот пользователь создать ещё одну БД Mysql\n\n'redisAvailable' bool Доступен ли Redis для подключения (по тарифу, серверу, ...)\n\n'redisNeedTransfer' bool True, если Redis можно подключить на другом сервере, т.е. нужен перенос (при этом redisAvailable будет false)\n\n'redisEnabled' bool Подключен ли Redis\n\n'redisCanEnable' bool Возможно ли подключение Redis (определяется по доступности (redisAvailable) и отсутствию текущих операций подключения/отключения)\n\n'redisCanDisable' bool Возможно ли отключение Redis (определяется по доступности (redisAvailable) и отсутствию текущих операций подключения/отключения)\n\n'redisSessionEnabled' bool Включено ли хранение сессий сайтов в Redis\n\n'redisInfo' array Данные об использовании Redis: 'sites' array of string Cписок сайтов (docRoot), для которых включено хранение сессий в Redis 'size' int Размер оперативной памяти процесса Redis 'ip' string|null IP-адрес для подключения, сейчас он статичный - 127.0.0.79 (null вернется, если Redis не подключен) 'protocol' string|null Протокол для подключения, сейчас только TCP (null вернется, если Redis не подключен) 'port' int|null Порт для подключения, определяется uid пользователя на сервере (null вернется, если Redis не подключен)\n\n'page' int текущая страница, на front-end нумерация с 1\n\n'perPage' int количество строк на странице\n\n'totalPages' int количество страниц, сколько займет пагинация\n\n'totalCount' int количество строк всего\n\n'sortingType' string тип сортировки\n\n'directOrder' string направление сортировки (true - по возрастанию, false - по убыванию)]\n\n'list' array Список баз данных:\n\n'type' string тип базы данных mysql/pgsql\n\n'version' string версия mysql. Поле присутствует, если 'type'=mysql\n\n'name' string название базы данных\n\n'login' string логин базы данных\n\n'countTables' int кол-во таблиц\n\n'sizeTables' float размер в Мб\n\n'charset' string кодировка\n\n'comment' string комментарий\n\n'pgAdminUrl' string url для входа в PgMyAdmin, зависитот версии Postgre. Поле присутствует, если 'type'= pgsql",
+        "value": {
+          "params": {
+            "server": "VH297",
+            "mysqlCount": 1,
+            "mysqlMaxCount": 512,
+            "mysqlCanCreate": true,
+            "pgsqlCount": 0,
+            "pgsqlMaxCount": 512,
+            "pgsqlCanCreate": true,
+            "redisAvailable": true,
+            "redisNeedTransfer": false,
+            "redisEnabled": true,
+            "redisCanEnable": false,
+            "redisCanDisable": true,
+            "redisSessionEnabled": true,
+            "redisInfo": {
+              "sites": [
+                {
+                  "docRoot": "/тест",
+                  "alias": "Сайт 1",
+                  "redisBackendAvailable": true,
+                  "redisSessionSelected": true,
+                  "redisSessionEnabled": true
+                },
+                {
+                  "docRoot": "",
+                  "alias": "inn****",
+                  "redisBackendAvailable": true,
+                  "redisSessionSelected": true,
+                  "redisSessionEnabled": true
+                }
+              ],
+              "size": 649496,
+              "ip": "127.0.0.79",
+              "protocol": "TCP",
+              "port": 15121
+            },
+            "page": 1,
+            "perPage": 20,
+            "totalPages": 1,
+            "totalCount": 1,
+            "sortingType": "default",
+            "directOrder": true
+          },
+          "list": [
+            {
+              "type": "mysql",
+              "version": "5.7",
+              "name": "in****",
+              "login": "in****",
+              "countTables": 0,
+              "sizeTables": 0.01,
+              "charset": "",
+              "comment": "тест"
+            }
+          ]
+        }
+      },
+      "resultIntegerOne": {
+        "name": "one",
+        "summary": "успех",
+        "description": "ответ при успешно выполненной операции",
+        "value": 1
+      },
+      "resultGetPmaUser": {
+        "name": "resultGetPmaUser",
+        "summary": "информация о временном пользователе",
+        "description": "'url' string Ссылка для входа в PhpMyAdmin\n\n'db' string База данных\n\n'user' string Пользователь\n\n'pass' string Пароль",
+        "value": {
+          "url": "qlnpd02knh8ogot21u5iie0gqj.75902b85-c966-4bd9-875c-8bfc06ff3377",
+          "db": "mydb",
+          "user": "_pma_3610018962",
+          "pass": "....."
+        }
+      },
+      "resultAccessList": {
+        "name": "resultAccessList",
+        "summary": "список правил удаленного доступа к БД MySql",
+        "description": "'params' array параметры удаленного доступа:\n\n'server' string имя сервера\n\n'canCreate' bool можно ли создать ещё одно правило. Если максимальное количество записей об удаленном доступе к БД MySql не превышено, то можно.\n\n'list' array массив значений string прав доступа к БД:\n\n'localhost', IP-адрес или подсеть",
+        "value": {
+          "params": {
+            "server": "VH297",
+            "canCreate": true
+          },
+          "list": [
+            "localhost"
+          ]
+        }
+      }
+    }
+  }
+}

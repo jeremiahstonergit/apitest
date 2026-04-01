@@ -1,0 +1,43 @@
+name: rebuild-from-current-raw
+
+on:
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: Optional method limit for partial rebuild
+        required: false
+        default: ''
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml requests
+      - name: Rebuild from committed raw sources
+        shell: bash
+        run: |
+          if [ -n "${{ github.event.inputs.limit }}" ]; then
+            python scripts/update_repo.py --rebuild-only --limit "${{ github.event.inputs.limit }}"
+          else
+            python scripts/update_repo.py --rebuild-only
+          fi
+      - name: Upload generated artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: rebuild-output
+          path: |
+            spec/openapi.llm-projection.yaml
+            spec/openapi.transport.yaml
+            examples/examples.jsonl
+            client/python/operations.generated.json
+            client/ts/operations.generated.json
+            notes/update-summary.latest.json
+            notes/update-summary.latest.md
+            sources/manifest.json

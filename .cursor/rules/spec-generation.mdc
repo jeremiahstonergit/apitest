@@ -1,0 +1,14 @@
+---
+description: Spec generation rules
+alwaysApply: false
+globs:
+  - "spec/**"
+  - "scripts/build_mvp.py"
+  - "scripts/tighten_results_from_examples.py"
+---
+
+When editing specs or generators:
+- Maintain split: projection vs transport.
+- Projection may use virtual paths; transport must remain executable.
+- Preserve `x-sweb-upstream-path` and `x-sweb-upstream-method`.
+- After changes run build + tighten + validate.

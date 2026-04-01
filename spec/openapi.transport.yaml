@@ -1,0 +1,1639 @@
+openapi: 3.0.3
+info:
+  title: SpaceWeb API (transport contract)
+  version: 0.3.0-mvp
+  description: Executable contract for JSON-RPC over HTTP POST endpoints.
+servers:
+- url: https://api.sweb.ru
+security:
+- bearerAuth: []
+paths:
+  /domains/bonus/:
+    post:
+      tags:
+      - domains
+      summary: RPC object endpoint /domains/bonus/
+      operationId: domains_bonus_index_object
+      x-sweb-upstream-path: /domains/bonus/
+      x-sweb-transport: jsonrpc-over-http
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  enum:
+                  - '2.0'
+                method:
+                  type: string
+                params:
+                  type: object
+                  additionalProperties: true
+                id:
+                  type: string
+                user:
+                  type: string
+              required:
+              - jsonrpc
+              - method
+              - params
+              additionalProperties: false
+      responses:
+        '200':
+          description: JSON-RPC response (generic envelope for object endpoint)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                    example: '2.0'
+                  id:
+                    type: string
+                  version:
+                    type: string
+                  result:
+                    description: Method-specific payload
+                    nullable: true
+                  error:
+                    $ref: '#/components/schemas/RpcError'
+                additionalProperties: true
+      security:
+      - bearerAuth: []
+  /domains/persons/:
+    post:
+      tags:
+      - domains
+      summary: RPC object endpoint /domains/persons/
+      operationId: domains_persons_index_object
+      x-sweb-upstream-path: /domains/persons/
+      x-sweb-transport: jsonrpc-over-http
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  enum:
+                  - '2.0'
+                method:
+                  type: string
+                params:
+                  type: object
+                  additionalProperties: true
+                id:
+                  type: string
+                user:
+                  type: string
+              required:
+              - jsonrpc
+              - method
+              - params
+              additionalProperties: false
+      responses:
+        '200':
+          description: JSON-RPC response (generic envelope for object endpoint)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                    example: '2.0'
+                  id:
+                    type: string
+                  version:
+                    type: string
+                  result:
+                    description: Method-specific payload
+                    nullable: true
+                  error:
+                    $ref: '#/components/schemas/RpcError'
+                additionalProperties: true
+      security:
+      - bearerAuth: []
+  /monitoring/checks/:
+    post:
+      tags:
+      - monitoring
+      summary: RPC object endpoint /monitoring/checks/
+      operationId: monitoring_checks_index_object
+      x-sweb-upstream-path: /monitoring/checks/
+      x-sweb-transport: jsonrpc-over-http
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  enum:
+                  - '2.0'
+                method:
+                  type: string
+                params:
+                  type: object
+                  additionalProperties: true
+                id:
+                  type: string
+                user:
+                  type: string
+              required:
+              - jsonrpc
+              - method
+              - params
+              additionalProperties: false
+      responses:
+        '200':
+          description: JSON-RPC response (generic envelope for object endpoint)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                    example: '2.0'
+                  id:
+                    type: string
+                  version:
+                    type: string
+                  result:
+                    description: Method-specific payload
+                    nullable: true
+                  error:
+                    $ref: '#/components/schemas/RpcError'
+                additionalProperties: true
+      security:
+      - bearerAuth: []
+  /monitoring/:
+    post:
+      tags:
+      - monitoring
+      summary: RPC object endpoint /monitoring/
+      operationId: monitoring_enable_object
+      x-sweb-upstream-path: /monitoring/
+      x-sweb-transport: jsonrpc-over-http
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  enum:
+                  - '2.0'
+                method:
+                  type: string
+                params:
+                  type: object
+                  additionalProperties: true
+                id:
+                  type: string
+                user:
+                  type: string
+              required:
+              - jsonrpc
+              - method
+              - params
+              additionalProperties: false
+      responses:
+        '200':
+          description: JSON-RPC response (generic envelope for object endpoint)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                    example: '2.0'
+                  id:
+                    type: string
+                  version:
+                    type: string
+                  result:
+                    description: Method-specific payload
+                    nullable: true
+                  error:
+                    $ref: '#/components/schemas/RpcError'
+                additionalProperties: true
+      security:
+      - bearerAuth: []
+  /monitoring/contacts/:
+    post:
+      tags:
+      - monitoring
+      summary: RPC object endpoint /monitoring/contacts/
+      operationId: monitoring_contacts_index_object
+      x-sweb-upstream-path: /monitoring/contacts/
+      x-sweb-transport: jsonrpc-over-http
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  enum:
+                  - '2.0'
+                method:
+                  type: string
+                params:
+                  type: object
+                  additionalProperties: true
+                id:
+                  type: string
+                user:
+                  type: string
+              required:
+              - jsonrpc
+              - method
+              - params
+              additionalProperties: false
+      responses:
+        '200':
+          description: JSON-RPC response (generic envelope for object endpoint)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                    example: '2.0'
+                  id:
+                    type: string
+                  version:
+                    type: string
+                  result:
+                    description: Method-specific payload
+                    nullable: true
+                  error:
+                    $ref: '#/components/schemas/RpcError'
+                additionalProperties: true
+      security:
+      - bearerAuth: []
+  /domains/dns/:
+    post:
+      tags:
+      - domains
+      summary: RPC object endpoint /domains/dns/
+      operationId: domains_dns_info_object
+      x-sweb-upstream-path: /domains/dns/
+      x-sweb-transport: jsonrpc-over-http
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  enum:
+                  - '2.0'
+                method:
+                  type: string
+                params:
+                  type: object
+                  additionalProperties: true
+                id:
+                  type: string
+                user:
+                  type: string
+              required:
+              - jsonrpc
+              - method
+              - params
+              additionalProperties: false
+      responses:
+        '200':
+          description: JSON-RPC response (generic envelope for object endpoint)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                    example: '2.0'
+                  id:
+                    type: string
+                  version:
+                    type: string
+                  result:
+                    description: Method-specific payload
+                    nullable: true
+                  error:
+                    $ref: '#/components/schemas/RpcError'
+                additionalProperties: true
+      security:
+      - bearerAuth: []
+  /domains/:
+    post:
+      tags:
+      - domains
+      summary: RPC object endpoint /domains/
+      operationId: domains_index_object
+      x-sweb-upstream-path: /domains/
+      x-sweb-transport: jsonrpc-over-http
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  enum:
+                  - '2.0'
+                method:
+                  type: string
+                params:
+                  type: object
+                  additionalProperties: true
+                id:
+                  type: string
+                user:
+                  type: string
+              required:
+              - jsonrpc
+              - method
+              - params
+              additionalProperties: false
+      responses:
+        '200':
+          description: JSON-RPC response (generic envelope for object endpoint)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                    example: '2.0'
+                  id:
+                    type: string
+                  version:
+                    type: string
+                  result:
+                    description: Method-specific payload
+                    nullable: true
+                  error:
+                    $ref: '#/components/schemas/RpcError'
+                additionalProperties: true
+      security:
+      - bearerAuth: []
+  /pay/:
+    post:
+      tags:
+      - pay
+      summary: RPC object endpoint /pay/
+      operationId: pay_index_object
+      x-sweb-upstream-path: /pay/
+      x-sweb-transport: jsonrpc-over-http
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  enum:
+                  - '2.0'
+                method:
+                  type: string
+                params:
+                  type: object
+                  additionalProperties: true
+                id:
+                  type: string
+                user:
+                  type: string
+              required:
+              - jsonrpc
+              - method
+              - params
+              additionalProperties: false
+      responses:
+        '200':
+          description: JSON-RPC response (generic envelope for object endpoint)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                    example: '2.0'
+                  id:
+                    type: string
+                  version:
+                    type: string
+                  result:
+                    description: Method-specific payload
+                    nullable: true
+                  error:
+                    $ref: '#/components/schemas/RpcError'
+                additionalProperties: true
+      security:
+      - bearerAuth: []
+  /sites/:
+    post:
+      tags:
+      - sites
+      summary: RPC object endpoint /sites/
+      operationId: sites_index_object
+      x-sweb-upstream-path: /sites/
+      x-sweb-transport: jsonrpc-over-http
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  enum:
+                  - '2.0'
+                method:
+                  type: string
+                params:
+                  type: object
+                  additionalProperties: true
+                id:
+                  type: string
+                user:
+                  type: string
+              required:
+              - jsonrpc
+              - method
+              - params
+              additionalProperties: false
+      responses:
+        '200':
+          description: JSON-RPC response (generic envelope for object endpoint)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                    example: '2.0'
+                  id:
+                    type: string
+                  version:
+                    type: string
+                  result:
+                    description: Method-specific payload
+                    nullable: true
+                  error:
+                    $ref: '#/components/schemas/RpcError'
+                additionalProperties: true
+      security:
+      - bearerAuth: []
+  /tariff/:
+    post:
+      tags:
+      - tariff
+      summary: RPC object endpoint /tariff/
+      operationId: tariff_index_object
+      x-sweb-upstream-path: /tariff/
+      x-sweb-transport: jsonrpc-over-http
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  enum:
+                  - '2.0'
+                method:
+                  type: string
+                params:
+                  type: object
+                  additionalProperties: true
+                id:
+                  type: string
+                user:
+                  type: string
+              required:
+              - jsonrpc
+              - method
+              - params
+              additionalProperties: false
+      responses:
+        '200':
+          description: JSON-RPC response (generic envelope for object endpoint)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                    example: '2.0'
+                  id:
+                    type: string
+                  version:
+                    type: string
+                  result:
+                    description: Method-specific payload
+                    nullable: true
+                  error:
+                    $ref: '#/components/schemas/RpcError'
+                additionalProperties: true
+      security:
+      - bearerAuth: []
+  /vps/:
+    post:
+      tags:
+      - vps
+      summary: RPC object endpoint /vps/
+      operationId: vps_index_object
+      x-sweb-upstream-path: /vps/
+      x-sweb-transport: jsonrpc-over-http
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  enum:
+                  - '2.0'
+                method:
+                  type: string
+                params:
+                  type: object
+                  additionalProperties: true
+                id:
+                  type: string
+                user:
+                  type: string
+              required:
+              - jsonrpc
+              - method
+              - params
+              additionalProperties: false
+      responses:
+        '200':
+          description: JSON-RPC response (generic envelope for object endpoint)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                    example: '2.0'
+                  id:
+                    type: string
+                  version:
+                    type: string
+                  result:
+                    description: Method-specific payload
+                    nullable: true
+                  error:
+                    $ref: '#/components/schemas/RpcError'
+                additionalProperties: true
+      security:
+      - bearerAuth: []
+  /vh/backup/:
+    post:
+      tags:
+      - vh
+      summary: RPC object endpoint /vh/backup/
+      operationId: vh_backup_getList_object
+      x-sweb-upstream-path: /vh/backup/
+      x-sweb-transport: jsonrpc-over-http
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  enum:
+                  - '2.0'
+                method:
+                  type: string
+                params:
+                  type: object
+                  additionalProperties: true
+                id:
+                  type: string
+                user:
+                  type: string
+              required:
+              - jsonrpc
+              - method
+              - params
+              additionalProperties: false
+      responses:
+        '200':
+          description: JSON-RPC response (generic envelope for object endpoint)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                    example: '2.0'
+                  id:
+                    type: string
+                  version:
+                    type: string
+                  result:
+                    description: Method-specific payload
+                    nullable: true
+                  error:
+                    $ref: '#/components/schemas/RpcError'
+                additionalProperties: true
+      security:
+      - bearerAuth: []
+  /vh/cron/:
+    post:
+      tags:
+      - vh
+      summary: RPC object endpoint /vh/cron/
+      operationId: vh_cron_addTask_object
+      x-sweb-upstream-path: /vh/cron/
+      x-sweb-transport: jsonrpc-over-http
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  enum:
+                  - '2.0'
+                method:
+                  type: string
+                params:
+                  type: object
+                  additionalProperties: true
+                id:
+                  type: string
+                user:
+                  type: string
+              required:
+              - jsonrpc
+              - method
+              - params
+              additionalProperties: false
+      responses:
+        '200':
+          description: JSON-RPC response (generic envelope for object endpoint)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                    example: '2.0'
+                  id:
+                    type: string
+                  version:
+                    type: string
+                  result:
+                    description: Method-specific payload
+                    nullable: true
+                  error:
+                    $ref: '#/components/schemas/RpcError'
+                additionalProperties: true
+      security:
+      - bearerAuth: []
+  /vh/ddg/:
+    post:
+      tags:
+      - vh
+      summary: RPC object endpoint /vh/ddg/
+      operationId: vh_ddg_index_object
+      x-sweb-upstream-path: /vh/ddg/
+      x-sweb-transport: jsonrpc-over-http
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  enum:
+                  - '2.0'
+                method:
+                  type: string
+                params:
+                  type: object
+                  additionalProperties: true
+                id:
+                  type: string
+                user:
+                  type: string
+              required:
+              - jsonrpc
+              - method
+              - params
+              additionalProperties: false
+      responses:
+        '200':
+          description: JSON-RPC response (generic envelope for object endpoint)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                    example: '2.0'
+                  id:
+                    type: string
+                  version:
+                    type: string
+                  result:
+                    description: Method-specific payload
+                    nullable: true
+                  error:
+                    $ref: '#/components/schemas/RpcError'
+                additionalProperties: true
+      security:
+      - bearerAuth: []
+  /vh/hosting/:
+    post:
+      tags:
+      - vh
+      summary: RPC object endpoint /vh/hosting/
+      operationId: vh_hosting_databaseGetList_object
+      x-sweb-upstream-path: /vh/hosting/
+      x-sweb-transport: jsonrpc-over-http
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  enum:
+                  - '2.0'
+                method:
+                  type: string
+                params:
+                  type: object
+                  additionalProperties: true
+                id:
+                  type: string
+                user:
+                  type: string
+              required:
+              - jsonrpc
+              - method
+              - params
+              additionalProperties: false
+      responses:
+        '200':
+          description: JSON-RPC response (generic envelope for object endpoint)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                    example: '2.0'
+                  id:
+                    type: string
+                  version:
+                    type: string
+                  result:
+                    description: Method-specific payload
+                    nullable: true
+                  error:
+                    $ref: '#/components/schemas/RpcError'
+                additionalProperties: true
+      security:
+      - bearerAuth: []
+  /vh/load/:
+    post:
+      tags:
+      - vh
+      summary: RPC object endpoint /vh/load/
+      operationId: vh_load_index_object
+      x-sweb-upstream-path: /vh/load/
+      x-sweb-transport: jsonrpc-over-http
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  enum:
+                  - '2.0'
+                method:
+                  type: string
+                params:
+                  type: object
+                  additionalProperties: true
+                id:
+                  type: string
+                user:
+                  type: string
+              required:
+              - jsonrpc
+              - method
+              - params
+              additionalProperties: false
+      responses:
+        '200':
+          description: JSON-RPC response (generic envelope for object endpoint)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                    example: '2.0'
+                  id:
+                    type: string
+                  version:
+                    type: string
+                  result:
+                    description: Method-specific payload
+                    nullable: true
+                  error:
+                    $ref: '#/components/schemas/RpcError'
+                additionalProperties: true
+      security:
+      - bearerAuth: []
+  /vh/mail/:
+    post:
+      tags:
+      - vh
+      summary: RPC object endpoint /vh/mail/
+      operationId: vh_mail_getDomainsList_object
+      x-sweb-upstream-path: /vh/mail/
+      x-sweb-transport: jsonrpc-over-http
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  enum:
+                  - '2.0'
+                method:
+                  type: string
+                params:
+                  type: object
+                  additionalProperties: true
+                id:
+                  type: string
+                user:
+                  type: string
+              required:
+              - jsonrpc
+              - method
+              - params
+              additionalProperties: false
+      responses:
+        '200':
+          description: JSON-RPC response (generic envelope for object endpoint)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                    example: '2.0'
+                  id:
+                    type: string
+                  version:
+                    type: string
+                  result:
+                    description: Method-specific payload
+                    nullable: true
+                  error:
+                    $ref: '#/components/schemas/RpcError'
+                additionalProperties: true
+      security:
+      - bearerAuth: []
+  /vh/partnerProgram/:
+    post:
+      tags:
+      - vh
+      summary: RPC object endpoint /vh/partnerProgram/
+      operationId: vh_partnerProgram_createOrderVh_object
+      x-sweb-upstream-path: /vh/partnerProgram/
+      x-sweb-transport: jsonrpc-over-http
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  enum:
+                  - '2.0'
+                method:
+                  type: string
+                params:
+                  type: object
+                  additionalProperties: true
+                id:
+                  type: string
+                user:
+                  type: string
+              required:
+              - jsonrpc
+              - method
+              - params
+              additionalProperties: false
+      responses:
+        '200':
+          description: JSON-RPC response (generic envelope for object endpoint)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                    example: '2.0'
+                  id:
+                    type: string
+                  version:
+                    type: string
+                  result:
+                    description: Method-specific payload
+                    nullable: true
+                  error:
+                    $ref: '#/components/schemas/RpcError'
+                additionalProperties: true
+      security:
+      - bearerAuth: []
+  /vh/referralProgram/:
+    post:
+      tags:
+      - vh
+      summary: RPC object endpoint /vh/referralProgram/
+      operationId: vh_referralProgram_index_object
+      x-sweb-upstream-path: /vh/referralProgram/
+      x-sweb-transport: jsonrpc-over-http
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  enum:
+                  - '2.0'
+                method:
+                  type: string
+                params:
+                  type: object
+                  additionalProperties: true
+                id:
+                  type: string
+                user:
+                  type: string
+              required:
+              - jsonrpc
+              - method
+              - params
+              additionalProperties: false
+      responses:
+        '200':
+          description: JSON-RPC response (generic envelope for object endpoint)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                    example: '2.0'
+                  id:
+                    type: string
+                  version:
+                    type: string
+                  result:
+                    description: Method-specific payload
+                    nullable: true
+                  error:
+                    $ref: '#/components/schemas/RpcError'
+                additionalProperties: true
+      security:
+      - bearerAuth: []
+  /vh/ssl/:
+    post:
+      tags:
+      - vh
+      summary: RPC object endpoint /vh/ssl/
+      operationId: vh_ssl_index_object
+      x-sweb-upstream-path: /vh/ssl/
+      x-sweb-transport: jsonrpc-over-http
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  enum:
+                  - '2.0'
+                method:
+                  type: string
+                params:
+                  type: object
+                  additionalProperties: true
+                id:
+                  type: string
+                user:
+                  type: string
+              required:
+              - jsonrpc
+              - method
+              - params
+              additionalProperties: false
+      responses:
+        '200':
+          description: JSON-RPC response (generic envelope for object endpoint)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                    example: '2.0'
+                  id:
+                    type: string
+                  version:
+                    type: string
+                  result:
+                    description: Method-specific payload
+                    nullable: true
+                  error:
+                    $ref: '#/components/schemas/RpcError'
+                additionalProperties: true
+      security:
+      - bearerAuth: []
+  /vh/utils/:
+    post:
+      tags:
+      - vh
+      summary: RPC object endpoint /vh/utils/
+      operationId: vh_utils_sshOn_object
+      x-sweb-upstream-path: /vh/utils/
+      x-sweb-transport: jsonrpc-over-http
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  enum:
+                  - '2.0'
+                method:
+                  type: string
+                params:
+                  type: object
+                  additionalProperties: true
+                id:
+                  type: string
+                user:
+                  type: string
+              required:
+              - jsonrpc
+              - method
+              - params
+              additionalProperties: false
+      responses:
+        '200':
+          description: JSON-RPC response (generic envelope for object endpoint)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                    example: '2.0'
+                  id:
+                    type: string
+                  version:
+                    type: string
+                  result:
+                    description: Method-specific payload
+                    nullable: true
+                  error:
+                    $ref: '#/components/schemas/RpcError'
+                additionalProperties: true
+      security:
+      - bearerAuth: []
+  /vh/utils/diskUsage/:
+    post:
+      tags:
+      - vh
+      summary: RPC object endpoint /vh/utils/diskUsage/
+      operationId: vh_utils_diskUsage_index_object
+      x-sweb-upstream-path: /vh/utils/diskUsage/
+      x-sweb-transport: jsonrpc-over-http
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  enum:
+                  - '2.0'
+                method:
+                  type: string
+                params:
+                  type: object
+                  additionalProperties: true
+                id:
+                  type: string
+                user:
+                  type: string
+              required:
+              - jsonrpc
+              - method
+              - params
+              additionalProperties: false
+      responses:
+        '200':
+          description: JSON-RPC response (generic envelope for object endpoint)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                    example: '2.0'
+                  id:
+                    type: string
+                  version:
+                    type: string
+                  result:
+                    description: Method-specific payload
+                    nullable: true
+                  error:
+                    $ref: '#/components/schemas/RpcError'
+                additionalProperties: true
+      security:
+      - bearerAuth: []
+  /vps/backup/:
+    post:
+      tags:
+      - vps
+      summary: RPC object endpoint /vps/backup/
+      operationId: vps_backup_index_object
+      x-sweb-upstream-path: /vps/backup/
+      x-sweb-transport: jsonrpc-over-http
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  enum:
+                  - '2.0'
+                method:
+                  type: string
+                params:
+                  type: object
+                  additionalProperties: true
+                id:
+                  type: string
+                user:
+                  type: string
+              required:
+              - jsonrpc
+              - method
+              - params
+              additionalProperties: false
+      responses:
+        '200':
+          description: JSON-RPC response (generic envelope for object endpoint)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                    example: '2.0'
+                  id:
+                    type: string
+                  version:
+                    type: string
+                  result:
+                    description: Method-specific payload
+                    nullable: true
+                  error:
+                    $ref: '#/components/schemas/RpcError'
+                additionalProperties: true
+      security:
+      - bearerAuth: []
+  /balancer/:
+    post:
+      tags:
+      - balancer
+      summary: RPC object endpoint /balancer/
+      operationId: balancer_index_object
+      x-sweb-upstream-path: /balancer/
+      x-sweb-transport: jsonrpc-over-http
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  enum:
+                  - '2.0'
+                method:
+                  type: string
+                params:
+                  type: object
+                  additionalProperties: true
+                id:
+                  type: string
+                user:
+                  type: string
+              required:
+              - jsonrpc
+              - method
+              - params
+              additionalProperties: false
+      responses:
+        '200':
+          description: JSON-RPC response (generic envelope for object endpoint)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                    example: '2.0'
+                  id:
+                    type: string
+                  version:
+                    type: string
+                  result:
+                    description: Method-specific payload
+                    nullable: true
+                  error:
+                    $ref: '#/components/schemas/RpcError'
+                additionalProperties: true
+      security:
+      - bearerAuth: []
+  /dbaas/:
+    post:
+      tags:
+      - dbaas
+      summary: RPC object endpoint /dbaas/
+      operationId: dbaas_index_object
+      x-sweb-upstream-path: /dbaas/
+      x-sweb-transport: jsonrpc-over-http
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  enum:
+                  - '2.0'
+                method:
+                  type: string
+                params:
+                  type: object
+                  additionalProperties: true
+                id:
+                  type: string
+                user:
+                  type: string
+              required:
+              - jsonrpc
+              - method
+              - params
+              additionalProperties: false
+      responses:
+        '200':
+          description: JSON-RPC response (generic envelope for object endpoint)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                    example: '2.0'
+                  id:
+                    type: string
+                  version:
+                    type: string
+                  result:
+                    description: Method-specific payload
+                    nullable: true
+                  error:
+                    $ref: '#/components/schemas/RpcError'
+                additionalProperties: true
+      security:
+      - bearerAuth: []
+  /vps/ip/:
+    post:
+      tags:
+      - vps
+      summary: RPC object endpoint /vps/ip/
+      operationId: vps_ip_addLocal_object
+      x-sweb-upstream-path: /vps/ip/
+      x-sweb-transport: jsonrpc-over-http
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  enum:
+                  - '2.0'
+                method:
+                  type: string
+                params:
+                  type: object
+                  additionalProperties: true
+                id:
+                  type: string
+                user:
+                  type: string
+              required:
+              - jsonrpc
+              - method
+              - params
+              additionalProperties: false
+      responses:
+        '200':
+          description: JSON-RPC response (generic envelope for object endpoint)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                    example: '2.0'
+                  id:
+                    type: string
+                  version:
+                    type: string
+                  result:
+                    description: Method-specific payload
+                    nullable: true
+                  error:
+                    $ref: '#/components/schemas/RpcError'
+                additionalProperties: true
+      security:
+      - bearerAuth: []
+  /vps/remoteBackup/:
+    post:
+      tags:
+      - vps
+      summary: RPC object endpoint /vps/remoteBackup/
+      operationId: vps_remoteBackup_index_object
+      x-sweb-upstream-path: /vps/remoteBackup/
+      x-sweb-transport: jsonrpc-over-http
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  enum:
+                  - '2.0'
+                method:
+                  type: string
+                params:
+                  type: object
+                  additionalProperties: true
+                id:
+                  type: string
+                user:
+                  type: string
+              required:
+              - jsonrpc
+              - method
+              - params
+              additionalProperties: false
+      responses:
+        '200':
+          description: JSON-RPC response (generic envelope for object endpoint)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                    example: '2.0'
+                  id:
+                    type: string
+                  version:
+                    type: string
+                  result:
+                    description: Method-specific payload
+                    nullable: true
+                  error:
+                    $ref: '#/components/schemas/RpcError'
+                additionalProperties: true
+      security:
+      - bearerAuth: []
+  /vps/ssl/:
+    post:
+      tags:
+      - vps
+      summary: RPC object endpoint /vps/ssl/
+      operationId: vps_ssl_index_object
+      x-sweb-upstream-path: /vps/ssl/
+      x-sweb-transport: jsonrpc-over-http
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  enum:
+                  - '2.0'
+                method:
+                  type: string
+                params:
+                  type: object
+                  additionalProperties: true
+                id:
+                  type: string
+                user:
+                  type: string
+              required:
+              - jsonrpc
+              - method
+              - params
+              additionalProperties: false
+      responses:
+        '200':
+          description: JSON-RPC response (generic envelope for object endpoint)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                    example: '2.0'
+                  id:
+                    type: string
+                  version:
+                    type: string
+                  result:
+                    description: Method-specific payload
+                    nullable: true
+                  error:
+                    $ref: '#/components/schemas/RpcError'
+                additionalProperties: true
+      security:
+      - bearerAuth: []
+  /notAuthorized/:
+    post:
+      tags:
+      - notAuthorized
+      summary: JSON-RPC endpoint for public auth methods
+      operationId: notAuthorized_object
+      x-sweb-upstream-path: /notAuthorized/
+      x-sweb-transport: jsonrpc-over-http
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  enum:
+                  - '2.0'
+                method:
+                  type: string
+                params:
+                  type: object
+                  additionalProperties: true
+                id:
+                  type: string
+              required:
+              - jsonrpc
+              - method
+              - params
+              additionalProperties: false
+      responses:
+        '200':
+          description: JSON-RPC response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      security: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Token
+  schemas:
+    RpcError:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        data:
+          type: array
+          items: {}
+      required:
+      - code
+      - message
+      additionalProperties: true

@@ -1,0 +1,280 @@
+# MVP included methods
+
+Total: **276**
+
+- `/rpc/domains/bonus/index` ← `/domains/bonus/index` — Получение информации о доменных бонусах
+- `/rpc/domains/bonus/getList` ← `/domains/bonus/getList` — Получение доступных к покупке пакетов бонусов
+- `/rpc/domains/bonus/buy` ← `/domains/bonus/buy` — Покупка бонусов
+- `/rpc/domains/persons/index` ← `/domains/persons/index` — Cписок доменных персон у пользователя
+- `/rpc/domains/persons/getinfo` ← `/domains/persons/getinfo` — Подробная информация по ID персоны
+- `/rpc/domains/persons/createFizIp` ← `/domains/persons/createFizIp` — Создание доменной персоны физ. лица и ИП
+- `/rpc/domains/persons/createJur` ← `/domains/persons/createJur` — Создание доменной персоны юр. лица
+- `/rpc/monitoring/checks/index` ← `/monitoring/checks/index` — Получение списка проверок
+- `/rpc/monitoring/checks/getTypes` ← `/monitoring/checks/getTypes` — Получение всех доступных типов проверок
+- `/rpc/monitoring/checks/getIntervals` ← `/monitoring/checks/getIntervals` — Получение всех доступных интервалов проверок
+- `/rpc/monitoring/checks/getPorts` ← `/monitoring/checks/getPorts` — Получение рекомендуемых портов для проверки
+- `/rpc/monitoring/checks/getKeywordModes` ← `/monitoring/checks/getKeywordModes` — Получение всех доступных режимов проверки ключевых слов
+- `/rpc/monitoring/checks/getInfo` ← `/monitoring/checks/getInfo` — Общая информация для отображения настроек проверками
+- `/rpc/monitoring/checks/getFullCheckInfo` ← `/monitoring/checks/getFullCheckInfo` — Получение подробной информации о проверке
+- `/rpc/monitoring/checks/create` ← `/monitoring/checks/create` — Создание проверки
+- `/rpc/monitoring/checks/edit` ← `/monitoring/checks/edit` — Редактирование проверки
+- `/rpc/monitoring/checks/activate` ← `/monitoring/checks/activate` — Включение одной проверки
+- `/rpc/monitoring/checks/activateList` ← `/monitoring/checks/activateList` — Включение списка проверок
+- `/rpc/monitoring/checks/deactivate` ← `/monitoring/checks/deactivate` — Отключение одной проверки
+- `/rpc/monitoring/checks/deactivateList` ← `/monitoring/checks/deactivateList` — Отключение списка проверок
+- `/rpc/monitoring/checks/remove` ← `/monitoring/checks/remove` — Удаление проверки
+- `/rpc/monitoring/checks/removeList` ← `/monitoring/checks/removeList` — Удаление списка проверок
+- `/rpc/monitoring/checks/history` ← `/monitoring/checks/history` — История проверок
+- `/rpc/monitoring/enable` ← `/monitoring/enable` — Подключение тарифа
+- `/rpc/monitoring/disable` ← `/monitoring/disable` — Отключение тарифа
+- `/rpc/monitoring/change` ← `/monitoring/change` — Смена тарифа мониторинг
+- `/rpc/monitoring/plans` ← `/monitoring/plans` — Список доступных тарифных планов
+- `/rpc/monitoring/contacts/index` ← `/monitoring/contacts/index` — Возвращает список контактов мониторинга для текущего пользователя для отображения в ПУ. Не отображаются удаленные и неподтвержденные контакты.
+- `/rpc/monitoring/contacts/getAllContacts` ← `/monitoring/contacts/getAllContacts` — Возвращает список всех контактов мониторинга для текущего пользователя
+- `/rpc/monitoring/contacts/addContact` ← `/monitoring/contacts/addContact` — Добавление контакта
+- `/rpc/monitoring/contacts/editContact` ← `/monitoring/contacts/editContact` — Редактирование контакта
+- `/rpc/monitoring/contacts/addEmail` ← `/monitoring/contacts/addEmail` — Добавление контакта - адреса электронной почты
+- `/rpc/monitoring/contacts/editEmail` ← `/monitoring/contacts/editEmail` — Редактирование контакта - адреса электронной почты
+- `/rpc/monitoring/contacts/addPhone` ← `/monitoring/contacts/addPhone` — Добавление контакта - телефона
+- `/rpc/monitoring/contacts/editPhone` ← `/monitoring/contacts/editPhone` — Редактирование контакта - телефона
+- `/rpc/monitoring/contacts/deleteContact` ← `/monitoring/contacts/deleteContact` — Удаление контакта
+- `/rpc/monitoring/contacts/deleteContacts` ← `/monitoring/contacts/deleteContacts` — Удаление нескольких контактов
+- `/rpc/monitoring/contacts/addTelegram` ← `/monitoring/contacts/addTelegram` — Добавление контакта - телеграма
+- `/rpc/monitoring/contacts/requestTelegramVerifyCode` ← `/monitoring/contacts/requestTelegramVerifyCode` — Получить верификационный код для контакта Телеграм
+- `/rpc/monitoring/contacts/isVerified` ← `/monitoring/contacts/isVerified` — Получить признак, подтвержден ли контакт
+- `/rpc/monitoring/contacts/editTelegram` ← `/monitoring/contacts/editTelegram` — Редактирование контакта - телеграма
+- `/rpc/monitoring/contacts/verifyContact` ← `/monitoring/contacts/verifyContact` — Подтверждение контакта
+- `/rpc/domains/dns/info` ← `/domains/dns/info` — Получение текущих записей зоны DNS
+- `/rpc/domains/dns/editMx` ← `/domains/dns/editMx` — Редактирование МХ записи
+- `/rpc/domains/dns/editSrv` ← `/domains/dns/editSrv` — Редактирование SRV записи
+- `/rpc/domains/dns/editNS` ← `/domains/dns/editNS` — Редактирование NS записи
+- `/rpc/domains/dns/editTxt` ← `/domains/dns/editTxt` — Редактирование Txt записи
+- `/rpc/domains/dns/getFile` ← `/domains/dns/getFile` — Получение содержимого файла зоны
+- `/rpc/domains/index` ← `/domains/index` — Информация о доменах пользователя
+- `/rpc/domains/getSubdomains` ← `/domains/getSubdomains` — Список поддоменов домена
+- `/rpc/domains/getDomainInfo` ← `/domains/getDomainInfo` — Полная информация о домене
+- `/rpc/domains/regAvailable` ← `/domains/regAvailable` — Предварительная проверка на возможность регистрации домена
+- `/rpc/domains/getAvailablePackages` ← `/domains/getAvailablePackages` — Проверяет возможность регистрации пакета для доменов, если пакет доступен, то добавляет его на аккаунт и возвращает объект с order_package_id - ID по которому его можно зарегистрировать
+- `/rpc/domains/regList` ← `/domains/regList` — Зарегистрировать список доменов
+- `/rpc/domains/reg` ← `/domains/reg` — Регистрация домена на аккаунте
+- `/rpc/domains/move` ← `/domains/move` — Добавление домена на аккаунт
+- `/rpc/domains/moveList` ← `/domains/moveList` — Добавление существующих доменов на аккаунт
+- `/rpc/domains/changeProlong` ← `/domains/changeProlong` — Изменение настроек автопродления
+- `/rpc/domains/changeProlongList` ← `/domains/changeProlongList` — Массовая смена типа автопродления
+- `/rpc/domains/remove` ← `/domains/remove` — Удаление домена
+- `/rpc/domains/removeList` ← `/domains/removeList` — Массовое удаление доменов
+- `/rpc/domains/prolong` ← `/domains/prolong` — Продление домена
+- `/rpc/domains/prolongList` ← `/domains/prolongList` — Массовое продление доменов
+- `/rpc/domains/priceForTrasfer` ← `/domains/priceForTrasfer` — Можно ли сделать трансфер домена
+- `/rpc/domains/priceForRegistration` ← `/domains/priceForRegistration` — Стоимость регистрации домена
+- `/rpc/domains/removeSubdomain` ← `/domains/removeSubdomain` — Удаление поддомена
+- `/rpc/domains/createSubdomain` ← `/domains/createSubdomain` — Добавление поддомена
+- `/rpc/domains/setRedirectVh` ← `/domains/setRedirectVh` — Установка переадресации для домена
+- `/rpc/domains/getRedirectVh` ← `/domains/getRedirectVh` — Возвращает переадресацию для домена
+- `/rpc/pay/index` ← `/pay/index` — Информация о балансе
+- `/rpc/pay/isAutopaymentEnable` ← `/pay/isAutopaymentEnable` — Включен или нет автоплатеж на аккаунте
+- `/rpc/pay/getPayRecommendations` ← `/pay/getPayRecommendations` — Получение рекомендаций к оплате
+- `/rpc/pay/getRecommendationTotalCost` ← `/pay/getRecommendationTotalCost` — Возвращает полную сумму, рекомендованную к оплате
+- `/rpc/pay/getUpcomingPaymentsVh` ← `/pay/getUpcomingPaymentsVh` — Возвращает информацию о предстоящих платежах для пользователей VH
+- `/rpc/pay/changeDeferment` ← `/pay/changeDeferment` — Включить/выключить отсрочку
+- `/rpc/pay/getRemainsDate` ← `/pay/getRemainsDate` — Дата, до которой хватит денег на счету
+- `/rpc/pay/getRemainsDays` ← `/pay/getRemainsDays` — Количество дней до блокировки
+- `/rpc/pay/getBalance` ← `/pay/getBalance` — Информация о балансе
+- `/rpc/pay/getActiveReserves` ← `/pay/getActiveReserves` — Детальная информация о заблокированных средствах
+- `/rpc/sites/index` ← `/sites/index` — Список всех сайтов на аккаунте пользователя
+- `/rpc/sites/getSiteInfo` ← `/sites/getSiteInfo` — Получение подробной информации о сайте
+- `/rpc/sites/add` ← `/sites/add` — Метод для добавления сайта
+- `/rpc/sites/edit` ← `/sites/edit` — Редактирование названия сайта и директории для docroot
+- `/rpc/sites/del` ← `/sites/del` — Удаление сайта
+- `/rpc/sites/changeDomainSite` ← `/sites/changeDomainSite` — Cмена сайта для домена
+- `/rpc/sites/getBackEndsList` ← `/sites/getBackEndsList` — Получение cписка доступных бэкэндов
+- `/rpc/sites/changeBackEnd` ← `/sites/changeBackEnd` — Смена типа бэкэнда для сайта
+- `/rpc/tariff/index` ← `/tariff/index` — Текущая информация о тарифе и реальном использовании ресурсов
+- `/rpc/tariff/serverInfo` ← `/tariff/serverInfo` — Информация о сервере, на котором находится аккаунт пользователя
+- `/rpc/vps/index` ← `/vps/index` — Список VPS
+- `/rpc/vps/getFirstOrderInfo` ← `/vps/getFirstOrderInfo` — Получение информации о первом заказе
+- `/rpc/vps/createEnable` ← `/vps/createEnable` — Проверка доступен ли заказ VPS
+- `/rpc/vps/getAvailableConfig` ← `/vps/getAvailableConfig` — Получение списка доступных дистрибутивов, ISP-лицензий, тарифных планов
+- `/rpc/vps/copy` ← `/vps/copy` — Клонирование VPS
+- `/rpc/vps/createFirst` ← `/vps/createFirst` — Создание первого заказа с VPS
+- `/rpc/vps/create` ← `/vps/create` — Создание VPS
+- `/rpc/vps/rename` ← `/vps/rename` — Переименование VPS
+- `/rpc/vps/isRunning` ← `/vps/isRunning` — Запущена ли VPS в данный момент
+- `/rpc/vps/remove` ← `/vps/remove` — Удаление VPS
+- `/rpc/vps/removeFirst` ← `/vps/removeFirst` — Удаление первого заказа.Доступно, если заказ ещё не был оплачен и услуга не стартовала
+- `/rpc/vps/load` ← `/vps/load` — Загрузка - возвращает картинку в Base64
+- `/rpc/vps/getConstructorPlanId` ← `/vps/getConstructorPlanId` — Возвращает id тарифного плана конструктора VPS по значениям кол-ва ядер, ОЗУ, объема диска и категории
+- `/rpc/vps/changePlan` ← `/vps/changePlan` — Изменение тарифного плана
+- `/rpc/vps/powerOn` ← `/vps/powerOn` — Включение VPS
+- `/rpc/vps/powerOff` ← `/vps/powerOff` — Выключение VPS
+- `/rpc/vps/reboot` ← `/vps/reboot` — Перезагрузка VPS
+- `/rpc/vps/getCurrentAction` ← `/vps/getCurrentAction` — Получение текущей операции по VPS
+- `/rpc/vps/reinstallOs` ← `/vps/reinstallOs` — Переустановка образа VPS
+- `/rpc/vps/logs` ← `/vps/logs` — Получение логов операций
+- `/rpc/vh/backup/getList` ← `/vh/backup/getList` — Получение полного списка бэкапов (файлы и базы с группировкой по дням)
+- `/rpc/vh/backup/makeAccountCopy` ← `/vh/backup/makeAccountCopy` — Ставит задание на создание копий всех баз и файлов домашней директории
+- `/rpc/vh/backup/restoreFiles` ← `/vh/backup/restoreFiles` — Одиночные и массовые действия 'Восстановить' над файлами из бэкапа
+- `/rpc/vh/backup/downloadFile` ← `/vh/backup/downloadFile` — Скачивание одиночного файла из бэкапа
+- `/rpc/vh/backup/getListFiles` ← `/vh/backup/getListFiles` — Метод для получения содержимого папки внутри бэкапа за конкретную дату
+- `/rpc/vh/backup/getListMysql` ← `/vh/backup/getListMysql` — Получение списка содержимого бэкапа баз данных за конкретный день
+- `/rpc/vh/backup/receiveFiles` ← `/vh/backup/receiveFiles` — Одиночные и массовые действия 'Получить бэкап' над файлами из бэкапа
+- `/rpc/vh/backup/receiveMysql` ← `/vh/backup/receiveMysql` — Одиночные и массовые действия 'Получить бэкап' над одной или несколькими базами данных
+- `/rpc/vh/backup/restoreMysql` ← `/vh/backup/restoreMysql` — Одиночные и массовые действия 'Восстановить' над таблицами и базами данных
+- `/rpc/vh/cron/addTask` ← `/vh/cron/addTask` — Добавляет задание
+- `/rpc/vh/cron/editTask` ← `/vh/cron/editTask` — Изменяет задание в кроне
+- `/rpc/vh/cron/removeTask` ← `/vh/cron/removeTask` — Удаляет задание из крона
+- `/rpc/vh/cron/getTasks` ← `/vh/cron/getTasks` — Возвращает список заданий в кроне
+- `/rpc/vh/ddg/index` ← `/vh/ddg/index` — Получение списка доменов с информацией о подключенных услугах
+- `/rpc/vh/ddg/countAllDomains` ← `/vh/ddg/countAllDomains` — Возвращает кол-во доменов клиента (за исключением технических). Используется для пагинации на главной
+- `/rpc/vh/ddg/enable` ← `/vh/ddg/enable` — Подключить/разблокировать услугу для домена
+- `/rpc/vh/ddg/disable` ← `/vh/ddg/disable` — Отключить/заблокировать услугу для домена
+- `/rpc/vh/ddg/enableInfo` ← `/vh/ddg/enableInfo` — Возвращает данные для страницы подключения услуги
+- `/rpc/vh/ddg/priceWidget` ← `/vh/ddg/priceWidget` — Цены на услугу для виджета 'Смена тарифа'
+- `/rpc/vh/ddg/getPrice` ← `/vh/ddg/getPrice` — Возвращает стоимость услуги для текущего тарифного плана пользователя
+- `/rpc/vh/hosting/databaseGetList` ← `/vh/hosting/databaseGetList` — Получение списка баз данных
+- `/rpc/vh/hosting/databaseMysqlChangePass` ← `/vh/hosting/databaseMysqlChangePass` — Изменение пароля к БД mysql
+- `/rpc/vh/hosting/databaseMysqlCreate` ← `/vh/hosting/databaseMysqlCreate` — Создание БД MySQL
+- `/rpc/vh/hosting/databaseMysqlImport` ← `/vh/hosting/databaseMysqlImport` — Импорт базы данных MySql из файла
+- `/rpc/vh/hosting/databaseMysqlMakeCopy` ← `/vh/hosting/databaseMysqlMakeCopy` — Создает задание в очереди на создание архива базы данных MySql
+- `/rpc/vh/hosting/databaseMysqlAccessList` ← `/vh/hosting/databaseMysqlAccessList` — Вывод списка правил удаленного доступа к БД MySql
+- `/rpc/vh/hosting/databaseMysqlAccessCreate` ← `/vh/hosting/databaseMysqlAccessCreate` — Добавление нового правила удаленного доступа к БД MySql
+- `/rpc/vh/hosting/databaseMysqlAccessDelete` ← `/vh/hosting/databaseMysqlAccessDelete` — Удаление правила удаленного доступа к БД MySql
+- `/rpc/vh/hosting/databaseMysqlDelete` ← `/vh/hosting/databaseMysqlDelete` — Удаление БД MySQL
+- `/rpc/vh/hosting/databasePgsqlCreate` ← `/vh/hosting/databasePgsqlCreate` — Создание БД PostgreSQL
+- `/rpc/vh/hosting/databasePgsqlDelete` ← `/vh/hosting/databasePgsqlDelete` — Удаление базы данных Pgsql
+- `/rpc/vh/hosting/databasePgsqlChangePass` ← `/vh/hosting/databasePgsqlChangePass` — Изменение пароля к БД PostgreSQL
+- `/rpc/vh/hosting/databaseEditComment` ← `/vh/hosting/databaseEditComment` — Добавление/редактирование комментария в БД. Если его не было, то запись создается
+- `/rpc/vh/hosting/getPmaUser` ← `/vh/hosting/getPmaUser` — Создание временного пользователя
+- `/rpc/vh/load/index` ← `/vh/load/index` — Список доступных периодов статистики
+- `/rpc/vh/load/getLoadTable` ← `/vh/load/getLoadTable` — Получение данных в виде таблицы
+- `/rpc/vh/mail/getDomainsList` ← `/vh/mail/getDomainsList` — Получение списка доменов клиента с почтовыми ящиками
+- `/rpc/vh/mail/getMailboxesList` ← `/vh/mail/getMailboxesList` — Получение списка ящиков для домена
+- `/rpc/vh/mail/getMailQuota` ← `/vh/mail/getMailQuota` — Возвращает общий размер (мб) почтовых ящиков клиента
+- `/rpc/vh/mail/createMbox` ← `/vh/mail/createMbox` — Создание почтового ящика
+- `/rpc/vh/mail/sendRequisitesToEmail` ← `/vh/mail/sendRequisitesToEmail` — Отправка реквизитов созданного почтового ящика на почту
+- `/rpc/vh/mail/dropMbox` ← `/vh/mail/dropMbox` — Удаление почтового ящика
+- `/rpc/vh/mail/updateAntispamState` ← `/vh/mail/updateAntispamState` — Изменяет состояние антиспам фильтра
+- `/rpc/vh/mail/updateComment` ← `/vh/mail/updateComment` — Обновляет комментарий ящика
+- `/rpc/vh/mail/getAutoreply` ← `/vh/mail/getAutoreply` — Возвращает текст автоответчика
+- `/rpc/vh/mail/changeAutoreply` ← `/vh/mail/changeAutoreply` — Изменяет текст автоответчика
+- `/rpc/vh/mail/changeMailboxSpf` ← `/vh/mail/changeMailboxSpf` — Вкл/выкл spf ящика
+- `/rpc/vh/mail/changeDomainSpf` ← `/vh/mail/changeDomainSpf` — Вкл/выкл spf для всех почтовых ящиков домена
+- `/rpc/vh/mail/getForwardingEmailsList` ← `/vh/mail/getForwardingEmailsList` — Возвращает список адресов для пересылки
+- `/rpc/vh/mail/addForwardingEmail` ← `/vh/mail/addForwardingEmail` — Добавление адреса для пересылки
+- `/rpc/vh/mail/removeForwardingEmail` ← `/vh/mail/removeForwardingEmail` — Удаление адресов для пересылки
+- `/rpc/vh/mail/isEnabledDeletingAfterForwarding` ← `/vh/mail/isEnabledDeletingAfterForwarding` — Проверяет, включено ли удаление писем из исходного ящика после пересылки
+- `/rpc/vh/mail/changeDeletingAfterForwarding` ← `/vh/mail/changeDeletingAfterForwarding` — Вкл/выкл удаления из исходного ящика после пересылки
+- `/rpc/vh/mail/getDeliveryAddressesList` ← `/vh/mail/getDeliveryAddressesList` — Возвращает список адресов рассылки
+- `/rpc/vh/mail/getDeliveryInfo` ← `/vh/mail/getDeliveryInfo` — Возвращает информацию о кол-ве списков и адресов рассылки
+- `/rpc/vh/mail/addDeliveryAddress` ← `/vh/mail/addDeliveryAddress` — Добавить адрес рассылки
+- `/rpc/vh/mail/dropDeliveryAddress` ← `/vh/mail/dropDeliveryAddress` — Удалить адрес рассылки
+- `/rpc/vh/mail/getMailsCollector` ← `/vh/mail/getMailsCollector` — Возвращает адрес сборщика писем, если он добавлен
+- `/rpc/vh/mail/changeMailsCollector` ← `/vh/mail/changeMailsCollector` — Изменяет адрес сборщика писем
+- `/rpc/vh/mail/removeMailsCollector` ← `/vh/mail/removeMailsCollector` — Удаление адреса сборщика писем у домена
+- `/rpc/vh/mail/confirmMailsCollectorEmail` ← `/vh/mail/confirmMailsCollectorEmail` — Подтверждает ящик, который не находится на доменах аккаунта клиента
+- `/rpc/vh/mail/changeSenderVerify` ← `/vh/mail/changeSenderVerify` — Вкл/выкл SenderVerify (проверку отправителя)
+- `/rpc/vh/mail/changeAutoDiscover` ← `/vh/mail/changeAutoDiscover` — Вкл/выкл автонастройку почтовых программ
+- `/rpc/vh/mail/deleteMails` ← `/vh/mail/deleteMails` — Удаляет письма ящика старше $days дней
+- `/rpc/vh/mail/changeMailboxPassword` ← `/vh/mail/changeMailboxPassword` — Изменяет пароль почтового ящика
+- `/rpc/vh/mail/getWhitelist` ← `/vh/mail/getWhitelist` — Возвращает белый список
+- `/rpc/vh/mail/getBlacklist` ← `/vh/mail/getBlacklist` — Возвращает черный список
+- `/rpc/vh/mail/addToWhitelist` ← `/vh/mail/addToWhitelist` — Добавляет исключение в белый список
+- `/rpc/vh/mail/addToBlacklist` ← `/vh/mail/addToBlacklist` — Добавляет исключение в черный список
+- `/rpc/vh/mail/dropFromWhitelist` ← `/vh/mail/dropFromWhitelist` — Удаляет исключение из белого списка
+- `/rpc/vh/mail/dropFromBlacklist` ← `/vh/mail/dropFromBlacklist` — Удаляет исключение из черного списка
+- `/rpc/vh/mail/enableDkim` ← `/vh/mail/enableDkim` — Включение DKIM
+- `/rpc/vh/mail/disableDkim` ← `/vh/mail/disableDkim` — Выключение DKIM
+- `/rpc/vh/partnerProgram/createOrderVh` ← `/vh/partnerProgram/createOrderVh` — Создание заказа для стандартных тарифных планов
+- `/rpc/vh/partnerProgram/checkLogin` ← `/vh/partnerProgram/checkLogin` — Проверка логина для нового пользователя
+- `/rpc/vh/partnerProgram/createOrderVip` ← `/vh/partnerProgram/createOrderVip` — Создание заказа для VIP тарифных планов
+- `/rpc/vh/partnerProgram/createOrderVps` ← `/vh/partnerProgram/createOrderVps` — Создание заказа для VPS тарифных планов
+- `/rpc/vh/partnerProgram/standardPlans` ← `/vh/partnerProgram/standardPlans` — Получение списка доступных стандартных тарифов
+- `/rpc/vh/partnerProgram/vipPlans` ← `/vh/partnerProgram/vipPlans` — Получение списка доступных VIP тарифов
+- `/rpc/vh/partnerProgram/vpsOsConfig` ← `/vh/partnerProgram/vpsOsConfig` — Получение списка доступных дистрибутивов, ISP-лицензий, тарифных планов
+- `/rpc/vh/partnerProgram/startPartnership` ← `/vh/partnerProgram/startPartnership` — Нажатие на кнопку 'Стать партнером'. Создает партнера без реквизитов
+- `/rpc/vh/partnerProgram/fillPartnerRequisites` ← `/vh/partnerProgram/fillPartnerRequisites` — Заполнение реквизитов партнера
+- `/rpc/vh/partnerProgram/getTypesAdvertMaterials` ← `/vh/partnerProgram/getTypesAdvertMaterials` — Запрос типов рекламных материалов
+- `/rpc/vh/partnerProgram/getAdvertMaterials` ← `/vh/partnerProgram/getAdvertMaterials` — Возвращает все банеры указанного типа
+- `/rpc/vh/partnerProgram/getPartnerClientsList` ← `/vh/partnerProgram/getPartnerClientsList` — Получение отфильтрованных данных в виде массива с детализацией по клиентам партнера
+- `/rpc/vh/partnerProgram/getPartnerClientCard` ← `/vh/partnerProgram/getPartnerClientCard` — Получение подробной информации о клиенте
+- `/rpc/vh/partnerProgram/savePartnerClientComment` ← `/vh/partnerProgram/savePartnerClientComment` — Сохраняет изменение комментария к клиенту партнера
+- `/rpc/vh/partnerProgram/getPartnerClientLogEvents` ← `/vh/partnerProgram/getPartnerClientLogEvents` — Выводит лог событий по клиентам партнера с пагинацией
+- `/rpc/vh/partnerProgram/getPartnerClientLogFinance` ← `/vh/partnerProgram/getPartnerClientLogFinance` — Выводит лог детализацию по балансу по клиентам партнера с пагинацией (события, которые касаются финансов)
+- `/rpc/vh/partnerProgram/sendWithdrawalOrder` ← `/vh/partnerProgram/sendWithdrawalOrder` — Отправка заказа на вывод партнерского вознаграждения
+- `/rpc/vh/partnerProgram/getRequisitesWithdrawal` ← `/vh/partnerProgram/getRequisitesWithdrawal` — Возвращает сохраненные ранее реквизиты для вывода средств. Зависит от типа аккаунта
+- `/rpc/vh/partnerProgram/getStatistic` ← `/vh/partnerProgram/getStatistic` — Возвращает статистику по реферальным сайтам
+- `/rpc/vh/partnerProgram/getLinkStatistics` ← `/vh/partnerProgram/getLinkStatistics` — Возвращает статистику по реферальной ссылке
+- `/rpc/vh/referralProgram/index` ← `/vh/referralProgram/index` — Возвращает список реферальных сайтов клиента
+- `/rpc/vh/referralProgram/removeReferralSite` ← `/vh/referralProgram/removeReferralSite` — Удаляет реферальный сайт клиента
+- `/rpc/vh/referralProgram/confirmReferralSite` ← `/vh/referralProgram/confirmReferralSite` — Попытка подтверждения реферального сайта
+- `/rpc/vh/referralProgram/addReferralSite` ← `/vh/referralProgram/addReferralSite` — Добавляет реферальный сайт
+- `/rpc/vh/ssl/index` ← `/vh/ssl/index` — Возвращает список сертификатов пользователя
+- `/rpc/vh/ssl/getOrderList` ← `/vh/ssl/getOrderList` — Получение списка сертификатов доступных для заказа
+- `/rpc/vh/ssl/download` ← `/vh/ssl/download` — Возвращает архив с файлами сертификата
+- `/rpc/vh/ssl/editAutoprolong` ← `/vh/ssl/editAutoprolong` — Изменение режима автопродления сертификата
+- `/rpc/vh/ssl/removeCertificate` ← `/vh/ssl/removeCertificate` — Удаляет сертификат
+- `/rpc/vh/ssl/getProlongInfo` ← `/vh/ssl/getProlongInfo` — Получение информации о вариантах продления сертификата
+- `/rpc/vh/ssl/prolongCertificate` ← `/vh/ssl/prolongCertificate` — Продлевает сертификат
+- `/rpc/vh/ssl/installLetsEncrypt` ← `/vh/ssl/installLetsEncrypt` — Установка сертификата LetsEncrypt
+- `/rpc/vh/utils/sshOn` ← `/vh/utils/sshOn` — Включение доступа по SSH
+- `/rpc/vh/utils/sshOff` ← `/vh/utils/sshOff` — Выключение доступа по SSH
+- `/rpc/vh/utils/diskUsage/index` ← `/vh/utils/diskUsage/index` — Возвращаем информацию по используемому месту
+- `/rpc/vh/utils/diskUsage/getTasksInfo` ← `/vh/utils/diskUsage/getTasksInfo` — Информация о задачах на подсчет занимаемого места
+- `/rpc/vh/utils/diskUsage/startTask` ← `/vh/utils/diskUsage/startTask` — Создание задачи на подсчет данных
+- `/rpc/vh/utils/diskUsage/getEmail` ← `/vh/utils/diskUsage/getEmail` — Получение емейла для уведомлений о превышении занимаемого места
+- `/rpc/vh/utils/diskUsage/changeEmail` ← `/vh/utils/diskUsage/changeEmail` — Смена емейла для уведомлений о занимаемом месте
+- `/rpc/vps/backup/index` ← `/vps/backup/index` — Список бэкапов для VPS
+- `/rpc/vps/backup/updateIndex` ← `/vps/backup/updateIndex` — Обновление индекса бэкапов
+- `/rpc/vps/backup/create` ← `/vps/backup/create` — Создание бэкапа VPS
+- `/rpc/vps/backup/restore` ← `/vps/backup/restore` — Восстановление из бэкапа
+- `/rpc/vps/backup/attach` ← `/vps/backup/attach` — Подключение бэкапа как диска к VPS
+- `/rpc/vps/backup/detach` ← `/vps/backup/detach` — Отключение бэкапа как диска
+- `/rpc/vps/backup/remove` ← `/vps/backup/remove` — Удаление бэкапа
+- `/rpc/vps/backup/getSettings` ← `/vps/backup/getSettings` — Получение настроек создания бэкапов
+- `/rpc/vps/backup/saveSettings` ← `/vps/backup/saveSettings` — Сохранение настроек бэкапа
+- `/rpc/balancer/index` ← `/balancer/index` — Получение списка услуг «Балансировщик нагрузки»
+- `/rpc/balancer/isCreateEnable` ← `/balancer/isCreateEnable` — Проверка доступен ли заказ услуги «Балансировщик нагрузки»
+- `/rpc/balancer/getAvailableConfig` ← `/balancer/getAvailableConfig` — Получение списка услуг «Балансировщик нагрузки»
+- `/rpc/balancer/create` ← `/balancer/create` — Создание услуги «Балансировщик нагрузки»
+- `/rpc/balancer/edit` ← `/balancer/edit` — Редактирование услуги «Балансировщик нагрузки»
+- `/rpc/balancer/remove` ← `/balancer/remove` — Удаление балансировщика
+- `/rpc/dbaas/index` ← `/dbaas/index` — Возвращает объект управления DBaaS с элементами
+- `/rpc/dbaas/setUpgradeAgree` ← `/dbaas/setUpgradeAgree` — Сохранение выбора пользователя о переходе на платную версию
+- `/rpc/dbaas/getAvailableConfig` ← `/dbaas/getAvailableConfig` — Возвращает данные для отображения страницы создания кластера: доступные тарифы и версии баз данных
+- `/rpc/dbaas/getConstructorPlanId` ← `/dbaas/getConstructorPlanId` — Возвращает id тарифного плана конфигуратора DBaaS по значениям кол-ва ядер, ОЗУ, объема диска и количеству реплик
+- `/rpc/dbaas/getFirstOrderInfo` ← `/dbaas/getFirstOrderInfo` — Получение информации о первом заказе
+- `/rpc/dbaas/removeFirst` ← `/dbaas/removeFirst` — Удаление первого заказа: доступно, если заказ ещё не был оплачен и услуга не стартовала
+- `/rpc/dbaas/createInstance` ← `/dbaas/createInstance` — Создание кластера (инициирует создание кластера)
+- `/rpc/dbaas/editInstance` ← `/dbaas/editInstance` — Редактирование кластера
+- `/rpc/dbaas/removeInstance` ← `/dbaas/removeInstance` — Удаление кластера
+- `/rpc/dbaas/deleteDatabase` ← `/dbaas/deleteDatabase` — Удаление отдельной базы данных из кластера
+- `/rpc/dbaas/validateUsers` ← `/dbaas/validateUsers` — Проверяет список пользователей кластера БД
+- `/rpc/vps/ip/addLocal` ← `/vps/ip/addLocal` — Подключение VPS к локальной сети
+- `/rpc/vps/ip/removeLocal` ← `/vps/ip/removeLocal` — Удаление локального IP
+- `/rpc/vps/ip/index` ← `/vps/ip/index` — Получение информации о IP
+- `/rpc/vps/ip/getAllIpList` ← `/vps/ip/getAllIpList` — Получение списка всех IP на аккаунте пользователя
+- `/rpc/vps/ip/getOrderInfo` ← `/vps/ip/getOrderInfo` — Возвращает информацию по лимитам заказов ip
+- `/rpc/vps/ip/addProtected` ← `/vps/ip/addProtected` — Добавляет защищенный IP на VPS
+- `/rpc/vps/ip/removeProtected` ← `/vps/ip/removeProtected` — Удаляет защищенный IP
+- `/rpc/vps/ip/updateProtected` ← `/vps/ip/updateProtected` — Изменяет тариф защищенного IP
+- `/rpc/vps/ip/moveProtected` ← `/vps/ip/moveProtected` — Перемещает между VPS или открепляет/прикрепляет от/к VPS защищенный IP
+- `/rpc/vps/ip/add` ← `/vps/ip/add` — Добавить необходимое количество доп. IP на VPS
+- `/rpc/vps/ip/addLocal` ← `/vps/ip/addLocal` — Подключение VPS к локальной сети
+- `/rpc/vps/ip/removeLocal` ← `/vps/ip/removeLocal` — Удаление локального IP
+- `/rpc/vps/ip/remove` ← `/vps/ip/remove` — Удаление IP. Нельзя удалять связанный IP передавая при этом пустой $billingId.
+- `/rpc/vps/ip/move` ← `/vps/ip/move` — Перемещение IP между услугами VPS и прикрепление/открепление IP от услуги VPS
+- `/rpc/vps/ip/editPtr` ← `/vps/ip/editPtr` — Редактирование PTR
+- `/rpc/vps/ip/getPtr` ← `/vps/ip/getPtr` — Получение обратной зоны для IP-адреса
+- `/rpc/vps/remoteBackup/index` ← `/vps/remoteBackup/index` — Получение данных по бэкапам
+- `/rpc/vps/remoteBackup/create` ← `/vps/remoteBackup/create` — Создание бэкапа VPS
+- `/rpc/vps/remoteBackup/editComment` ← `/vps/remoteBackup/editComment` — Редактирование комментария к бэкапу
+- `/rpc/vps/remoteBackup/restore` ← `/vps/remoteBackup/restore` — Восстановление из бэкапа в ту VPS, из которой бэкап создан
+- `/rpc/vps/remoteBackup/restoreInto` ← `/vps/remoteBackup/restoreInto` — Восстановление из бэкапа в существующую VPS
+- `/rpc/vps/remoteBackup/remove` ← `/vps/remoteBackup/remove` — Удаление бэкапа
+- `/rpc/vps/ssl/index` ← `/vps/ssl/index` — Возвращает список сертификатов пользователя
+- `/rpc/vps/ssl/getOrderList` ← `/vps/ssl/getOrderList` — Получение списка сертификатов доступных для заказа
+- `/rpc/vps/ssl/download` ← `/vps/ssl/download` — Возвращает архив с файлами сертификата
+- `/rpc/vps/ssl/editAutoprolong` ← `/vps/ssl/editAutoprolong` — Изменение режима автопродления сертификата
+- `/rpc/vps/ssl/removeCertificate` ← `/vps/ssl/removeCertificate` — Удаляет сертификат
+- `/rpc/vps/ssl/getProlongInfo` ← `/vps/ssl/getProlongInfo` — Получение информации о вариантах продления сертификата
+- `/rpc/vps/ssl/orderSubmit` ← `/vps/ssl/orderSubmit` — Отправка заказа

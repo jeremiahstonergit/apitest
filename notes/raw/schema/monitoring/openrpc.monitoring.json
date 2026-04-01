@@ -1,0 +1,232 @@
+{
+  "openrpc": "1.0.0-rc1",
+  "info": {
+    "title": "API Spaceweb",
+    "description": "Документация по API Spaceweb",
+    "version": "1.227"
+  },
+  "servers": [
+    {
+      "name": "Monitoring",
+      "summary": "Объект сервиса Мониторинг",
+      "description": "Объект сервиса Мониторинг",
+      "url": "https://api.sweb.ru/monitoring"
+    }
+  ],
+  "methods": [
+    {
+      "name": "enable",
+      "description": "Подключение тарифа",
+      "params": [
+        {
+          "name": "id",
+          "description": "ID тарифа",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultEnable"
+      },
+      "examples": [
+        {
+          "name": "exampleEnable",
+          "params": [
+            {
+              "$ref": "#/components/examples/intID"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultEnable"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "disable",
+      "description": "Отключение тарифа",
+      "params": [
+        {
+          "name": "id",
+          "description": "ID тарифа",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultDisable"
+      },
+      "examples": [
+        {
+          "name": "exampleDisable",
+          "params": [
+            {
+              "$ref": "#/components/examples/intID"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultDisable"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "change",
+      "description": "Смена тарифа мониторинг",
+      "params": [
+        {
+          "name": "id",
+          "description": "ID тарифа",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultChange"
+      },
+      "examples": [
+        {
+          "name": "exampleChange",
+          "params": [
+            {
+              "$ref": "#/components/examples/intID"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultChange"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "plans",
+      "description": "Список доступных тарифных планов",
+      "params": [],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultPlans"
+      },
+      "examples": [
+        {
+          "name": "exampleRestoreInto",
+          "params": [],
+          "result": {
+            "$ref": "#/components/examples/resultPlans"
+          }
+        }
+      ],
+      "links": []
+    }
+  ],
+  "components": {
+    "contentDescriptors": {
+      "resultEnable": {
+        "name": "resultEnable",
+        "description": "1 - тариф успешно подключен, 0 - подключение не удалось",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultDisable": {
+        "name": "resultDisable",
+        "description": "1 - тариф успешно отключен, 0 - отключение не удалось",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultPlans": {
+        "name": "resultPlans",
+        "description": "'id' int ID тарифа\n\n'name' string Название\n\n'checks' int Число проверок\n\n'sms' int Число SMS уведомлений\n\n'price' float Стоимость",
+        "schema": {
+          "type": "array"
+        }
+      },
+      "resultChange": {
+        "name": "resultChange",
+        "description": "1 - тариф успешно изменен, 0 - изменить не удалось",
+        "schema": {
+          "type": "integer"
+        }
+      }
+    },
+    "schemas": {
+      "Integer": {
+        "type": "integer"
+      },
+      "String": {
+        "type": "string"
+      },
+      "Boolean": {
+        "type": "boolean"
+      },
+      "Array": {
+        "type": "array"
+      },
+      "Object": {
+        "type": "object"
+      }
+    },
+    "examples": {
+      "intID": {
+        "name": "id",
+        "summary": "id",
+        "description": "ID тарифа",
+        "value": 1
+      },
+      "resultEnable": {
+        "name": "one",
+        "summary": "успех",
+        "description": "тариф успешно подключен",
+        "value": 1
+      },
+      "resultDisable": {
+        "name": "one",
+        "summary": "успех",
+        "description": "тариф успешно отключен",
+        "value": 1
+      },
+      "resultChange": {
+        "name": "one",
+        "summary": "успех",
+        "description": "тариф успешно изменен",
+        "value": 1
+      },
+      "resultPlans": {
+        "name": "resultPlans",
+        "summary": "список доступных тарифных планов",
+        "description": "'id' int ID тарифа\n\n'name' string Название\n\n'checks' int Число проверок\n\n'sms' int Число SMS уведомлений\n\n'price' float Стоимость",
+        "value": [
+          {
+            "id": 1,
+            "name": "Базовый",
+            "checks": 1,
+            "sms": 6,
+            "price": 30
+          },
+          {
+            "id": 2,
+            "name": "Стандартный",
+            "checks": 10,
+            "sms": 30,
+            "price": 150
+          },
+          {
+            "id": 3,
+            "name": "Расширенный",
+            "checks": 50,
+            "sms": 100,
+            "price": 390
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,638 @@
+{
+  "openrpc": "1.0.0-rc1",
+  "info": {
+    "title": "API Spaceweb",
+    "description": "Документация по API Spaceweb",
+    "version": "1.182"
+  },
+  "servers": [
+    {
+      "name": "Balancer",
+      "summary": "Объект операций с сервисом «Балансировщик нагрузки»",
+      "description": "Объект операций с сервисом «Балансировщик нагрузки»",
+      "url": "https://api.sweb.ru/balancer"
+    }
+  ],
+  "methods": [
+    {
+      "name": "index",
+      "description": "Получение списка услуг «Балансировщик нагрузки»",
+      "params": [],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultIndex"
+      },
+      "examples": [
+        {
+          "name": "exampleIndex",
+          "params": [],
+          "result": {
+            "$ref": "#/components/examples/resultIndex"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "isCreateEnable",
+      "description": "Проверка доступен ли заказ услуги «Балансировщик нагрузки»",
+      "params": [],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultIsCreateEnable"
+      },
+      "examples": [
+        {
+          "name": "exampleIsCreateEnable",
+          "params": [],
+          "result": {
+            "$ref": "#/components/examples/resultIsCreateEnable"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "getAvailableConfig",
+      "description": "Получение списка услуг «Балансировщик нагрузки»",
+      "params": [],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultGetAvailableConfig"
+      },
+      "examples": [
+        {
+          "name": "exampleGetAvailableConfig",
+          "params": [],
+          "result": {
+            "$ref": "#/components/examples/resultGetAvailableConfig"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "create",
+      "description": "Создание услуги «Балансировщик нагрузки»",
+      "params": [
+        {
+          "name": "datacenter",
+          "description": "id дата-центра",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        },
+        {
+          "name": "type",
+          "description": "Тип алгоритма балансировки 'roundrobin' или 'leastconn'",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "servers",
+          "description": "Серверы для балансировки",
+          "schema": {
+            "$ref": "#/components/schemas/Array"
+          },
+          "required": true
+        },
+        {
+          "name": "rules",
+          "description": "Правила переадресации",
+          "schema": {
+            "$ref": "#/components/schemas/Array"
+          },
+          "required": true
+        },
+        {
+          "name": "planId",
+          "description": "ID плана",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        },
+        {
+          "name": "healthCheck",
+          "description": "Проверка доступности серверов",
+          "schema": {
+            "$ref": "#/components/schemas/Boolean"
+          },
+          "required": false
+        },
+        {
+          "name": "proxyProto",
+          "description": "Перенаправлять или нет данные о подключении (IP-адрес и порт) на конечный сервер",
+          "schema": {
+            "$ref": "#/components/schemas/Boolean"
+          },
+          "required": false
+        },
+        {
+          "name": "keepalive",
+          "description": "Поддерживать режим постоянного соединения для всех правил с целевым протоколом HTTP или HTTPS",
+          "schema": {
+            "$ref": "#/components/schemas/Boolean"
+          },
+          "required": false
+        },
+        {
+          "name": "saveSession",
+          "description": "Запоминать сессию или нет",
+          "schema": {
+            "$ref": "#/components/schemas/Boolean"
+          },
+          "required": false
+        },
+        {
+          "name": "alias",
+          "description": "Название услуги",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        },
+        {
+          "name": "isFirstOrder",
+          "description": "Первый заказ",
+          "schema": {
+            "$ref": "#/components/schemas/Boolean"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultCreate"
+      },
+      "examples": [
+        {
+          "name": "exampleCreate",
+          "params": [
+            {
+              "$ref": "#/components/examples/integerDatacenter"
+            },
+            {
+              "$ref": "#/components/examples/stringType"
+            },
+            {
+              "$ref": "#/components/examples/arrayServers"
+            },
+            {
+              "$ref": "#/components/examples/arrayRules"
+            },
+            {
+              "$ref": "#/components/examples/integerPlanId"
+            },
+            {
+              "$ref": "#/components/examples/booleanHealthCheck"
+            },
+            {
+              "$ref": "#/components/examples/booleanProxyProto"
+            },
+            {
+              "$ref": "#/components/examples/booleanKeepalive"
+            },
+            {
+              "$ref": "#/components/examples/booleanSaveSession"
+            },
+            {
+              "$ref": "#/components/examples/stringAlias"
+            },
+            {
+              "$ref": "#/components/examples/booleanIsFirstOrder"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultCreate"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "edit",
+      "description": "Редактирование услуги «Балансировщик нагрузки»",
+      "params": [
+        {
+          "name": "billingId",
+          "description": "Идентификатор балансировщика",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "type",
+          "description": "Тип алгоритма балансировки 'roundrobin' или 'leastconn'",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "servers",
+          "description": "Серверы для балансировки",
+          "schema": {
+            "$ref": "#/components/schemas/Array"
+          },
+          "required": true
+        },
+        {
+          "name": "rules",
+          "description": "Правила переадресации",
+          "schema": {
+            "$ref": "#/components/schemas/Array"
+          },
+          "required": true
+        },
+        {
+          "name": "healthCheck",
+          "description": "Проверка доступности серверов",
+          "schema": {
+            "$ref": "#/components/schemas/Boolean"
+          },
+          "required": false
+        },
+        {
+          "name": "proxyProto",
+          "description": "Перенаправлять или нет данные о подключении (IP-адрес и порт) на конечный сервер",
+          "schema": {
+            "$ref": "#/components/schemas/Boolean"
+          },
+          "required": false
+        },
+        {
+          "name": "keepalive",
+          "description": "Поддерживать режим постоянного соединения для всех правил с целевым протоколом HTTP или HTTPS",
+          "schema": {
+            "$ref": "#/components/schemas/Boolean"
+          },
+          "required": false
+        },
+        {
+          "name": "saveSession",
+          "description": "Запоминать сессию или нет",
+          "schema": {
+            "$ref": "#/components/schemas/Boolean"
+          },
+          "required": false
+        },
+        {
+          "name": "alias",
+          "description": "Название услуги",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultEdit"
+      },
+      "examples": [
+        {
+          "name": "exampleEdit",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringBillingId"
+            },
+            {
+              "$ref": "#/components/examples/stringType"
+            },
+            {
+              "$ref": "#/components/examples/arrayServers"
+            },
+            {
+              "$ref": "#/components/examples/arrayRules"
+            },
+            {
+              "$ref": "#/components/examples/booleanHealthCheck"
+            },
+            {
+              "$ref": "#/components/examples/booleanProxyProto"
+            },
+            {
+              "$ref": "#/components/examples/booleanKeepalive"
+            },
+            {
+              "$ref": "#/components/examples/booleanSaveSession"
+            },
+            {
+              "$ref": "#/components/examples/stringAlias"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultEdit"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "remove",
+      "description": "Удаление балансировщика",
+      "params": [
+        {
+          "name": "billingId",
+          "description": "Идентификатор балансировщика",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultRemove"
+      },
+      "examples": [
+        {
+          "name": "exampleRemove",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringBillingId"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultRemove"
+          }
+        }
+      ],
+      "links": []
+    }
+  ],
+  "components": {
+    "contentDescriptors": {
+      "resultIndex": {
+        "name": "resultIndex",
+        "description": "'billingId' string ID сервиса (Балансировщик нагрузки)\n\n'name' string Название балансировщика\n\n'type' string Тип алгоритма балансировщика (Значения: 'roundrobin' или 'leastconn')\n\n'plan_id' int ID плана\n\n'plan_name' string Название плана\n\n'price' int Стоимость услуги\n\n'active' bool Услуга активна\n\n'removeAllowed' bool Разрешено или нет инициировать удаление услуги\n\n'blockUi' bool Управление услугой заблокировано. Блокировка может быть из-за неуплаты, может быть из-за обработки изменений в настройках балансировщика, либо первого старта услуги\n\n'currentAction' string|null Текущее действие, которое выполняется с услугой, значения (null не выполняется никакой операции, 'create' создание услуги, 'edit' изменение параметров услуги, 'remove' удаление услуги)\n\n'tsCreate' string Дата и время создания услуги\n\n'ipBalancer' string IP балансировщика\n\n'datacenter' string Дата-центр, в котором находится IP балансировщика\n\n'healthCheck' bool Проверка доступности серверов\n\n'proxyProto' bool Перенаправлять или нет данные о подключении (IP-адрес и порт) на конечный сервер. Работает для всех правил, которые имеют целевой протокол HTTP или HTTPS\n\n'keepalive' bool Поддерживать режим постоянного соединения для всех правил с целевым протоколом HTTP или HTTPS\n\n'saveSession' bool Запоминать сессию или нет\n\n'rules' array Правила переадресации, их может быть несколько. Каждое правило - массив параметров ('protocolBalancer' string Протокол начального узла, 'portBalancer' string Порт начального узла, 'protocolServer' float Протокол конечного узла, 'portServer' string Порт конечного узла)\n\n'servers' array Серверы для балансировки. Не более 20 серверов. Каждый сервер - массив параметров ('ip' string IP адрес сервера, 'weight' int Приоритет, вес сервера для балансировки. Значения от 1 до 5. Параметр присутствует при 'type' = 'roundrobin', 'vpsName' string|null Название виртуального сервера)\n\n",
+        "schema": {
+          "type": "array"
+        }
+      },
+      "resultIsCreateEnable": {
+        "name": "resultIsCreateEnable",
+        "description": "1 - доступен или 0 - не доступен",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultGetAvailableConfig": {
+        "name": "resultGetAvailableConfig",
+        "description": "'plans' array Тарифы ('id' string Id тарифа, 'tag' string Текстовый идентификатор, 'title' string Название, 'price' string Цена\n\n'protocols' array Протоколы ('id' string id протокола, 'name' string Название, 'restrictions' array Доступные варианты ['HTTP', 'HTTPS'])\n\n'descriptions' array Описание ('service_plan_id': string Id тарифа, 'service_id': string Id услуги, 'description': string Описание)\n\n",
+        "schema": {
+          "type": "array"
+        }
+      },
+      "resultCreate": {
+        "name": "resultCreate",
+        "description": "1 - успешно стартовала процедура создания балансировщика",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultEdit": {
+        "name": "resultEdit",
+        "description": "1 - успешное выполнение операции",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultRemove": {
+        "name": "resultRemove",
+        "description": "1 - если операция прошла успешно, 0 - в случае не успешной операции",
+        "schema": {
+          "type": "integer"
+        }
+      }
+    },
+    "schemas": {
+      "Integer": {
+        "type": "integer"
+      },
+      "String": {
+        "type": "string"
+      },
+      "Boolean": {
+        "type": "boolean"
+      },
+      "Array": {
+        "type": "array"
+      },
+      "Object": {
+        "type": "object"
+      }
+    },
+    "examples": {
+      "integerDatacenter": {
+        "name": "datacenter",
+        "summary": "datacenter",
+        "description": "id дата-центра",
+        "value": "1"
+      },
+      "stringBillingId": {
+        "name": "billingId",
+        "summary": "billingId",
+        "description": "Идентификатор балансировщика",
+        "value": "dyasyuc578_balancer_1"
+      },
+      "resultIndex": {
+        "name": "resultIndex",
+        "summary": "Получение списка услуг «Балансировщик нагрузки»",
+        "description": "'billingId' string ID сервиса (Балансировщик нагрузки)\n\n'name' string Название балансировщика\n\n'type' string Тип алгоритма балансировщика (Значения: 'roundrobin' или 'leastconn')\n\n'plan_id' int ID плана\n\n'plan_name' string Название плана\n\n'price' int Стоимость услуги\n\n'active' bool Услуга активна\n\n'removeAllowed' bool Разрешено или нет инициировать удаление услуги\n\n'blockUi' bool Управление услугой заблокировано. Блокировка может быть из-за неуплаты, может быть из-за обработки изменений в настройках балансировщика, либо первого старта услуги\n\n'currentAction' string|null Текущее действие, которое выполняется с услугой, значения (null не выполняется никакой операции, 'create' создание услуги, 'edit' изменение параметров услуги, 'remove' удаление услуги)\n\n'tsCreate' string Дата и время создания услуги\n\n'ipBalancer' string IP балансировщика\n\n'datacenter' string Дата-центр, в котором находится IP балансировщика\n\n'healthCheck' bool Проверка доступности серверов\n\n'proxyProto' bool Перенаправлять или нет данные о подключении (IP-адрес и порт) на конечный сервер. Работает для всех правил, которые имеют целевой протокол HTTP или HTTPS\n\n'keepalive' bool Поддерживать режим постоянного соединения для всех правил с целевым протоколом HTTP или HTTPS\n\n'saveSession' bool Запоминать сессию или нет\n\n'rules' array Правила переадресации, их может быть несколько. Каждое правило - массив параметров ('protocolBalancer' string Протокол начального узла, 'portBalancer' string Порт начального узла, 'protocolServer' float Протокол конечного узла, 'portServer' string Порт конечного узла)\n\n'servers' array Серверы для балансировки. Не более 20 серверов. Каждый сервер - массив параметров ('ip' string IP адрес сервера, 'weight' int Приоритет, вес сервера для балансировки. Значения от 1 до 5. Параметр присутствует при 'type' = 'roundrobin', 'vpsName' string|null Название виртуального сервера)\n\n",
+        "value": {
+          "ips": [
+            {
+              "billingId": "dyasyuc578_balancer_1",
+              "name": "Балансировщик 1",
+              "type": "leastconn",
+              "plan_id": "4298",
+              "plan_name": "Стандартный",
+              "price": 375,
+              "active": true,
+              "removeAllowed": false,
+              "blockUi": false,
+              "currentAction": null,
+              "tsCreate": "2025-09-25 10:53:24",
+              "ipBalancer": "192.168.122.66",
+              "datacenter": 1,
+              "healthCheck": false,
+              "proxyProto": false,
+              "keepalive": false,
+              "saveSession": false,
+              "rules": [
+                {
+                  "protocolBalancer": "https",
+                  "portBalancer": "443",
+                  "protocolServer": "https",
+                  "portServer": "443"
+                }
+              ],
+              "servers": [
+                {
+                  "ip": "1.1.1.1",
+                  "vpsName": null
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "resultIsCreateEnable": {
+        "name": "isCreateEnable",
+        "summary": "isCreateEnable",
+        "description": "Проверка доступен ли заказ услуги «Балансировщик нагрузки»",
+        "value": 1
+      },
+      "resultCreate": {
+        "name": "create",
+        "summary": "create",
+        "description": "Создание услуги «Балансировщик нагрузки»",
+        "value": 1
+      },
+      "resultEdit": {
+        "name": "edit",
+        "summary": "edit",
+        "description": "Редактирование услуги «Балансировщик нагрузки»",
+        "value": 1
+      },
+      "resultGetAvailableConfig": {
+        "name": "getAvailableConfig",
+        "summary": "getAvailableConfig",
+        "description": "Получение списка доступных протоколов",
+        "value": {
+          "plans": [
+            {
+              "id": "1815",
+              "tag": "balancer_1",
+              "title": "Отказоустойчивый",
+              "price": "750.0000"
+            },
+            {
+              "id": "4298",
+              "tag": "balancer_2",
+              "title": "Стандартный",
+              "price": "375.0000"
+            }
+          ],
+          "protocols": [
+            {
+              "id": "1",
+              "name": "HTTP",
+              "restrictions": [
+                "HTTP",
+                "HTTPS"
+              ]
+            },
+            {
+              "id": "2",
+              "name": "HTTP2",
+              "restrictions": [
+                "HTTP",
+                "HTTP2"
+              ]
+            },
+            {
+              "id": "3",
+              "name": "HTTPS",
+              "restrictions": [
+                "HTTP",
+                "HTTPS"
+              ]
+            },
+            {
+              "id": "4",
+              "name": "TCP",
+              "restrictions": [
+                "TCP"
+              ]
+            }
+          ],
+          "descriptions": [
+            {
+              "service_plan_id": "1815",
+              "service_id": "balancer_1",
+              "description": "Балансировщик автоматически переключается на резервный сервер при сбоях, обеспечивая непрерывную работу."
+            },
+            {
+              "service_plan_id": "4298",
+              "service_id": "balancer_2",
+              "description": "Балансировщик размещает правила на одном из двух серверов в выбранном дата-центре, но не имеет встроенной отказоустойчивости."
+            }
+          ]
+        }
+      },
+      "resultRemove": {
+        "name": "remove",
+        "summary": "remove",
+        "description": "Удаление балансировщика",
+        "value": 1
+      },
+      "arrayServers": {
+        "name": "servers",
+        "summary": "servers",
+        "description": "Серверы для балансировки. Не более 20 серверов. В каждом элементе массива servers:'ip' string - IP адрес сервера'weight' int - Приоритет, вес сервера для балансировки. Для 'type' = 'roundrobin'",
+        "value": "ip: 1.1.1.1"
+      },
+      "booleanProxyProto": {
+        "name": "proxyProto",
+        "summary": "proxyProto",
+        "description": "Перенаправлять или нет данные о подключении (IP-адрес и порт) на конечный сервер",
+        "value": "false"
+      },
+      "booleanKeepalive": {
+        "name": "keepalive",
+        "summary": "keepalive",
+        "description": "Поддерживать режим постоянного соединения для всех правил с целевым протоколом HTTP или HTTPS",
+        "value": "false"
+      },
+      "booleanSaveSession": {
+        "name": "saveSession",
+        "summary": "saveSession",
+        "description": "Запоминать сессию или нет",
+        "value": "false"
+      },
+      "stringAlias": {
+        "name": "alias",
+        "summary": "alias",
+        "description": "Название услуги",
+        "value": "Балансировщик 3"
+      },
+      "booleanIsFirstOrder": {
+        "name": "isFirstOrder",
+        "summary": "isFirstOrder",
+        "description": "Первый заказ",
+        "value": "false"
+      },
+      "arrayRules": {
+        "name": "rules",
+        "summary": "rules",
+        "description": "Правила переадресации, их может быть несколько. Каждое правило - массив параметров:'protocolBalancer' string Протокол начального узла'portBalancer' int Порт начального узла. От 1 до 65535.'protocolServer' string Протокол конечного узла'portServer' int Порт конечного узла. От 1 до 65535.",
+        "value": "protocolBalancer"
+      },
+      "integerPlanId": {
+        "name": "planId",
+        "summary": "planId",
+        "description": "ID плана",
+        "value": "4298"
+      },
+      "booleanHealthCheck": {
+        "name": "healthCheck",
+        "summary": "healthCheck",
+        "description": "Проверка доступности серверов",
+        "value": "false"
+      },
+      "intWeight": {
+        "name": "weight",
+        "summary": "weight",
+        "description": "Вес записи",
+        "value": "0"
+      },
+      "stringType": {
+        "name": "type",
+        "summary": "type",
+        "description": "Тип алгоритма балансировки 'roundrobin' или 'leastconn'",
+        "value": "leastconn"
+      }
+    }
+  }
+}

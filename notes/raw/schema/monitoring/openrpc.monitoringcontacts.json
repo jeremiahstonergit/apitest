@@ -1,0 +1,983 @@
+{
+  "openrpc": "1.0.0-rc1",
+  "info": {
+    "title": "API Spaceweb",
+    "description": "Документация по API Spaceweb",
+    "version": "1.227"
+  },
+  "servers": [
+    {
+      "name": "Monitoring",
+      "summary": "Объект управления контактами сервиса Мониторинг",
+      "description": "Объект управления контактами сервиса Мониторинг",
+      "url": "https://api.sweb.ru/monitoring/contacts"
+    }
+  ],
+  "methods": [
+    {
+      "name": "index",
+      "description": "Возвращает список контактов мониторинга для текущего пользователя для отображения в ПУ. Не отображаются удаленные и неподтвержденные контакты.",
+      "params": [
+        {
+          "name": "page",
+          "description": "текущий номер страницы (начиная с 1)",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "description": "текущее выбранное кол.-во записей на одну страницу",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": false
+        },
+        {
+          "name": "orderField",
+          "description": "поле сортировки, по умолчанию id",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        },
+        {
+          "name": "orderDirect",
+          "description": "тип сортировки, по умолчанию asc",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultIndex"
+      },
+      "examples": [
+        {
+          "name": "exampleIndex",
+          "params": [
+            {
+              "$ref": "#/components/examples/intPage"
+            },
+            {
+              "$ref": "#/components/examples/intPerPage"
+            },
+            {
+              "$ref": "#/components/examples/stringOrderField"
+            },
+            {
+              "$ref": "#/components/examples/stringOrderDirect"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultIndex"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "getAllContacts",
+      "description": "Возвращает список всех контактов мониторинга для текущего пользователя",
+      "params": [],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultGetAllContacts"
+      },
+      "examples": [
+        {
+          "name": "exampleGetAllContacts",
+          "params": [],
+          "result": {
+            "$ref": "#/components/examples/resultGetAllContacts"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "addContact",
+      "description": "Добавление контакта",
+      "params": [
+        {
+          "name": "type",
+          "description": "тип контакта: 1 - электронная почта, 2 - телефон, 3 - ID телеграм-аккаунта",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "value",
+          "description": "значение контакта: электронная почта, телефон или ID телеграм-аккаунта",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "name",
+          "description": "имя контакта",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultAddContact"
+      },
+      "examples": [
+        {
+          "name": "exampleAddContact",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringType"
+            },
+            {
+              "$ref": "#/components/examples/stringValue"
+            },
+            {
+              "$ref": "#/components/examples/stringName"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultAddContact"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "editContact",
+      "description": "Редактирование контакта",
+      "params": [
+        {
+          "name": "contactId",
+          "description": "id контакта",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "value",
+          "description": "значение контакта: электронная почта, телефон или ID телеграм-аккаунта",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "name",
+          "description": "имя контакта",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultEditContact"
+      },
+      "examples": [
+        {
+          "name": "exampleEditContact",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringContactId"
+            },
+            {
+              "$ref": "#/components/examples/stringValue"
+            },
+            {
+              "$ref": "#/components/examples/stringName"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultEditContact"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "addEmail",
+      "description": "Добавление контакта - адреса электронной почты",
+      "params": [
+        {
+          "name": "email",
+          "description": "адрес электронной почты",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "name",
+          "description": "имя контакта",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultAddEmail"
+      },
+      "examples": [
+        {
+          "name": "exampleAddEmail",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringEmail"
+            },
+            {
+              "$ref": "#/components/examples/stringName"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultAddEmail"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "editEmail",
+      "description": "Редактирование контакта - адреса электронной почты",
+      "params": [
+        {
+          "name": "contactId",
+          "description": "id контакта",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "email",
+          "description": "адрес электронной почты",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "name",
+          "description": "имя контакта",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultEditEmail"
+      },
+      "examples": [
+        {
+          "name": "exampleEditEmail",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringContactId"
+            },
+            {
+              "$ref": "#/components/examples/stringEmail"
+            },
+            {
+              "$ref": "#/components/examples/stringName"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultEditEmail"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "addPhone",
+      "description": "Добавление контакта - телефона",
+      "params": [
+        {
+          "name": "phone",
+          "description": "номер телефона",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "name",
+          "description": "имя контакта",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultAddPhone"
+      },
+      "examples": [
+        {
+          "name": "exampleAddPhone",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringPhone"
+            },
+            {
+              "$ref": "#/components/examples/stringName"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultAddPhone"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "editPhone",
+      "description": "Редактирование контакта - телефона",
+      "params": [
+        {
+          "name": "contactId",
+          "description": "id контакта",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "phone",
+          "description": "новый телефон",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "name",
+          "description": "новое имя контакта",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultEditPhone"
+      },
+      "examples": [
+        {
+          "name": "exampleEditPhone",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringContactId"
+            },
+            {
+              "$ref": "#/components/examples/stringPhone"
+            },
+            {
+              "$ref": "#/components/examples/stringName"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultEditPhone"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "deleteContact",
+      "description": "Удаление контакта",
+      "params": [
+        {
+          "name": "contactId",
+          "description": "id контакта",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultDeleteContact"
+      },
+      "examples": [
+        {
+          "name": "exampleDeleteContact",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringContactId"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultDeleteContact"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "deleteContacts",
+      "description": "Удаление нескольких контактов",
+      "params": [
+        {
+          "name": "contactIds",
+          "description": "список id контактов",
+          "schema": {
+            "$ref": "#/components/schemas/Array"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultDeleteContacts"
+      },
+      "examples": [
+        {
+          "name": "exampleDeleteContacts",
+          "params": [
+            {
+              "$ref": "#/components/examples/arrayContactIds"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultDeleteContacts"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "addTelegram",
+      "description": "Добавление контакта - телеграма",
+      "params": [
+        {
+          "name": "name",
+          "description": "имя контакта",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultAddTelegram"
+      },
+      "examples": [
+        {
+          "name": "exampleAddTelegram",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringTelegram"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultAddTelegram"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "requestTelegramVerifyCode",
+      "description": "Получить верификационный код для контакта Телеграм",
+      "params": [
+        {
+          "name": "contactId",
+          "description": "id контакта",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultRequestTelegramVerifyCode"
+      },
+      "examples": [
+        {
+          "name": "exampleRequestTelegramVerifyCode",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringContactId"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultRequestTelegramVerifyCode"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "isVerified",
+      "description": "Получить признак, подтвержден ли контакт",
+      "params": [
+        {
+          "name": "contactId",
+          "description": "id контакта",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultIsVerified"
+      },
+      "examples": [
+        {
+          "name": "exampleIsVerified",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringContactId"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultIsVerified"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "editTelegram",
+      "description": "Редактирование контакта - телеграма",
+      "params": [
+        {
+          "name": "contactId",
+          "description": "id контакта",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "name",
+          "description": "новое имя контакта",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultEditTelegram"
+      },
+      "examples": [
+        {
+          "name": "exampleEditTelegram",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringContactId"
+            },
+            {
+              "$ref": "#/components/examples/stringName"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultEditTelegram"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "verifyContact",
+      "description": "Подтверждение контакта",
+      "params": [
+        {
+          "name": "contactId",
+          "description": "id контакта",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "code",
+          "description": "код подтверждения",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultVerifyContact"
+      },
+      "examples": [
+        {
+          "name": "exampleVerifyContact",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringContactId"
+            },
+            {
+              "$ref": "#/components/examples/stringCode"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultVerifyContact"
+          }
+        }
+      ],
+      "links": []
+    }
+  ],
+  "components": {
+    "contentDescriptors": {
+      "resultIndex": {
+        "name": "resultIndex",
+        "description": "'list' array список контактов со следующими свойствами:\n\n'id' int ID контакта\n\n'type' string Тип контакта: email - электронная почта, phone - телефон, telegram - телеграм\n\n'name' string Имя контакта\n\n'value' string Значение контакта\n\n'verified' bool Подтвержден ли контакт\n\n'filterInfo' array массив информация для пагинации:\n\npage - текущий номер страницы (начиная с 1) с данными в объекте list\n\nperPage - текущее выбранное кол-во записей на одну страницу\n\norderField - поле для сортировки\n\norderDirect - направление для сортировки\n\ntotalCount - всего кол-во записей",
+        "schema": {
+          "type": "object"
+        }
+      },
+      "resultGetAllContacts": {
+        "name": "resultGetAllContacts",
+        "description": "'list' array список контактов со следующими свойствами:\n\n'id' int ID контакта\n\n'type' string Тип контакта: email - электронная почта, phone - телефон, telegram - телеграм\n\n'name' string Имя контакта\n\n'value' string Значение контакта\n\n'verified' bool Подтвержден ли контакт\n\n'admin' bool Является ли административным контактом пользователя",
+        "schema": {
+          "type": "array"
+        }
+      },
+      "resultAddContact": {
+        "name": "resultAddContact",
+        "description": "id контакта, если контакт добавлен",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultAddTelegram": {
+        "name": "resultAddTelegram",
+        "description": "ID контакта, если контакт добавлен",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultVerifyContact": {
+        "name": "resultVerifyContact",
+        "description": "1, если контакт подтвержден",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultRequestTelegramVerifyCode": {
+        "name": "resultRequestTelegramVerifyCode",
+        "description": "верификационный код",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "resultIsVerified": {
+        "name": "resultIsVerified",
+        "description": "true, если подтвержден; false, если неподтвержден",
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "resultAddEmail": {
+        "name": "resultAddEmail",
+        "description": "id контакта, если контакт добавлен",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultAddPhone": {
+        "name": "resultAddPhone",
+        "description": "id контакта, если контакт добавлен",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultEditContact": {
+        "name": "resultEditContact",
+        "description": "1, если контакт изменен",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultDeleteContact": {
+        "name": "resultDeleteContact",
+        "description": "1, если контакт удален",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultDeleteContacts": {
+        "name": "resultDeleteContacts",
+        "description": "1, если все контакты удалены",
+        "schema": {
+          "type": "array"
+        }
+      },
+      "resultEditEmail": {
+        "name": "resultEditEmail",
+        "description": "1, если контакт изменен",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultEditPhone": {
+        "name": "resultEditPhone",
+        "description": "1, если контакт изменен",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultEditTelegram": {
+        "name": "resultEditTelegram",
+        "description": "1, если контакт изменен",
+        "schema": {
+          "type": "integer"
+        }
+      }
+    },
+    "schemas": {
+      "Integer": {
+        "type": "integer"
+      },
+      "String": {
+        "type": "string"
+      },
+      "Boolean": {
+        "type": "boolean"
+      },
+      "Array": {
+        "type": "array"
+      },
+      "Object": {
+        "type": "object"
+      }
+    },
+    "examples": {
+      "intPage": {
+        "name": "page",
+        "summary": "page",
+        "description": "текущий номер страницы",
+        "value": 1
+      },
+      "stringCode": {
+        "name": "code",
+        "summary": "code",
+        "description": "код подтверждения",
+        "value": "611021"
+      },
+      "intPerPage": {
+        "name": "perPage",
+        "summary": "perPage",
+        "description": "текущее выбранное кол.-во записей на одну страницу",
+        "value": 2
+      },
+      "stringOrderField": {
+        "name": "orderField",
+        "summary": "orderField",
+        "description": "поле сортировки, по умолчанию id",
+        "value": "type"
+      },
+      "stringOrderDirect": {
+        "name": "orderDirect",
+        "summary": "orderDirect",
+        "description": "тип сортировки, по умолчанию asc",
+        "value": "desc"
+      },
+      "stringType": {
+        "name": "type",
+        "summary": "type",
+        "description": "тип контакта: 1 - электронная почта, 2 - телефон, 3 - ID телеграм-аккаунта",
+        "value": "phone"
+      },
+      "stringValue": {
+        "name": "value",
+        "summary": "value",
+        "description": "значение контакта: электронная почта, телефон или ID телеграм-аккаунта",
+        "value": "+7 921 5556699"
+      },
+      "stringName": {
+        "name": "name",
+        "summary": "name",
+        "description": "имя контакта",
+        "value": "тест"
+      },
+      "stringContactId": {
+        "name": "contactId",
+        "summary": "contactId",
+        "description": "id контакта",
+        "value": "1"
+      },
+      "stringEmail": {
+        "name": "email",
+        "summary": "email",
+        "description": "адрес электронной почты",
+        "value": "test@gmail.ru"
+      },
+      "stringPhone": {
+        "name": "phone",
+        "summary": "phone",
+        "description": "номер телефона",
+        "value": "+7 921 5556699"
+      },
+      "stringTelegram": {
+        "name": "name",
+        "summary": "name",
+        "description": "имя контакта",
+        "value": "тест"
+      },
+      "arrayContactIds": {
+        "name": "contactIds",
+        "summary": "contactIds",
+        "description": "список ID контактов",
+        "value": [
+          "1",
+          "2"
+        ]
+      },
+      "resultRequestTelegramVerifyCode": {
+        "name": "resultRequestTelegramVerifyCode",
+        "summary": "resultRequestTelegramVerifyCode",
+        "description": "верификационный код",
+        "value": "611021"
+      },
+      "resultIsVerified": {
+        "name": "resultIsVerified",
+        "summary": "resultIsVerified",
+        "description": "true, если подтвержден, false, если неподтвержден",
+        "value": true
+      },
+      "resultAddContact": {
+        "name": "resultAddContact",
+        "summary": "resultAddContact",
+        "description": "id контакта, если контакт добавлен",
+        "value": 1
+      },
+      "resultAddEmail": {
+        "name": "resultAddEmail",
+        "summary": "resultAddEmail",
+        "description": "id контакта, если контакт добавлен",
+        "value": 1
+      },
+      "resultVerifyContact": {
+        "name": "resultVerifyContact",
+        "summary": "resultVerifyContact",
+        "description": "1, если контакт подтвержден",
+        "value": 1
+      },
+      "resultAddPhone": {
+        "name": "resultAddPhone",
+        "summary": "resultAddPhone",
+        "description": "id контакта, если контакт добавлен",
+        "value": 1
+      },
+      "resultAddTelegram": {
+        "name": "resultAddTelegram",
+        "summary": "resultAddTelegram",
+        "description": "id контакта, если контакт добавлен",
+        "value": 1
+      },
+      "resultEditContact": {
+        "name": "resultEditContact",
+        "summary": "resultEditContact",
+        "description": "1, если контакт изменен",
+        "value": 1
+      },
+      "resultDeleteContact": {
+        "name": "resultDeleteContact",
+        "summary": "resultDeleteContact",
+        "description": "1, если контакт удален",
+        "value": 1
+      },
+      "resultDeleteContacts": {
+        "name": "resultDeleteContacts",
+        "summary": "resultDeleteContacts",
+        "description": "1, если все контакты удалены",
+        "value": 1
+      },
+      "resultEditEmail": {
+        "name": "resultEditEmail",
+        "summary": "resultEditEmail",
+        "description": "1, если контакт изменен",
+        "value": 1
+      },
+      "resultEditPhone": {
+        "name": "resultEditPhone",
+        "summary": "resultEditPhone",
+        "description": "1, если контакт изменен",
+        "value": 1
+      },
+      "resultEditTelegram": {
+        "name": "resultEditTelegram",
+        "summary": "resultEditTelegram",
+        "description": "1, если контакт изменен",
+        "value": 1
+      },
+      "resultIndex": {
+        "name": "resultIndex",
+        "summary": "список контактов мониторинга",
+        "description": "'list' array список контактов со следующими свойствами:\n\n'id' int ID контакта\n\n'type' string Тип контакта: email - электронная почта, phone - телефон, telegram - телеграм\n\n'name' string Имя контакта\n\n'value' string Значение контакта\n\n'verified' bool Подтвержден ли контакт\n\n'filterInfo' array массив информация для пагинации:\n\npage - текущий номер страницы (начиная с 1) с данными в объекте list\n\nperPage - текущее выбранное кол-во записей на одну страницу\n\norderField - поле для сортировки\n\norderDirect - направление для сортировки\n\ntotalCount - всего кол-во записей",
+        "value": {
+          "list": [
+            {
+              "id": "4320",
+              "type": "phone",
+              "name": "тест",
+              "value": "+7 921 8990681",
+              "verified": true
+            },
+            {
+              "id": "3205",
+              "type": "email",
+              "name": "Иванов Иван Иванович",
+              "value": "test@gmail.ru",
+              "verified": true
+            }
+          ],
+          "filterInfo": {
+            "page": 1,
+            "perPage": 2,
+            "orderField": "type",
+            "orderDirect": "desc",
+            "totalCount": 2
+          }
+        }
+      },
+      "resultGetAllContacts": {
+        "name": "resultGetAllContacts",
+        "summary": "список всех контактов мониторинга для текущего пользователя",
+        "description": "'list' array список контактов со следующими свойствами:\n\n'id' int ID контакта\n\n'type' string Тип контакта: email - электронная почта, phone - телефон, telegram - телеграм\n\n'name' string Имя контакта\n\n'value' string Значение контакта\n\n'verified' bool Подтвержден ли контакт\n\n'admin' bool Является ли административным контактом пользователя",
+        "value": [
+          {
+            "id": "3204",
+            "type": "phone",
+            "name": "Иванов Иван Иванович",
+            "value": "+7 949 8469541",
+            "verified": false,
+            "admin": true
+          },
+          {
+            "id": "3205",
+            "type": "email",
+            "name": "Иванов Иван Иванович",
+            "value": "test@gmail.ru",
+            "verified": true,
+            "admin": true
+          },
+          {
+            "id": "4320",
+            "type": "phone",
+            "name": "тест",
+            "value": "+7 921 8990681",
+            "verified": true,
+            "admin": false
+          }
+        ]
+      }
+    }
+  }
+}

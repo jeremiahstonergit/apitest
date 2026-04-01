@@ -1,0 +1,1043 @@
+{
+  "openrpc": "1.0.0-rc1",
+  "info": {
+    "title": "API Spaceweb",
+    "description": "Документация по API Spaceweb",
+    "version": "1.227"
+  },
+  "servers": [
+    {
+      "name": "DBaaS",
+      "summary": "Работа с управляемыми базами данных",
+      "description": "Объект управления DBaaS",
+      "url": "https://api.sweb.ru/dbaas"
+    }
+  ],
+  "methods": [
+    {
+      "name": "index",
+      "description": "Возвращает объект управления DBaaS с элементами",
+      "params": [],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultIndex"
+      },
+      "examples": [
+        {
+          "name": "exampleIndex",
+          "params": [],
+          "result": {
+            "$ref": "#/components/examples/resultIndex"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "setUpgradeAgree",
+      "description": "Сохранение выбора пользователя о переходе на платную версию",
+      "params": [
+        {
+          "name": "upgradeAgree",
+          "description": "выбор пользователя, переходить (true) или не переходить (false) на платную версию",
+          "schema": {
+            "$ref": "#/components/schemas/Boolean"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleSetUpgradeAgree",
+          "params": [
+            {
+              "$ref": "#/components/examples/booleanUpgradeAgree"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultIntegerOne"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "getAvailableConfig",
+      "description": "Возвращает данные для отображения страницы создания кластера: доступные тарифы и версии баз данных",
+      "params": [],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultGetAvailableConfig"
+      },
+      "examples": [
+        {
+          "name": "exampleGetAvailableConfig",
+          "params": [],
+          "result": {
+            "$ref": "#/components/examples/resultGetAvailableConfig"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "getConstructorPlanId",
+      "description": "Возвращает id тарифного плана конфигуратора DBaaS по значениям кол-ва ядер, ОЗУ, объема диска и количеству реплик",
+      "params": [
+        {
+          "name": "cpu",
+          "description": "количество ядер CPU",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        },
+        {
+          "name": "memory",
+          "description": "ОЗУ в Гб",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        },
+        {
+          "name": "storage",
+          "description": "жесткий диск в Гб",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        },
+        {
+          "name": "replicas",
+          "description": "количество реплик (по умолчанию 0, т.к. только master-экземпляр)",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": false
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultGetConstructorPlanId"
+      },
+      "examples": [
+        {
+          "name": "exampleGetConstructorPlanId",
+          "params": [
+            {
+              "$ref": "#/components/examples/intCPU"
+            },
+            {
+              "$ref": "#/components/examples/intMemory"
+            },
+            {
+              "$ref": "#/components/examples/intStorage"
+            },
+            {
+              "$ref": "#/components/examples/intReplicas"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultGetConstructorPlanId"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "getFirstOrderInfo",
+      "description": "Получение информации о первом заказе",
+      "params": [],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultGetFirstOrderInfo"
+      },
+      "examples": [
+        {
+          "name": "exampleGetFirstOrderInfo",
+          "params": [],
+          "result": {
+            "$ref": "#/components/examples/resultGetFirstOrderInfo"
+          }
+        }
+      ],
+      "links": [
+        {
+          "name": "removeFirst",
+          "description": "Cбрасывает первый заказ (и удаляет незапущенный кластер, если он был создан при подтверждении реквизитов)",
+          "method": "removeFirst",
+          "params": {}
+        }
+      ]
+    },
+    {
+      "name": "removeFirst",
+      "description": "Удаление первого заказа: доступно, если заказ ещё не был оплачен и услуга не стартовала",
+      "params": [],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultIntRemoveFirst"
+      },
+      "examples": [
+        {
+          "name": "exampleRemoveFirst",
+          "params": [],
+          "result": {
+            "$ref": "#/components/examples/resultIntegerOne"
+          }
+        }
+      ],
+      "links": [
+        {
+          "name": "getFirstOrderInfo",
+          "description": "Возвращает информацию о первом заказе",
+          "method": "getFirstOrderInfo",
+          "params": {}
+        }
+      ]
+    },
+    {
+      "name": "createInstance",
+      "description": "Создание кластера (инициирует создание кластера)",
+      "params": [
+        {
+          "name": "engineType",
+          "description": "тип СУБД ('PostgreSQL', 'MySQL')",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "engineVersion",
+          "description": "версия СУБД (PostgreSQL: '12', '13', '14', '15', '16'; MySQL: '5.7', '8.0')",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "users",
+          "description": "массив пользователей: [['name': 'логин', 'password': 'пароль']]",
+          "schema": {
+            "$ref": "#/components/schemas/Array"
+          },
+          "required": true
+        },
+        {
+          "name": "planId",
+          "description": "id тарифа DBaaS",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        },
+        {
+          "name": "displayName",
+          "description": "отображаемое имя кластера",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        },
+        {
+          "name": "instanceOptions",
+          "description": "массив настроек кластера (по умолчанию пустой массив [], который воспринимается как ['sync_replicas': 0, 'read_replicas': 0, 'is_enabled': true])",
+          "schema": {
+            "$ref": "#/components/schemas/Array"
+          },
+          "required": false
+        },
+        {
+          "name": "dbDisplayName",
+          "description": "отображаемое имя первой базы данных (по умолчанию пустая строка)",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        },
+        {
+          "name": "dbOptions",
+          "description": "массив настроек БД, сейчас можно указать список пользователей (поле 'users') для первой БД (по умолчанию: ['users': []]",
+          "schema": {
+            "$ref": "#/components/schemas/Array"
+          },
+          "required": false
+        },
+        {
+          "name": "databases",
+          "description": "массив с данными дополнительных БД (по умолчанию пустой массив []), можно указать следующие поля: name - имя БД, display_name - отображаемое имя БД (аналогично параметру $dbDisplayName), users - список пользователей (аналогично параметру $dbOptions 'users')",
+          "schema": {
+            "$ref": "#/components/schemas/Array"
+          },
+          "required": false
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultCreateInstance"
+      },
+      "examples": [
+        {
+          "name": "exampleCreateInstance",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringEngineType"
+            },
+            {
+              "$ref": "#/components/examples/stringEngineVersion"
+            },
+            {
+              "$ref": "#/components/examples/arrayUsers"
+            },
+            {
+              "$ref": "#/components/examples/intPlanId"
+            },
+            {
+              "$ref": "#/components/examples/stringDisplayName"
+            },
+            {
+              "$ref": "#/components/examples/arrayInstanceOptions"
+            },
+            {
+              "$ref": "#/components/examples/stringdbDisplayName"
+            },
+            {
+              "$ref": "#/components/examples/arraydbOptions"
+            },
+            {
+              "$ref": "#/components/examples/arraydatabases"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultCreateInstance"
+          }
+        }
+      ],
+      "links": [
+        {
+          "name": "removeInstance",
+          "description": "Удаляет кластер баз данных",
+          "method": "removeInstance",
+          "params": {
+            "billingId": "$params.billingId"
+          }
+        }
+      ]
+    },
+    {
+      "name": "editInstance",
+      "description": "Редактирование кластера",
+      "params": [
+        {
+          "name": "billingId",
+          "description": "строка-идентификатор услуги",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "users",
+          "description": "массив пользователей вида [['name': 'username1', 'password': 'password1'],['name': 'username2'],...] — при наличии поля password пользователь будет создан; — при отсутствии поля password существующий пользователь не будет удален; — отсутствующие в массиве пользователи, которые существуют в кластере, будут удалены",
+          "schema": {
+            "$ref": "#/components/schemas/Array"
+          },
+          "required": false
+        },
+        {
+          "name": "planId",
+          "description": "ID тарифа DBaaS (по умолчанию null)",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": false
+        },
+        {
+          "name": "displayName",
+          "description": "отображаемое имя кластера (по умолчанию null)",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        },
+        {
+          "name": "instanceOptions",
+          "description": "массив настроек кластера, доступны поля 'sync_replicas' (количество синх. реплик) и 'read_replicas' (количество асинх. реплик)",
+          "schema": {
+            "$ref": "#/components/schemas/Array"
+          },
+          "required": false
+        },
+        {
+          "name": "databases",
+          "description": "список баз данных (по умолчанию null, базы не редактируются), можно указать следующие поля: name — имя БД, display_name — отображаемое имя БД, users — список пользователей, owner — владелец базы из списка пользователей (только для Postgres), recreate — флаг удалить и создать заново)",
+          "schema": {
+            "$ref": "#/components/schemas/Array"
+          },
+          "required": false
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultIntEdit"
+      },
+      "examples": [
+        {
+          "name": "exampleEditInstance",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringBillingId"
+            },
+            {
+              "$ref": "#/components/examples/arrayUsers"
+            },
+            {
+              "$ref": "#/components/examples/intPlanId"
+            },
+            {
+              "$ref": "#/components/examples/stringDisplayNameEdit"
+            },
+            {
+              "$ref": "#/components/examples/arrayInstanceOptions"
+            },
+            {
+              "$ref": "#/components/examples/arraydatabases"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultIntegerOne"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "removeInstance",
+      "description": "Удаление кластера",
+      "params": [
+        {
+          "name": "billingId",
+          "description": "строка-идентификатор услуги",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultIntRemove"
+      },
+      "examples": [
+        {
+          "name": "exampleRemoveInstance",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringBillingId"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultIntegerOne"
+          }
+        }
+      ],
+      "links": [
+        {
+          "name": "createInstance",
+          "description": "Создает кластер баз данных",
+          "method": "createInstance",
+          "params": {
+            "engineType": "$params.engineType",
+            "engineVersion": "$params.engineVersion",
+            "users": "$params.users",
+            "planId": "$params.planId",
+            "displayName": "$params.displayName",
+            "instanceOptions": "$params.instanceOptions",
+            "dbDisplayName": "$params.dbDisplayName",
+            "dbOptions": "$params.dbOptions",
+            "databases": "$params.databases"
+          }
+        }
+      ]
+    },
+    {
+      "name": "deleteDatabase",
+      "description": "Удаление отдельной базы данных из кластера",
+      "params": [
+        {
+          "name": "billingId",
+          "description": "строка-идентификатор услуги",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "dbName",
+          "description": "техническое имя базы данных",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultDeleteDatabase"
+      },
+      "examples": [
+        {
+          "name": "exampleDeleteDatabase",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringBillingId"
+            },
+            {
+              "$ref": "#/components/examples/stringDbName"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultDeleteDatabase"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "validateUsers",
+      "description": "Проверяет список пользователей кластера БД",
+      "params": [
+        {
+          "name": "users",
+          "description": "массив пользователей: [['name': 'логин', 'password': 'пароль']]",
+          "schema": {
+            "$ref": "#/components/schemas/Array"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultValidateUsers"
+      },
+      "examples": [
+        {
+          "name": "exampleValidateUsers",
+          "params": [
+            {
+              "$ref": "#/components/examples/arrayUsers"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultValidateUsers"
+          }
+        }
+      ],
+      "links": []
+    }
+  ],
+  "components": {
+    "contentDescriptors": {
+      "resultInt": {
+        "name": "resultInt",
+        "description": "1 - при успехе, 0 - при невозможности сохранить выбор",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultIntEdit": {
+        "name": "resultIntEdit",
+        "description": "1 - при успехе, 0 - при неуспешном сохранении изменений",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultIntRemoveFirst": {
+        "name": "resultIntRemoveFirst",
+        "description": "1 - если операция прошла успешно, ошибка 'Доступ запрещен' - при отсутствии первого заказа",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultIntRemove": {
+        "name": "resultIntRemove",
+        "description": "1 - если операция прошла успешно",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultValidateUsers": {
+        "name": "resultValidateUsers",
+        "description": "если в списке пользователей ошибка, отображает ошибку, если нет - true",
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "resultGetConstructorPlanId": {
+        "name": "resultGetConstructorPlanId",
+        "description": "id тарифа конфигуратора DBaaS",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultIndex": {
+        "name": "resultIndex",
+        "description": "'id' int ID кластера\n\n'billing_id' string Cтроковый ID услуги (имеет вид (<customer_id>_dbaas_<number>), где <customer_id> - логин пользователя, <number> - порядковый номер кластера у пользователя)\n\n'price' float Цена за услугу\n\n'plan' array Информация о тарифе:\n\n'id' int ID тарифа\n\n'name' string Название тарифа\n\n'cpu' int Количество CPU\n\n'memory' int Количество ГБ памяти\n\n'storage' int Количество ГБ диска\n\n'active' boolean Активна ли услуга\n\n'ts_will_be_deleted' string|null Дата удаления бета-кластера\n\n'blockUi' boolean Блокировано ли управление в ПУ\n\n'currentAction' string|null Текущее выполняемое действие над услугой\n\n'instance_uuid' string UUID кластера\n\n'name' string Отображаемое имя кластера (пользовательское, а если его нет, то billing_id)\n\n'display_name' string Пользовательское имя кластера\n\n'status' string|null Статус кластера в MPU DBaaS\n\n'engine' string Тип и версия СУБД\n\n'instances' int Количество экземпляров кластера (т.е. 1 + количество реплик), возможные значения 1,2,3\n\n'sync_replicas' int Количество синхронных реплик (возможные значения 1,2)\n\n'read_replicas' int Количество асинхронных реплик (возможные значения 1,2)\n\n'replicas' int Количество реплик (возможные значения 1,2)\n\n'is_enabled' boolean Включен ли кластер в MPU\n\n'ip' string Данные для подключения (ip:port)\n\n'endpoints' array  Данные подключения к репликам, может быть один или два элемента (в зависимости от типа реплик):\n\n'port' int Порт\n\n'type' string Доступ для чтения и записи\n\n'ip' string IP\n\n'users' array Список пользователей кластера:\n\n'name' string Имя пользователя\n\n'databases' array Список баз данных:\n\n'name' string Техническое имя базы данных\n\n'size' int Размер базы данных\n\n'users' array Пользователи базы данных:\n\n'name' string Имя пользователя\n\n'display_name' string Отоброжаемое имя базы данных\n\n'total_count' string Общее количество кластеров на бете\n\n'max_count' int Максимальное количество кластеров на бете\n\n'can_create' boolean Возможность создания кластера\n\n'upgrade_agree' boolean Cогласен ли пользователь с кластером на бете на переход на платную версию (true|false, если пользователь выбрал; null - если не выбирал)",
+        "schema": {
+          "type": "object"
+        }
+      },
+      "resultGetAvailableConfig": {
+        "name": "resultGetAvailableConfig",
+        "description": "'plans' array Тарифы:\n\n'id' int ID тарифа\n\n'name' string Название тарифа\n\n'cpu' int Количество CPU\n\n'memory' int Количество ГБ памяти\n\n'storage' int Количество ГБ диска\n\n'engines' array Версии баз данных\n\n'kit' object Данные конфигуратора DBaaS",
+        "schema": {
+          "type": "object"
+        }
+      },
+      "resultGetFirstOrderInfo": {
+        "name": "resultGetFirstOrderInfo",
+        "description": "'plan' string|null Название плана\n\n'engine' string|null Полное название типа и версии СУБД\n\n'engine_type' string|null Название типа СУБД - 'PostgreSQL' или 'MySQL'\n\n'engine_version' string|null Версия СУБД\n\n'cpu' int Кол-во ядер CPU\n\n'memory' int|null Количество памяти (ОЗУ) в Гб\n\n'storage' int|null Размер жесткого диска в Гб\n\n'sync_replicas' int|null Количество синхронных реплик\n\n'read_replicas' int|null Количество асинхронных реплик\n\n 'replicas' int|null Общее количество реплик (= sync_replicas + read_replicas)\n\n'instances' int|null Общее количество кластеров (= replicas + 1 (master))\n\n'price_per_month' int|null Цена за месяц\n\n'pay_period' int|null Цена за период\n\n'plan_is_constructor' boolean|null Флаг сконструированного тарифа\n\n'clearAvailable' boolean|null Доступна возможность очистки первого заказа\n\n'promocode' string|null Промо-код на скидку (не партнерский) введенный при регистрации",
+        "schema": {
+          "type": "object"
+        }
+      },
+      "resultCreateInstance": {
+        "name": "resultCreateInstance",
+        "description": "объект Success ('Создание кластера баз данных запущено'), т.е. отображение сообщения",
+        "schema": {
+          "type": "object"
+        }
+      },
+      "resultDeleteDatabase": {
+        "name": "resultDeleteDatabase",
+        "description": "объект Success ('База данных удалена'), т.е. отображение сообщения",
+        "schema": {
+          "type": "object"
+        }
+      }
+    },
+    "schemas": {
+      "Integer": {
+        "type": "integer"
+      },
+      "String": {
+        "type": "string"
+      },
+      "Boolean": {
+        "type": "boolean"
+      },
+      "Array": {
+        "type": "array"
+      },
+      "Object": {
+        "type": "object"
+      }
+    },
+    "examples": {
+      "intPlanId": {
+        "name": "planId",
+        "summary": "planId",
+        "description": "id тарифа DBaaS",
+        "value": 3
+      },
+      "intCPU": {
+        "name": "cpu",
+        "summary": "cpu",
+        "description": "количество ядер CPU",
+        "value": 1
+      },
+      "intMemory": {
+        "name": "memory",
+        "summary": "memory",
+        "description": "количество ОЗУ в ГБ",
+        "value": 2
+      },
+      "intStorage": {
+        "name": "storage",
+        "summary": "storage",
+        "description": "жесткий диск в Гб",
+        "value": 160
+      },
+      "intReplicas": {
+        "name": "replicas",
+        "summary": "replicas",
+        "description": "количество реплик",
+        "value": 1
+      },
+      "stringEngineType": {
+        "name": "engineType",
+        "summary": "engineType",
+        "description": "тип СУБД ('PostgreSQL', 'MySQL')",
+        "value": "PostgreSQL"
+      },
+      "stringEngineVersion": {
+        "name": "engineVersion",
+        "summary": "engineVersion",
+        "description": "версия СУБД (PostgreSQL: '12', '13', '14', '15', '16'; MySQL: '5.7', '8.0')'",
+        "value": "13"
+      },
+      "stringBillingId": {
+        "name": "billingId",
+        "summary": "billingId",
+        "description": "строка-идентификатор услуги",
+        "value": "testuser_dbaas_1"
+      },
+      "booleanUpgradeAgree": {
+        "name": "upgradeAgree",
+        "summary": "upgradeAgree",
+        "description": "выбор пользователя, переходить (true) или не переходить (false) на платную версию",
+        "value": true
+      },
+      "stringDbName": {
+        "name": "dbName",
+        "summary": "dbName",
+        "description": "техническое имя базы данных",
+        "value": "test1"
+      },
+      "stringDisplayName": {
+        "name": "displayName",
+        "summary": "displayName",
+        "description": "отображаемое имя кластера",
+        "value": "Тестовая управляемая база данных"
+      },
+      "stringDisplayNameEdit": {
+        "name": "displayName",
+        "summary": "displayName",
+        "description": "отображаемое имя кластера",
+        "value": "Тестовая управляемая база данных измененная"
+      },
+      "stringdbDisplayName": {
+        "name": "dbDisplayName",
+        "summary": "dbDisplayName",
+        "description": "отображаемое имя первой базы данных",
+        "value": "тестовая база данных"
+      },
+      "arrayUsers": {
+        "name": "users",
+        "summary": "users",
+        "description": "массив пользователей: [['name': 'логин', 'password': 'пароль']]",
+        "value": [
+          {
+            "name": "test1",
+            "password": "Pass_ByTest1"
+          }
+        ]
+      },
+      "arrayInstanceOptions": {
+        "name": "instanceOptions",
+        "summary": "instanceOptions",
+        "description": "настройки кластера, доступны поля 'sync_replicas' (количество синх. реплик) и 'read_replicas' (количество асинх. реплик)",
+        "value": {
+          "sync_replicas": 1,
+          "read_replicas": 0
+        }
+      },
+      "arraydbOptions": {
+        "name": "dbOptions",
+        "summary": "dbOptions",
+        "description": "настройки первой базы дазы данных (доступно поле 'users' - список пользователей-владельцев первой базы данных)",
+        "value": {
+          "users": [
+            "test1"
+          ]
+        }
+      },
+      "arraydatabases": {
+        "name": "databases",
+        "summary": "databases",
+        "description": "список дополнительных баз данных, доступны поля: name, display_name, users",
+        "value": [
+          {
+            "name": "testDB",
+            "users": [
+              "test1"
+            ],
+            "display_name": "тест",
+            "recreate": false
+          }
+        ]
+      },
+      "resultGetFirstOrderInfo": {
+        "name": "resultGetFirstOrderInfo",
+        "summary": "информация о первом заказе",
+        "description": "'plan' string Название тарифа конфигуратора\n\n'engine' string Полная версия базы данных\n\n'engine_type' string Тип базы данных - строка 'PostgreSQL' или 'MySQL'\n\n'engine_version' string Версия базы данных - строка - для 'PostgreSQL' доступны '13', '14', '15', для 'MySQL' - '5.7' или '8.0'\n\n'cpu' int Кол-во ядер CPU\n\n'memory' int ОЗУ в Гб\n\n'storage' int жесткий диск в Гб\n\n'sync_replicas' int Количество синхронных реплик\n\n'read_replicas' int Количество асинхронных реплик\n\n'instances' int Количество экземпляров\n\n'price_per_month' float Цена в месяц\n\n'pay_period' int Период оплаты\n\n'plan_is_constructor' boolean Тариф конфигуратор или нет\n\n'clearAvailable' boolean Доступна возможность очистки первого заказа\n\n'promocode' string Промокод на скидку при регистрации",
+        "value": {
+          "plan": "DBAAS-1/1/10",
+          "engine": "PostgreSQL 13",
+          "engine_type": "PostgreSQL",
+          "engine_version": "13",
+          "cpu": "1",
+          "memory": "1",
+          "storage": "10",
+          "sync_replicas": "0",
+          "read_replicas": "0",
+          "replicas": 0,
+          "instances": 1,
+          "price_per_month": 398,
+          "pay_period": 1,
+          "plan_is_constructor": true,
+          "clearAvailable": true,
+          "promocode": null
+        }
+      },
+      "resultGetAvailableConfig": {
+        "name": "resultGetAvailableConfig",
+        "summary": "данные для отображения страницы создания кластера: доступные тарифы и версии баз данных",
+        "description": "'plans' array Тарифы:\n\n'id' int ID тарифа\n\n'name' string Название тарифа\n\n'cpu' int Количество CPU\n\n'memory' int Количество ГБ памяти\n\n'storage' int Количество ГБ диска\n\n'engines' array версии баз данных\n\n'kit' array данные конфигуратора DBaaS",
+        "value": {
+          "plans": [
+            {
+              "id": "1",
+              "name": "Тестовый",
+              "cpu": "2",
+              "memory": "2",
+              "storage": "40"
+            }
+          ],
+          "engines": {
+            "PostgreSQL": [
+              {
+                "name": "PostgreSQL 13",
+                "version": "13"
+              },
+              {
+                "name": "PostgreSQL 14",
+                "version": "14"
+              },
+              {
+                "name": "PostgreSQL 15",
+                "version": "15"
+              }
+            ],
+            "MySQL": [
+              {
+                "name": "MySQL 5.7",
+                "version": "5.7"
+              },
+              {
+                "name": "MySQL 8.0",
+                "version": "8.0"
+              }
+            ]
+          },
+          "kit": {
+            "cpu": {
+              "start": 1,
+              "end": 8,
+              "step": 1,
+              "price": null,
+              "prices": [
+                {
+                  "start": 1,
+                  "end": 2,
+                  "price": 131
+                },
+                {
+                  "start": 3,
+                  "end": 6,
+                  "price": 164
+                },
+                {
+                  "start": 7,
+                  "end": null,
+                  "price": 157
+                }
+              ]
+            },
+            "memory": {
+              "start": 1,
+              "end": 16,
+              "step": 1,
+              "values": [],
+              "price": null,
+              "prices": [
+                {
+                  "start": 1,
+                  "end": 1,
+                  "price": 28
+                },
+                {
+                  "start": 2,
+                  "end": 2,
+                  "price": 34
+                },
+                {
+                  "start": 3,
+                  "end": 10,
+                  "price": 35
+                },
+                {
+                  "start": 11,
+                  "end": null,
+                  "price": 34
+                }
+              ]
+            },
+            "storage": {
+              "start": 10,
+              "end": 160,
+              "step": 10,
+              "values": [
+                15
+              ],
+              "price": null,
+              "prices": [
+                {
+                  "start": 10,
+                  "end": 19,
+                  "price": 7.5
+                },
+                {
+                  "start": 20,
+                  "end": 29,
+                  "price": 15
+                },
+                {
+                  "start": 30,
+                  "end": 50,
+                  "price": 9.5
+                },
+                {
+                  "start": 51,
+                  "end": 139,
+                  "price": 8.5
+                },
+                {
+                  "start": 140,
+                  "end": 150,
+                  "price": 9
+                },
+                {
+                  "start": 151,
+                  "end": null,
+                  "price": 13.5
+                }
+              ],
+              "price_backup": null,
+              "prices_backup": [
+                {
+                  "start": 10,
+                  "end": 19,
+                  "price": 0.5
+                },
+                {
+                  "start": 20,
+                  "end": 50,
+                  "price": 0.6
+                },
+                {
+                  "start": 51,
+                  "end": 120,
+                  "price": 0.65
+                },
+                {
+                  "start": 121,
+                  "end": null,
+                  "price": 0.6
+                }
+              ]
+            },
+            "categoryId": "dbaas"
+          }
+        }
+      },
+      "resultIndex": {
+        "name": "resultIndex",
+        "summary": "'id' int ID кластера\n\n'billing_id' string ID услуги (имеет вид <customer_id>dbaas, где <customer_id> - логин пользователя, - порядковый номер кластера у пользователя)\n\n'price' float Цена\n\n'plan' array Тариф:\n\n'id' int ID тарифа\n\n'name' string Название тарифа\n\n'cpu' int Количество CPU\n\n'memory' int Количество ГБ памяти\n\n'Storage' int Количество ГБ диска\n\n'active' boolean Признак включенности услуги\n\n'blockUi' boolean Признак блокировки управления в ПУ (в случае выполнения операции)\n\n'currentAction' string Текущее действие\n\n'instance_uuid' string UUID инстанса\n\n'name' string Отображаемое имя инстанса (пользовательское, а если его нет, то billing_id)\n\n'display_name' string Пользовательское имя инстанса\n\n'status' string Статус инстанса в MPU DBaaS\n\n'engine' string Движок базы данных (из MPU DBaaS)\n\n'instances' int Количество экземпляров (= 1 (master) + sync_replicas + read_replicas)\n\n'sync_replicas' int Количество синхронных реплик (входит в instances количество экземпляров)\n\n'read_replicas' int Количество асинхронных реплик (входит в instances количество экземпляров)\n\n'endpoints' array Данные доступа (rw есть всегда, ro только при read_replicas > 0):\n\n'port' int Порт\n\n'type' string Доступ для чтения и записи\n\n'ip' string IP\n\n'limits' array Данные настроек инстанса (берутся из шаблона конфигурации)\n\n'instance' array Данные инстанса из MPU DBaaS\n\n'users' array Пользователи:\n\n'name' string Имя пользователя\n\n'databases' array Базы данных:\n\n'name' string Техническое имя базы данных\n\n'size' int Размер базы данных\n\n'users' array Пользователи:\n\n'name' string Имя пользователя\n\n'display_name' string Отоброжаемое имя базы данных\n\n'total_count' string Общее количество кластеров на бете\n\n'max_count' int Максимальное количество кластеров на бете\n\n'can_create' boolean Возможность создания кластера\n\n'upgrade_agree' boolean Согласен ли пользователь на переход на платный тариф после окончания беты",
+        "description": "информация о кластерах",
+        "value": {
+          "instances": [
+            {
+              "id": 380,
+              "billing_id": "testuser_dbaas_1",
+              "price": 398,
+              "plan": {
+                "id": "2",
+                "name": "DBAAS-1/1/10",
+                "cpu": "1",
+                "memory": "1",
+                "storage": "10"
+              },
+              "active": true,
+              "ts_will_be_deleted": null,
+              "blockUi": false,
+              "currentAction": null,
+              "instance_uuid": "c000000-1111-222d-ns13-44444444b31d",
+              "name": "testuser_dbaas_1",
+              "display_name": "",
+              "status": "ready",
+              "engine": "MySQL 5.7",
+              "instances": 1,
+              "sync_replicas": 0,
+              "read_replicas": 0,
+              "is_enabled": true,
+              "replicas": 0,
+              "ip": "11.222.44.55:66666",
+              "endpoints": [
+                {
+                  "ip": "11.222.44.55",
+                  "port": 66666,
+                  "type": "rw"
+                }
+              ],
+              "users": [
+                {
+                  "name": "test"
+                }
+              ],
+              "databases": [
+                {
+                  "name": "test",
+                  "size": 0,
+                  "users": [],
+                  "display_name": ""
+                }
+              ]
+            }
+          ],
+          "can_create": true,
+          "total_count": "8",
+          "max_count": 110,
+          "upgrade_agree": null
+        }
+      },
+      "resultGetConstructorPlanId": {
+        "name": "resultGetConstructorPlanId",
+        "summary": "id тарифа конфигуратора DBaaS ",
+        "description": "id тарифа конфигуратора DBaaS для последующего создания (createInstance) или редактирования кластера (editInstance)",
+        "value": 96
+      },
+      "resultCreateInstance": {
+        "name": "resultCreateInstance",
+        "summary": "создание кластера",
+        "description": "объект Success(Создание кластера баз данных запущено), т.е. отображение сообщения",
+        "value": {
+          "extendedResult": {
+            "code": 1,
+            "message": "Создание кластера баз данных запущено",
+            "data": []
+          }
+        }
+      },
+      "resultIntegerOne": {
+        "name": "one",
+        "summary": "успех",
+        "description": "ответ при успешно выполненной операции",
+        "value": 1
+      },
+      "resultDeleteDatabase": {
+        "name": "resultDeleteDatabase",
+        "summary": "удаление отдельной базы данных из кластера",
+        "description": "объект Success(База данных удалена), т.е. отображение сообщения",
+        "value": {
+          "extendedResult": {
+            "code": 1,
+            "message": "База данных удалена",
+            "data": []
+          }
+        }
+      },
+      "resultValidateUsers": {
+        "name": "resultValidateUsers",
+        "summary": "проверяет список пользователей кластера БД",
+        "description": "если в списке пользователей ошибка, отображает ошибку, если нет - true",
+        "value": true
+      }
+    }
+  }
+}

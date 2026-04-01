@@ -1,0 +1,120 @@
+{
+  "openrpc": "1.0.0-rc1",
+  "info": {
+    "title": "API Spaceweb",
+    "description": "Документация по API Spaceweb",
+    "version": "1.185"
+  },
+  "servers": [
+    {
+      "name": "Локальная сеть",
+      "summary": "IP для VPS",
+      "description": "Основные функции:\n\nсоздание и удаление IP",
+      "url": "https://api.sweb.ru/vps/ip"
+    }
+  ],
+  "methods": [
+    {
+      "name": "addLocal",
+      "description": "Подключение VPS к локальной сети",
+      "params": [
+        {
+          "name": "billingId",
+          "description": "Идентификатор услуги",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleAddLocal",
+          "params": [
+            {
+              "$ref": "#/components/examples/billingId"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/integerOne"
+          }
+        }
+      ]
+    },
+    {
+      "name": "removeLocal",
+      "description": "Удаление локального IP",
+      "params": [
+        {
+          "name": "billingId",
+          "description": "Идентификатор услуги",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleAddLocal",
+          "params": [
+            {
+              "$ref": "#/components/examples/billingId"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/integerOne"
+          }
+        }
+      ]
+    }
+  ],
+  "components": {
+    "contentDescriptors": {
+      "resultInt": {
+        "name": "resultInt",
+        "description": "1 - успешно, 0 - ошибка",
+        "schema": {
+          "type": "integer"
+        }
+      }
+    },
+    "schemas": {
+      "Integer": {
+        "type": "integer"
+      },
+      "String": {
+        "type": "string"
+      },
+      "Boolean": {
+        "type": "boolean"
+      },
+      "Array": {
+        "type": "array"
+      },
+      "Object": {
+        "type": "object"
+      }
+    },
+    "examples": {
+      "billingId": {
+        "name": "billingId",
+        "summary": "billingId",
+        "description": "Идентификатор услуги",
+        "value": "test_vps_1"
+      },
+      "integerOne": {
+        "name": "one",
+        "summary": "успех",
+        "description": "Ответ при успешно выполненной операции",
+        "value": 1
+      }
+    }
+  }
+}

@@ -1,0 +1,810 @@
+{
+  "openrpc": "1.0.0-rc1",
+  "info": {
+    "title": "API Spaceweb",
+    "description": "Документация по API Spaceweb",
+    "version": "1.182"
+  },
+  "servers": [
+    {
+      "name": "Dns",
+      "summary": "Объект управления DNS записями",
+      "description": "Управление записями DNS для доменов",
+      "url": "https://api.sweb.ru/domains/dns"
+    }
+  ],
+  "methods": [
+    {
+      "name": "info",
+      "description": "Получение текущих записей зоны DNS",
+      "params": [
+        {
+          "name": "domain",
+          "description": "Основное доменное имя",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInfo"
+      },
+      "examples": [
+        {
+          "name": "exampleIndex",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultInfo"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "editMx",
+      "description": "Редактирование МХ записи",
+      "params": [
+        {
+          "name": "domain",
+          "description": "Основное доменное имя",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "action",
+          "description": "Тип операции с записью",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "index",
+          "description": "Идентификатор записи для редактирования/удаления",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": false
+        },
+        {
+          "name": "priority",
+          "description": "Приоритет записи",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": false
+        },
+        {
+          "name": "value",
+          "description": "Сервер обработки почты",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        },
+        {
+          "name": "subDomain",
+          "description": "Поддомен, если запись не для основного домена",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultEditMx"
+      },
+      "examples": [
+        {
+          "name": "exampleEditMx",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/stringAction"
+            },
+            {
+              "$ref": "#/components/examples/intIndex"
+            },
+            {
+              "$ref": "#/components/examples/intPriority"
+            },
+            {
+              "$ref": "#/components/examples/stringValue"
+            },
+            {
+              "$ref": "#/components/examples/stringSubDomain"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultEditMx"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "editSrv",
+      "description": "Редактирование SRV записи",
+      "params": [
+        {
+          "name": "domain",
+          "description": "Основное доменное имя",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "action",
+          "description": "Тип операции с записью",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "index",
+          "description": "Идентификатор записи для редактирования/удаления",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": false
+        },
+        {
+          "name": "priority",
+          "description": "Приоритет записи",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": false
+        },
+        {
+          "name": "ttl",
+          "description": "Время жизни записи",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": false
+        },
+        {
+          "name": "weight",
+          "description": "Вес записи",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": false
+        },
+        {
+          "name": "target",
+          "description": "Целевой хост или IP-адрес, на который указывает запись",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        },
+        {
+          "name": "service",
+          "description": "Идентификатор сервиса для записей",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        },
+        {
+          "name": "protocol",
+          "description": "Протокол для записей",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        },
+        {
+          "name": "port",
+          "description": "Номер порта TCP/UDP для записей",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": false
+        },
+        {
+          "name": "subDomain",
+          "description": "Поддомен, если запись не для основного домена",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultEditSrv"
+      },
+      "examples": [
+        {
+          "name": "exampleEditSrv",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/stringAction"
+            },
+            {
+              "$ref": "#/components/examples/intIndex"
+            },
+            {
+              "$ref": "#/components/examples/intPriority"
+            },
+            {
+              "$ref": "#/components/examples/intTtl"
+            },
+            {
+              "$ref": "#/components/examples/intWeight"
+            },
+            {
+              "$ref": "#/components/examples/stringTarget"
+            },
+            {
+              "$ref": "#/components/examples/stringService"
+            },
+            {
+              "$ref": "#/components/examples/stringProtocol"
+            },
+            {
+              "$ref": "#/components/examples/intPort"
+            },
+            {
+              "$ref": "#/components/examples/stringSubDomain"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultEditSrv"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "editNS",
+      "description": "Редактирование NS записи",
+      "params": [
+        {
+          "name": "domain",
+          "description": "Основное доменное имя",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "action",
+          "description": "Тип операции с аписью",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "index",
+          "description": "Идентификатор записи для редактирования/удаления",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": false
+        },
+        {
+          "name": "subDomain",
+          "description": "Поддомен",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        },
+        {
+          "name": "value",
+          "description": "Значение параметра",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultEditNS"
+      },
+      "examples": [
+        {
+          "name": "exampleEditNS",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/stringAction"
+            },
+            {
+              "$ref": "#/components/examples/intIndex"
+            },
+            {
+              "$ref": "#/components/examples/stringSubDomain"
+            },
+            {
+              "$ref": "#/components/examples/stringValueNS"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultEditNS"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "editTxt",
+      "description": "Редактирование Txt записи",
+      "params": [
+        {
+          "name": "domain",
+          "description": "Основное доменное имя",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "action",
+          "description": "Тип операции с записью",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "index",
+          "description": "Идентификатор записи для редактирования/удаления",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": false
+        },
+        {
+          "name": "subDomain",
+          "description": "Поддомен",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        },
+        {
+          "name": "value",
+          "description": "Значение параметра",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultEditTxt"
+      },
+      "examples": [
+        {
+          "name": "exampleEditTxt",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/stringAction"
+            },
+            {
+              "$ref": "#/components/examples/intIndex"
+            },
+            {
+              "$ref": "#/components/examples/stringSubDomain"
+            },
+            {
+              "$ref": "#/components/examples/stringValueNS"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultEditTxt"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "getFile",
+      "description": "Получение содержимого файла зоны",
+      "params": [
+        {
+          "name": "domain",
+          "description": "Основное доменное имя",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultGetFile"
+      },
+      "examples": [
+        {
+          "name": "exampleGetFile",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultGetFile"
+          }
+        }
+      ],
+      "links": []
+    }
+  ],
+  "components": {
+    "contentDescriptors": {
+      "resultInfo": {
+        "name": "resultInfo",
+        "description": "'service' string Идентификатор сервиса для записей\n\n'protocol' string Протокол для записей\n\n'ttl' string Время жизни записи\n\n'priority' string Приоритет записи\n\n'weight' string Вес записи\n\n'port' string Номер порта TCP/UDP для записей\n\n'target' string Целевой хост или IP-адрес, на который указывает запись\n\n'index' string Идентификатор записи для редактирования/удаления\n\n'category' string Тип сервиса или группа записей\n\n'type' string Идентификатор, определяющий вид записи\n\n'name' string Доменное имя, к которому применяется запись\n\n'domain' string Основное доменное имя\n\n'flag' string Числовой или строковый параметр, определяющий поведение записи\n\n'tag' string Тип или категория записи\n\n'value' string Значение параметра\n\n",
+        "schema": {
+          "type": "array"
+        }
+      },
+      "resultEditMx": {
+        "name": "resultEditMx",
+        "description": "1 - успешно, ошибка - при некорректных параметрах",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultEditSrv": {
+        "name": "resultEditSrv",
+        "description": "true - успешно, ошибка - при некорректных параметрах",
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "resultGetFile": {
+        "name": "resultGetFile",
+        "description": "содержимое файла зоны",
+        "schema": {
+          "type": "array"
+        }
+      },
+      "resultEditNS": {
+        "name": "resultEditNS",
+        "description": "true - успешно, ошибка - при некорректных параметрах",
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "resultEditTxt": {
+        "name": "resultEditTxt",
+        "description": "true - успешно, ошибка - при некорректных параметрах",
+        "schema": {
+          "type": "boolean"
+        }
+      }
+    },
+    "schemas": {
+      "Integer": {
+        "type": "integer"
+      },
+      "String": {
+        "type": "string"
+      },
+      "Boolean": {
+        "type": "boolean"
+      },
+      "Array": {
+        "type": "array"
+      },
+      "Object": {
+        "type": "object"
+      }
+    },
+    "examples": {
+      "stringDomain": {
+        "name": "domain",
+        "summary": "domain",
+        "description": "Основное доменное имя",
+        "value": "test32132.ru"
+      },
+      "resultInfo": {
+        "name": "resultInfo",
+        "summary": "Получение текущих записей зоны DNS",
+        "description": "'service' string\n\n'protocol' string\n\n'ttl' string\n\n'priority' string\n\n'weight' string\n\n'port' string\n\n'target' string\n\n'index' string\n\n'category' string\n\n'type' string\n\n'name' string\n\n'domain' string\n\n'flag' string\n\n'tag' string\n\n'value' string\n\n",
+        "value": {
+          "ips": [
+            [
+              {
+                "name": "",
+                "value": "10.18.5.59",
+                "index": 0,
+                "canChange": "true",
+                "sel": "A",
+                "type": "A",
+                "category": "zoneMain"
+              },
+              {
+                "name": "www",
+                "value": "10.18.5.59",
+                "index": 1,
+                "canChange": "false",
+                "sel": "A",
+                "type": "A",
+                "category": "zoneMain"
+              },
+              {
+                "name": "autoconfig",
+                "value": "autoconfig.spaceweb.ru.",
+                "type": "CNAME",
+                "index": 2,
+                "category": "subdom"
+              },
+              {
+                "name": "autodiscover",
+                "value": "autodiscover.spaceweb.ru.",
+                "type": "CNAME",
+                "index": 3,
+                "category": "subdom"
+              },
+              {
+                "value": "mx1.spaceweb.ru.",
+                "priority": "10",
+                "name": "",
+                "index": 0,
+                "category": "mx",
+                "type": "MX"
+              },
+              {
+                "value": "mx2.spaceweb.ru.",
+                "priority": "20",
+                "name": "",
+                "index": 1,
+                "category": "mx",
+                "type": "MX"
+              },
+              {
+                "service": "autodiscover",
+                "protocol": "tcp",
+                "ttl": "86400",
+                "priority": "5",
+                "weight": "0",
+                "port": "443",
+                "target": "autodiscover.spaceweb.ru.",
+                "index": 0,
+                "category": "srv",
+                "type": "SRV",
+                "name": ""
+              },
+              {
+                "domain": "@",
+                "ttl": "600",
+                "value": "v=spf1 include:_spf.spaceweb.ru ~all",
+                "index": 0,
+                "main": 1,
+                "category": "mainTxt",
+                "type": "TXT"
+              }
+            ]
+          ],
+          "protected_ips": [
+            {
+              "ip": "127.0.105.44",
+              "gateway": "127.0.105.1",
+              "netmask": "127.0.105.0/24",
+              "canBeDeclined": 1,
+              "ptr": "44.105.0.127.in-addr.arpa.",
+              "price": 6000,
+              "planId": 2,
+              "limit": 50
+            }
+          ],
+          "vps_ip": [],
+          "local_ip": [],
+          "vps": {
+            "billingId": "dyasyuc384_vps_1",
+            "currentAction": null,
+            "isEmpty": "0",
+            "ordered_ip_count": 2
+          }
+        }
+      },
+      "resultEditMx": {
+        "name": "editMx",
+        "summary": "editMx",
+        "description": "Редактирование МХ-записи",
+        "value": 1
+      },
+      "resultEditSrv": {
+        "name": "editSrv",
+        "summary": "editSrv",
+        "description": "Редактирование SRV записи",
+        "value": true
+      },
+      "boolEditSrv": {
+        "name": "editSrv",
+        "summary": "editSrv",
+        "description": "Редактирование SRV-записи",
+        "value": "true - успешно, ошибка - при некорректных параметрах"
+      },
+      "resultEditNS": {
+        "name": "editNS",
+        "summary": "editNS",
+        "description": "Редактирование NS-записи",
+        "value": true
+      },
+      "resultEditTxt": {
+        "name": "editTxt",
+        "summary": "editTxt",
+        "description": "Редактирование Txt-записи",
+        "value": true
+      },
+      "intIndex": {
+        "name": "index",
+        "summary": "index",
+        "description": "Идентификатор записи для редактирования/удаления",
+        "value": 0
+      },
+      "stringSubDomain": {
+        "name": "subDomain",
+        "summary": "subDomain",
+        "description": "Поддомен, если запись не для основного домена",
+        "value": "teess11.ru.retesttt.ru"
+      },
+      "intPriority": {
+        "name": "priority",
+        "summary": "priority",
+        "description": "Приоритет записи",
+        "value": 11
+      },
+      "stringValue": {
+        "name": "value",
+        "summary": "value",
+        "description": "Сервер обработки почты",
+        "value": "mx1.speweb.ru."
+      },
+      "stringValueNS": {
+        "name": "value",
+        "summary": "value",
+        "description": "Значение параметра",
+        "value": "111"
+      },
+      "intPort": {
+        "name": "port",
+        "summary": "port",
+        "description": "Номер порта TCP/UDP для записей",
+        "value": "443"
+      },
+      "stringProtocol": {
+        "name": "protocol",
+        "summary": "protocol",
+        "description": "Протокол для записей",
+        "value": "tcp"
+      },
+      "stringService": {
+        "name": "service",
+        "summary": "service",
+        "description": "Идентификатор сервиса для записей",
+        "value": "autodiscove"
+      },
+      "stringTarget": {
+        "name": "target",
+        "summary": "target",
+        "description": "Целевой хост или IP-адрес, на который указывает запись",
+        "value": "autodiscover.spaceweb.ru."
+      },
+      "intWeight": {
+        "name": "weight",
+        "summary": "weight",
+        "description": "Вес записи",
+        "value": "0"
+      },
+      "intTtl": {
+        "name": "ttl",
+        "summary": "ttl",
+        "description": "Время жизни записи",
+        "value": "86400"
+      },
+      "stringAction": {
+        "name": "action",
+        "summary": "action",
+        "description": "Тип операции с записью",
+        "value": "edit"
+      },
+      "resultGetFile": {
+        "name": "getFile",
+        "summary": "getFile",
+        "description": "Cодержимое файла зоны",
+        "value": {
+          "mimetype": "text/plain",
+          "metadata": [],
+          "content": "@\tIN SOA ns1.spaceweb.ru.  dns1.sweb.ru.  (\n\t\t2025043040\n\n\t\t8H\n\t\t2H\n\t\t2W\n\t\t10m\n) \n\tIN\tA\t10.18.5.59\n\tIN\tNS\tns1.spaceweb.ru.\n\tIN\tNS\tns2.spaceweb.ru.\n\tIN\tNS\tns3.spaceweb.pro.\n\tIN\tNS\tns4.spaceweb.pro.\n\tIN\tMX\t111\tmx1.speweb.ru.\n\tIN\tMX\t20\tmx2.spaceweb.ru.\nwww\tIN\tA\t10.18.5.59\nautoconfig\tIN\tCNAME\tautoconfig.spaceweb.ru.\nautodiscover\tIN\tCNAME\tautodiscover.spaceweb.ru.\nteess11.ru\tIN\tA\t10.18.5.59\nwww.teess11.ru\tIN\tA\t10.18.5.59\n_autodiscove._tcp\t86400\tIN\tSRV\t5\t0\t443\tautodiscover.spaceweb.ru.\n@\t600\tIN\tTXT\t\"v=spf1 include:_spf.spaceweb.ru ~all/\"\nteess11.ru.retesttt.ru\tIN\tNS\t111.",
+          "name": "retesttt.ru.zone.txt"
+        }
+      },
+      "resultGetOrderInfo": {
+        "name": "getOrderInfo",
+        "summary": "getOrderInfo",
+        "description": "'ipOrdersLastDay' int кол-во заказанных обычных IP-адресов за последние сутки\n\n'dailyIpLimit' int кол-во разрешенных к заказу обычных IP-адресов за сутки\n\n'protectedIpOrdersLastDay' int кол-во заказанных защищенных IP-адресов за последние сутки\n\n'dailyProtectedIpLimit' int кол-во разрешенных к заказу защищенных IP-адресов за сутки\n\n",
+        "value": {
+          "ipOrdersLastDay": 0,
+          "dailyIpLimit": 7,
+          "protectedIpOrdersLastDay": 0,
+          "dailyProtectedIpLimit": 7
+        }
+      },
+      "intplanIdsIP": {
+        "name": "planIds",
+        "summary": "planIds",
+        "description": "ID тарифов защищенных IP",
+        "value": [
+          2,
+          3
+        ]
+      },
+      "stringRemoveProtected": {
+        "name": "removeProtected",
+        "summary": "removeProtected",
+        "description": "Защищенный IP адрес",
+        "value": "127.0.105.54"
+      },
+      "boolRemoveProtected": {
+        "name": "removeProtected",
+        "summary": "removeProtected",
+        "description": "Удаляет защищенный IP",
+        "value": false
+      },
+      "stringIpUpdateProtected": {
+        "name": "ip",
+        "summary": "ip",
+        "description": "Защищенный IP адрес",
+        "value": "127.0.105.44"
+      },
+      "intPlanIdUpdateProtected": {
+        "name": "planId",
+        "summary": "planId",
+        "description": "ID нового тарифа защищенного IP",
+        "value": 1
+      },
+      "resultUpdateProtected": {
+        "name": "resultUpdateProtected",
+        "summary": "resultUpdateProtected",
+        "description": "Изменяет тариф защищенного IP",
+        "value": true
+      },
+      "stringIp": {
+        "name": "ip",
+        "summary": "ip",
+        "description": "Защищенный IP адрес",
+        "value": "127.0.105.54"
+      },
+      "stringBillingId": {
+        "name": "billingId",
+        "summary": "billingId",
+        "description": "Идентификатор услуги (в формате login_vps_number)",
+        "value": "vhp****_vps_1"
+      },
+      "resultMoveProtected": {
+        "name": "resultMoveProtected",
+        "summary": "resultMoveProtected",
+        "description": "Перемещает между VPS или открепляет/прикрепляет от/к VPS защищенный IP",
+        "value": true
+      }
+    }
+  }
+}

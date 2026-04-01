@@ -1,0 +1,264 @@
+{
+  "openrpc": "1.0.0-rc1",
+  "info": {
+    "title": "API Spaceweb",
+    "description": "Документация по API Spaceweb",
+    "version": "1.185"
+  },
+  "servers": [
+    {
+      "name": "Тариф",
+      "summary": "Тариф",
+      "description": "Основные функции:\n\nинформация о тарифе,\nинформация о сервере.",
+      "url": "https://api.sweb.ru/tariff"
+    }
+  ],
+  "methods": [
+    {
+      "name": "index",
+      "description": "Текущая информация о тарифе и реальном использовании ресурсов",
+      "params": [],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultindex"
+      },
+      "examples": [
+        {
+          "name": "exampleIndex",
+          "params": [],
+          "result": {
+            "$ref": "#/components/examples/resultindex"
+          }
+        }
+      ]
+    },
+    {
+      "name": "serverInfo",
+      "description": "Информация о сервере, на котором находится аккаунт пользователя",
+      "params": [],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultserverInfo"
+      },
+      "examples": [
+        {
+          "name": "exampleServerInfo",
+          "params": [],
+          "result": {
+            "$ref": "#/components/examples/resultserverInfo"
+          }
+        }
+      ]
+    }
+  ],
+  "components": {
+    "contentDescriptors": {
+      "resultindex": {
+        "name": "resultIndex",
+        "description": "'info' array Информация о текущем тарифе:\n\n'plan_id' int ID плана\n\n'name' string Название плана\n\n'category' string Категория плана\n\n'quota' int Доступная квота\n\n'mail_quota' int Доступная почтовая квота\n\n'mysql' int Число баз MySQL\n\n'site' int Число сайтов\n\n'postgresql' int Число баз PostgeSQL\n\n'price' int Цена за месяц\n\n'price_6' int Цена за полгода\n\n'price_12' int Цена за год\n\n'duration' int Период автопродления\n\n'real' array Информация о реально используемых ресурсах:\n\n'quota' float Текущая квота\n\n'mail_quota' float Текущая почтовая квота\n\n'mysql' int Число баз MySQL\n\n'site' int Число сайтов\n\n'postgresql' int Число баз PostgeSQL\n\n'firebird' int Число баз Firebird\n\n'mailbox' int Число почтовых ящиков\n\n'realPrice' int Текущая стоимость\n\n'realDuration' int Текущая настройка автопродления\n\n'prolongPrice' int Текущая цена автопродления\n\n'prolongDuration' int Значение настройки продления для тарифа автопродления\n\n'noHosting' int 1, если не хостинговый тариф\n\n'prolongChangeDisable' bool Запрещена смена настроек автопродления",
+        "schema": {
+          "type": "array"
+        }
+      },
+      "resultserverInfo": {
+        "name": "resultServerInfo",
+        "description": "'os' string Версия ОС\n\n'apache' string Версия Apache\n\n'perl' string Версия Perl\n\n'mysql' string Версия MySQL\n\n'ip' string IP\n\n'name' string Название\n\n'backend' string Версия бэкэнд\n\n'ruby' string Версия Ruby\n\n'python' string Версия Python",
+        "schema": {
+          "type": "array"
+        }
+      }
+    },
+    "schemas": {
+      "Integer": {
+        "type": "integer"
+      },
+      "String": {
+        "type": "string"
+      },
+      "Boolean": {
+        "type": "boolean"
+      },
+      "Array": {
+        "type": "array"
+      },
+      "Object": {
+        "type": "object"
+      }
+    },
+    "examples": {
+      "resultindex": {
+        "name": "resultIndex",
+        "summary": "resultIndex",
+        "description": "Текущая информация о тарифе и реальном использовании ресурсов",
+        "value": [
+          {
+            "info": {
+              "plan_id": 7112,
+              "name": "Ракета",
+              "category": "standart",
+              "quota": 10000,
+              "mail_quota": 0,
+              "mysql": 512,
+              "site": 10,
+              "postgresql": 512,
+              "price": 339,
+              "price_6": 0,
+              "price_12": 3348,
+              "duration": 12
+            },
+            "real": {
+              "quota": "0,00",
+              "mail_quota": "0,00",
+              "mysql": "0",
+              "site": 1,
+              "postgresql": "0",
+              "firebird": "0",
+              "mailbox": "1",
+              "realPrice": 339,
+              "realDuration": 1,
+              "prolongPrice": 3348,
+              "prolongDuration": 12,
+              "noHosting": 0,
+              "prolongChangeDisable": false
+            }
+          }
+        ]
+      },
+      "resultserverInfo": {
+        "name": "resultServerInfo",
+        "summary": "resultServerInfo",
+        "description": "Информация о сервере, на котором находится аккаунт пользователя",
+        "value": [
+          {
+            "os": "Linux 3.10",
+            "apache": "2.2.29",
+            "perl": "5.20.2",
+            "mysql": "5.7.27",
+            "ip": "77.222.40.224",
+            "name": "VH293",
+            "backend": [
+              {
+                "type": "php8.0bitrix",
+                "port": "8094",
+                "descr": "Apache 2.4 + PHP 8.0 Bitrix (Актуальная версия)",
+                "release_version": "3.0gamma",
+                "php_info": "https://vh293.spaceweb.ru/phpinfo.php80bitrix",
+                "id": 32
+              },
+              {
+                "type": "php8.1",
+                "port": "8093",
+                "descr": "Apache 2.4 + PHP 8.1 opcache (Актуальная версия)",
+                "release_version": "3.0gamma",
+                "php_info": "https://vh293.spaceweb.ru/phpinfo.php81",
+                "id": 23
+              },
+              {
+                "type": "php8",
+                "port": "8092",
+                "descr": "Apache 2.4 + PHP 8 opcache + mod_wsgi python3.8 (Актуальная версия)",
+                "release_version": "3.0gamma",
+                "php_info": "https://vh293.spaceweb.ru/phpinfo.php8",
+                "id": 22
+              },
+              {
+                "type": "php7.4bitrix",
+                "port": "8091",
+                "descr": "Apache 2.4 + PHP 7.4 Bitrix (Актуальная версия)",
+                "release_version": "3.0gamma",
+                "php_info": "https://vh293.spaceweb.ru/phpinfo.php74bitrix",
+                "id": 21
+              },
+              {
+                "type": "php7.4",
+                "port": "8090",
+                "descr": "Apache 2.4 + PHP 7.4 opcache (Актуальная версия)",
+                "release_version": "3.0gamma",
+                "php_info": "https://vh293.spaceweb.ru/phpinfo.php74",
+                "id": 12
+              },
+              {
+                "type": "php7.1opc",
+                "port": "8089",
+                "descr": "Apache 2.2 + PHP 7.1 opcache (Актуальная версия)",
+                "release_version": "3.0gamma",
+                "php_info": "https://vh293.spaceweb.ru/phpinfo.php71opc",
+                "id": 11
+              },
+              {
+                "type": "php7.3",
+                "port": "8088",
+                "descr": "Apache 2.2 + PHP 7.3 (Актуальная версия)",
+                "release_version": "3.0gamma",
+                "php_info": "https://vh293.spaceweb.ru/phpinfo.php73",
+                "id": 10
+              },
+              {
+                "type": "php7.2",
+                "port": "8087",
+                "descr": "Apache 2.2 + PHP 7.2 (Актуальная версия)",
+                "release_version": "3.0gamma",
+                "php_info": "https://vh293.spaceweb.ru/phpinfo.php72",
+                "id": 9
+              },
+              {
+                "type": "php7.1",
+                "port": "8086",
+                "descr": "Apache 2.2 + PHP 7.1 (Актуальная версия)",
+                "release_version": "3.0gamma",
+                "php_info": "https://vh293.spaceweb.ru/phpinfo.php71",
+                "id": 8
+              },
+              {
+                "type": "php7",
+                "port": "8085",
+                "descr": "Apache 2.2 + PHP 7 (Актуальная версия)",
+                "release_version": "3.0gamma",
+                "php_info": "https://vh293.spaceweb.ru/phpinfo.php7",
+                "id": 7
+              },
+              {
+                "type": "php5.6",
+                "port": "8084",
+                "descr": "Apache 2.2 + PHP 5.6 (Актуальная версия)",
+                "release_version": "2.1",
+                "php_info": "https://vh293.spaceweb.ru/phpinfo.php56",
+                "id": 6
+              },
+              {
+                "type": "php5.5",
+                "port": "8083",
+                "descr": "Apache 2.2 + PHP 5.5 (Стабильная версия)",
+                "release_version": "2.0",
+                "php_info": "https://vh293.spaceweb.ru/phpinfo.php55",
+                "id": 5
+              },
+              {
+                "type": "php5.4",
+                "port": "8082",
+                "descr": "Apache 2.2 + PHP 5.4 (Стабильная версия)",
+                "release_version": "2.0",
+                "php_info": "https://vh293.spaceweb.ru/phpinfo.php54",
+                "id": 4
+              },
+              {
+                "type": "php5.3",
+                "port": "8081",
+                "descr": "Apache 2.2 + PHP 5.3 (Устаревшая версия)",
+                "php_info": "https://vh293.spaceweb.ru/phpinfo.php53",
+                "id": 2
+              },
+              {
+                "type": "php5.2",
+                "port": "8080",
+                "descr": "Apache 2.2 + PHP 5.2 (Устаревшая версия)",
+                "php_info": "https://vh293.spaceweb.ru/phpinfo.php52",
+                "id": 1
+              }
+            ],
+            "ruby": "",
+            "python": ""
+          }
+        ]
+      }
+    }
+  }
+}

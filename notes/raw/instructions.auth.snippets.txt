@@ -1,0 +1,12 @@
+d content__method_instruction"}>
+                <DescriptionElement title={DESCRIPTION_TITLE.ACTUAL_VERSION}>
+                    <DescriptionText>
+                        <p className={"content__element_text"}>JSON-RPC 2.0 <DescriptionLink link={"http://www.jsonrpc.org/specification"}/></p>
+                    </DescriptionText>
+                </DescriptionElement>
+            </div>
+
+            <CallingTheApi />
+            <GettingATokenApi />
+            <ExampleFormRequest />
+            <SuccessfulResponse

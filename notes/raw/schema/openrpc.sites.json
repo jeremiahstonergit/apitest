@@ -1,0 +1,640 @@
+{
+  "openrpc": "1.0.0-rc1",
+  "info": {
+    "title": "API Spaceweb",
+    "description": "Документация по API Spaceweb",
+    "version": "1.185"
+  },
+  "servers": [
+    {
+      "name": "Сайты",
+      "summary": "Работа с сайтами",
+      "description": "Основные функции:\n\nполучение списка сайтов,\n\nдобавление, редактирование, удаление сайтов",
+      "url": "https://api.sweb.ru/sites"
+    }
+  ],
+  "methods": [
+    {
+      "name": "index",
+      "description": "Список всех сайтов на аккаунте пользователя",
+      "params": [
+        {
+          "name": "page",
+          "description": "страница (с 1-й)",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "description": "количество на странице",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": false
+        },
+        {
+          "name": "filter",
+          "description": "фильтр по названию сайта или домену",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultIndex"
+      },
+      "examples": [
+        {
+          "name": "exampleIndex",
+          "params": [
+            {
+              "$ref": "#/components/examples/intPage"
+            },
+            {
+              "$ref": "#/components/examples/intPerPage"
+            },
+            {
+              "$ref": "#/components/examples/stringFilter"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultIndex"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "getSiteInfo",
+      "description": "Получение подробной информации о сайте",
+      "params": [
+        {
+          "name": "docRoot",
+          "description": "директория сайта",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultGetSiteInfo"
+      },
+      "examples": [
+        {
+          "name": "exampleGetSiteInfo",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDocRoot"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultGetSiteInfo"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "add",
+      "description": "Метод для добавления сайта",
+      "params": [
+        {
+          "name": "alias",
+          "description": "название сайта",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "docRoot",
+          "description": "домашняя директория",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "domain",
+          "description": "домен",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "machine",
+          "description": "поддомен",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        },
+        {
+          "name": "enableRedisSession",
+          "description": "включить запись сессий в Redis",
+          "schema": {
+            "$ref": "#/components/schemas/Boolean"
+          },
+          "required": false
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleAdd",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringAlias"
+            },
+            {
+              "$ref": "#/components/examples/stringDocRoot"
+            },
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/stringMachine"
+            },
+            {
+              "$ref": "#/components/examples/stringRedis"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultIntegerOne"
+          }
+        }
+      ],
+      "links": [
+        {
+          "name": "del",
+          "description": "удалить сайт",
+          "method": "del",
+          "params": {
+            "docRoot": "$params.docRoot"
+          }
+        }
+      ]
+    },
+    {
+      "name": "edit",
+      "description": "Редактирование названия сайта и директории для docroot",
+      "params": [
+        {
+          "name": "docRoot",
+          "description": "текущая директория сайта",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "alias",
+          "description": "название сайта",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "docRootNew",
+          "description": "новая директория",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleEdit",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDocRoot"
+            },
+            {
+              "$ref": "#/components/examples/stringAlias"
+            },
+            {
+              "$ref": "#/components/examples/stringDocRootNew"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultIntegerOne"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "del",
+      "description": "Удаление сайта",
+      "params": [
+        {
+          "name": "docRoot",
+          "description": "директория сайта",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleDel",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDocRoot"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultIntegerOne"
+          }
+        }
+      ],
+      "links": [
+        {
+          "name": "add",
+          "description": "добавление сайта",
+          "method": "add",
+          "params": {
+            "alias": "$params.alias",
+            "docRoot": "$params.docRoot",
+            "domain": "$params.domain",
+            "machine": "$params.machine",
+            "enableRedisSession": "$params.enableRedisSession"
+          }
+        }
+      ]
+    },
+    {
+      "name": "changeDomainSite",
+      "description": "Cмена сайта для домена",
+      "params": [
+        {
+          "name": "domain",
+          "description": "домен сайта",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "docRoot",
+          "description": "директория сайта",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "machine",
+          "description": "поддомен",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": false
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleChangeDomainSite",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDomain"
+            },
+            {
+              "$ref": "#/components/examples/stringDocRoot"
+            },
+            {
+              "$ref": "#/components/examples/stringMachine"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultIntegerOne"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "getBackEndsList",
+      "description": "Получение cписка доступных бэкэндов",
+      "params": [],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultGetBackEndsList"
+      },
+      "examples": [
+        {
+          "name": "exampleGetBackEndsList",
+          "params": [],
+          "result": {
+            "$ref": "#/components/examples/resultGetBackEndsList"
+          }
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "changeBackEnd",
+      "description": "Смена типа бэкэнда для сайта",
+      "params": [
+        {
+          "name": "docRoot",
+          "description": "директория сайта",
+          "schema": {
+            "$ref": "#/components/schemas/String"
+          },
+          "required": true
+        },
+        {
+          "name": "backEndId",
+          "description": "ID Back-End из списка доступных",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleChangeBackEnd",
+          "params": [
+            {
+              "$ref": "#/components/examples/stringDocRoot"
+            },
+            {
+              "$ref": "#/components/examples/intbackEndId"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/resultIntegerOne"
+          }
+        }
+      ],
+      "links": []
+    }
+  ],
+  "components": {
+    "contentDescriptors": {
+      "resultInt": {
+        "name": "resultInt",
+        "description": "1 - успешно, 0 - ошибка",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "resultIndex": {
+        "name": "resultIndex",
+        "description": "'id' int ID сайта\n\n'docRoot' string Домашняя директория\n\n'docRootFull' string Домашняя директория полная\n\n'alias' string Название сайта\n\n'domainTech' string Технический домен\n\n'antivirusExpired' string Дата окончания антивируса\n\n'antivirusAvailable' bool Доступен заказ антивируса\n\n'antivirusActive' int 1 - антивирус активен, 0 - антивирус неактивен\n\n'antivirusPrice' int Стоимость антивируса\n\n'redisSessionSelected' bool Добавлен ли этот сайт в список сайтов, сессии которых хранятся в Redis\n\n'redisSessionEnabled' bool включено ли сейчас хранение сессий этого сайта в Redis",
+        "schema": {
+          "type": "array"
+        }
+      },
+      "resultGetSiteInfo": {
+        "name": "resultGetSiteInfo",
+        "description": "'backEnd' string Тип бэкэнда\n\n'backEndId' int ID бэкэнда\n\n'viewFiles' bool Показывать файлы\n\n'runScripts' bool Запуск скриптов\n\n'redisAvailable' bool Доступен ли Redis для подключения (определяется по тарифу и серверу)\n\n'redisNeedTransfer' bool True, если Redis можно подключить на другом сервере, т.е. нужен перенос (при этом redisAvailable будет false)\n\n'redisEnabled' bool Возможно ли подключение Redis (определяется по доступности (redisAvailable) и отсутствию текущих операций подключения/отключения)\n\n'redisBackendAvailable' bool Доступен ли Redis для текущего бэкенда данного сайта (сейчас Redis доступен только для php7.*, php8)\n\n'redisSessionEnabled' bool Включено ли сейчас хранение сессий этого сайта в Redis\n\n'redisCanEnableSession' bool Возможно ли включение хранений сессий в Redis (определяется по доступности (redisAvailable) и отсутствию текущих операций подключения/отключения)\n\n'redisSessionSelected' bool Добавлен ли этот сайт в список сайтов, сессии которых хранятся в Redis\n\n'encoding' string Кодировка\n\n'domains' array Домены\n\n'program' array Установленные программы",
+        "schema": {
+          "type": "object"
+        }
+      },
+      "resultGetBackEndsList": {
+        "name": "resultGetBackEndsList",
+        "description": "'id' int ID бэкэнда\n\n'name' string Описание бэкэнда",
+        "schema": {
+          "type": "array"
+        }
+      }
+    },
+    "schemas": {
+      "Integer": {
+        "type": "integer"
+      },
+      "String": {
+        "type": "string"
+      },
+      "Boolean": {
+        "type": "boolean"
+      },
+      "Array": {
+        "type": "array"
+      },
+      "Object": {
+        "type": "object"
+      }
+    },
+    "examples": {
+      "stringAlias": {
+        "name": "alias",
+        "summary": "alias",
+        "description": "название сайта",
+        "value": "Мой сайт"
+      },
+      "stringDocRoot": {
+        "name": "docRoot",
+        "summary": "docRoot",
+        "description": "директория сайта",
+        "value": "/dir"
+      },
+      "stringDocRootNew": {
+        "name": "docRootNew",
+        "summary": "docRootNew",
+        "description": "новая директория сайта",
+        "value": "newDir"
+      },
+      "stringDomain": {
+        "name": "domain",
+        "summary": "domain",
+        "description": "домен сайта",
+        "value": "mysite.ru"
+      },
+      "stringMachine": {
+        "name": "machine",
+        "summary": "machine",
+        "description": "поддомен",
+        "value": "subdomain"
+      },
+      "stringRedis": {
+        "name": "enableRedisSession",
+        "summary": "enableRedisSession",
+        "description": "включить сохранение сессии в Redis",
+        "value": true
+      },
+      "intPage": {
+        "name": "page",
+        "summary": "page",
+        "description": "страница (с 1-й)",
+        "value": 1
+      },
+      "intPerPage": {
+        "name": "perPage",
+        "summary": "perPage",
+        "description": "количество на странице",
+        "value": 20
+      },
+      "stringFilter": {
+        "name": "filter",
+        "summary": "filter",
+        "description": "фильтр по названию сайта или домену",
+        "value": "САЙТ"
+      },
+      "intbackEndId": {
+        "name": "idBackEnd",
+        "summary": "idBackEnd",
+        "description": "ID Back-End из списка доступных",
+        "value": 1
+      },
+      "resultGetBackEndsList": {
+        "name": "resultGetBackEndsList",
+        "summary": "список бэкендов",
+        "description": "массив доступных бэкендов в элементах массива",
+        "value": [
+          {
+            "id": 32,
+            "name": "Apache 2.4 + PHP 8.0 Bitrix (Актуальная версия)"
+          },
+          {
+            "id": 23,
+            "name": "Apache 2.4 + PHP 8.1 opcache (Актуальная версия)"
+          },
+          {
+            "id": 22,
+            "name": "Apache 2.4 + PHP 8 opcache + mod_wsgi python3.8 (Актуальная версия)"
+          },
+          {
+            "id": 21,
+            "name": "Apache 2.4 + PHP 7.4 Bitrix (Актуальная версия)"
+          },
+          {
+            "id": 16,
+            "name": "Apache 2.2 + mod_passenger + mod_wsgi (Актуальная версия)"
+          },
+          {
+            "id": 12,
+            "name": "Apache 2.4 + PHP 7.4 opcache (Актуальная версия)"
+          },
+          {
+            "id": 11,
+            "name": "Apache 2.2 + PHP 7.1 opcache (Актуальная версия)"
+          },
+          {
+            "id": 10,
+            "name": "Apache 2.2 + PHP 7.3 (Актуальная версия)"
+          },
+          {
+            "id": 9,
+            "name": "Apache 2.2 + PHP 7.2 (Актуальная версия)"
+          },
+          {
+            "id": 8,
+            "name": "Apache 2.2 + PHP 7.1 (Актуальная версия)"
+          },
+          {
+            "id": 7,
+            "name": "Apache 2.2 + PHP 7 (Актуальная версия)"
+          },
+          {
+            "id": 6,
+            "name": "Apache 2.2 + PHP 5.6 (Актуальная версия)"
+          },
+          {
+            "id": 5,
+            "name": "Apache 2.2 + PHP 5.5 (Стабильная версия)"
+          },
+          {
+            "id": 4,
+            "name": "Apache 2.2 + PHP 5.4 (Стабильная версия)"
+          },
+          {
+            "id": 2,
+            "name": "Apache 2.2 + PHP 5.3 (Устаревшая версия)"
+          },
+          {
+            "id": 1,
+            "name": "Apache 2.2 + PHP 5.2 (Устаревшая версия)"
+          }
+        ]
+      },
+      "resultIndex": {
+        "name": "resultIndex",
+        "summary": "список всех сайтов на аккаунте пользователя",
+        "description": "массив доступных сайтов",
+        "value": [
+          {
+            "id": "105394",
+            "docRoot": "/test",
+            "docRootFull": "/home/i/imalysheva/test",
+            "alias": "Сайт 3",
+            "domainTech": null,
+            "antivirusExpired": null,
+            "antivirusAvailable": true,
+            "antivirusActive": 0,
+            "antivirusPrice": 199,
+            "redisSessionSelected": false,
+            "redisSessionEnabled": false
+          },
+          {
+            "id": "105417",
+            "docRoot": "/тест567",
+            "docRootFull": "/home/i/imalysheva/тест567",
+            "alias": "Сайт 10",
+            "domainTech": null,
+            "antivirusExpired": null,
+            "antivirusAvailable": true,
+            "antivirusActive": 0,
+            "antivirusPrice": 199,
+            "redisSessionSelected": false,
+            "redisSessionEnabled": false
+          }
+        ]
+      },
+      "resultGetSiteInfo": {
+        "name": "resultGetSiteInfo",
+        "summary": "информация о сайтах",
+        "description": "'backEnd' string Тип бэкэнда\n\n'backEndId' int ID бэкэнда\n\n'viewFiles' bool Показывать файлы\n\n'runScripts' bool Запуск скриптов\n\n'redisAvailable' bool Доступен ли Redis для подключения\n\n'redisNeedTransfer' bool True, если Redis можно подключить на другом сервере\n\n'redisEnabled' bool Возможно ли подключение Redis\n\n'redisBackendAvailable' bool Доступен ли Redis для текущего бэкенда\n\n'redisSessionEnabled' bool Включено ли сейчас хранение сессий этого сайта в Redis\n\n'redisCanEnableSession' bool Возможно ли включение хранений сессий в Redis\n\n'redisSessionSelected' bool Добавлен ли этот сайт в список сайтов, сессии которых хранятся в Redis\n\n'encoding' string Кодировка\n\n'domains' array Домены\n\n'program' array Установленные программы",
+        "value": {
+          "backEnd": "Apache 2.2 + PHP 7.1 (Актуальная версия)",
+          "backEndId": "8",
+          "viewFiles": false,
+          "runScripts": true,
+          "redisAvailable": true,
+          "redisBackendAvailable": true,
+          "redisNeedTransfer": false,
+          "redisEnabled": true,
+          "redisSessionEnabled": false,
+          "redisCanEnableSession": true,
+          "redisSessionSelected": false,
+          "encoding": "UTF-8",
+          "domains": [
+            "тестовыйдомен.рф"
+          ],
+          "program": []
+        }
+      },
+      "resultIntegerOne": {
+        "name": "one",
+        "summary": "успех",
+        "description": "ответ при успешно выполненной операции",
+        "value": 1
+      }
+    }
+  }
+}

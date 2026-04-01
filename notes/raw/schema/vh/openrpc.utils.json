@@ -1,0 +1,107 @@
+{
+  "openrpc": "1.0.0-rc1",
+  "info": {
+    "title": "API Spaceweb",
+    "description": "Документация по API Spaceweb",
+    "version": "1.185"
+  },
+  "servers": [
+    {
+      "name": "SSH",
+      "summary": "Инструменты виртуального хостинга",
+      "description": "Основные функции:\n\nвключение/выключение SSH.",
+      "url": "https://api.sweb.ru/vh/utils"
+    }
+  ],
+  "methods": [
+    {
+      "name": "sshOn",
+      "description": "Включение доступа по SSH",
+      "params": [
+        {
+          "name": "period",
+          "description": "3, 8, 24 часа",
+          "schema": {
+            "$ref": "#/components/schemas/Integer"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleSshOn",
+          "params": [
+            {
+              "$ref": "#/components/examples/intperiod"
+            }
+          ],
+          "result": {
+            "$ref": "#/components/examples/integerOne"
+          }
+        }
+      ]
+    },
+    {
+      "name": "sshOff",
+      "description": "Выключение доступа по SSH",
+      "params": [],
+      "result": {
+        "$ref": "#/components/contentDescriptors/resultInt"
+      },
+      "examples": [
+        {
+          "name": "exampleSshOff",
+          "params": [],
+          "result": {
+            "$ref": "#/components/examples/integerOne"
+          }
+        }
+      ]
+    }
+  ],
+  "components": {
+    "contentDescriptors": {
+      "resultInt": {
+        "name": "resultInt",
+        "description": "1 - успешно, 0 - ошибка",
+        "schema": {
+          "type": "integer"
+        }
+      }
+    },
+    "schemas": {
+      "Integer": {
+        "type": "integer"
+      },
+      "String": {
+        "type": "string"
+      },
+      "Boolean": {
+        "type": "boolean"
+      },
+      "Array": {
+        "type": "array"
+      },
+      "Object": {
+        "type": "object"
+      }
+    },
+    "examples": {
+      "intperiod": {
+        "name": "period",
+        "summary": "period",
+        "description": "3,8,24 часа",
+        "value": "24"
+      },
+      "integerOne": {
+        "name": "one",
+        "summary": "успех",
+        "description": "Ответ при успешно выполненной операции",
+        "value": 1
+      }
+    }
+  }
+}

@@ -1,0 +1,2762 @@
+[
+  {
+    "doc": "domains/openrpc.bonus.json",
+    "method": "index",
+    "summary": "Получение информации о доменных бонусах",
+    "params_count": 4,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/domains/bonus"
+    ]
+  },
+  {
+    "doc": "domains/openrpc.bonus.json",
+    "method": "getList",
+    "summary": "Получение доступных к покупке пакетов бонусов",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/domains/bonus"
+    ]
+  },
+  {
+    "doc": "domains/openrpc.bonus.json",
+    "method": "buy",
+    "summary": "Покупка бонусов",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/domains/bonus"
+    ]
+  },
+  {
+    "doc": "domains/openrpc.persons.json",
+    "method": "index",
+    "summary": "Cписок доменных персон у пользователя",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/domains/persons"
+    ]
+  },
+  {
+    "doc": "domains/openrpc.persons.json",
+    "method": "getinfo",
+    "summary": "Подробная информация по ID персоны",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/domains/persons"
+    ]
+  },
+  {
+    "doc": "domains/openrpc.persons.json",
+    "method": "createFizIp",
+    "summary": "Создание доменной персоны физ. лица и ИП",
+    "params_count": 14,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/domains/persons"
+    ]
+  },
+  {
+    "doc": "domains/openrpc.persons.json",
+    "method": "createJur",
+    "summary": "Создание доменной персоны юр. лица",
+    "params_count": 16,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/domains/persons"
+    ]
+  },
+  {
+    "doc": "monitoring/openrpc.checks.json",
+    "method": "index",
+    "summary": "Получение списка проверок",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/monitoring/checks"
+    ]
+  },
+  {
+    "doc": "monitoring/openrpc.checks.json",
+    "method": "getTypes",
+    "summary": "Получение всех доступных типов проверок",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/monitoring/checks"
+    ]
+  },
+  {
+    "doc": "monitoring/openrpc.checks.json",
+    "method": "getIntervals",
+    "summary": "Получение всех доступных интервалов проверок",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/monitoring/checks"
+    ]
+  },
+  {
+    "doc": "monitoring/openrpc.checks.json",
+    "method": "getPorts",
+    "summary": "Получение рекомендуемых портов для проверки",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/monitoring/checks"
+    ]
+  },
+  {
+    "doc": "monitoring/openrpc.checks.json",
+    "method": "getKeywordModes",
+    "summary": "Получение всех доступных режимов проверки ключевых слов",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/monitoring/checks"
+    ]
+  },
+  {
+    "doc": "monitoring/openrpc.checks.json",
+    "method": "getInfo",
+    "summary": "Общая информация для отображения настроек проверками",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/monitoring/checks"
+    ]
+  },
+  {
+    "doc": "monitoring/openrpc.checks.json",
+    "method": "getFullCheckInfo",
+    "summary": "Получение подробной информации о проверке",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/monitoring/checks"
+    ]
+  },
+  {
+    "doc": "monitoring/openrpc.checks.json",
+    "method": "create",
+    "summary": "Создание проверки",
+    "params_count": 9,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/monitoring/checks"
+    ]
+  },
+  {
+    "doc": "monitoring/openrpc.checks.json",
+    "method": "edit",
+    "summary": "Редактирование проверки",
+    "params_count": 9,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/monitoring/checks"
+    ]
+  },
+  {
+    "doc": "monitoring/openrpc.checks.json",
+    "method": "activate",
+    "summary": "Включение одной проверки",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/monitoring/checks"
+    ]
+  },
+  {
+    "doc": "monitoring/openrpc.checks.json",
+    "method": "activateList",
+    "summary": "Включение списка проверок",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/monitoring/checks"
+    ]
+  },
+  {
+    "doc": "monitoring/openrpc.checks.json",
+    "method": "deactivate",
+    "summary": "Отключение одной проверки",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/monitoring/checks"
+    ]
+  },
+  {
+    "doc": "monitoring/openrpc.checks.json",
+    "method": "deactivateList",
+    "summary": "Отключение списка проверок",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/monitoring/checks"
+    ]
+  },
+  {
+    "doc": "monitoring/openrpc.checks.json",
+    "method": "remove",
+    "summary": "Удаление проверки",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/monitoring/checks"
+    ]
+  },
+  {
+    "doc": "monitoring/openrpc.checks.json",
+    "method": "removeList",
+    "summary": "Удаление списка проверок",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/monitoring/checks"
+    ]
+  },
+  {
+    "doc": "monitoring/openrpc.checks.json",
+    "method": "history",
+    "summary": "История проверок",
+    "params_count": 5,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/monitoring/checks"
+    ]
+  },
+  {
+    "doc": "monitoring/openrpc.monitoring.json",
+    "method": "enable",
+    "summary": "Подключение тарифа",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/monitoring"
+    ]
+  },
+  {
+    "doc": "monitoring/openrpc.monitoring.json",
+    "method": "disable",
+    "summary": "Отключение тарифа",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/monitoring"
+    ]
+  },
+  {
+    "doc": "monitoring/openrpc.monitoring.json",
+    "method": "change",
+    "summary": "Смена тарифа мониторинг",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/monitoring"
+    ]
+  },
+  {
+    "doc": "monitoring/openrpc.monitoring.json",
+    "method": "plans",
+    "summary": "Список доступных тарифных планов",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/monitoring"
+    ]
+  },
+  {
+    "doc": "monitoring/openrpc.monitoringcontacts.json",
+    "method": "index",
+    "summary": "Возвращает список контактов мониторинга для текущего пользователя для отображения в ПУ. Не отображаются удаленные и неподтвержденные контакты.",
+    "params_count": 4,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/monitoring/contacts"
+    ]
+  },
+  {
+    "doc": "monitoring/openrpc.monitoringcontacts.json",
+    "method": "getAllContacts",
+    "summary": "Возвращает список всех контактов мониторинга для текущего пользователя",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/monitoring/contacts"
+    ]
+  },
+  {
+    "doc": "monitoring/openrpc.monitoringcontacts.json",
+    "method": "addContact",
+    "summary": "Добавление контакта",
+    "params_count": 3,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/monitoring/contacts"
+    ]
+  },
+  {
+    "doc": "monitoring/openrpc.monitoringcontacts.json",
+    "method": "editContact",
+    "summary": "Редактирование контакта",
+    "params_count": 3,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/monitoring/contacts"
+    ]
+  },
+  {
+    "doc": "monitoring/openrpc.monitoringcontacts.json",
+    "method": "addEmail",
+    "summary": "Добавление контакта - адреса электронной почты",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/monitoring/contacts"
+    ]
+  },
+  {
+    "doc": "monitoring/openrpc.monitoringcontacts.json",
+    "method": "editEmail",
+    "summary": "Редактирование контакта - адреса электронной почты",
+    "params_count": 3,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/monitoring/contacts"
+    ]
+  },
+  {
+    "doc": "monitoring/openrpc.monitoringcontacts.json",
+    "method": "addPhone",
+    "summary": "Добавление контакта - телефона",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/monitoring/contacts"
+    ]
+  },
+  {
+    "doc": "monitoring/openrpc.monitoringcontacts.json",
+    "method": "editPhone",
+    "summary": "Редактирование контакта - телефона",
+    "params_count": 3,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/monitoring/contacts"
+    ]
+  },
+  {
+    "doc": "monitoring/openrpc.monitoringcontacts.json",
+    "method": "deleteContact",
+    "summary": "Удаление контакта",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/monitoring/contacts"
+    ]
+  },
+  {
+    "doc": "monitoring/openrpc.monitoringcontacts.json",
+    "method": "deleteContacts",
+    "summary": "Удаление нескольких контактов",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/monitoring/contacts"
+    ]
+  },
+  {
+    "doc": "monitoring/openrpc.monitoringcontacts.json",
+    "method": "addTelegram",
+    "summary": "Добавление контакта - телеграма",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/monitoring/contacts"
+    ]
+  },
+  {
+    "doc": "monitoring/openrpc.monitoringcontacts.json",
+    "method": "requestTelegramVerifyCode",
+    "summary": "Получить верификационный код для контакта Телеграм",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/monitoring/contacts"
+    ]
+  },
+  {
+    "doc": "monitoring/openrpc.monitoringcontacts.json",
+    "method": "isVerified",
+    "summary": "Получить признак, подтвержден ли контакт",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/monitoring/contacts"
+    ]
+  },
+  {
+    "doc": "monitoring/openrpc.monitoringcontacts.json",
+    "method": "editTelegram",
+    "summary": "Редактирование контакта - телеграма",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/monitoring/contacts"
+    ]
+  },
+  {
+    "doc": "monitoring/openrpc.monitoringcontacts.json",
+    "method": "verifyContact",
+    "summary": "Подтверждение контакта",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/monitoring/contacts"
+    ]
+  },
+  {
+    "doc": "openrpc.dns.json",
+    "method": "info",
+    "summary": "Получение текущих записей зоны DNS",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/domains/dns"
+    ]
+  },
+  {
+    "doc": "openrpc.dns.json",
+    "method": "editMx",
+    "summary": "Редактирование МХ записи",
+    "params_count": 6,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/domains/dns"
+    ]
+  },
+  {
+    "doc": "openrpc.dns.json",
+    "method": "editSrv",
+    "summary": "Редактирование SRV записи",
+    "params_count": 11,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/domains/dns"
+    ]
+  },
+  {
+    "doc": "openrpc.dns.json",
+    "method": "editNS",
+    "summary": "Редактирование NS записи",
+    "params_count": 5,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/domains/dns"
+    ]
+  },
+  {
+    "doc": "openrpc.dns.json",
+    "method": "editTxt",
+    "summary": "Редактирование Txt записи",
+    "params_count": 5,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/domains/dns"
+    ]
+  },
+  {
+    "doc": "openrpc.dns.json",
+    "method": "getFile",
+    "summary": "Получение содержимого файла зоны",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/domains/dns"
+    ]
+  },
+  {
+    "doc": "openrpc.domains.json",
+    "method": "index",
+    "summary": "Информация о доменах пользователя",
+    "params_count": 7,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/domains"
+    ]
+  },
+  {
+    "doc": "openrpc.domains.json",
+    "method": "getSubdomains",
+    "summary": "Список поддоменов домена",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/domains"
+    ]
+  },
+  {
+    "doc": "openrpc.domains.json",
+    "method": "getDomainInfo",
+    "summary": "Полная информация о домене",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/domains"
+    ]
+  },
+  {
+    "doc": "openrpc.domains.json",
+    "method": "regAvailable",
+    "summary": "Предварительная проверка на возможность регистрации домена",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/domains"
+    ]
+  },
+  {
+    "doc": "openrpc.domains.json",
+    "method": "getAvailablePackages",
+    "summary": "Проверяет возможность регистрации пакета для доменов, если пакет доступен, то добавляет его на аккаунт и возвращает объект с order_package_id - ID по которому его можно зарегистрировать",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/domains"
+    ]
+  },
+  {
+    "doc": "openrpc.domains.json",
+    "method": "regList",
+    "summary": "Зарегистрировать список доменов",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/domains"
+    ]
+  },
+  {
+    "doc": "openrpc.domains.json",
+    "method": "reg",
+    "summary": "Регистрация домена на аккаунте",
+    "params_count": 7,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/domains"
+    ]
+  },
+  {
+    "doc": "openrpc.domains.json",
+    "method": "move",
+    "summary": "Добавление домена на аккаунт",
+    "params_count": 3,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/domains"
+    ]
+  },
+  {
+    "doc": "openrpc.domains.json",
+    "method": "moveList",
+    "summary": "Добавление существующих доменов на аккаунт",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/domains"
+    ]
+  },
+  {
+    "doc": "openrpc.domains.json",
+    "method": "changeProlong",
+    "summary": "Изменение настроек автопродления",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/domains"
+    ]
+  },
+  {
+    "doc": "openrpc.domains.json",
+    "method": "changeProlongList",
+    "summary": "Массовая смена типа автопродления",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/domains"
+    ]
+  },
+  {
+    "doc": "openrpc.domains.json",
+    "method": "remove",
+    "summary": "Удаление домена",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/domains"
+    ]
+  },
+  {
+    "doc": "openrpc.domains.json",
+    "method": "removeList",
+    "summary": "Массовое удаление доменов",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/domains"
+    ]
+  },
+  {
+    "doc": "openrpc.domains.json",
+    "method": "prolong",
+    "summary": "Продление домена",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/domains"
+    ]
+  },
+  {
+    "doc": "openrpc.domains.json",
+    "method": "prolongList",
+    "summary": "Массовое продление доменов",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/domains"
+    ]
+  },
+  {
+    "doc": "openrpc.domains.json",
+    "method": "priceForTrasfer",
+    "summary": "Можно ли сделать трансфер домена",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/domains"
+    ]
+  },
+  {
+    "doc": "openrpc.domains.json",
+    "method": "priceForRegistration",
+    "summary": "Стоимость регистрации домена",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/domains"
+    ]
+  },
+  {
+    "doc": "openrpc.domains.json",
+    "method": "removeSubdomain",
+    "summary": "Удаление поддомена",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/domains"
+    ]
+  },
+  {
+    "doc": "openrpc.domains.json",
+    "method": "createSubdomain",
+    "summary": "Добавление поддомена",
+    "params_count": 3,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/domains"
+    ]
+  },
+  {
+    "doc": "openrpc.domains.json",
+    "method": "setRedirectVh",
+    "summary": "Установка переадресации для домена",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/domains"
+    ]
+  },
+  {
+    "doc": "openrpc.domains.json",
+    "method": "getRedirectVh",
+    "summary": "Возвращает переадресацию для домена",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/domains"
+    ]
+  },
+  {
+    "doc": "openrpc.pay.json",
+    "method": "index",
+    "summary": "Информация о балансе",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/pay"
+    ]
+  },
+  {
+    "doc": "openrpc.pay.json",
+    "method": "isAutopaymentEnable",
+    "summary": "Включен или нет автоплатеж на аккаунте",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/pay"
+    ]
+  },
+  {
+    "doc": "openrpc.pay.json",
+    "method": "getPayRecommendations",
+    "summary": "Получение рекомендаций к оплате",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/pay"
+    ]
+  },
+  {
+    "doc": "openrpc.pay.json",
+    "method": "getRecommendationTotalCost",
+    "summary": "Возвращает полную сумму, рекомендованную к оплате",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/pay"
+    ]
+  },
+  {
+    "doc": "openrpc.pay.json",
+    "method": "getUpcomingPaymentsVh",
+    "summary": "Возвращает информацию о предстоящих платежах для пользователей VH",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/pay"
+    ]
+  },
+  {
+    "doc": "openrpc.pay.json",
+    "method": "changeDeferment",
+    "summary": "Включить/выключить отсрочку",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/pay"
+    ]
+  },
+  {
+    "doc": "openrpc.pay.json",
+    "method": "getRemainsDate",
+    "summary": "Дата, до которой хватит денег на счету",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/pay"
+    ]
+  },
+  {
+    "doc": "openrpc.pay.json",
+    "method": "getRemainsDays",
+    "summary": "Количество дней до блокировки",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/pay"
+    ]
+  },
+  {
+    "doc": "openrpc.pay.json",
+    "method": "getBalance",
+    "summary": "Информация о балансе",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/pay"
+    ]
+  },
+  {
+    "doc": "openrpc.pay.json",
+    "method": "getActiveReserves",
+    "summary": "Детальная информация о заблокированных средствах",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/pay"
+    ]
+  },
+  {
+    "doc": "openrpc.sites.json",
+    "method": "index",
+    "summary": "Список всех сайтов на аккаунте пользователя",
+    "params_count": 3,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/sites"
+    ]
+  },
+  {
+    "doc": "openrpc.sites.json",
+    "method": "getSiteInfo",
+    "summary": "Получение подробной информации о сайте",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/sites"
+    ]
+  },
+  {
+    "doc": "openrpc.sites.json",
+    "method": "add",
+    "summary": "Метод для добавления сайта",
+    "params_count": 5,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/sites"
+    ]
+  },
+  {
+    "doc": "openrpc.sites.json",
+    "method": "edit",
+    "summary": "Редактирование названия сайта и директории для docroot",
+    "params_count": 3,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/sites"
+    ]
+  },
+  {
+    "doc": "openrpc.sites.json",
+    "method": "del",
+    "summary": "Удаление сайта",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/sites"
+    ]
+  },
+  {
+    "doc": "openrpc.sites.json",
+    "method": "changeDomainSite",
+    "summary": "Cмена сайта для домена",
+    "params_count": 3,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/sites"
+    ]
+  },
+  {
+    "doc": "openrpc.sites.json",
+    "method": "getBackEndsList",
+    "summary": "Получение cписка доступных бэкэндов",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/sites"
+    ]
+  },
+  {
+    "doc": "openrpc.sites.json",
+    "method": "changeBackEnd",
+    "summary": "Смена типа бэкэнда для сайта",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/sites"
+    ]
+  },
+  {
+    "doc": "openrpc.tariff.json",
+    "method": "index",
+    "summary": "Текущая информация о тарифе и реальном использовании ресурсов",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/tariff"
+    ]
+  },
+  {
+    "doc": "openrpc.tariff.json",
+    "method": "serverInfo",
+    "summary": "Информация о сервере, на котором находится аккаунт пользователя",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/tariff"
+    ]
+  },
+  {
+    "doc": "openrpc.vps.json",
+    "method": "index",
+    "summary": "Список VPS",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps"
+    ]
+  },
+  {
+    "doc": "openrpc.vps.json",
+    "method": "getFirstOrderInfo",
+    "summary": "Получение информации о первом заказе",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps"
+    ]
+  },
+  {
+    "doc": "openrpc.vps.json",
+    "method": "createEnable",
+    "summary": "Проверка доступен ли заказ VPS",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps"
+    ]
+  },
+  {
+    "doc": "openrpc.vps.json",
+    "method": "getAvailableConfig",
+    "summary": "Получение списка доступных дистрибутивов, ISP-лицензий, тарифных планов",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps"
+    ]
+  },
+  {
+    "doc": "openrpc.vps.json",
+    "method": "copy",
+    "summary": "Клонирование VPS",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps"
+    ]
+  },
+  {
+    "doc": "openrpc.vps.json",
+    "method": "createFirst",
+    "summary": "Создание первого заказа с VPS",
+    "params_count": 13,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps"
+    ]
+  },
+  {
+    "doc": "openrpc.vps.json",
+    "method": "create",
+    "summary": "Создание VPS",
+    "params_count": 12,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps"
+    ]
+  },
+  {
+    "doc": "openrpc.vps.json",
+    "method": "rename",
+    "summary": "Переименование VPS",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps"
+    ]
+  },
+  {
+    "doc": "openrpc.vps.json",
+    "method": "isRunning",
+    "summary": "Запущена ли VPS в данный момент",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps"
+    ]
+  },
+  {
+    "doc": "openrpc.vps.json",
+    "method": "remove",
+    "summary": "Удаление VPS",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps"
+    ]
+  },
+  {
+    "doc": "openrpc.vps.json",
+    "method": "removeFirst",
+    "summary": "Удаление первого заказа.Доступно, если заказ ещё не был оплачен и услуга не стартовала",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps"
+    ]
+  },
+  {
+    "doc": "openrpc.vps.json",
+    "method": "load",
+    "summary": "Загрузка - возвращает картинку в Base64",
+    "params_count": 5,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps"
+    ]
+  },
+  {
+    "doc": "openrpc.vps.json",
+    "method": "getConstructorPlanId",
+    "summary": "Возвращает id тарифного плана конструктора VPS по значениям кол-ва ядер, ОЗУ, объема диска и категории",
+    "params_count": 4,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps"
+    ]
+  },
+  {
+    "doc": "openrpc.vps.json",
+    "method": "changePlan",
+    "summary": "Изменение тарифного плана",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps"
+    ]
+  },
+  {
+    "doc": "openrpc.vps.json",
+    "method": "powerOn",
+    "summary": "Включение VPS",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps"
+    ]
+  },
+  {
+    "doc": "openrpc.vps.json",
+    "method": "powerOff",
+    "summary": "Выключение VPS",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps"
+    ]
+  },
+  {
+    "doc": "openrpc.vps.json",
+    "method": "reboot",
+    "summary": "Перезагрузка VPS",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps"
+    ]
+  },
+  {
+    "doc": "openrpc.vps.json",
+    "method": "getCurrentAction",
+    "summary": "Получение текущей операции по VPS",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps"
+    ]
+  },
+  {
+    "doc": "openrpc.vps.json",
+    "method": "reinstallOs",
+    "summary": "Переустановка образа VPS",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps"
+    ]
+  },
+  {
+    "doc": "openrpc.vps.json",
+    "method": "logs",
+    "summary": "Получение логов операций",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.backup.json",
+    "method": "getList",
+    "summary": "Получение полного списка бэкапов (файлы и базы с группировкой по дням)",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/backup"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.backup.json",
+    "method": "makeAccountCopy",
+    "summary": "Ставит задание на создание копий всех баз и файлов домашней директории",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/backup"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.backup.json",
+    "method": "restoreFiles",
+    "summary": "Одиночные и массовые действия 'Восстановить' над файлами из бэкапа",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/backup"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.backup.json",
+    "method": "downloadFile",
+    "summary": "Скачивание одиночного файла из бэкапа",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/backup"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.backup.json",
+    "method": "getListFiles",
+    "summary": "Метод для получения содержимого папки внутри бэкапа за конкретную дату",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/backup"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.backup.json",
+    "method": "getListMysql",
+    "summary": "Получение списка содержимого бэкапа баз данных за конкретный день",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/backup"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.backup.json",
+    "method": "receiveFiles",
+    "summary": "Одиночные и массовые действия 'Получить бэкап' над файлами из бэкапа",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/backup"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.backup.json",
+    "method": "receiveMysql",
+    "summary": "Одиночные и массовые действия 'Получить бэкап' над одной или несколькими базами данных",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/backup"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.backup.json",
+    "method": "restoreMysql",
+    "summary": "Одиночные и массовые действия 'Восстановить' над таблицами и базами данных",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/backup"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.cron.json",
+    "method": "addTask",
+    "summary": "Добавляет задание",
+    "params_count": 6,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/cron"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.cron.json",
+    "method": "editTask",
+    "summary": "Изменяет задание в кроне",
+    "params_count": 7,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/cron"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.cron.json",
+    "method": "removeTask",
+    "summary": "Удаляет задание из крона",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/cron"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.cron.json",
+    "method": "getTasks",
+    "summary": "Возвращает список заданий в кроне",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/cron"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.ddg.json",
+    "method": "index",
+    "summary": "Получение списка доменов с информацией о подключенных услугах",
+    "params_count": 4,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/ddg"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.ddg.json",
+    "method": "countAllDomains",
+    "summary": "Возвращает кол-во доменов клиента (за исключением технических). Используется для пагинации на главной",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/ddg"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.ddg.json",
+    "method": "enable",
+    "summary": "Подключить/разблокировать услугу для домена",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/ddg"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.ddg.json",
+    "method": "disable",
+    "summary": "Отключить/заблокировать услугу для домена",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/ddg"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.ddg.json",
+    "method": "enableInfo",
+    "summary": "Возвращает данные для страницы подключения услуги",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/ddg"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.ddg.json",
+    "method": "priceWidget",
+    "summary": "Цены на услугу для виджета 'Смена тарифа'",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/ddg"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.ddg.json",
+    "method": "getPrice",
+    "summary": "Возвращает стоимость услуги для текущего тарифного плана пользователя",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/ddg"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.hosting.json",
+    "method": "databaseGetList",
+    "summary": "Получение списка баз данных",
+    "params_count": 4,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/hosting"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.hosting.json",
+    "method": "databaseMysqlChangePass",
+    "summary": "Изменение пароля к БД mysql",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/hosting"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.hosting.json",
+    "method": "databaseMysqlCreate",
+    "summary": "Создание БД MySQL",
+    "params_count": 4,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/hosting"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.hosting.json",
+    "method": "databaseMysqlImport",
+    "summary": "Импорт базы данных MySql из файла",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/hosting"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.hosting.json",
+    "method": "databaseMysqlMakeCopy",
+    "summary": "Создает задание в очереди на создание архива базы данных MySql",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/hosting"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.hosting.json",
+    "method": "databaseMysqlAccessList",
+    "summary": "Вывод списка правил удаленного доступа к БД MySql",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/hosting"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.hosting.json",
+    "method": "databaseMysqlAccessCreate",
+    "summary": "Добавление нового правила удаленного доступа к БД MySql",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/hosting"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.hosting.json",
+    "method": "databaseMysqlAccessDelete",
+    "summary": "Удаление правила удаленного доступа к БД MySql",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/hosting"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.hosting.json",
+    "method": "databaseMysqlDelete",
+    "summary": "Удаление БД MySQL",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/hosting"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.hosting.json",
+    "method": "databasePgsqlCreate",
+    "summary": "Создание БД PostgreSQL",
+    "params_count": 4,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/hosting"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.hosting.json",
+    "method": "databasePgsqlDelete",
+    "summary": "Удаление базы данных Pgsql",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/hosting"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.hosting.json",
+    "method": "databasePgsqlChangePass",
+    "summary": "Изменение пароля к БД PostgreSQL",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/hosting"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.hosting.json",
+    "method": "databaseEditComment",
+    "summary": "Добавление/редактирование комментария в БД. Если его не было, то запись создается",
+    "params_count": 3,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/hosting"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.hosting.json",
+    "method": "getPmaUser",
+    "summary": "Создание временного пользователя",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/hosting"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.load.json",
+    "method": "index",
+    "summary": "Список доступных периодов статистики",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/load"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.load.json",
+    "method": "getLoadTable",
+    "summary": "Получение данных в виде таблицы",
+    "params_count": 3,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/load"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "getDomainsList",
+    "summary": "Получение списка доменов клиента с почтовыми ящиками",
+    "params_count": 4,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "getMailboxesList",
+    "summary": "Получение списка ящиков для домена",
+    "params_count": 6,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "getMailQuota",
+    "summary": "Возвращает общий размер (мб) почтовых ящиков клиента",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "createMbox",
+    "summary": "Создание почтового ящика",
+    "params_count": 4,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "sendRequisitesToEmail",
+    "summary": "Отправка реквизитов созданного почтового ящика на почту",
+    "params_count": 3,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "dropMbox",
+    "summary": "Удаление почтового ящика",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "updateAntispamState",
+    "summary": "Изменяет состояние антиспам фильтра",
+    "params_count": 3,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "updateComment",
+    "summary": "Обновляет комментарий ящика",
+    "params_count": 3,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "getAutoreply",
+    "summary": "Возвращает текст автоответчика",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "changeAutoreply",
+    "summary": "Изменяет текст автоответчика",
+    "params_count": 3,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "changeMailboxSpf",
+    "summary": "Вкл/выкл spf ящика",
+    "params_count": 3,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "changeDomainSpf",
+    "summary": "Вкл/выкл spf для всех почтовых ящиков домена",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "getForwardingEmailsList",
+    "summary": "Возвращает список адресов для пересылки",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "addForwardingEmail",
+    "summary": "Добавление адреса для пересылки",
+    "params_count": 3,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "removeForwardingEmail",
+    "summary": "Удаление адресов для пересылки",
+    "params_count": 3,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "isEnabledDeletingAfterForwarding",
+    "summary": "Проверяет, включено ли удаление писем из исходного ящика после пересылки",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "changeDeletingAfterForwarding",
+    "summary": "Вкл/выкл удаления из исходного ящика после пересылки",
+    "params_count": 3,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "getDeliveryAddressesList",
+    "summary": "Возвращает список адресов рассылки",
+    "params_count": 4,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "getDeliveryInfo",
+    "summary": "Возвращает информацию о кол-ве списков и адресов рассылки",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "addDeliveryAddress",
+    "summary": "Добавить адрес рассылки",
+    "params_count": 3,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "dropDeliveryAddress",
+    "summary": "Удалить адрес рассылки",
+    "params_count": 3,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "getMailsCollector",
+    "summary": "Возвращает адрес сборщика писем, если он добавлен",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "changeMailsCollector",
+    "summary": "Изменяет адрес сборщика писем",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "removeMailsCollector",
+    "summary": "Удаление адреса сборщика писем у домена",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "confirmMailsCollectorEmail",
+    "summary": "Подтверждает ящик, который не находится на доменах аккаунта клиента",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "changeSenderVerify",
+    "summary": "Вкл/выкл SenderVerify (проверку отправителя)",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "changeAutoDiscover",
+    "summary": "Вкл/выкл автонастройку почтовых программ",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "deleteMails",
+    "summary": "Удаляет письма ящика старше $days дней",
+    "params_count": 3,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "changeMailboxPassword",
+    "summary": "Изменяет пароль почтового ящика",
+    "params_count": 3,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "getWhitelist",
+    "summary": "Возвращает белый список",
+    "params_count": 4,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "getBlacklist",
+    "summary": "Возвращает черный список",
+    "params_count": 4,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "addToWhitelist",
+    "summary": "Добавляет исключение в белый список",
+    "params_count": 4,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "addToBlacklist",
+    "summary": "Добавляет исключение в черный список",
+    "params_count": 4,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "dropFromWhitelist",
+    "summary": "Удаляет исключение из белого списка",
+    "params_count": 3,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "dropFromBlacklist",
+    "summary": "Удаляет исключение из черного списка",
+    "params_count": 3,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "enableDkim",
+    "summary": "Включение DKIM",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.mail.json",
+    "method": "disableDkim",
+    "summary": "Выключение DKIM",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/mail"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.partnerprogram.json",
+    "method": "createOrderVh",
+    "summary": "Создание заказа для стандартных тарифных планов",
+    "params_count": 5,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/partnerProgram"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.partnerprogram.json",
+    "method": "checkLogin",
+    "summary": "Проверка логина для нового пользователя",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/partnerProgram"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.partnerprogram.json",
+    "method": "createOrderVip",
+    "summary": "Создание заказа для VIP тарифных планов",
+    "params_count": 5,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/partnerProgram"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.partnerprogram.json",
+    "method": "createOrderVps",
+    "summary": "Создание заказа для VPS тарифных планов",
+    "params_count": 7,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/partnerProgram"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.partnerprogram.json",
+    "method": "standardPlans",
+    "summary": "Получение списка доступных стандартных тарифов",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/partnerProgram"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.partnerprogram.json",
+    "method": "vipPlans",
+    "summary": "Получение списка доступных VIP тарифов",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/partnerProgram"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.partnerprogram.json",
+    "method": "vpsOsConfig",
+    "summary": "Получение списка доступных дистрибутивов, ISP-лицензий, тарифных планов",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/partnerProgram"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.partnerprogram.json",
+    "method": "startPartnership",
+    "summary": "Нажатие на кнопку 'Стать партнером'. Создает партнера без реквизитов",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/partnerProgram"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.partnerprogram.json",
+    "method": "fillPartnerRequisites",
+    "summary": "Заполнение реквизитов партнера",
+    "params_count": 3,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/partnerProgram"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.partnerprogram.json",
+    "method": "getTypesAdvertMaterials",
+    "summary": "Запрос типов рекламных материалов",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/partnerProgram"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.partnerprogram.json",
+    "method": "getAdvertMaterials",
+    "summary": "Возвращает все банеры указанного типа",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/partnerProgram"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.partnerprogram.json",
+    "method": "getPartnerClientsList",
+    "summary": "Получение отфильтрованных данных в виде массива с детализацией по клиентам партнера",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/partnerProgram"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.partnerprogram.json",
+    "method": "getPartnerClientCard",
+    "summary": "Получение подробной информации о клиенте",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/partnerProgram"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.partnerprogram.json",
+    "method": "savePartnerClientComment",
+    "summary": "Сохраняет изменение комментария к клиенту партнера",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/partnerProgram"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.partnerprogram.json",
+    "method": "getPartnerClientLogEvents",
+    "summary": "Выводит лог событий по клиентам партнера с пагинацией",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/partnerProgram"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.partnerprogram.json",
+    "method": "getPartnerClientLogFinance",
+    "summary": "Выводит лог детализацию по балансу по клиентам партнера с пагинацией (события, которые касаются финансов)",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/partnerProgram"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.partnerprogram.json",
+    "method": "sendWithdrawalOrder",
+    "summary": "Отправка заказа на вывод партнерского вознаграждения",
+    "params_count": 8,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/partnerProgram"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.partnerprogram.json",
+    "method": "getRequisitesWithdrawal",
+    "summary": "Возвращает сохраненные ранее реквизиты для вывода средств. Зависит от типа аккаунта",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/partnerProgram"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.partnerprogram.json",
+    "method": "getStatistic",
+    "summary": "Возвращает статистику по реферальным сайтам",
+    "params_count": 3,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/partnerProgram"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.partnerprogram.json",
+    "method": "getLinkStatistics",
+    "summary": "Возвращает статистику по реферальной ссылке",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/partnerProgram"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.referralprogram.json",
+    "method": "index",
+    "summary": "Возвращает список реферальных сайтов клиента",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/referralProgram"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.referralprogram.json",
+    "method": "removeReferralSite",
+    "summary": "Удаляет реферальный сайт клиента",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/referralProgram"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.referralprogram.json",
+    "method": "confirmReferralSite",
+    "summary": "Попытка подтверждения реферального сайта",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/referralProgram"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.referralprogram.json",
+    "method": "addReferralSite",
+    "summary": "Добавляет реферальный сайт",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/referralProgram"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.ssl.json",
+    "method": "index",
+    "summary": "Возвращает список сертификатов пользователя",
+    "params_count": 4,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/ssl"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.ssl.json",
+    "method": "getOrderList",
+    "summary": "Получение списка сертификатов доступных для заказа",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/ssl"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.ssl.json",
+    "method": "download",
+    "summary": "Возвращает архив с файлами сертификата",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/ssl"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.ssl.json",
+    "method": "editAutoprolong",
+    "summary": "Изменение режима автопродления сертификата",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/ssl"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.ssl.json",
+    "method": "removeCertificate",
+    "summary": "Удаляет сертификат",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/ssl"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.ssl.json",
+    "method": "getProlongInfo",
+    "summary": "Получение информации о вариантах продления сертификата",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/ssl"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.ssl.json",
+    "method": "prolongCertificate",
+    "summary": "Продлевает сертификат",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/ssl"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.ssl.json",
+    "method": "installLetsEncrypt",
+    "summary": "Установка сертификата LetsEncrypt",
+    "params_count": 5,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/ssl"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.utils.json",
+    "method": "sshOn",
+    "summary": "Включение доступа по SSH",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/utils"
+    ]
+  },
+  {
+    "doc": "vh/openrpc.utils.json",
+    "method": "sshOff",
+    "summary": "Выключение доступа по SSH",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/utils"
+    ]
+  },
+  {
+    "doc": "vh/utils/openrpc.diskusage.json",
+    "method": "index",
+    "summary": "Возвращаем информацию по используемому месту",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/utils/diskUsage"
+    ]
+  },
+  {
+    "doc": "vh/utils/openrpc.diskusage.json",
+    "method": "getTasksInfo",
+    "summary": "Информация о задачах на подсчет занимаемого места",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/utils/diskUsage"
+    ]
+  },
+  {
+    "doc": "vh/utils/openrpc.diskusage.json",
+    "method": "startTask",
+    "summary": "Создание задачи на подсчет данных",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/utils/diskUsage"
+    ]
+  },
+  {
+    "doc": "vh/utils/openrpc.diskusage.json",
+    "method": "getEmail",
+    "summary": "Получение емейла для уведомлений о превышении занимаемого места",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/utils/diskUsage"
+    ]
+  },
+  {
+    "doc": "vh/utils/openrpc.diskusage.json",
+    "method": "changeEmail",
+    "summary": "Смена емейла для уведомлений о занимаемом месте",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vh/utils/diskUsage"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.backup.json",
+    "method": "index",
+    "summary": "Список бэкапов для VPS",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/backup"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.backup.json",
+    "method": "updateIndex",
+    "summary": "Обновление индекса бэкапов",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/backup"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.backup.json",
+    "method": "create",
+    "summary": "Создание бэкапа VPS",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/backup"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.backup.json",
+    "method": "restore",
+    "summary": "Восстановление из бэкапа",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/backup"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.backup.json",
+    "method": "attach",
+    "summary": "Подключение бэкапа как диска к VPS",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/backup"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.backup.json",
+    "method": "detach",
+    "summary": "Отключение бэкапа как диска",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/backup"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.backup.json",
+    "method": "remove",
+    "summary": "Удаление бэкапа",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/backup"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.backup.json",
+    "method": "getSettings",
+    "summary": "Получение настроек создания бэкапов",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/backup"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.backup.json",
+    "method": "saveSettings",
+    "summary": "Сохранение настроек бэкапа",
+    "params_count": 4,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/backup"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.balancer.json",
+    "method": "index",
+    "summary": "Получение списка услуг «Балансировщик нагрузки»",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/balancer"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.balancer.json",
+    "method": "isCreateEnable",
+    "summary": "Проверка доступен ли заказ услуги «Балансировщик нагрузки»",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/balancer"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.balancer.json",
+    "method": "getAvailableConfig",
+    "summary": "Получение списка услуг «Балансировщик нагрузки»",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/balancer"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.balancer.json",
+    "method": "create",
+    "summary": "Создание услуги «Балансировщик нагрузки»",
+    "params_count": 11,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/balancer"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.balancer.json",
+    "method": "edit",
+    "summary": "Редактирование услуги «Балансировщик нагрузки»",
+    "params_count": 9,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/balancer"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.balancer.json",
+    "method": "remove",
+    "summary": "Удаление балансировщика",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/balancer"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.dbaas.json",
+    "method": "index",
+    "summary": "Возвращает объект управления DBaaS с элементами",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/dbaas"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.dbaas.json",
+    "method": "setUpgradeAgree",
+    "summary": "Сохранение выбора пользователя о переходе на платную версию",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/dbaas"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.dbaas.json",
+    "method": "getAvailableConfig",
+    "summary": "Возвращает данные для отображения страницы создания кластера: доступные тарифы и версии баз данных",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/dbaas"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.dbaas.json",
+    "method": "getConstructorPlanId",
+    "summary": "Возвращает id тарифного плана конфигуратора DBaaS по значениям кол-ва ядер, ОЗУ, объема диска и количеству реплик",
+    "params_count": 4,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/dbaas"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.dbaas.json",
+    "method": "getFirstOrderInfo",
+    "summary": "Получение информации о первом заказе",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/dbaas"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.dbaas.json",
+    "method": "removeFirst",
+    "summary": "Удаление первого заказа: доступно, если заказ ещё не был оплачен и услуга не стартовала",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/dbaas"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.dbaas.json",
+    "method": "createInstance",
+    "summary": "Создание кластера (инициирует создание кластера)",
+    "params_count": 9,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/dbaas"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.dbaas.json",
+    "method": "editInstance",
+    "summary": "Редактирование кластера",
+    "params_count": 6,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/dbaas"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.dbaas.json",
+    "method": "removeInstance",
+    "summary": "Удаление кластера",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/dbaas"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.dbaas.json",
+    "method": "deleteDatabase",
+    "summary": "Удаление отдельной базы данных из кластера",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/dbaas"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.dbaas.json",
+    "method": "validateUsers",
+    "summary": "Проверяет список пользователей кластера БД",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/dbaas"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.ip.json",
+    "method": "addLocal",
+    "summary": "Подключение VPS к локальной сети",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/ip"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.ip.json",
+    "method": "removeLocal",
+    "summary": "Удаление локального IP",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/ip"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.protected-ip.json",
+    "method": "index",
+    "summary": "Получение информации о IP",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/ip"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.protected-ip.json",
+    "method": "getAllIpList",
+    "summary": "Получение списка всех IP на аккаунте пользователя",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/ip"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.protected-ip.json",
+    "method": "getOrderInfo",
+    "summary": "Возвращает информацию по лимитам заказов ip",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/ip"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.protected-ip.json",
+    "method": "addProtected",
+    "summary": "Добавляет защищенный IP на VPS",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/ip"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.protected-ip.json",
+    "method": "removeProtected",
+    "summary": "Удаляет защищенный IP",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/ip"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.protected-ip.json",
+    "method": "updateProtected",
+    "summary": "Изменяет тариф защищенного IP",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/ip"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.protected-ip.json",
+    "method": "moveProtected",
+    "summary": "Перемещает между VPS или открепляет/прикрепляет от/к VPS защищенный IP",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/ip"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.protected-ip.json",
+    "method": "add",
+    "summary": "Добавить необходимое количество доп. IP на VPS",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/ip"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.protected-ip.json",
+    "method": "addLocal",
+    "summary": "Подключение VPS к локальной сети",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/ip"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.protected-ip.json",
+    "method": "removeLocal",
+    "summary": "Удаление локального IP",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/ip"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.protected-ip.json",
+    "method": "remove",
+    "summary": "Удаление IP. Нельзя удалять связанный IP передавая при этом пустой $billingId.",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/ip"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.protected-ip.json",
+    "method": "move",
+    "summary": "Перемещение IP между услугами VPS и прикрепление/открепление IP от услуги VPS",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/ip"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.protected-ip.json",
+    "method": "editPtr",
+    "summary": "Редактирование PTR",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/ip"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.protected-ip.json",
+    "method": "getPtr",
+    "summary": "Получение обратной зоны для IP-адреса",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/ip"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.remoteBackup.json",
+    "method": "index",
+    "summary": "Получение данных по бэкапам",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/remoteBackup"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.remoteBackup.json",
+    "method": "create",
+    "summary": "Создание бэкапа VPS",
+    "params_count": 3,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/remoteBackup"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.remoteBackup.json",
+    "method": "editComment",
+    "summary": "Редактирование комментария к бэкапу",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/remoteBackup"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.remoteBackup.json",
+    "method": "restore",
+    "summary": "Восстановление из бэкапа в ту VPS, из которой бэкап создан",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/remoteBackup"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.remoteBackup.json",
+    "method": "restoreInto",
+    "summary": "Восстановление из бэкапа в существующую VPS",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/remoteBackup"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.remoteBackup.json",
+    "method": "remove",
+    "summary": "Удаление бэкапа",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/remoteBackup"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.ssl.json",
+    "method": "index",
+    "summary": "Возвращает список сертификатов пользователя",
+    "params_count": 4,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/ssl"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.ssl.json",
+    "method": "getOrderList",
+    "summary": "Получение списка сертификатов доступных для заказа",
+    "params_count": 0,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/ssl"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.ssl.json",
+    "method": "download",
+    "summary": "Возвращает архив с файлами сертификата",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/ssl"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.ssl.json",
+    "method": "editAutoprolong",
+    "summary": "Изменение режима автопродления сертификата",
+    "params_count": 2,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/ssl"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.ssl.json",
+    "method": "removeCertificate",
+    "summary": "Удаляет сертификат",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/ssl"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.ssl.json",
+    "method": "getProlongInfo",
+    "summary": "Получение информации о вариантах продления сертификата",
+    "params_count": 1,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/ssl"
+    ]
+  },
+  {
+    "doc": "vps/openrpc.ssl.json",
+    "method": "orderSubmit",
+    "summary": "Отправка заказа",
+    "params_count": 9,
+    "has_result": true,
+    "servers": [
+      "https://api.sweb.ru/vps/ssl"
+    ]
+  }
+]

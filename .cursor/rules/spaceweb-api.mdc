@@ -1,0 +1,20 @@
+---
+description: SpaceWeb API project rules for Cursor
+alwaysApply: true
+---
+
+Use this repository as a two-layer API system:
+
+- `spec/openapi.llm-projection.yaml` for operation planning
+- `spec/openapi.transport.yaml` for real HTTP execution
+
+Rules:
+- Never call `/rpc/*` endpoints on real API host.
+- Real calls must use JSON-RPC envelope with `jsonrpc=2.0`, `method`, `params`.
+- Use full upstream paths from `x-sweb-upstream-path`.
+- Prefer transport adapters:
+  - `client/python/transport.py`
+  - `client/ts/transport.ts`
+- Validate before commit:
+  - `python scripts/build_mvp.py --limit 120`
+  - `python scripts/validate_mvp.py`

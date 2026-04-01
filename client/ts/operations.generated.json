@@ -1,0 +1,1377 @@
+{
+  "balancer_create": {
+    "operationId": "balancer_create",
+    "upstreamMethod": "create",
+    "upstreamPath": "/balancer/"
+  },
+  "balancer_edit": {
+    "operationId": "balancer_edit",
+    "upstreamMethod": "edit",
+    "upstreamPath": "/balancer/"
+  },
+  "balancer_getAvailableConfig": {
+    "operationId": "balancer_getAvailableConfig",
+    "upstreamMethod": "getAvailableConfig",
+    "upstreamPath": "/balancer/"
+  },
+  "balancer_index": {
+    "operationId": "balancer_index",
+    "upstreamMethod": "index",
+    "upstreamPath": "/balancer/"
+  },
+  "balancer_isCreateEnable": {
+    "operationId": "balancer_isCreateEnable",
+    "upstreamMethod": "isCreateEnable",
+    "upstreamPath": "/balancer/"
+  },
+  "balancer_remove": {
+    "operationId": "balancer_remove",
+    "upstreamMethod": "remove",
+    "upstreamPath": "/balancer/"
+  },
+  "dbaas_createInstance": {
+    "operationId": "dbaas_createInstance",
+    "upstreamMethod": "createInstance",
+    "upstreamPath": "/dbaas/"
+  },
+  "dbaas_deleteDatabase": {
+    "operationId": "dbaas_deleteDatabase",
+    "upstreamMethod": "deleteDatabase",
+    "upstreamPath": "/dbaas/"
+  },
+  "dbaas_editInstance": {
+    "operationId": "dbaas_editInstance",
+    "upstreamMethod": "editInstance",
+    "upstreamPath": "/dbaas/"
+  },
+  "dbaas_getAvailableConfig": {
+    "operationId": "dbaas_getAvailableConfig",
+    "upstreamMethod": "getAvailableConfig",
+    "upstreamPath": "/dbaas/"
+  },
+  "dbaas_getConstructorPlanId": {
+    "operationId": "dbaas_getConstructorPlanId",
+    "upstreamMethod": "getConstructorPlanId",
+    "upstreamPath": "/dbaas/"
+  },
+  "dbaas_getFirstOrderInfo": {
+    "operationId": "dbaas_getFirstOrderInfo",
+    "upstreamMethod": "getFirstOrderInfo",
+    "upstreamPath": "/dbaas/"
+  },
+  "dbaas_index": {
+    "operationId": "dbaas_index",
+    "upstreamMethod": "index",
+    "upstreamPath": "/dbaas/"
+  },
+  "dbaas_removeFirst": {
+    "operationId": "dbaas_removeFirst",
+    "upstreamMethod": "removeFirst",
+    "upstreamPath": "/dbaas/"
+  },
+  "dbaas_removeInstance": {
+    "operationId": "dbaas_removeInstance",
+    "upstreamMethod": "removeInstance",
+    "upstreamPath": "/dbaas/"
+  },
+  "dbaas_setUpgradeAgree": {
+    "operationId": "dbaas_setUpgradeAgree",
+    "upstreamMethod": "setUpgradeAgree",
+    "upstreamPath": "/dbaas/"
+  },
+  "dbaas_validateUsers": {
+    "operationId": "dbaas_validateUsers",
+    "upstreamMethod": "validateUsers",
+    "upstreamPath": "/dbaas/"
+  },
+  "domains_bonus_buy": {
+    "operationId": "domains_bonus_buy",
+    "upstreamMethod": "buy",
+    "upstreamPath": "/domains/bonus/"
+  },
+  "domains_bonus_getList": {
+    "operationId": "domains_bonus_getList",
+    "upstreamMethod": "getList",
+    "upstreamPath": "/domains/bonus/"
+  },
+  "domains_bonus_index": {
+    "operationId": "domains_bonus_index",
+    "upstreamMethod": "index",
+    "upstreamPath": "/domains/bonus/"
+  },
+  "domains_changeProlong": {
+    "operationId": "domains_changeProlong",
+    "upstreamMethod": "changeProlong",
+    "upstreamPath": "/domains/"
+  },
+  "domains_changeProlongList": {
+    "operationId": "domains_changeProlongList",
+    "upstreamMethod": "changeProlongList",
+    "upstreamPath": "/domains/"
+  },
+  "domains_createSubdomain": {
+    "operationId": "domains_createSubdomain",
+    "upstreamMethod": "createSubdomain",
+    "upstreamPath": "/domains/"
+  },
+  "domains_dns_editMx": {
+    "operationId": "domains_dns_editMx",
+    "upstreamMethod": "editMx",
+    "upstreamPath": "/domains/dns/"
+  },
+  "domains_dns_editNS": {
+    "operationId": "domains_dns_editNS",
+    "upstreamMethod": "editNS",
+    "upstreamPath": "/domains/dns/"
+  },
+  "domains_dns_editSrv": {
+    "operationId": "domains_dns_editSrv",
+    "upstreamMethod": "editSrv",
+    "upstreamPath": "/domains/dns/"
+  },
+  "domains_dns_editTxt": {
+    "operationId": "domains_dns_editTxt",
+    "upstreamMethod": "editTxt",
+    "upstreamPath": "/domains/dns/"
+  },
+  "domains_dns_getFile": {
+    "operationId": "domains_dns_getFile",
+    "upstreamMethod": "getFile",
+    "upstreamPath": "/domains/dns/"
+  },
+  "domains_dns_info": {
+    "operationId": "domains_dns_info",
+    "upstreamMethod": "info",
+    "upstreamPath": "/domains/dns/"
+  },
+  "domains_getAvailablePackages": {
+    "operationId": "domains_getAvailablePackages",
+    "upstreamMethod": "getAvailablePackages",
+    "upstreamPath": "/domains/"
+  },
+  "domains_getDomainInfo": {
+    "operationId": "domains_getDomainInfo",
+    "upstreamMethod": "getDomainInfo",
+    "upstreamPath": "/domains/"
+  },
+  "domains_getRedirectVh": {
+    "operationId": "domains_getRedirectVh",
+    "upstreamMethod": "getRedirectVh",
+    "upstreamPath": "/domains/"
+  },
+  "domains_getSubdomains": {
+    "operationId": "domains_getSubdomains",
+    "upstreamMethod": "getSubdomains",
+    "upstreamPath": "/domains/"
+  },
+  "domains_index": {
+    "operationId": "domains_index",
+    "upstreamMethod": "index",
+    "upstreamPath": "/domains/"
+  },
+  "domains_move": {
+    "operationId": "domains_move",
+    "upstreamMethod": "move",
+    "upstreamPath": "/domains/"
+  },
+  "domains_moveList": {
+    "operationId": "domains_moveList",
+    "upstreamMethod": "moveList",
+    "upstreamPath": "/domains/"
+  },
+  "domains_persons_createFizIp": {
+    "operationId": "domains_persons_createFizIp",
+    "upstreamMethod": "createFizIp",
+    "upstreamPath": "/domains/persons/"
+  },
+  "domains_persons_createJur": {
+    "operationId": "domains_persons_createJur",
+    "upstreamMethod": "createJur",
+    "upstreamPath": "/domains/persons/"
+  },
+  "domains_persons_getinfo": {
+    "operationId": "domains_persons_getinfo",
+    "upstreamMethod": "getinfo",
+    "upstreamPath": "/domains/persons/"
+  },
+  "domains_persons_index": {
+    "operationId": "domains_persons_index",
+    "upstreamMethod": "index",
+    "upstreamPath": "/domains/persons/"
+  },
+  "domains_priceForRegistration": {
+    "operationId": "domains_priceForRegistration",
+    "upstreamMethod": "priceForRegistration",
+    "upstreamPath": "/domains/"
+  },
+  "domains_priceForTrasfer": {
+    "operationId": "domains_priceForTrasfer",
+    "upstreamMethod": "priceForTrasfer",
+    "upstreamPath": "/domains/"
+  },
+  "domains_prolong": {
+    "operationId": "domains_prolong",
+    "upstreamMethod": "prolong",
+    "upstreamPath": "/domains/"
+  },
+  "domains_prolongList": {
+    "operationId": "domains_prolongList",
+    "upstreamMethod": "prolongList",
+    "upstreamPath": "/domains/"
+  },
+  "domains_reg": {
+    "operationId": "domains_reg",
+    "upstreamMethod": "reg",
+    "upstreamPath": "/domains/"
+  },
+  "domains_regAvailable": {
+    "operationId": "domains_regAvailable",
+    "upstreamMethod": "regAvailable",
+    "upstreamPath": "/domains/"
+  },
+  "domains_regList": {
+    "operationId": "domains_regList",
+    "upstreamMethod": "regList",
+    "upstreamPath": "/domains/"
+  },
+  "domains_remove": {
+    "operationId": "domains_remove",
+    "upstreamMethod": "remove",
+    "upstreamPath": "/domains/"
+  },
+  "domains_removeList": {
+    "operationId": "domains_removeList",
+    "upstreamMethod": "removeList",
+    "upstreamPath": "/domains/"
+  },
+  "domains_removeSubdomain": {
+    "operationId": "domains_removeSubdomain",
+    "upstreamMethod": "removeSubdomain",
+    "upstreamPath": "/domains/"
+  },
+  "domains_setRedirectVh": {
+    "operationId": "domains_setRedirectVh",
+    "upstreamMethod": "setRedirectVh",
+    "upstreamPath": "/domains/"
+  },
+  "monitoring_change": {
+    "operationId": "monitoring_change",
+    "upstreamMethod": "change",
+    "upstreamPath": "/monitoring/"
+  },
+  "monitoring_checks_activate": {
+    "operationId": "monitoring_checks_activate",
+    "upstreamMethod": "activate",
+    "upstreamPath": "/monitoring/checks/"
+  },
+  "monitoring_checks_activateList": {
+    "operationId": "monitoring_checks_activateList",
+    "upstreamMethod": "activateList",
+    "upstreamPath": "/monitoring/checks/"
+  },
+  "monitoring_checks_create": {
+    "operationId": "monitoring_checks_create",
+    "upstreamMethod": "create",
+    "upstreamPath": "/monitoring/checks/"
+  },
+  "monitoring_checks_deactivate": {
+    "operationId": "monitoring_checks_deactivate",
+    "upstreamMethod": "deactivate",
+    "upstreamPath": "/monitoring/checks/"
+  },
+  "monitoring_checks_deactivateList": {
+    "operationId": "monitoring_checks_deactivateList",
+    "upstreamMethod": "deactivateList",
+    "upstreamPath": "/monitoring/checks/"
+  },
+  "monitoring_checks_edit": {
+    "operationId": "monitoring_checks_edit",
+    "upstreamMethod": "edit",
+    "upstreamPath": "/monitoring/checks/"
+  },
+  "monitoring_checks_getFullCheckInfo": {
+    "operationId": "monitoring_checks_getFullCheckInfo",
+    "upstreamMethod": "getFullCheckInfo",
+    "upstreamPath": "/monitoring/checks/"
+  },
+  "monitoring_checks_getInfo": {
+    "operationId": "monitoring_checks_getInfo",
+    "upstreamMethod": "getInfo",
+    "upstreamPath": "/monitoring/checks/"
+  },
+  "monitoring_checks_getIntervals": {
+    "operationId": "monitoring_checks_getIntervals",
+    "upstreamMethod": "getIntervals",
+    "upstreamPath": "/monitoring/checks/"
+  },
+  "monitoring_checks_getKeywordModes": {
+    "operationId": "monitoring_checks_getKeywordModes",
+    "upstreamMethod": "getKeywordModes",
+    "upstreamPath": "/monitoring/checks/"
+  },
+  "monitoring_checks_getPorts": {
+    "operationId": "monitoring_checks_getPorts",
+    "upstreamMethod": "getPorts",
+    "upstreamPath": "/monitoring/checks/"
+  },
+  "monitoring_checks_getTypes": {
+    "operationId": "monitoring_checks_getTypes",
+    "upstreamMethod": "getTypes",
+    "upstreamPath": "/monitoring/checks/"
+  },
+  "monitoring_checks_history": {
+    "operationId": "monitoring_checks_history",
+    "upstreamMethod": "history",
+    "upstreamPath": "/monitoring/checks/"
+  },
+  "monitoring_checks_index": {
+    "operationId": "monitoring_checks_index",
+    "upstreamMethod": "index",
+    "upstreamPath": "/monitoring/checks/"
+  },
+  "monitoring_checks_remove": {
+    "operationId": "monitoring_checks_remove",
+    "upstreamMethod": "remove",
+    "upstreamPath": "/monitoring/checks/"
+  },
+  "monitoring_checks_removeList": {
+    "operationId": "monitoring_checks_removeList",
+    "upstreamMethod": "removeList",
+    "upstreamPath": "/monitoring/checks/"
+  },
+  "monitoring_contacts_addContact": {
+    "operationId": "monitoring_contacts_addContact",
+    "upstreamMethod": "addContact",
+    "upstreamPath": "/monitoring/contacts/"
+  },
+  "monitoring_contacts_addEmail": {
+    "operationId": "monitoring_contacts_addEmail",
+    "upstreamMethod": "addEmail",
+    "upstreamPath": "/monitoring/contacts/"
+  },
+  "monitoring_contacts_addPhone": {
+    "operationId": "monitoring_contacts_addPhone",
+    "upstreamMethod": "addPhone",
+    "upstreamPath": "/monitoring/contacts/"
+  },
+  "monitoring_contacts_addTelegram": {
+    "operationId": "monitoring_contacts_addTelegram",
+    "upstreamMethod": "addTelegram",
+    "upstreamPath": "/monitoring/contacts/"
+  },
+  "monitoring_contacts_deleteContact": {
+    "operationId": "monitoring_contacts_deleteContact",
+    "upstreamMethod": "deleteContact",
+    "upstreamPath": "/monitoring/contacts/"
+  },
+  "monitoring_contacts_deleteContacts": {
+    "operationId": "monitoring_contacts_deleteContacts",
+    "upstreamMethod": "deleteContacts",
+    "upstreamPath": "/monitoring/contacts/"
+  },
+  "monitoring_contacts_editContact": {
+    "operationId": "monitoring_contacts_editContact",
+    "upstreamMethod": "editContact",
+    "upstreamPath": "/monitoring/contacts/"
+  },
+  "monitoring_contacts_editEmail": {
+    "operationId": "monitoring_contacts_editEmail",
+    "upstreamMethod": "editEmail",
+    "upstreamPath": "/monitoring/contacts/"
+  },
+  "monitoring_contacts_editPhone": {
+    "operationId": "monitoring_contacts_editPhone",
+    "upstreamMethod": "editPhone",
+    "upstreamPath": "/monitoring/contacts/"
+  },
+  "monitoring_contacts_editTelegram": {
+    "operationId": "monitoring_contacts_editTelegram",
+    "upstreamMethod": "editTelegram",
+    "upstreamPath": "/monitoring/contacts/"
+  },
+  "monitoring_contacts_getAllContacts": {
+    "operationId": "monitoring_contacts_getAllContacts",
+    "upstreamMethod": "getAllContacts",
+    "upstreamPath": "/monitoring/contacts/"
+  },
+  "monitoring_contacts_index": {
+    "operationId": "monitoring_contacts_index",
+    "upstreamMethod": "index",
+    "upstreamPath": "/monitoring/contacts/"
+  },
+  "monitoring_contacts_isVerified": {
+    "operationId": "monitoring_contacts_isVerified",
+    "upstreamMethod": "isVerified",
+    "upstreamPath": "/monitoring/contacts/"
+  },
+  "monitoring_contacts_requestTelegramVerifyCode": {
+    "operationId": "monitoring_contacts_requestTelegramVerifyCode",
+    "upstreamMethod": "requestTelegramVerifyCode",
+    "upstreamPath": "/monitoring/contacts/"
+  },
+  "monitoring_contacts_verifyContact": {
+    "operationId": "monitoring_contacts_verifyContact",
+    "upstreamMethod": "verifyContact",
+    "upstreamPath": "/monitoring/contacts/"
+  },
+  "monitoring_disable": {
+    "operationId": "monitoring_disable",
+    "upstreamMethod": "disable",
+    "upstreamPath": "/monitoring/"
+  },
+  "monitoring_enable": {
+    "operationId": "monitoring_enable",
+    "upstreamMethod": "enable",
+    "upstreamPath": "/monitoring/"
+  },
+  "monitoring_plans": {
+    "operationId": "monitoring_plans",
+    "upstreamMethod": "plans",
+    "upstreamPath": "/monitoring/"
+  },
+  "notAuthorized_getToken": {
+    "operationId": "notAuthorized_getToken",
+    "upstreamMethod": "getToken",
+    "upstreamPath": "/notAuthorized/"
+  },
+  "pay_changeDeferment": {
+    "operationId": "pay_changeDeferment",
+    "upstreamMethod": "changeDeferment",
+    "upstreamPath": "/pay/"
+  },
+  "pay_getActiveReserves": {
+    "operationId": "pay_getActiveReserves",
+    "upstreamMethod": "getActiveReserves",
+    "upstreamPath": "/pay/"
+  },
+  "pay_getBalance": {
+    "operationId": "pay_getBalance",
+    "upstreamMethod": "getBalance",
+    "upstreamPath": "/pay/"
+  },
+  "pay_getPayRecommendations": {
+    "operationId": "pay_getPayRecommendations",
+    "upstreamMethod": "getPayRecommendations",
+    "upstreamPath": "/pay/"
+  },
+  "pay_getRecommendationTotalCost": {
+    "operationId": "pay_getRecommendationTotalCost",
+    "upstreamMethod": "getRecommendationTotalCost",
+    "upstreamPath": "/pay/"
+  },
+  "pay_getRemainsDate": {
+    "operationId": "pay_getRemainsDate",
+    "upstreamMethod": "getRemainsDate",
+    "upstreamPath": "/pay/"
+  },
+  "pay_getRemainsDays": {
+    "operationId": "pay_getRemainsDays",
+    "upstreamMethod": "getRemainsDays",
+    "upstreamPath": "/pay/"
+  },
+  "pay_getUpcomingPaymentsVh": {
+    "operationId": "pay_getUpcomingPaymentsVh",
+    "upstreamMethod": "getUpcomingPaymentsVh",
+    "upstreamPath": "/pay/"
+  },
+  "pay_index": {
+    "operationId": "pay_index",
+    "upstreamMethod": "index",
+    "upstreamPath": "/pay/"
+  },
+  "pay_isAutopaymentEnable": {
+    "operationId": "pay_isAutopaymentEnable",
+    "upstreamMethod": "isAutopaymentEnable",
+    "upstreamPath": "/pay/"
+  },
+  "sites_add": {
+    "operationId": "sites_add",
+    "upstreamMethod": "add",
+    "upstreamPath": "/sites/"
+  },
+  "sites_changeBackEnd": {
+    "operationId": "sites_changeBackEnd",
+    "upstreamMethod": "changeBackEnd",
+    "upstreamPath": "/sites/"
+  },
+  "sites_changeDomainSite": {
+    "operationId": "sites_changeDomainSite",
+    "upstreamMethod": "changeDomainSite",
+    "upstreamPath": "/sites/"
+  },
+  "sites_del": {
+    "operationId": "sites_del",
+    "upstreamMethod": "del",
+    "upstreamPath": "/sites/"
+  },
+  "sites_edit": {
+    "operationId": "sites_edit",
+    "upstreamMethod": "edit",
+    "upstreamPath": "/sites/"
+  },
+  "sites_getBackEndsList": {
+    "operationId": "sites_getBackEndsList",
+    "upstreamMethod": "getBackEndsList",
+    "upstreamPath": "/sites/"
+  },
+  "sites_getSiteInfo": {
+    "operationId": "sites_getSiteInfo",
+    "upstreamMethod": "getSiteInfo",
+    "upstreamPath": "/sites/"
+  },
+  "sites_index": {
+    "operationId": "sites_index",
+    "upstreamMethod": "index",
+    "upstreamPath": "/sites/"
+  },
+  "tariff_index": {
+    "operationId": "tariff_index",
+    "upstreamMethod": "index",
+    "upstreamPath": "/tariff/"
+  },
+  "tariff_serverInfo": {
+    "operationId": "tariff_serverInfo",
+    "upstreamMethod": "serverInfo",
+    "upstreamPath": "/tariff/"
+  },
+  "vh_backup_downloadFile": {
+    "operationId": "vh_backup_downloadFile",
+    "upstreamMethod": "downloadFile",
+    "upstreamPath": "/vh/backup/"
+  },
+  "vh_backup_getList": {
+    "operationId": "vh_backup_getList",
+    "upstreamMethod": "getList",
+    "upstreamPath": "/vh/backup/"
+  },
+  "vh_backup_getListFiles": {
+    "operationId": "vh_backup_getListFiles",
+    "upstreamMethod": "getListFiles",
+    "upstreamPath": "/vh/backup/"
+  },
+  "vh_backup_getListMysql": {
+    "operationId": "vh_backup_getListMysql",
+    "upstreamMethod": "getListMysql",
+    "upstreamPath": "/vh/backup/"
+  },
+  "vh_backup_makeAccountCopy": {
+    "operationId": "vh_backup_makeAccountCopy",
+    "upstreamMethod": "makeAccountCopy",
+    "upstreamPath": "/vh/backup/"
+  },
+  "vh_backup_receiveFiles": {
+    "operationId": "vh_backup_receiveFiles",
+    "upstreamMethod": "receiveFiles",
+    "upstreamPath": "/vh/backup/"
+  },
+  "vh_backup_receiveMysql": {
+    "operationId": "vh_backup_receiveMysql",
+    "upstreamMethod": "receiveMysql",
+    "upstreamPath": "/vh/backup/"
+  },
+  "vh_backup_restoreFiles": {
+    "operationId": "vh_backup_restoreFiles",
+    "upstreamMethod": "restoreFiles",
+    "upstreamPath": "/vh/backup/"
+  },
+  "vh_backup_restoreMysql": {
+    "operationId": "vh_backup_restoreMysql",
+    "upstreamMethod": "restoreMysql",
+    "upstreamPath": "/vh/backup/"
+  },
+  "vh_cron_addTask": {
+    "operationId": "vh_cron_addTask",
+    "upstreamMethod": "addTask",
+    "upstreamPath": "/vh/cron/"
+  },
+  "vh_cron_editTask": {
+    "operationId": "vh_cron_editTask",
+    "upstreamMethod": "editTask",
+    "upstreamPath": "/vh/cron/"
+  },
+  "vh_cron_getTasks": {
+    "operationId": "vh_cron_getTasks",
+    "upstreamMethod": "getTasks",
+    "upstreamPath": "/vh/cron/"
+  },
+  "vh_cron_removeTask": {
+    "operationId": "vh_cron_removeTask",
+    "upstreamMethod": "removeTask",
+    "upstreamPath": "/vh/cron/"
+  },
+  "vh_ddg_countAllDomains": {
+    "operationId": "vh_ddg_countAllDomains",
+    "upstreamMethod": "countAllDomains",
+    "upstreamPath": "/vh/ddg/"
+  },
+  "vh_ddg_disable": {
+    "operationId": "vh_ddg_disable",
+    "upstreamMethod": "disable",
+    "upstreamPath": "/vh/ddg/"
+  },
+  "vh_ddg_enable": {
+    "operationId": "vh_ddg_enable",
+    "upstreamMethod": "enable",
+    "upstreamPath": "/vh/ddg/"
+  },
+  "vh_ddg_enableInfo": {
+    "operationId": "vh_ddg_enableInfo",
+    "upstreamMethod": "enableInfo",
+    "upstreamPath": "/vh/ddg/"
+  },
+  "vh_ddg_getPrice": {
+    "operationId": "vh_ddg_getPrice",
+    "upstreamMethod": "getPrice",
+    "upstreamPath": "/vh/ddg/"
+  },
+  "vh_ddg_index": {
+    "operationId": "vh_ddg_index",
+    "upstreamMethod": "index",
+    "upstreamPath": "/vh/ddg/"
+  },
+  "vh_ddg_priceWidget": {
+    "operationId": "vh_ddg_priceWidget",
+    "upstreamMethod": "priceWidget",
+    "upstreamPath": "/vh/ddg/"
+  },
+  "vh_hosting_databaseEditComment": {
+    "operationId": "vh_hosting_databaseEditComment",
+    "upstreamMethod": "databaseEditComment",
+    "upstreamPath": "/vh/hosting/"
+  },
+  "vh_hosting_databaseGetList": {
+    "operationId": "vh_hosting_databaseGetList",
+    "upstreamMethod": "databaseGetList",
+    "upstreamPath": "/vh/hosting/"
+  },
+  "vh_hosting_databaseMysqlAccessCreate": {
+    "operationId": "vh_hosting_databaseMysqlAccessCreate",
+    "upstreamMethod": "databaseMysqlAccessCreate",
+    "upstreamPath": "/vh/hosting/"
+  },
+  "vh_hosting_databaseMysqlAccessDelete": {
+    "operationId": "vh_hosting_databaseMysqlAccessDelete",
+    "upstreamMethod": "databaseMysqlAccessDelete",
+    "upstreamPath": "/vh/hosting/"
+  },
+  "vh_hosting_databaseMysqlAccessList": {
+    "operationId": "vh_hosting_databaseMysqlAccessList",
+    "upstreamMethod": "databaseMysqlAccessList",
+    "upstreamPath": "/vh/hosting/"
+  },
+  "vh_hosting_databaseMysqlChangePass": {
+    "operationId": "vh_hosting_databaseMysqlChangePass",
+    "upstreamMethod": "databaseMysqlChangePass",
+    "upstreamPath": "/vh/hosting/"
+  },
+  "vh_hosting_databaseMysqlCreate": {
+    "operationId": "vh_hosting_databaseMysqlCreate",
+    "upstreamMethod": "databaseMysqlCreate",
+    "upstreamPath": "/vh/hosting/"
+  },
+  "vh_hosting_databaseMysqlDelete": {
+    "operationId": "vh_hosting_databaseMysqlDelete",
+    "upstreamMethod": "databaseMysqlDelete",
+    "upstreamPath": "/vh/hosting/"
+  },
+  "vh_hosting_databaseMysqlImport": {
+    "operationId": "vh_hosting_databaseMysqlImport",
+    "upstreamMethod": "databaseMysqlImport",
+    "upstreamPath": "/vh/hosting/"
+  },
+  "vh_hosting_databaseMysqlMakeCopy": {
+    "operationId": "vh_hosting_databaseMysqlMakeCopy",
+    "upstreamMethod": "databaseMysqlMakeCopy",
+    "upstreamPath": "/vh/hosting/"
+  },
+  "vh_hosting_databasePgsqlChangePass": {
+    "operationId": "vh_hosting_databasePgsqlChangePass",
+    "upstreamMethod": "databasePgsqlChangePass",
+    "upstreamPath": "/vh/hosting/"
+  },
+  "vh_hosting_databasePgsqlCreate": {
+    "operationId": "vh_hosting_databasePgsqlCreate",
+    "upstreamMethod": "databasePgsqlCreate",
+    "upstreamPath": "/vh/hosting/"
+  },
+  "vh_hosting_databasePgsqlDelete": {
+    "operationId": "vh_hosting_databasePgsqlDelete",
+    "upstreamMethod": "databasePgsqlDelete",
+    "upstreamPath": "/vh/hosting/"
+  },
+  "vh_hosting_getPmaUser": {
+    "operationId": "vh_hosting_getPmaUser",
+    "upstreamMethod": "getPmaUser",
+    "upstreamPath": "/vh/hosting/"
+  },
+  "vh_load_getLoadTable": {
+    "operationId": "vh_load_getLoadTable",
+    "upstreamMethod": "getLoadTable",
+    "upstreamPath": "/vh/load/"
+  },
+  "vh_load_index": {
+    "operationId": "vh_load_index",
+    "upstreamMethod": "index",
+    "upstreamPath": "/vh/load/"
+  },
+  "vh_mail_addDeliveryAddress": {
+    "operationId": "vh_mail_addDeliveryAddress",
+    "upstreamMethod": "addDeliveryAddress",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_mail_addForwardingEmail": {
+    "operationId": "vh_mail_addForwardingEmail",
+    "upstreamMethod": "addForwardingEmail",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_mail_addToBlacklist": {
+    "operationId": "vh_mail_addToBlacklist",
+    "upstreamMethod": "addToBlacklist",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_mail_addToWhitelist": {
+    "operationId": "vh_mail_addToWhitelist",
+    "upstreamMethod": "addToWhitelist",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_mail_changeAutoDiscover": {
+    "operationId": "vh_mail_changeAutoDiscover",
+    "upstreamMethod": "changeAutoDiscover",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_mail_changeAutoreply": {
+    "operationId": "vh_mail_changeAutoreply",
+    "upstreamMethod": "changeAutoreply",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_mail_changeDeletingAfterForwarding": {
+    "operationId": "vh_mail_changeDeletingAfterForwarding",
+    "upstreamMethod": "changeDeletingAfterForwarding",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_mail_changeDomainSpf": {
+    "operationId": "vh_mail_changeDomainSpf",
+    "upstreamMethod": "changeDomainSpf",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_mail_changeMailboxPassword": {
+    "operationId": "vh_mail_changeMailboxPassword",
+    "upstreamMethod": "changeMailboxPassword",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_mail_changeMailboxSpf": {
+    "operationId": "vh_mail_changeMailboxSpf",
+    "upstreamMethod": "changeMailboxSpf",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_mail_changeMailsCollector": {
+    "operationId": "vh_mail_changeMailsCollector",
+    "upstreamMethod": "changeMailsCollector",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_mail_changeSenderVerify": {
+    "operationId": "vh_mail_changeSenderVerify",
+    "upstreamMethod": "changeSenderVerify",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_mail_confirmMailsCollectorEmail": {
+    "operationId": "vh_mail_confirmMailsCollectorEmail",
+    "upstreamMethod": "confirmMailsCollectorEmail",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_mail_createMbox": {
+    "operationId": "vh_mail_createMbox",
+    "upstreamMethod": "createMbox",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_mail_deleteMails": {
+    "operationId": "vh_mail_deleteMails",
+    "upstreamMethod": "deleteMails",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_mail_disableDkim": {
+    "operationId": "vh_mail_disableDkim",
+    "upstreamMethod": "disableDkim",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_mail_dropDeliveryAddress": {
+    "operationId": "vh_mail_dropDeliveryAddress",
+    "upstreamMethod": "dropDeliveryAddress",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_mail_dropFromBlacklist": {
+    "operationId": "vh_mail_dropFromBlacklist",
+    "upstreamMethod": "dropFromBlacklist",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_mail_dropFromWhitelist": {
+    "operationId": "vh_mail_dropFromWhitelist",
+    "upstreamMethod": "dropFromWhitelist",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_mail_dropMbox": {
+    "operationId": "vh_mail_dropMbox",
+    "upstreamMethod": "dropMbox",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_mail_enableDkim": {
+    "operationId": "vh_mail_enableDkim",
+    "upstreamMethod": "enableDkim",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_mail_getAutoreply": {
+    "operationId": "vh_mail_getAutoreply",
+    "upstreamMethod": "getAutoreply",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_mail_getBlacklist": {
+    "operationId": "vh_mail_getBlacklist",
+    "upstreamMethod": "getBlacklist",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_mail_getDeliveryAddressesList": {
+    "operationId": "vh_mail_getDeliveryAddressesList",
+    "upstreamMethod": "getDeliveryAddressesList",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_mail_getDeliveryInfo": {
+    "operationId": "vh_mail_getDeliveryInfo",
+    "upstreamMethod": "getDeliveryInfo",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_mail_getDomainsList": {
+    "operationId": "vh_mail_getDomainsList",
+    "upstreamMethod": "getDomainsList",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_mail_getForwardingEmailsList": {
+    "operationId": "vh_mail_getForwardingEmailsList",
+    "upstreamMethod": "getForwardingEmailsList",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_mail_getMailQuota": {
+    "operationId": "vh_mail_getMailQuota",
+    "upstreamMethod": "getMailQuota",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_mail_getMailboxesList": {
+    "operationId": "vh_mail_getMailboxesList",
+    "upstreamMethod": "getMailboxesList",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_mail_getMailsCollector": {
+    "operationId": "vh_mail_getMailsCollector",
+    "upstreamMethod": "getMailsCollector",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_mail_getWhitelist": {
+    "operationId": "vh_mail_getWhitelist",
+    "upstreamMethod": "getWhitelist",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_mail_isEnabledDeletingAfterForwarding": {
+    "operationId": "vh_mail_isEnabledDeletingAfterForwarding",
+    "upstreamMethod": "isEnabledDeletingAfterForwarding",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_mail_removeForwardingEmail": {
+    "operationId": "vh_mail_removeForwardingEmail",
+    "upstreamMethod": "removeForwardingEmail",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_mail_removeMailsCollector": {
+    "operationId": "vh_mail_removeMailsCollector",
+    "upstreamMethod": "removeMailsCollector",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_mail_sendRequisitesToEmail": {
+    "operationId": "vh_mail_sendRequisitesToEmail",
+    "upstreamMethod": "sendRequisitesToEmail",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_mail_updateAntispamState": {
+    "operationId": "vh_mail_updateAntispamState",
+    "upstreamMethod": "updateAntispamState",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_mail_updateComment": {
+    "operationId": "vh_mail_updateComment",
+    "upstreamMethod": "updateComment",
+    "upstreamPath": "/vh/mail/"
+  },
+  "vh_partnerProgram_checkLogin": {
+    "operationId": "vh_partnerProgram_checkLogin",
+    "upstreamMethod": "checkLogin",
+    "upstreamPath": "/vh/partnerProgram/"
+  },
+  "vh_partnerProgram_createOrderVh": {
+    "operationId": "vh_partnerProgram_createOrderVh",
+    "upstreamMethod": "createOrderVh",
+    "upstreamPath": "/vh/partnerProgram/"
+  },
+  "vh_partnerProgram_createOrderVip": {
+    "operationId": "vh_partnerProgram_createOrderVip",
+    "upstreamMethod": "createOrderVip",
+    "upstreamPath": "/vh/partnerProgram/"
+  },
+  "vh_partnerProgram_createOrderVps": {
+    "operationId": "vh_partnerProgram_createOrderVps",
+    "upstreamMethod": "createOrderVps",
+    "upstreamPath": "/vh/partnerProgram/"
+  },
+  "vh_partnerProgram_fillPartnerRequisites": {
+    "operationId": "vh_partnerProgram_fillPartnerRequisites",
+    "upstreamMethod": "fillPartnerRequisites",
+    "upstreamPath": "/vh/partnerProgram/"
+  },
+  "vh_partnerProgram_getAdvertMaterials": {
+    "operationId": "vh_partnerProgram_getAdvertMaterials",
+    "upstreamMethod": "getAdvertMaterials",
+    "upstreamPath": "/vh/partnerProgram/"
+  },
+  "vh_partnerProgram_getLinkStatistics": {
+    "operationId": "vh_partnerProgram_getLinkStatistics",
+    "upstreamMethod": "getLinkStatistics",
+    "upstreamPath": "/vh/partnerProgram/"
+  },
+  "vh_partnerProgram_getPartnerClientCard": {
+    "operationId": "vh_partnerProgram_getPartnerClientCard",
+    "upstreamMethod": "getPartnerClientCard",
+    "upstreamPath": "/vh/partnerProgram/"
+  },
+  "vh_partnerProgram_getPartnerClientLogEvents": {
+    "operationId": "vh_partnerProgram_getPartnerClientLogEvents",
+    "upstreamMethod": "getPartnerClientLogEvents",
+    "upstreamPath": "/vh/partnerProgram/"
+  },
+  "vh_partnerProgram_getPartnerClientLogFinance": {
+    "operationId": "vh_partnerProgram_getPartnerClientLogFinance",
+    "upstreamMethod": "getPartnerClientLogFinance",
+    "upstreamPath": "/vh/partnerProgram/"
+  },
+  "vh_partnerProgram_getPartnerClientsList": {
+    "operationId": "vh_partnerProgram_getPartnerClientsList",
+    "upstreamMethod": "getPartnerClientsList",
+    "upstreamPath": "/vh/partnerProgram/"
+  },
+  "vh_partnerProgram_getRequisitesWithdrawal": {
+    "operationId": "vh_partnerProgram_getRequisitesWithdrawal",
+    "upstreamMethod": "getRequisitesWithdrawal",
+    "upstreamPath": "/vh/partnerProgram/"
+  },
+  "vh_partnerProgram_getStatistic": {
+    "operationId": "vh_partnerProgram_getStatistic",
+    "upstreamMethod": "getStatistic",
+    "upstreamPath": "/vh/partnerProgram/"
+  },
+  "vh_partnerProgram_getTypesAdvertMaterials": {
+    "operationId": "vh_partnerProgram_getTypesAdvertMaterials",
+    "upstreamMethod": "getTypesAdvertMaterials",
+    "upstreamPath": "/vh/partnerProgram/"
+  },
+  "vh_partnerProgram_savePartnerClientComment": {
+    "operationId": "vh_partnerProgram_savePartnerClientComment",
+    "upstreamMethod": "savePartnerClientComment",
+    "upstreamPath": "/vh/partnerProgram/"
+  },
+  "vh_partnerProgram_sendWithdrawalOrder": {
+    "operationId": "vh_partnerProgram_sendWithdrawalOrder",
+    "upstreamMethod": "sendWithdrawalOrder",
+    "upstreamPath": "/vh/partnerProgram/"
+  },
+  "vh_partnerProgram_standardPlans": {
+    "operationId": "vh_partnerProgram_standardPlans",
+    "upstreamMethod": "standardPlans",
+    "upstreamPath": "/vh/partnerProgram/"
+  },
+  "vh_partnerProgram_startPartnership": {
+    "operationId": "vh_partnerProgram_startPartnership",
+    "upstreamMethod": "startPartnership",
+    "upstreamPath": "/vh/partnerProgram/"
+  },
+  "vh_partnerProgram_vipPlans": {
+    "operationId": "vh_partnerProgram_vipPlans",
+    "upstreamMethod": "vipPlans",
+    "upstreamPath": "/vh/partnerProgram/"
+  },
+  "vh_partnerProgram_vpsOsConfig": {
+    "operationId": "vh_partnerProgram_vpsOsConfig",
+    "upstreamMethod": "vpsOsConfig",
+    "upstreamPath": "/vh/partnerProgram/"
+  },
+  "vh_referralProgram_addReferralSite": {
+    "operationId": "vh_referralProgram_addReferralSite",
+    "upstreamMethod": "addReferralSite",
+    "upstreamPath": "/vh/referralProgram/"
+  },
+  "vh_referralProgram_confirmReferralSite": {
+    "operationId": "vh_referralProgram_confirmReferralSite",
+    "upstreamMethod": "confirmReferralSite",
+    "upstreamPath": "/vh/referralProgram/"
+  },
+  "vh_referralProgram_index": {
+    "operationId": "vh_referralProgram_index",
+    "upstreamMethod": "index",
+    "upstreamPath": "/vh/referralProgram/"
+  },
+  "vh_referralProgram_removeReferralSite": {
+    "operationId": "vh_referralProgram_removeReferralSite",
+    "upstreamMethod": "removeReferralSite",
+    "upstreamPath": "/vh/referralProgram/"
+  },
+  "vh_ssl_download": {
+    "operationId": "vh_ssl_download",
+    "upstreamMethod": "download",
+    "upstreamPath": "/vh/ssl/"
+  },
+  "vh_ssl_editAutoprolong": {
+    "operationId": "vh_ssl_editAutoprolong",
+    "upstreamMethod": "editAutoprolong",
+    "upstreamPath": "/vh/ssl/"
+  },
+  "vh_ssl_getOrderList": {
+    "operationId": "vh_ssl_getOrderList",
+    "upstreamMethod": "getOrderList",
+    "upstreamPath": "/vh/ssl/"
+  },
+  "vh_ssl_getProlongInfo": {
+    "operationId": "vh_ssl_getProlongInfo",
+    "upstreamMethod": "getProlongInfo",
+    "upstreamPath": "/vh/ssl/"
+  },
+  "vh_ssl_index": {
+    "operationId": "vh_ssl_index",
+    "upstreamMethod": "index",
+    "upstreamPath": "/vh/ssl/"
+  },
+  "vh_ssl_installLetsEncrypt": {
+    "operationId": "vh_ssl_installLetsEncrypt",
+    "upstreamMethod": "installLetsEncrypt",
+    "upstreamPath": "/vh/ssl/"
+  },
+  "vh_ssl_prolongCertificate": {
+    "operationId": "vh_ssl_prolongCertificate",
+    "upstreamMethod": "prolongCertificate",
+    "upstreamPath": "/vh/ssl/"
+  },
+  "vh_ssl_removeCertificate": {
+    "operationId": "vh_ssl_removeCertificate",
+    "upstreamMethod": "removeCertificate",
+    "upstreamPath": "/vh/ssl/"
+  },
+  "vh_utils_diskUsage_changeEmail": {
+    "operationId": "vh_utils_diskUsage_changeEmail",
+    "upstreamMethod": "changeEmail",
+    "upstreamPath": "/vh/utils/diskUsage/"
+  },
+  "vh_utils_diskUsage_getEmail": {
+    "operationId": "vh_utils_diskUsage_getEmail",
+    "upstreamMethod": "getEmail",
+    "upstreamPath": "/vh/utils/diskUsage/"
+  },
+  "vh_utils_diskUsage_getTasksInfo": {
+    "operationId": "vh_utils_diskUsage_getTasksInfo",
+    "upstreamMethod": "getTasksInfo",
+    "upstreamPath": "/vh/utils/diskUsage/"
+  },
+  "vh_utils_diskUsage_index": {
+    "operationId": "vh_utils_diskUsage_index",
+    "upstreamMethod": "index",
+    "upstreamPath": "/vh/utils/diskUsage/"
+  },
+  "vh_utils_diskUsage_startTask": {
+    "operationId": "vh_utils_diskUsage_startTask",
+    "upstreamMethod": "startTask",
+    "upstreamPath": "/vh/utils/diskUsage/"
+  },
+  "vh_utils_sshOff": {
+    "operationId": "vh_utils_sshOff",
+    "upstreamMethod": "sshOff",
+    "upstreamPath": "/vh/utils/"
+  },
+  "vh_utils_sshOn": {
+    "operationId": "vh_utils_sshOn",
+    "upstreamMethod": "sshOn",
+    "upstreamPath": "/vh/utils/"
+  },
+  "vps_backup_attach": {
+    "operationId": "vps_backup_attach",
+    "upstreamMethod": "attach",
+    "upstreamPath": "/vps/backup/"
+  },
+  "vps_backup_create": {
+    "operationId": "vps_backup_create",
+    "upstreamMethod": "create",
+    "upstreamPath": "/vps/backup/"
+  },
+  "vps_backup_detach": {
+    "operationId": "vps_backup_detach",
+    "upstreamMethod": "detach",
+    "upstreamPath": "/vps/backup/"
+  },
+  "vps_backup_getSettings": {
+    "operationId": "vps_backup_getSettings",
+    "upstreamMethod": "getSettings",
+    "upstreamPath": "/vps/backup/"
+  },
+  "vps_backup_index": {
+    "operationId": "vps_backup_index",
+    "upstreamMethod": "index",
+    "upstreamPath": "/vps/backup/"
+  },
+  "vps_backup_remove": {
+    "operationId": "vps_backup_remove",
+    "upstreamMethod": "remove",
+    "upstreamPath": "/vps/backup/"
+  },
+  "vps_backup_restore": {
+    "operationId": "vps_backup_restore",
+    "upstreamMethod": "restore",
+    "upstreamPath": "/vps/backup/"
+  },
+  "vps_backup_saveSettings": {
+    "operationId": "vps_backup_saveSettings",
+    "upstreamMethod": "saveSettings",
+    "upstreamPath": "/vps/backup/"
+  },
+  "vps_backup_updateIndex": {
+    "operationId": "vps_backup_updateIndex",
+    "upstreamMethod": "updateIndex",
+    "upstreamPath": "/vps/backup/"
+  },
+  "vps_changePlan": {
+    "operationId": "vps_changePlan",
+    "upstreamMethod": "changePlan",
+    "upstreamPath": "/vps/"
+  },
+  "vps_copy": {
+    "operationId": "vps_copy",
+    "upstreamMethod": "copy",
+    "upstreamPath": "/vps/"
+  },
+  "vps_create": {
+    "operationId": "vps_create",
+    "upstreamMethod": "create",
+    "upstreamPath": "/vps/"
+  },
+  "vps_createEnable": {
+    "operationId": "vps_createEnable",
+    "upstreamMethod": "createEnable",
+    "upstreamPath": "/vps/"
+  },
+  "vps_createFirst": {
+    "operationId": "vps_createFirst",
+    "upstreamMethod": "createFirst",
+    "upstreamPath": "/vps/"
+  },
+  "vps_getAvailableConfig": {
+    "operationId": "vps_getAvailableConfig",
+    "upstreamMethod": "getAvailableConfig",
+    "upstreamPath": "/vps/"
+  },
+  "vps_getConstructorPlanId": {
+    "operationId": "vps_getConstructorPlanId",
+    "upstreamMethod": "getConstructorPlanId",
+    "upstreamPath": "/vps/"
+  },
+  "vps_getCurrentAction": {
+    "operationId": "vps_getCurrentAction",
+    "upstreamMethod": "getCurrentAction",
+    "upstreamPath": "/vps/"
+  },
+  "vps_getFirstOrderInfo": {
+    "operationId": "vps_getFirstOrderInfo",
+    "upstreamMethod": "getFirstOrderInfo",
+    "upstreamPath": "/vps/"
+  },
+  "vps_index": {
+    "operationId": "vps_index",
+    "upstreamMethod": "index",
+    "upstreamPath": "/vps/"
+  },
+  "vps_ip_add": {
+    "operationId": "vps_ip_add",
+    "upstreamMethod": "add",
+    "upstreamPath": "/vps/ip/"
+  },
+  "vps_ip_addLocal": {
+    "operationId": "vps_ip_addLocal",
+    "upstreamMethod": "addLocal",
+    "upstreamPath": "/vps/ip/"
+  },
+  "vps_ip_addProtected": {
+    "operationId": "vps_ip_addProtected",
+    "upstreamMethod": "addProtected",
+    "upstreamPath": "/vps/ip/"
+  },
+  "vps_ip_editPtr": {
+    "operationId": "vps_ip_editPtr",
+    "upstreamMethod": "editPtr",
+    "upstreamPath": "/vps/ip/"
+  },
+  "vps_ip_getAllIpList": {
+    "operationId": "vps_ip_getAllIpList",
+    "upstreamMethod": "getAllIpList",
+    "upstreamPath": "/vps/ip/"
+  },
+  "vps_ip_getOrderInfo": {
+    "operationId": "vps_ip_getOrderInfo",
+    "upstreamMethod": "getOrderInfo",
+    "upstreamPath": "/vps/ip/"
+  },
+  "vps_ip_getPtr": {
+    "operationId": "vps_ip_getPtr",
+    "upstreamMethod": "getPtr",
+    "upstreamPath": "/vps/ip/"
+  },
+  "vps_ip_index": {
+    "operationId": "vps_ip_index",
+    "upstreamMethod": "index",
+    "upstreamPath": "/vps/ip/"
+  },
+  "vps_ip_move": {
+    "operationId": "vps_ip_move",
+    "upstreamMethod": "move",
+    "upstreamPath": "/vps/ip/"
+  },
+  "vps_ip_moveProtected": {
+    "operationId": "vps_ip_moveProtected",
+    "upstreamMethod": "moveProtected",
+    "upstreamPath": "/vps/ip/"
+  },
+  "vps_ip_remove": {
+    "operationId": "vps_ip_remove",
+    "upstreamMethod": "remove",
+    "upstreamPath": "/vps/ip/"
+  },
+  "vps_ip_removeLocal": {
+    "operationId": "vps_ip_removeLocal",
+    "upstreamMethod": "removeLocal",
+    "upstreamPath": "/vps/ip/"
+  },
+  "vps_ip_removeProtected": {
+    "operationId": "vps_ip_removeProtected",
+    "upstreamMethod": "removeProtected",
+    "upstreamPath": "/vps/ip/"
+  },
+  "vps_ip_updateProtected": {
+    "operationId": "vps_ip_updateProtected",
+    "upstreamMethod": "updateProtected",
+    "upstreamPath": "/vps/ip/"
+  },
+  "vps_isRunning": {
+    "operationId": "vps_isRunning",
+    "upstreamMethod": "isRunning",
+    "upstreamPath": "/vps/"
+  },
+  "vps_load": {
+    "operationId": "vps_load",
+    "upstreamMethod": "load",
+    "upstreamPath": "/vps/"
+  },
+  "vps_logs": {
+    "operationId": "vps_logs",
+    "upstreamMethod": "logs",
+    "upstreamPath": "/vps/"
+  },
+  "vps_powerOff": {
+    "operationId": "vps_powerOff",
+    "upstreamMethod": "powerOff",
+    "upstreamPath": "/vps/"
+  },
+  "vps_powerOn": {
+    "operationId": "vps_powerOn",
+    "upstreamMethod": "powerOn",
+    "upstreamPath": "/vps/"
+  },
+  "vps_reboot": {
+    "operationId": "vps_reboot",
+    "upstreamMethod": "reboot",
+    "upstreamPath": "/vps/"
+  },
+  "vps_reinstallOs": {
+    "operationId": "vps_reinstallOs",
+    "upstreamMethod": "reinstallOs",
+    "upstreamPath": "/vps/"
+  },
+  "vps_remoteBackup_create": {
+    "operationId": "vps_remoteBackup_create",
+    "upstreamMethod": "create",
+    "upstreamPath": "/vps/remoteBackup/"
+  },
+  "vps_remoteBackup_editComment": {
+    "operationId": "vps_remoteBackup_editComment",
+    "upstreamMethod": "editComment",
+    "upstreamPath": "/vps/remoteBackup/"
+  },
+  "vps_remoteBackup_index": {
+    "operationId": "vps_remoteBackup_index",
+    "upstreamMethod": "index",
+    "upstreamPath": "/vps/remoteBackup/"
+  },
+  "vps_remoteBackup_remove": {
+    "operationId": "vps_remoteBackup_remove",
+    "upstreamMethod": "remove",
+    "upstreamPath": "/vps/remoteBackup/"
+  },
+  "vps_remoteBackup_restore": {
+    "operationId": "vps_remoteBackup_restore",
+    "upstreamMethod": "restore",
+    "upstreamPath": "/vps/remoteBackup/"
+  },
+  "vps_remoteBackup_restoreInto": {
+    "operationId": "vps_remoteBackup_restoreInto",
+    "upstreamMethod": "restoreInto",
+    "upstreamPath": "/vps/remoteBackup/"
+  },
+  "vps_remove": {
+    "operationId": "vps_remove",
+    "upstreamMethod": "remove",
+    "upstreamPath": "/vps/"
+  },
+  "vps_removeFirst": {
+    "operationId": "vps_removeFirst",
+    "upstreamMethod": "removeFirst",
+    "upstreamPath": "/vps/"
+  },
+  "vps_rename": {
+    "operationId": "vps_rename",
+    "upstreamMethod": "rename",
+    "upstreamPath": "/vps/"
+  },
+  "vps_ssl_download": {
+    "operationId": "vps_ssl_download",
+    "upstreamMethod": "download",
+    "upstreamPath": "/vps/ssl/"
+  },
+  "vps_ssl_editAutoprolong": {
+    "operationId": "vps_ssl_editAutoprolong",
+    "upstreamMethod": "editAutoprolong",
+    "upstreamPath": "/vps/ssl/"
+  },
+  "vps_ssl_getOrderList": {
+    "operationId": "vps_ssl_getOrderList",
+    "upstreamMethod": "getOrderList",
+    "upstreamPath": "/vps/ssl/"
+  },
+  "vps_ssl_getProlongInfo": {
+    "operationId": "vps_ssl_getProlongInfo",
+    "upstreamMethod": "getProlongInfo",
+    "upstreamPath": "/vps/ssl/"
+  },
+  "vps_ssl_index": {
+    "operationId": "vps_ssl_index",
+    "upstreamMethod": "index",
+    "upstreamPath": "/vps/ssl/"
+  },
+  "vps_ssl_orderSubmit": {
+    "operationId": "vps_ssl_orderSubmit",
+    "upstreamMethod": "orderSubmit",
+    "upstreamPath": "/vps/ssl/"
+  },
+  "vps_ssl_removeCertificate": {
+    "operationId": "vps_ssl_removeCertificate",
+    "upstreamMethod": "removeCertificate",
+    "upstreamPath": "/vps/ssl/"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "version": "1.0.0",
+  "transport": {
+    "protocol": "https",
+    "requestStyle": "jsonrpc-over-http-post",
+    "contentType": "application/json; charset=utf-8",
+    "accept": "application/json"
+  },
+  "tokenFlow": {
+    "tokenEndpoint": "https://api.sweb.ru/notAuthorized/",
+    "tokenMethod": "getToken",
+    "request": {
+      "jsonrpc": "2.0",
+      "method": "getToken",
+      "params": {
+        "login": "<LOGIN>",
+        "password": "<PASSWORD>"
+      }
+    },
+    "responseTokenPath": "$.result"
+  },
+  "authOnProtectedMethods": {
+    "scheme": "bearer",
+    "header": "Authorization",
+    "prefix": "Bearer ",
+    "example": "Authorization: Bearer <TOKEN>"
+  },
+  "publicObjects": [
+    "/notAuthorized/"
+  ],
+  "errorPatterns": [
+    {
+      "jsonrpcErrorCode": -32603,
+      "matchMessage": "Время сеанса истекло",
+      "meaning": "token_missing_or_expired"
+    },
+    {
+      "jsonrpcErrorCode": -32601,
+      "meaning": "method_not_found"
+    }
+  ]
+}

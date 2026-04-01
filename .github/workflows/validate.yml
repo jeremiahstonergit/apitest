@@ -1,0 +1,54 @@
+name: ci
+
+on:
+  push:
+    paths:
+      - 'scripts/**'
+      - 'spec/**'
+      - 'examples/**'
+      - 'notes/raw/**'
+      - 'client/**'
+      - 'auth/**'
+      - '.github/workflows/**'
+      - 'README.md'
+      - 'docs/**'
+  pull_request:
+    paths:
+      - 'scripts/**'
+      - 'spec/**'
+      - 'examples/**'
+      - 'notes/raw/**'
+      - 'client/**'
+      - 'auth/**'
+      - '.github/workflows/**'
+      - 'README.md'
+      - 'docs/**'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml requests
+      - name: Rebuild repository from raw sources
+        run: python scripts/update_repo.py --rebuild-only
+      - name: Upload generated artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-artifacts
+          path: |
+            spec/openapi.llm-projection.yaml
+            spec/openapi.transport.yaml
+            examples/examples.jsonl
+            client/python/operations.generated.json
+            client/ts/operations.generated.json
+            notes/update-summary.latest.json
+            notes/update-summary.latest.md
+            sources/manifest.json
