@@ -3,25 +3,15 @@
 from __future__ import annotations
 
 import asyncio
-import json
-import os
-import sys
-import uuid
-from dataclasses import dataclass, field
 from datetime import datetime, timezone
-from pathlib import Path
 from typing import Any
 
 from fastapi import FastAPI, Form, HTTPException
 from fastapi.responses import HTMLResponse, RedirectResponse
 
+from app.runtime import MAX_LOGS, ScheduleDef, TaskDef, execute_task as run_registered_task, format_params, iso, load_schedules, load_tasks, new_id, parse_dt, parse_params, save_schedules, utc_now
 from app.ui import esc, render_page
 
-ROOT = Path(__file__).resolve().parents[1]
-REGISTRY_PATH = ROOT / 'automation' / 'tasks.registry.json'
-DATA_DIR = Path(os.getenv('SWEB_AUTOMATION_DATA_DIR', ROOT / '.runtime'))
-SCHEDULES_PATH = DATA_DIR / 'schedules.json'
-MAX_LOGS = int(os.getenv('SWEB_AUTOMATION_MAX_LOGS', '50'))
 
 app = FastAPI(
     title='SpaceWeb Infrastructure Control Plane',
@@ -30,65 +20,10 @@ app = FastAPI(
 )
 
 
-@dataclass
-class TaskDef:
-    id: str
-    title: str
-    service: str
-    description: str
-    script: str
-    default_params: dict[str, Any] = field(default_factory=dict)
-
-
-@dataclass
-class ScheduleDef:
-    id: str
-    task_id: str
-    title: str
-    interval_minutes: int
-    params: dict[str, Any]
-    enabled: bool = True
-    next_run_at: str | None = None
-    last_run_at: str | None = None
-    last_status: str | None = None
-
-
 TASKS: dict[str, TaskDef] = {}
 SCHEDULES: dict[str, ScheduleDef] = {}
 RUN_LOGS: list[dict[str, Any]] = []
 SCHEDULER_TASK: asyncio.Task | None = None
-
-
-def utc_now() -> datetime:
-    return datetime.now(timezone.utc)
-
-
-def parse_dt(value: str | None) -> datetime | None:
-    if not value:
-        return None
-    return datetime.fromisoformat(value.replace('Z', '+00:00'))
-
-
-def iso(dt: datetime) -> str:
-    return dt.astimezone(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00', 'Z')
-
-
-def load_tasks() -> dict[str, TaskDef]:
-    payload = json.loads(REGISTRY_PATH.read_text(encoding='utf-8'))
-    return {item['id']: TaskDef(**item) for item in payload.get('tasks', [])}
-
-
-def save_schedules() -> None:
-    DATA_DIR.mkdir(parents=True, exist_ok=True)
-    payload = {'schedules': [schedule.__dict__ for schedule in SCHEDULES.values()]}
-    SCHEDULES_PATH.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding='utf-8')
-
-
-def load_schedules() -> dict[str, ScheduleDef]:
-    if not SCHEDULES_PATH.exists():
-        return {}
-    payload = json.loads(SCHEDULES_PATH.read_text(encoding='utf-8'))
-    return {item['id']: ScheduleDef(**item) for item in payload.get('schedules', [])}
 
 
 def service_map() -> dict[str, list[TaskDef]]:
@@ -96,42 +31,6 @@ def service_map() -> dict[str, list[TaskDef]]:
     for task in TASKS.values():
         services.setdefault(task.service, []).append(task)
     return services
-
-
-async def execute_task(task_id: str, params: dict[str, Any], source: str) -> dict[str, Any]:
-    task = TASKS.get(task_id)
-    if not task:
-        raise HTTPException(status_code=404, detail='Unknown task')
-    script = (ROOT / task.script).resolve()
-    if not script.is_file() or ROOT not in script.parents:
-        raise HTTPException(status_code=400, detail='Task script is not allowed')
-    started = utc_now()
-    proc = await asyncio.create_subprocess_exec(
-        sys.executable,
-        str(script),
-        '--params-json',
-        json.dumps(params, ensure_ascii=False),
-        cwd=str(ROOT),
-        stdout=asyncio.subprocess.PIPE,
-        stderr=asyncio.subprocess.PIPE,
-    )
-    stdout, stderr = await proc.communicate()
-    status = 'ok' if proc.returncode == 0 else 'failed'
-    log = {
-        'id': uuid.uuid4().hex[:12],
-        'task_id': task_id,
-        'task_title': task.title,
-        'source': source,
-        'status': status,
-        'returncode': proc.returncode,
-        'started_at': iso(started),
-        'finished_at': iso(utc_now()),
-        'stdout': stdout.decode(errors='replace')[-4000:],
-        'stderr': stderr.decode(errors='replace')[-4000:],
-    }
-    RUN_LOGS.insert(0, log)
-    del RUN_LOGS[MAX_LOGS:]
-    return log
 
 
 async def scheduler_loop() -> None:
@@ -142,7 +41,10 @@ async def scheduler_loop() -> None:
             next_run = parse_dt(schedule.next_run_at)
             if schedule.enabled and (next_run is None or next_run <= now):
                 try:
-                    log = await execute_task(schedule.task_id, schedule.params, f'schedule:{schedule.id}')
+                    task = TASKS.get(schedule.task_id)
+                    if not task:
+                        raise HTTPException(status_code=404, detail='Unknown task')
+                    log = await run_registered_task(task, schedule.params, f'schedule:{schedule.id}')
                     schedule.last_status = log['status']
                 except Exception as exc:  # noqa: BLE001 - scheduler must keep running
                     schedule.last_status = f'failed: {exc}'
@@ -150,7 +52,7 @@ async def scheduler_loop() -> None:
                 schedule.next_run_at = iso(datetime.fromtimestamp(now.timestamp() + schedule.interval_minutes * 60, tz=timezone.utc))
                 changed = True
         if changed:
-            save_schedules()
+            save_schedules(SCHEDULES)
         await asyncio.sleep(15)
 
 
@@ -201,14 +103,19 @@ def task_page(task_id: str) -> HTMLResponse:
     task = TASKS.get(task_id)
     if not task:
         raise HTTPException(status_code=404, detail='Unknown task')
-    params = json.dumps(task.default_params, ensure_ascii=False, indent=2)
+    params = format_params(task.default_params)
     return render_page(f"""<div class="card"><a class="btn secondary" href="/">← Назад</a><h2>{esc(task.title)}</h2><p class="muted">{esc(task.description)}</p><p><span class="pill">{esc(task.service)}</span><span class="pill">{esc(task.id)}</span><span class="pill">{esc(task.script)}</span></p><form action="/tasks/{esc(task.id)}/run" method="post"><label>Параметры JSON</label><textarea name="params_json">{esc(params)}</textarea><button>Запустить сейчас</button></form></div>""")
 
 
 @app.post('/tasks/{task_id}/run')
 async def run_task(task_id: str, params_json: str = Form('{}')) -> RedirectResponse:
-    params = json.loads(params_json or '{}')
-    await execute_task(task_id, params, 'manual')
+    params = parse_params(params_json)
+    task = TASKS.get(task_id)
+    if not task:
+        raise HTTPException(status_code=404, detail='Unknown task')
+    log = await run_registered_task(task, params, 'manual')
+    RUN_LOGS.insert(0, log)
+    del RUN_LOGS[MAX_LOGS:]
     return RedirectResponse('/', status_code=303)
 
 
@@ -217,13 +124,13 @@ def create_schedule(task_id: str = Form(...), title: str = Form(''), interval_mi
     if task_id not in TASKS:
         raise HTTPException(status_code=404, detail='Unknown task')
     schedule = ScheduleDef(
-        id=uuid.uuid4().hex[:12],
+        id=new_id(),
         task_id=task_id,
         title=title or TASKS[task_id].title,
         interval_minutes=max(1, interval_minutes),
-        params=json.loads(params_json or '{}'),
+        params=parse_params(params_json),
         next_run_at=iso(utc_now()),
     )
     SCHEDULES[schedule.id] = schedule
-    save_schedules()
+    save_schedules(SCHEDULES)
     return RedirectResponse('/', status_code=303)
