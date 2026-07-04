@@ -18,7 +18,6 @@ from fastapi.responses import HTMLResponse, RedirectResponse
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY_PATH = ROOT / 'automation' / 'tasks.registry.json'
-SWEB_REGISTRY_PATH = ROOT / 'automation' / 'tasks.sweb.json'
 DATA_DIR = Path(os.getenv('SWEB_AUTOMATION_DATA_DIR', ROOT / '.runtime'))
 SCHEDULES_PATH = DATA_DIR / 'schedules.json'
 MAX_LOGS = int(os.getenv('SWEB_AUTOMATION_MAX_LOGS', '50'))
@@ -79,12 +78,8 @@ def iso(dt: datetime) -> str:
 
 
 def load_tasks() -> dict[str, TaskDef]:
-    items = []
-    for path in (REGISTRY_PATH, SWEB_REGISTRY_PATH):
-        if path.exists():
-            payload = json.loads(path.read_text(encoding='utf-8'))
-            items.extend(payload.get('tasks', []))
-    return {item['id']: TaskDef(**item) for item in items}
+    payload = json.loads(REGISTRY_PATH.read_text(encoding='utf-8'))
+    return {item['id']: TaskDef(**item) for item in payload.get('tasks', [])}
 
 
 def save_schedules() -> None:
