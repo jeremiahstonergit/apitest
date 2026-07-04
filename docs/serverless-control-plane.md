@@ -78,20 +78,6 @@ uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8080}
 | `SWEB_AUTOMATION_DATA_DIR` | `.runtime` | Каталог для `schedules.json`; в Knative ephemeral, для production нужен volume или внешний storage. |
 | `SWEB_AUTOMATION_MAX_LOGS` | `50` | Максимум записей в памяти о последних запусках. |
 
-## Аккаунт SpaceWeb и секреты
-
-Приложение не подключается ни к какому аккаунту SpaceWeb по умолчанию. Включённая задача `example.echo` является локальной demo-задачей и не делает API-вызовов.
-
-Реальные секреты доступа нельзя хранить в Git. Их нужно создать в secret manager serverless-платформы и пробросить в контейнер переменными окружения. Рекомендуемые имена для будущих automation-скриптов:
-
-| Имя | Значение | Назначение |
-| --- | --- | --- |
-| `SWEB_API_LOGIN` | `<login>` | Логин SpaceWeb. Обычный режим: скрипт вызывает `getToken` с этим значением. |
-| `SWEB_API_PASSWORD` | `<password>` | Пароль SpaceWeb. Обычный режим: скрипт вызывает `getToken` с этим значением. |
-| `SWEB_API_TOKEN` | `<token>` | Опциональный временный Bearer token, только если вы получили его вне приложения. Это результат `getToken`, а не статичный токен из репозитория. |
-
-В обычном сценарии `SWEB_API_TOKEN` не нужно придумывать или искать вручную: задайте `SWEB_API_LOGIN` и `SWEB_API_PASSWORD`, а automation-скрипт сам получает токен через `POST https://api.sweb.ru/notAuthorized/` с методом `getToken`. Затем этот токен передаётся как `Authorization: Bearer <token>` для защищённых вызовов.
-
 ## Ограничения MVP
 
 - Расписания сохраняются локально в JSON-файл; при ephemeral filesystem они не являются долговечными.
