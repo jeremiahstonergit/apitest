@@ -56,28 +56,6 @@ Allowed Python scripts from `automation/tasks.registry.json`
 python automation/tasks/example_echo.py --params-json '{"message":"hello"}'
 ```
 
-## Команды для serverless-платформы
-
-Build command:
-
-```bash
-python -m pip install --user -r requirements.txt && python -m compileall app client automation
-```
-
-Start command:
-
-```bash
-python -m uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8080}
-```
-
-## Переменные окружения
-
-| Имя | Значение по умолчанию | Описание |
-| --- | --- | --- |
-| `PORT` | `8080` | Порт HTTP-сервера, обычно задаётся платформой. |
-| `SWEB_AUTOMATION_DATA_DIR` | `.runtime` | Каталог для `schedules.json`; в Knative ephemeral, для production нужен volume или внешний storage. |
-| `SWEB_AUTOMATION_MAX_LOGS` | `50` | Максимум записей в памяти о последних запусках. |
-
 ## Ограничения MVP
 
 - Расписания сохраняются локально в JSON-файл; при ephemeral filesystem они не являются долговечными.
