@@ -96,7 +96,7 @@ def load_schedules() -> dict[str, ScheduleDef]:
 
 
 def render_page(content: str) -> HTMLResponse:
-    return HTMLResponse(f"""<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>SpaceWeb Control Plane</title><style>{STYLE}</style></head><body><main><div class="hero"><div><span class="badge">● Knative-ready FastAPI</span><h1>Панель управления инфраструктурой SpaceWeb</h1><p class="lead">Запускайте Python-скрипты из Git-репозитория вручную или по расписанию. UI построен для serverless-контейнера: порт берётся из переменной <code>PORT</code>, есть health-check и лёгкий in-process scheduler.</p></div><div class="card"><b>Команды деплоя</b><p class="small muted">Build: <code>sh scripts/serverless_build.sh</code></p><p class="small muted">Start: <code>python -m uvicorn app.main:app --host 0.0.0.0 --port ${{PORT:-8080}}</code></p></div></div>{content}</main></body></html>""")
+    return HTMLResponse(f"""<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>SpaceWeb Control Plane</title><style>{STYLE}</style></head><body><main><div class="hero"><div><span class="badge">● Knative-ready FastAPI</span><h1>Панель управления инфраструктурой SpaceWeb</h1><p class="lead">Запускайте Python-скрипты из Git-репозитория вручную или по расписанию. UI построен для serverless-контейнера: порт берётся из переменной <code>PORT</code>, есть health-check и лёгкий in-process scheduler.</p></div></div>{content}</main></body></html>""")
 
 
 def esc(value: Any) -> str:
