@@ -9,17 +9,6 @@
       "default_params": {
         "message": "hello from scheduler"
       }
-    },
-    {
-      "id": "sweb.operation.call",
-      "title": "Вызов операции SpaceWeb API",
-      "service": "sweb-api",
-      "description": "Универсальная задача для запуска разрешённой операции из client/python/operations.generated.json. Параметры: operation_id, params, optional user.",
-      "script": "automation/tasks/sweb_call_operation.py",
-      "default_params": {
-        "operation_id": "",
-        "params": {}
-      }
     }
   ]
 }

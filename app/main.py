@@ -18,7 +18,6 @@ from fastapi.responses import HTMLResponse, RedirectResponse
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY_PATH = ROOT / 'automation' / 'tasks.registry.json'
-OPERATIONS_PATH = ROOT / 'client' / 'python' / 'operations.generated.json'
 DATA_DIR = Path(os.getenv('SWEB_AUTOMATION_DATA_DIR', ROOT / '.runtime'))
 SCHEDULES_PATH = DATA_DIR / 'schedules.json'
 MAX_LOGS = int(os.getenv('SWEB_AUTOMATION_MAX_LOGS', '50'))
@@ -53,15 +52,7 @@ class ScheduleDef:
     last_status: str | None = None
 
 
-@dataclass
-class ApiOperation:
-    operation_id: str
-    upstream_method: str
-    upstream_path: str
-
-
 TASKS: dict[str, TaskDef] = {}
-API_OPERATIONS: dict[str, ApiOperation] = {}
 SCHEDULES: dict[str, ScheduleDef] = {}
 RUN_LOGS: list[dict[str, Any]] = []
 SCHEDULER_TASK: asyncio.Task | None = None
@@ -91,18 +82,6 @@ def load_tasks() -> dict[str, TaskDef]:
     return {item['id']: TaskDef(**item) for item in payload.get('tasks', [])}
 
 
-def load_api_operations() -> dict[str, ApiOperation]:
-    payload = json.loads(OPERATIONS_PATH.read_text(encoding='utf-8'))
-    return {
-        operation_id: ApiOperation(
-            operation_id=operation_id,
-            upstream_method=item['upstreamMethod'],
-            upstream_path=item['upstreamPath'],
-        )
-        for operation_id, item in payload.items()
-    }
-
-
 def save_schedules() -> None:
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     payload = {'schedules': [schedule.__dict__ for schedule in SCHEDULES.values()]}
@@ -129,28 +108,6 @@ def service_map() -> dict[str, list[TaskDef]]:
     for task in TASKS.values():
         services.setdefault(task.service, []).append(task)
     return services
-
-
-def api_service_map() -> dict[str, list[ApiOperation]]:
-    services: dict[str, list[ApiOperation]] = {}
-    for operation in API_OPERATIONS.values():
-        service = operation.upstream_path.strip('/') or 'root'
-        services.setdefault(service, []).append(operation)
-    return services
-
-
-def make_sweb_client():
-    from client.python.transport import SwebTransportClient
-
-    client = SwebTransportClient(token=os.getenv('SWEB_API_TOKEN') or None)
-    if client.token:
-        return client
-    login = os.getenv('SWEB_API_LOGIN')
-    password = os.getenv('SWEB_API_PASSWORD')
-    if not (login and password):
-        raise HTTPException(status_code=500, detail='Set SWEB_API_TOKEN or both SWEB_API_LOGIN and SWEB_API_PASSWORD')
-    client.get_token(login, password)
-    return client
 
 
 async def execute_task(task_id: str, params: dict[str, Any], source: str) -> dict[str, Any]:
@@ -211,9 +168,8 @@ async def scheduler_loop() -> None:
 
 @app.on_event('startup')
 async def startup() -> None:
-    global TASKS, API_OPERATIONS, SCHEDULES, SCHEDULER_TASK
+    global TASKS, SCHEDULES, SCHEDULER_TASK
     TASKS = load_tasks()
-    API_OPERATIONS = load_api_operations()
     SCHEDULES = load_schedules()
     SCHEDULER_TASK = asyncio.create_task(scheduler_loop())
 
@@ -246,65 +202,10 @@ def index() -> HTMLResponse:
         for l in RUN_LOGS[:10]
     ) or "<tr><td colspan='4' class='muted'>Запусков пока нет</td></tr>"
     return render_page(f"""
-    <div class="actions"><a class="btn" href="/api">Каталог SpaceWeb API</a></div><div class="grid">{service_cards}</div>
+    <div class="grid">{service_cards}</div>
     <div class="section split"><div class="card"><h2>Расписание</h2><table><tr><th>Задача</th><th>Интервал</th><th>Следующий запуск</th><th>Статус</th></tr>{schedules}</table></div><div class="card"><h2>Создать расписание</h2><form action="/schedules" method="post"><label>Действие</label><select name="task_id">{''.join(f'<option value="{esc(t.id)}">{esc(t.service)} · {esc(t.title)}</option>' for t in TASKS.values())}</select><label>Название</label><input name="title" placeholder="Например: ежедневная проверка"><label>Интервал, минут</label><input name="interval_minutes" type="number" min="1" value="60"><label>Параметры JSON</label><textarea name="params_json">{{}}</textarea><button>Запланировать</button></form></div></div>
     <div class="section card"><h2>Последние запуски</h2><table><tr><th>Время</th><th>Задача</th><th>Статус</th><th>Вывод</th></tr>{logs}</table></div>
     """)
-
-
-@app.get('/api', response_class=HTMLResponse)
-def api_catalog() -> HTMLResponse:
-    cards = ''.join(
-        f"<div class='card'><h3>{esc(service)}</h3><p class='muted'>{len(operations)} операций</p>" +
-        ''.join(f"<div><span class='pill'>{esc(op.upstream_path)}</span><b>{esc(op.operation_id)}</b><p class='muted small'>JSON-RPC method: {esc(op.upstream_method)}</p><a class='btn secondary' href='/api/{esc(op.operation_id)}'>Открыть</a></div>" for op in operations[:30]) +
-        ("<p class='muted small'>Показаны первые 30 операций сервиса.</p>" if len(operations) > 30 else '') +
-        '</div>'
-        for service, operations in sorted(api_service_map().items())
-    )
-    return render_page(f"""<div class="card"><a class="btn secondary" href="/">← Назад</a><h2>Каталог SpaceWeb API</h2><p class="muted">Операции загружаются из generated operation map без добавления новых методов или полей.</p></div><div class="grid">{cards}</div>""")
-
-
-@app.get('/api/{operation_id}', response_class=HTMLResponse)
-def api_operation_page(operation_id: str) -> HTMLResponse:
-    operation = API_OPERATIONS.get(operation_id)
-    if not operation:
-        raise HTTPException(status_code=404, detail='Unknown operation')
-    return render_page(f"""<div class="card"><a class="btn secondary" href="/api">← Каталог API</a><h2>{esc(operation.operation_id)}</h2><p><span class="pill">{esc(operation.upstream_path)}</span><span class="pill">{esc(operation.upstream_method)}</span></p><form action="/api/{esc(operation.operation_id)}/run" method="post"><label>Параметры JSON-RPC params</label><textarea name="params_json">{{}}</textarea><label>user (опционально)</label><input name="user" placeholder="Оставьте пустым, если не требуется"><button>Выполнить API-операцию</button></form></div>""")
-
-
-@app.post('/api/{operation_id}/run')
-async def run_api_operation(operation_id: str, params_json: str = Form('{}'), user: str = Form('')) -> RedirectResponse:
-    if operation_id not in API_OPERATIONS:
-        raise HTTPException(status_code=404, detail='Unknown operation')
-    params = json.loads(params_json or '{}')
-    if not isinstance(params, dict):
-        raise HTTPException(status_code=400, detail='params_json must be an object')
-    started = utc_now()
-    try:
-        payload = make_sweb_client().call_by_operation(operation_id, params=params, user=user or None)
-        status = 'ok'
-        stdout = json.dumps(payload, ensure_ascii=False, indent=2)
-        stderr = ''
-        returncode = 0
-    except Exception as exc:  # noqa: BLE001 - expose failure in run log
-        status = 'failed'
-        stdout = ''
-        stderr = str(exc)
-        returncode = 1
-    RUN_LOGS.insert(0, {
-        'id': uuid.uuid4().hex[:12],
-        'task_id': operation_id,
-        'task_title': f'API: {operation_id}',
-        'source': 'api-manual',
-        'status': status,
-        'returncode': returncode,
-        'started_at': iso(started),
-        'finished_at': iso(utc_now()),
-        'stdout': stdout[-4000:],
-        'stderr': stderr[-4000:],
-    })
-    del RUN_LOGS[MAX_LOGS:]
-    return RedirectResponse('/', status_code=303)
 
 
 @app.get('/tasks/{task_id}', response_class=HTMLResponse)
