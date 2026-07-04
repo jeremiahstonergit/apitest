@@ -55,9 +55,3 @@ Allowed Python scripts from `automation/tasks.registry.json`
 ```bash
 python automation/tasks/example_echo.py --params-json '{"message":"hello"}'
 ```
-
-## Ограничения MVP
-
-- Расписания сохраняются локально в JSON-файл; при ephemeral filesystem они не являются долговечными.
-- При нескольких репликах scheduler будет работать в каждой реплике. Для production нужен leader election или внешний планировщик.
-- UI намеренно запускает только зарегистрированные скрипты внутри репозитория.
