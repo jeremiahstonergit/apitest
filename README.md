@@ -118,7 +118,6 @@ python3 scripts/update_repo.py --rebuild-only --limit 50
 - registry разрешённых действий: `automation/tasks.registry.json`
 - пример безопасной задачи: `automation/tasks/example_echo.py`
 - спецификация и ограничения: `docs/serverless-control-plane.md`
-- точные параметры подключения к serverless: `SERVERLESS.md`
 
 Команда сборки для serverless-платформы:
 
