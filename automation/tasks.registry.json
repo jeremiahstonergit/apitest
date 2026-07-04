@@ -1,0 +1,267 @@
+{
+  "tasks": [
+    {
+      "id": "example.echo",
+      "title": "Проверочная задача",
+      "service": "system",
+      "description": "Безопасная demo-задача: печатает переданные параметры и не меняет инфраструктуру.",
+      "script": "automation/tasks/example_echo.py",
+      "default_params": {
+        "message": "hello from scheduler"
+      }
+    },
+    {
+      "id": "account.balance",
+      "title": "Баланс аккаунта",
+      "service": "account",
+      "description": "SpaceWeb API: pay_getBalance (/pay/ · getBalance).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "pay_getBalance",
+        "params": {}
+      }
+    },
+    {
+      "id": "account.pay_recommendations",
+      "title": "Рекомендации по оплате",
+      "service": "account",
+      "description": "SpaceWeb API: pay_getPayRecommendations (/pay/ · getPayRecommendations).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "pay_getPayRecommendations",
+        "params": {}
+      }
+    },
+    {
+      "id": "tariff.info",
+      "title": "Тарифы и серверная информация",
+      "service": "account",
+      "description": "SpaceWeb API: tariff_index (/tariff/ · index).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "tariff_index",
+        "params": {}
+      }
+    },
+    {
+      "id": "domains.list",
+      "title": "Домены",
+      "service": "domains",
+      "description": "SpaceWeb API: domains_index (/domains/ · index).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "domains_index",
+        "params": {}
+      }
+    },
+    {
+      "id": "domains.bonus_list",
+      "title": "Бонусные домены",
+      "service": "domains",
+      "description": "SpaceWeb API: domains_bonus_getList (/domains/bonus/ · getList).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "domains_bonus_getList",
+        "params": {}
+      }
+    },
+    {
+      "id": "domains.persons",
+      "title": "Контакты владельцев доменов",
+      "service": "domains",
+      "description": "SpaceWeb API: domains_persons_index (/domains/persons/ · index).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "domains_persons_index",
+        "params": {}
+      }
+    },
+    {
+      "id": "sites.list",
+      "title": "Сайты",
+      "service": "sites",
+      "description": "SpaceWeb API: sites_index (/sites/ · index).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "sites_index",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.list",
+      "title": "VPS",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_index (/vps/ · index).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_index",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.backups",
+      "title": "VPS backup",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_backup_index (/vps/backup/ · index).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_backup_index",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.ip_list",
+      "title": "VPS IP addresses",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_ip_getAllIpList (/vps/ip/ · getAllIpList).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_ip_getAllIpList",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.remote_backups",
+      "title": "VPS remote backups",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_remoteBackup_index (/vps/remoteBackup/ · index).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_remoteBackup_index",
+        "params": {}
+      }
+    },
+    {
+      "id": "balancer.list",
+      "title": "Балансировщики",
+      "service": "cloud",
+      "description": "SpaceWeb API: balancer_index (/balancer/ · index).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "balancer_index",
+        "params": {}
+      }
+    },
+    {
+      "id": "dbaas.list",
+      "title": "DBaaS instances",
+      "service": "cloud",
+      "description": "SpaceWeb API: dbaas_index (/dbaas/ · index).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "dbaas_index",
+        "params": {}
+      }
+    },
+    {
+      "id": "monitoring.plans",
+      "title": "Monitoring plans",
+      "service": "monitoring",
+      "description": "SpaceWeb API: monitoring_plans (/monitoring/ · plans).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "monitoring_plans",
+        "params": {}
+      }
+    },
+    {
+      "id": "monitoring.checks",
+      "title": "Monitoring checks",
+      "service": "monitoring",
+      "description": "SpaceWeb API: monitoring_checks_index (/monitoring/checks/ · index).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "monitoring_checks_index",
+        "params": {}
+      }
+    },
+    {
+      "id": "monitoring.contacts",
+      "title": "Monitoring contacts",
+      "service": "monitoring",
+      "description": "SpaceWeb API: monitoring_contacts_index (/monitoring/contacts/ · index).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "monitoring_contacts_index",
+        "params": {}
+      }
+    },
+    {
+      "id": "vh.backups",
+      "title": "Virtual hosting backups",
+      "service": "vh",
+      "description": "SpaceWeb API: vh_backup_getList (/vh/backup/ · getList).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vh_backup_getList",
+        "params": {}
+      }
+    },
+    {
+      "id": "vh.cron",
+      "title": "Cron tasks",
+      "service": "vh",
+      "description": "SpaceWeb API: vh_cron_getTasks (/vh/cron/ · getTasks).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vh_cron_getTasks",
+        "params": {}
+      }
+    },
+    {
+      "id": "vh.databases",
+      "title": "Hosting databases",
+      "service": "vh",
+      "description": "SpaceWeb API: vh_hosting_databaseGetList (/vh/hosting/ · databaseGetList).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vh_hosting_databaseGetList",
+        "params": {}
+      }
+    },
+    {
+      "id": "vh.load",
+      "title": "Hosting load",
+      "service": "vh",
+      "description": "SpaceWeb API: vh_load_index (/vh/load/ · index).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vh_load_index",
+        "params": {}
+      }
+    },
+    {
+      "id": "vh.mailboxes",
+      "title": "Mailboxes",
+      "service": "vh",
+      "description": "SpaceWeb API: vh_mail_getMailboxesList (/vh/mail/ · getMailboxesList).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vh_mail_getMailboxesList",
+        "params": {}
+      }
+    },
+    {
+      "id": "vh.ssl",
+      "title": "SSL orders",
+      "service": "vh",
+      "description": "SpaceWeb API: vh_ssl_getOrderList (/vh/ssl/ · getOrderList).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vh_ssl_getOrderList",
+        "params": {}
+      }
+    },
+    {
+      "id": "vh.disk_usage",
+      "title": "Disk usage tasks",
+      "service": "vh",
+      "description": "SpaceWeb API: vh_utils_diskUsage_index (/vh/utils/diskUsage/ · index).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vh_utils_diskUsage_index",
+        "params": {}
+      }
+    }
+  ]
+}
