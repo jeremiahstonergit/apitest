@@ -109,3 +109,30 @@ python3 scripts/update_repo.py --rebuild-only --limit 50
 - Cursor: `.cursor/rules/*.mdc`
 - Windsurf: `.windsurf/rules/*`
 - MCP lookup server: `mcp/server.py`
+
+## Serverless web control plane
+
+В репозиторий добавлен MVP web-интерфейса для запуска Python-скриптов управления инфраструктурой в Knative Serving.
+
+- приложение: `app/main.py`
+- registry разрешённых действий: `automation/tasks.registry.json`
+- пример безопасной задачи: `automation/tasks/example_echo.py`
+- спецификация и ограничения: `docs/serverless-control-plane.md`
+
+Команда сборки для serverless-платформы:
+
+```bash
+python -m pip install --user -r requirements.txt && python -m compileall app client automation
+```
+
+Команда запуска:
+
+```bash
+python -m uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8080}
+```
+
+Рекомендуемые переменные окружения:
+
+- `PORT=8080`
+- `SWEB_AUTOMATION_DATA_DIR=.runtime`
+- `SWEB_AUTOMATION_MAX_LOGS=50`
