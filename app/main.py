@@ -6,7 +6,6 @@ import asyncio
 import html
 import json
 import os
-import secrets
 import sys
 import uuid
 from dataclasses import dataclass, field
@@ -14,19 +13,14 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from fastapi import Depends, FastAPI, Form, HTTPException, status
-from fastapi.security import HTTPBasic, HTTPBasicCredentials
+from fastapi import FastAPI, Form, HTTPException
 from fastapi.responses import HTMLResponse, RedirectResponse
-
-from app.task_catalog import load_tasks as load_task_catalog
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY_PATH = ROOT / 'automation' / 'tasks.registry.json'
 DATA_DIR = Path(os.getenv('SWEB_AUTOMATION_DATA_DIR', ROOT / '.runtime'))
 SCHEDULES_PATH = DATA_DIR / 'schedules.json'
 MAX_LOGS = int(os.getenv('SWEB_AUTOMATION_MAX_LOGS', '50'))
-CONTROL_PLANE_USER = os.getenv('CONTROL_PLANE_USER', 'ashashkin')
-CONTROL_PLANE_PASSWORD = os.getenv('CONTROL_PLANE_PASSWORD', 'dumbilla')
 
 app = FastAPI(
     title='SpaceWeb Infrastructure Control Plane',
@@ -62,7 +56,6 @@ TASKS: dict[str, TaskDef] = {}
 SCHEDULES: dict[str, ScheduleDef] = {}
 RUN_LOGS: list[dict[str, Any]] = []
 SCHEDULER_TASK: asyncio.Task | None = None
-SECURITY = HTTPBasic()
 
 
 STYLE = """
@@ -85,7 +78,8 @@ def iso(dt: datetime) -> str:
 
 
 def load_tasks() -> dict[str, TaskDef]:
-    return load_task_catalog(REGISTRY_PATH, TaskDef)
+    payload = json.loads(REGISTRY_PATH.read_text(encoding='utf-8'))
+    return {item['id']: TaskDef(**item) for item in payload.get('tasks', [])}
 
 
 def save_schedules() -> None:
@@ -108,18 +102,6 @@ def render_page(content: str) -> HTMLResponse:
 def esc(value: Any) -> str:
     return html.escape(str(value), quote=True)
 
-
-
-def require_auth(credentials: HTTPBasicCredentials = Depends(SECURITY)) -> str:
-    user_ok = secrets.compare_digest(credentials.username, CONTROL_PLANE_USER)
-    password_ok = secrets.compare_digest(credentials.password, CONTROL_PLANE_PASSWORD)
-    if not (user_ok and password_ok):
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail='Invalid control plane credentials',
-            headers={'WWW-Authenticate': 'Basic'},
-        )
-    return credentials.username
 
 def service_map() -> dict[str, list[TaskDef]]:
     services: dict[str, list[TaskDef]] = {}
@@ -204,7 +186,7 @@ def healthz() -> dict[str, str]:
 
 
 @app.get('/', response_class=HTMLResponse)
-def index(_user: str = Depends(require_auth)) -> HTMLResponse:
+def index() -> HTMLResponse:
     service_cards = ''.join(
         f"<div class='card'><h3>{esc(service)}</h3><p class='muted'>{len(tasks)} доступных действий</p>" +
         ''.join(f"<div><span class='pill'>{esc(t.id)}</span><b>{esc(t.title)}</b><p class='muted small'>{esc(t.description)}</p><div class='actions'><a class='btn secondary' href='/tasks/{esc(t.id)}'>Открыть</a></div></div>" for t in tasks) +
@@ -227,7 +209,7 @@ def index(_user: str = Depends(require_auth)) -> HTMLResponse:
 
 
 @app.get('/tasks/{task_id}', response_class=HTMLResponse)
-def task_page(task_id: str, _user: str = Depends(require_auth)) -> HTMLResponse:
+def task_page(task_id: str) -> HTMLResponse:
     task = TASKS.get(task_id)
     if not task:
         raise HTTPException(status_code=404, detail='Unknown task')
@@ -236,14 +218,14 @@ def task_page(task_id: str, _user: str = Depends(require_auth)) -> HTMLResponse:
 
 
 @app.post('/tasks/{task_id}/run')
-async def run_task(task_id: str, params_json: str = Form('{}'), _user: str = Depends(require_auth)) -> RedirectResponse:
+async def run_task(task_id: str, params_json: str = Form('{}')) -> RedirectResponse:
     params = json.loads(params_json or '{}')
     await execute_task(task_id, params, 'manual')
     return RedirectResponse('/', status_code=303)
 
 
 @app.post('/schedules')
-def create_schedule(task_id: str = Form(...), title: str = Form(''), interval_minutes: int = Form(60), params_json: str = Form('{}'), _user: str = Depends(require_auth)) -> RedirectResponse:
+def create_schedule(task_id: str = Form(...), title: str = Form(''), interval_minutes: int = Form(60), params_json: str = Form('{}')) -> RedirectResponse:
     if task_id not in TASKS:
         raise HTTPException(status_code=404, detail='Unknown task')
     schedule = ScheduleDef(
