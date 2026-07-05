@@ -7,7 +7,6 @@ import html
 import json
 import os
 import secrets
-import sys
 import uuid
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
@@ -25,6 +24,7 @@ SCHEDULES_PATH = DATA_DIR / 'schedules.json'
 MAX_LOGS = int(os.getenv('SWEB_AUTOMATION_MAX_LOGS', '50'))
 CONTROL_PLANE_USER = os.getenv('CONTROL_PLANE_USER', 'shashkin')
 CONTROL_PLANE_PASSWORD = os.getenv('CONTROL_PLANE_PASSWORD', 'dumbilla')
+
 
 app = FastAPI(
     title='SpaceWeb Infrastructure Control Plane',
@@ -63,6 +63,7 @@ SCHEDULER_TASK: asyncio.Task | None = None
 SECURITY = HTTPBasic()
 
 
+
 STYLE = """
 :root{color-scheme:dark;--bg:#0b1020;--panel:#11182c;--muted:#8fa3c7;--text:#edf4ff;--brand:#60a5fa;--ok:#34d399;--warn:#fbbf24;--bad:#fb7185}*{box-sizing:border-box}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;background:radial-gradient(circle at top left,#1d4ed833,transparent 34rem),var(--bg);color:var(--text)}main{max-width:1180px;margin:0 auto;padding:32px 20px 64px}.hero{display:flex;justify-content:space-between;gap:24px;align-items:flex-start;margin-bottom:28px}.badge{display:inline-flex;gap:8px;align-items:center;border:1px solid #2a3a5e;background:#0f172a;padding:8px 12px;border-radius:999px;color:#bfdbfe;font-size:14px}h1{font-size:clamp(32px,5vw,58px);line-height:1;margin:16px 0 12px;letter-spacing:-.04em}.lead{color:var(--muted);font-size:18px;max-width:760px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}.card{border:1px solid #253653;background:linear-gradient(180deg,#16213acc,#10172acc);border-radius:24px;padding:22px;box-shadow:0 20px 60px #0006}.card h2,.card h3{margin-top:0}.muted{color:var(--muted)}.pill{display:inline-block;border-radius:999px;padding:5px 10px;background:#1e293b;color:#bfdbfe;font-size:12px;margin:2px}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}.btn,button{border:0;border-radius:14px;background:linear-gradient(135deg,#3b82f6,#06b6d4);color:white;padding:10px 14px;font-weight:700;cursor:pointer;text-decoration:none}.btn.secondary{background:#1f2a44;color:#cfe2ff;border:1px solid #33476d}input,textarea,select{width:100%;border:1px solid #314262;background:#0b1222;color:var(--text);border-radius:14px;padding:11px;margin:6px 0 12px}textarea{min-height:110px;font-family:ui-monospace,Menlo,monospace}.status-ok{color:var(--ok)}.status-failed{color:var(--bad)}table{width:100%;border-collapse:collapse}td,th{border-bottom:1px solid #263653;padding:10px;text-align:left;vertical-align:top}code{color:#bfdbfe}.section{margin-top:26px}.small{font-size:13px}.split{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}@media(max-width:850px){.hero,.split{display:block}.card{margin-bottom:16px}}
 """
@@ -99,6 +100,7 @@ def load_optional_tasks() -> dict[str, TaskDef]:
     return tasks
 
 
+
 def save_schedules() -> None:
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     payload = {'schedules': [schedule.__dict__ for schedule in SCHEDULES.values()]}
@@ -130,6 +132,7 @@ def require_auth(credentials: HTTPBasicCredentials = Depends(SECURITY)) -> str:
             headers={'WWW-Authenticate': 'Basic'},
         )
     return credentials.username
+
 
 
 def service_map() -> dict[str, list[TaskDef]]:
@@ -217,6 +220,7 @@ def healthz() -> dict[str, str]:
 
 @app.get('/', response_class=HTMLResponse)
 def index(_user: str = Depends(require_auth)) -> HTMLResponse:
+
     service_cards = ''.join(
         f"<div class='card'><h3>{esc(service)}</h3><p class='muted'>{len(tasks)} доступных действий</p>" +
         ''.join(f"<div><span class='pill'>{esc(t.id)}</span><b>{esc(t.title)}</b><p class='muted small'>{esc(t.description)}</p><div class='actions'><a class='btn secondary' href='/tasks/{esc(t.id)}'>Открыть</a></div></div>" for t in tasks) +
@@ -249,6 +253,7 @@ def task_page(task_id: str, _user: str = Depends(require_auth)) -> HTMLResponse:
 
 @app.post('/tasks/{task_id}/run')
 async def run_task(task_id: str, params_json: str = Form('{}'), _user: str = Depends(require_auth)) -> RedirectResponse:
+
     params = json.loads(params_json or '{}')
     await execute_task(task_id, params, 'manual')
     return RedirectResponse('/', status_code=303)
@@ -256,6 +261,7 @@ async def run_task(task_id: str, params_json: str = Form('{}'), _user: str = Dep
 
 @app.post('/schedules')
 def create_schedule(task_id: str = Form(...), title: str = Form(''), interval_minutes: int = Form(60), params_json: str = Form('{}'), _user: str = Depends(require_auth)) -> RedirectResponse:
+
     if task_id not in TASKS:
         raise HTTPException(status_code=404, detail='Unknown task')
     schedule = ScheduleDef(
