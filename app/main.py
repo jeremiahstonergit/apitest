@@ -82,6 +82,18 @@ def load_tasks() -> dict[str, TaskDef]:
     return {item['id']: TaskDef(**item) for item in payload.get('tasks', [])}
 
 
+def load_optional_tasks() -> dict[str, TaskDef]:
+    tasks: dict[str, TaskDef] = {}
+    for path in [ROOT / 'automation' / 'tasks.sweb.json']:
+        if not path.exists():
+            continue
+        payload = json.loads(path.read_text(encoding='utf-8'))
+        for item in payload.get('tasks', []):
+            task = TaskDef(**item)
+            tasks.setdefault(task.id, task)
+    return tasks
+
+
 def save_schedules() -> None:
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     payload = {'schedules': [schedule.__dict__ for schedule in SCHEDULES.values()]}
@@ -170,6 +182,7 @@ async def scheduler_loop() -> None:
 async def startup() -> None:
     global TASKS, SCHEDULES, SCHEDULER_TASK
     TASKS = load_tasks()
+    TASKS.update({task_id: task for task_id, task in load_optional_tasks().items() if task_id not in TASKS})
     SCHEDULES = load_schedules()
     SCHEDULER_TASK = asyncio.create_task(scheduler_loop())
 

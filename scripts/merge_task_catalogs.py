@@ -28,7 +28,12 @@ def main() -> None:
     merged = json.dumps({'tasks': tasks}, ensure_ascii=False, indent=2) + '\n'
     if BASE.exists() and BASE.read_text(encoding='utf-8') == merged:
         return
-    BASE.write_text(merged, encoding='utf-8')
+    try:
+        BASE.write_text(merged, encoding='utf-8')
+    except OSError:
+        # Serverless runtimes can mount repository files read-only; the app also
+        # loads optional catalogs directly, so failing to persist the merge is OK.
+        return
 
 
 if __name__ == '__main__':
