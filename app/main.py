@@ -18,6 +18,7 @@ from fastapi.responses import HTMLResponse, RedirectResponse
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY_PATH = ROOT / 'automation' / 'tasks.registry.json'
+# Load optional catalogs read-only at runtime; do not rewrite repository files in serverless containers.
 TASK_CATALOG_PATHS = [REGISTRY_PATH, ROOT / 'automation' / 'tasks.sweb.json']
 DATA_DIR = Path(os.getenv('SWEB_AUTOMATION_DATA_DIR', ROOT / '.runtime'))
 SCHEDULES_PATH = DATA_DIR / 'schedules.json'
