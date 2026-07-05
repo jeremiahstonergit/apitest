@@ -94,6 +94,7 @@ def load_optional_tasks() -> dict[str, TaskDef]:
     return tasks
 
 
+
 def save_schedules() -> None:
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     payload = {'schedules': [schedule.__dict__ for schedule in SCHEDULES.values()]}
