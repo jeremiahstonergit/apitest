@@ -1,3 +1,4 @@
+"""Application package for the SpaceWeb control plane."""
 """Application package bootstrap."""
 
 from __future__ import annotations
