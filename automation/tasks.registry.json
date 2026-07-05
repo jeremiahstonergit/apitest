@@ -1,0 +1,12 @@
+{
+  "tasks": [
+    {
+      "id": "example.echo",
+      "title": "Проверочная задача",
+      "service": "system",
+      "description": "Безопасная demo-задача: печатает переданные параметры и не меняет инфраструктуру.",
+      "script": "automation/tasks/example_echo.py",
+      "default_params": {"message": "hello from scheduler"}
+    }
+  ]
+}
