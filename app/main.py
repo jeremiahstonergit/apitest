@@ -8,13 +8,12 @@ import json
 import os
 import sys
 import uuid
-from urllib.parse import parse_qs
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, Form, HTTPException
 from fastapi.responses import HTMLResponse, RedirectResponse
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -103,12 +102,6 @@ def render_page(content: str) -> HTMLResponse:
 def esc(value: Any) -> str:
     return html.escape(str(value), quote=True)
 
-
-
-async def read_urlencoded_form(request: Request) -> dict[str, str]:
-    body = (await request.body()).decode('utf-8')
-    parsed = parse_qs(body, keep_blank_values=True)
-    return {key: values[-1] if values else '' for key, values in parsed.items()}
 
 def service_map() -> dict[str, list[TaskDef]]:
     services: dict[str, list[TaskDef]] = {}
@@ -225,25 +218,22 @@ def task_page(task_id: str) -> HTMLResponse:
 
 
 @app.post('/tasks/{task_id}/run')
-async def run_task(task_id: str, request: Request) -> RedirectResponse:
-    form = await read_urlencoded_form(request)
-    params = json.loads(form.get('params_json') or '{}')
+async def run_task(task_id: str, params_json: str = Form('{}')) -> RedirectResponse:
+    params = json.loads(params_json or '{}')
     await execute_task(task_id, params, 'manual')
     return RedirectResponse('/', status_code=303)
 
 
 @app.post('/schedules')
-async def create_schedule(request: Request) -> RedirectResponse:
-    form = await read_urlencoded_form(request)
-    task_id = form.get('task_id', '')
+def create_schedule(task_id: str = Form(...), title: str = Form(''), interval_minutes: int = Form(60), params_json: str = Form('{}')) -> RedirectResponse:
     if task_id not in TASKS:
         raise HTTPException(status_code=404, detail='Unknown task')
     schedule = ScheduleDef(
         id=uuid.uuid4().hex[:12],
         task_id=task_id,
-        title=form.get('title') or TASKS[task_id].title,
-        interval_minutes=max(1, int(form.get('interval_minutes') or '60')),
-        params=json.loads(form.get('params_json') or '{}'),
+        title=title or TASKS[task_id].title,
+        interval_minutes=max(1, interval_minutes),
+        params=json.loads(params_json or '{}'),
         next_run_at=iso(utc_now()),
     )
     SCHEDULES[schedule.id] = schedule
