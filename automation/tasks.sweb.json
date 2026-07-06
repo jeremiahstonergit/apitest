@@ -747,6 +747,86 @@
         "operation_id": "vps_ssl_orderSubmit",
         "params": {}
       }
+
+    },
+    {
+      "id": "vh.backups",
+      "title": "Virtual hosting backups",
+      "service": "vh",
+      "description": "SpaceWeb API: vh_backup_getList (/vh/backup/ · getList).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vh_backup_getList",
+        "params": {}
+      }
+    },
+    {
+      "id": "vh.cron",
+      "title": "Cron tasks",
+      "service": "vh",
+      "description": "SpaceWeb API: vh_cron_getTasks (/vh/cron/ · getTasks).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vh_cron_getTasks",
+        "params": {}
+      }
+    },
+    {
+      "id": "vh.databases",
+      "title": "Hosting databases",
+      "service": "vh",
+      "description": "SpaceWeb API: vh_hosting_databaseGetList (/vh/hosting/ · databaseGetList).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vh_hosting_databaseGetList",
+        "params": {}
+      }
+    },
+    {
+      "id": "vh.load",
+      "title": "Hosting load",
+      "service": "vh",
+      "description": "SpaceWeb API: vh_load_index (/vh/load/ · index).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vh_load_index",
+        "params": {}
+      }
+    },
+    {
+      "id": "vh.mailboxes",
+      "title": "Mailboxes",
+      "service": "vh",
+      "description": "SpaceWeb API: vh_mail_getMailboxesList (/vh/mail/ · getMailboxesList).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vh_mail_getMailboxesList",
+        "params": {}
+      }
+    },
+    {
+      "id": "vh.ssl",
+      "title": "SSL orders",
+      "service": "vh",
+      "description": "SpaceWeb API: vh_ssl_getOrderList (/vh/ssl/ · getOrderList).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vh_ssl_getOrderList",
+        "params": {}
+      }
+    },
+    {
+      "id": "vh.disk_usage",
+      "title": "Disk usage tasks",
+      "service": "vh",
+      "description": "SpaceWeb API: vh_utils_diskUsage_index (/vh/utils/diskUsage/ · index).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vh_utils_diskUsage_index",
+        "params": {}
+      }
+
+
     }
   ]
 }
