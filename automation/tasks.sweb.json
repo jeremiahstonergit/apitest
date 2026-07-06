@@ -1,0 +1,752 @@
+{
+  "tasks": [
+    {
+      "id": "account.balance",
+      "title": "Баланс аккаунта",
+      "service": "account",
+      "description": "SpaceWeb API: pay_getBalance (/pay/ · getBalance).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "pay_getBalance",
+        "params": {}
+      }
+    },
+    {
+      "id": "account.pay_recommendations",
+      "title": "Рекомендации по оплате",
+      "service": "account",
+      "description": "SpaceWeb API: pay_getPayRecommendations (/pay/ · getPayRecommendations).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "pay_getPayRecommendations",
+        "params": {}
+      }
+    },
+    {
+      "id": "tariff.info",
+      "title": "Тарифы и серверная информация",
+      "service": "account",
+      "description": "SpaceWeb API: tariff_index (/tariff/ · index).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "tariff_index",
+        "params": {}
+      }
+    },
+    {
+      "id": "domains.list",
+      "title": "Домены",
+      "service": "domains",
+      "description": "SpaceWeb API: domains_index (/domains/ · index).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "domains_index",
+        "params": {}
+      }
+    },
+    {
+      "id": "domains.bonus_list",
+      "title": "Бонусные домены",
+      "service": "domains",
+      "description": "SpaceWeb API: domains_bonus_getList (/domains/bonus/ · getList).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "domains_bonus_getList",
+        "params": {}
+      }
+    },
+    {
+      "id": "domains.persons",
+      "title": "Контакты владельцев доменов",
+      "service": "domains",
+      "description": "SpaceWeb API: domains_persons_index (/domains/persons/ · index).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "domains_persons_index",
+        "params": {}
+      }
+    },
+    {
+      "id": "sites.list",
+      "title": "Сайты",
+      "service": "sites",
+      "description": "SpaceWeb API: sites_index (/sites/ · index).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "sites_index",
+        "params": {}
+      }
+    },
+    {
+      "id": "balancer.list",
+      "title": "Балансировщики",
+      "service": "cloud",
+      "description": "SpaceWeb API: balancer_index (/balancer/ · index).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "balancer_index",
+        "params": {}
+      }
+    },
+    {
+      "id": "dbaas.list",
+      "title": "DBaaS instances",
+      "service": "cloud",
+      "description": "SpaceWeb API: dbaas_index (/dbaas/ · index).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "dbaas_index",
+        "params": {}
+      }
+    },
+    {
+      "id": "monitoring.plans",
+      "title": "Monitoring plans",
+      "service": "monitoring",
+      "description": "SpaceWeb API: monitoring_plans (/monitoring/ · plans).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "monitoring_plans",
+        "params": {}
+      }
+    },
+    {
+      "id": "monitoring.checks",
+      "title": "Monitoring checks",
+      "service": "monitoring",
+      "description": "SpaceWeb API: monitoring_checks_index (/monitoring/checks/ · index).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "monitoring_checks_index",
+        "params": {}
+      }
+    },
+    {
+      "id": "monitoring.contacts",
+      "title": "Monitoring contacts",
+      "service": "monitoring",
+      "description": "SpaceWeb API: monitoring_contacts_index (/monitoring/contacts/ · index).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "monitoring_contacts_index",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.index",
+      "title": "Список VPS",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_index (/vps/ · index).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_index",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.getFirstOrderInfo",
+      "title": "Получение информации о первом заказе",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_getFirstOrderInfo (/vps/ · getFirstOrderInfo).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_getFirstOrderInfo",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.createEnable",
+      "title": "Проверка доступен ли заказ VPS",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_createEnable (/vps/ · createEnable).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_createEnable",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.getAvailableConfig",
+      "title": "Получение списка доступных дистрибутивов, ISP-лицензий, тарифных планов",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_getAvailableConfig (/vps/ · getAvailableConfig).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_getAvailableConfig",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.copy",
+      "title": "Клонирование VPS",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_copy (/vps/ · copy).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_copy",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.createFirst",
+      "title": "Создание первого заказа с VPS",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_createFirst (/vps/ · createFirst).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_createFirst",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.create",
+      "title": "Создание VPS",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_create (/vps/ · create).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_create",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.rename",
+      "title": "Переименование VPS",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_rename (/vps/ · rename).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_rename",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.isRunning",
+      "title": "Запущена ли VPS в данный момент",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_isRunning (/vps/ · isRunning).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_isRunning",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.remove",
+      "title": "Удаление VPS",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_remove (/vps/ · remove).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_remove",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.removeFirst",
+      "title": "Удаление первого заказа.Доступно, если заказ ещё не был оплачен и услуга не стартовала",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_removeFirst (/vps/ · removeFirst).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_removeFirst",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.load",
+      "title": "Загрузка - возвращает картинку в Base64",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_load (/vps/ · load).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_load",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.getConstructorPlanId",
+      "title": "Возвращает id тарифного плана конструктора VPS по значениям кол-ва ядер, ОЗУ, объема диска и категории",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_getConstructorPlanId (/vps/ · getConstructorPlanId).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_getConstructorPlanId",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.changePlan",
+      "title": "Изменение тарифного плана",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_changePlan (/vps/ · changePlan).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_changePlan",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.powerOn",
+      "title": "Включение VPS",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_powerOn (/vps/ · powerOn).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_powerOn",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.powerOff",
+      "title": "Выключение VPS",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_powerOff (/vps/ · powerOff).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_powerOff",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.reboot",
+      "title": "Перезагрузка VPS",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_reboot (/vps/ · reboot).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_reboot",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.getCurrentAction",
+      "title": "Получение текущей операции по VPS",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_getCurrentAction (/vps/ · getCurrentAction).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_getCurrentAction",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.reinstallOs",
+      "title": "Переустановка образа VPS",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_reinstallOs (/vps/ · reinstallOs).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_reinstallOs",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.logs",
+      "title": "Получение логов операций",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_logs (/vps/ · logs).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_logs",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.backup.index",
+      "title": "Список бэкапов для VPS",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_backup_index (/vps/backup/ · index).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_backup_index",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.backup.updateIndex",
+      "title": "Обновление индекса бэкапов",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_backup_updateIndex (/vps/backup/ · updateIndex).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_backup_updateIndex",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.backup.create",
+      "title": "Создание бэкапа VPS",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_backup_create (/vps/backup/ · create).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_backup_create",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.backup.restore",
+      "title": "Восстановление из бэкапа",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_backup_restore (/vps/backup/ · restore).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_backup_restore",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.backup.attach",
+      "title": "Подключение бэкапа как диска к VPS",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_backup_attach (/vps/backup/ · attach).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_backup_attach",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.backup.detach",
+      "title": "Отключение бэкапа как диска",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_backup_detach (/vps/backup/ · detach).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_backup_detach",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.backup.remove",
+      "title": "Удаление бэкапа",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_backup_remove (/vps/backup/ · remove).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_backup_remove",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.backup.getSettings",
+      "title": "Получение настроек создания бэкапов",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_backup_getSettings (/vps/backup/ · getSettings).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_backup_getSettings",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.backup.saveSettings",
+      "title": "Сохранение настроек бэкапа",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_backup_saveSettings (/vps/backup/ · saveSettings).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_backup_saveSettings",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.ip.addLocal",
+      "title": "Подключение VPS к локальной сети",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_ip_addLocal (/vps/ip/ · addLocal).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_ip_addLocal",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.ip.removeLocal",
+      "title": "Удаление локального IP",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_ip_removeLocal (/vps/ip/ · removeLocal).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_ip_removeLocal",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.ip.index",
+      "title": "Получение информации о IP",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_ip_index (/vps/ip/ · index).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_ip_index",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.ip.getAllIpList",
+      "title": "Получение списка всех IP на аккаунте пользователя",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_ip_getAllIpList (/vps/ip/ · getAllIpList).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_ip_getAllIpList",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.ip.getOrderInfo",
+      "title": "Возвращает информацию по лимитам заказов ip",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_ip_getOrderInfo (/vps/ip/ · getOrderInfo).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_ip_getOrderInfo",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.ip.addProtected",
+      "title": "Добавляет защищенный IP на VPS",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_ip_addProtected (/vps/ip/ · addProtected).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_ip_addProtected",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.ip.removeProtected",
+      "title": "Удаляет защищенный IP",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_ip_removeProtected (/vps/ip/ · removeProtected).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_ip_removeProtected",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.ip.updateProtected",
+      "title": "Изменяет тариф защищенного IP",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_ip_updateProtected (/vps/ip/ · updateProtected).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_ip_updateProtected",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.ip.moveProtected",
+      "title": "Перемещает между VPS или открепляет/прикрепляет от/к VPS защищенный IP",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_ip_moveProtected (/vps/ip/ · moveProtected).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_ip_moveProtected",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.ip.add",
+      "title": "Добавить необходимое количество доп. IP на VPS",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_ip_add (/vps/ip/ · add).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_ip_add",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.ip.remove",
+      "title": "Удаление IP. Нельзя удалять связанный IP передавая при этом пустой $billingId.",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_ip_remove (/vps/ip/ · remove).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_ip_remove",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.ip.move",
+      "title": "Перемещение IP между услугами VPS и прикрепление/открепление IP от услуги VPS",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_ip_move (/vps/ip/ · move).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_ip_move",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.ip.editPtr",
+      "title": "Редактирование PTR",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_ip_editPtr (/vps/ip/ · editPtr).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_ip_editPtr",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.ip.getPtr",
+      "title": "Получение обратной зоны для IP-адреса",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_ip_getPtr (/vps/ip/ · getPtr).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_ip_getPtr",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.remoteBackup.index",
+      "title": "Получение данных по бэкапам",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_remoteBackup_index (/vps/remoteBackup/ · index).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_remoteBackup_index",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.remoteBackup.create",
+      "title": "Создание бэкапа VPS",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_remoteBackup_create (/vps/remoteBackup/ · create).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_remoteBackup_create",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.remoteBackup.editComment",
+      "title": "Редактирование комментария к бэкапу",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_remoteBackup_editComment (/vps/remoteBackup/ · editComment).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_remoteBackup_editComment",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.remoteBackup.restore",
+      "title": "Восстановление из бэкапа в ту VPS, из которой бэкап создан",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_remoteBackup_restore (/vps/remoteBackup/ · restore).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_remoteBackup_restore",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.remoteBackup.restoreInto",
+      "title": "Восстановление из бэкапа в существующую VPS",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_remoteBackup_restoreInto (/vps/remoteBackup/ · restoreInto).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_remoteBackup_restoreInto",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.remoteBackup.remove",
+      "title": "Удаление бэкапа",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_remoteBackup_remove (/vps/remoteBackup/ · remove).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_remoteBackup_remove",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.ssl.index",
+      "title": "Возвращает список сертификатов пользователя",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_ssl_index (/vps/ssl/ · index).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_ssl_index",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.ssl.getOrderList",
+      "title": "Получение списка сертификатов доступных для заказа",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_ssl_getOrderList (/vps/ssl/ · getOrderList).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_ssl_getOrderList",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.ssl.download",
+      "title": "Возвращает архив с файлами сертификата",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_ssl_download (/vps/ssl/ · download).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_ssl_download",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.ssl.editAutoprolong",
+      "title": "Изменение режима автопродления сертификата",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_ssl_editAutoprolong (/vps/ssl/ · editAutoprolong).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_ssl_editAutoprolong",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.ssl.removeCertificate",
+      "title": "Удаляет сертификат",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_ssl_removeCertificate (/vps/ssl/ · removeCertificate).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_ssl_removeCertificate",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.ssl.getProlongInfo",
+      "title": "Получение информации о вариантах продления сертификата",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_ssl_getProlongInfo (/vps/ssl/ · getProlongInfo).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_ssl_getProlongInfo",
+        "params": {}
+      }
+    },
+    {
+      "id": "vps.ssl.orderSubmit",
+      "title": "Отправка заказа",
+      "service": "vps",
+      "description": "SpaceWeb API: vps_ssl_orderSubmit (/vps/ssl/ · orderSubmit).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vps_ssl_orderSubmit",
+        "params": {}
+      }
+    }
+  ]
+}
