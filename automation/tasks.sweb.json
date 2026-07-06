@@ -78,7 +78,6 @@
       }
     },
     {
-
       "id": "balancer.list",
       "title": "Балансировщики",
       "service": "cloud",
@@ -136,10 +135,6 @@
     {
       "id": "vps.index",
       "title": "Список VPS",
-=======
-      "id": "vps.list",
-      "title": "VPS",
-
       "service": "vps",
       "description": "SpaceWeb API: vps_index (/vps/ · index).",
       "script": "automation/tasks/sweb_call_operation.py",
@@ -149,7 +144,6 @@
       }
     },
     {
-
       "id": "vps.getFirstOrderInfo",
       "title": "Получение информации о первом заказе",
       "service": "vps",
@@ -361,10 +355,6 @@
     {
       "id": "vps.backup.index",
       "title": "Список бэкапов для VPS",
-
-      "id": "vps.backups",
-      "title": "VPS backup",
-
       "service": "vps",
       "description": "SpaceWeb API: vps_backup_index (/vps/backup/ · index).",
       "script": "automation/tasks/sweb_call_operation.py",
@@ -374,7 +364,6 @@
       }
     },
     {
-
       "id": "vps.backup.updateIndex",
       "title": "Обновление индекса бэкапов",
       "service": "vps",
@@ -498,10 +487,6 @@
     {
       "id": "vps.ip.getAllIpList",
       "title": "Получение списка всех IP на аккаунте пользователя",
-
-      "id": "vps.ip_list",
-      "title": "VPS IP addresses",
-
       "service": "vps",
       "description": "SpaceWeb API: vps_ip_getAllIpList (/vps/ip/ · getAllIpList).",
       "script": "automation/tasks/sweb_call_operation.py",
@@ -511,7 +496,6 @@
       }
     },
     {
-
       "id": "vps.ip.getOrderInfo",
       "title": "Возвращает информацию по лимитам заказов ip",
       "service": "vps",
@@ -624,10 +608,6 @@
     {
       "id": "vps.remoteBackup.index",
       "title": "Получение данных по бэкапам",
-
-      "id": "vps.remote_backups",
-      "title": "VPS remote backups",
-
       "service": "vps",
       "description": "SpaceWeb API: vps_remoteBackup_index (/vps/remoteBackup/ · index).",
       "script": "automation/tasks/sweb_call_operation.py",
@@ -637,7 +617,6 @@
       }
     },
     {
-
       "id": "vps.remoteBackup.create",
       "title": "Создание бэкапа VPS",
       "service": "vps",
@@ -645,20 +624,10 @@
       "script": "automation/tasks/sweb_call_operation.py",
       "default_params": {
         "operation_id": "vps_remoteBackup_create",
-
-      "id": "balancer.list",
-      "title": "Балансировщики",
-      "service": "cloud",
-      "description": "SpaceWeb API: balancer_index (/balancer/ · index).",
-      "script": "automation/tasks/sweb_call_operation.py",
-      "default_params": {
-        "operation_id": "balancer_index",
-
         "params": {}
       }
     },
     {
-
       "id": "vps.remoteBackup.editComment",
       "title": "Редактирование комментария к бэкапу",
       "service": "vps",
@@ -666,20 +635,10 @@
       "script": "automation/tasks/sweb_call_operation.py",
       "default_params": {
         "operation_id": "vps_remoteBackup_editComment",
-
-      "id": "dbaas.list",
-      "title": "DBaaS instances",
-      "service": "cloud",
-      "description": "SpaceWeb API: dbaas_index (/dbaas/ · index).",
-      "script": "automation/tasks/sweb_call_operation.py",
-      "default_params": {
-        "operation_id": "dbaas_index",
-
         "params": {}
       }
     },
     {
-
       "id": "vps.remoteBackup.restore",
       "title": "Восстановление из бэкапа в ту VPS, из которой бэкап создан",
       "service": "vps",
@@ -687,20 +646,10 @@
       "script": "automation/tasks/sweb_call_operation.py",
       "default_params": {
         "operation_id": "vps_remoteBackup_restore",
-
-      "id": "monitoring.plans",
-      "title": "Monitoring plans",
-      "service": "monitoring",
-      "description": "SpaceWeb API: monitoring_plans (/monitoring/ · plans).",
-      "script": "automation/tasks/sweb_call_operation.py",
-      "default_params": {
-        "operation_id": "monitoring_plans",
-
         "params": {}
       }
     },
     {
-
       "id": "vps.remoteBackup.restoreInto",
       "title": "Восстановление из бэкапа в существующую VPS",
       "service": "vps",
@@ -708,20 +657,10 @@
       "script": "automation/tasks/sweb_call_operation.py",
       "default_params": {
         "operation_id": "vps_remoteBackup_restoreInto",
-
-      "id": "monitoring.checks",
-      "title": "Monitoring checks",
-      "service": "monitoring",
-      "description": "SpaceWeb API: monitoring_checks_index (/monitoring/checks/ · index).",
-      "script": "automation/tasks/sweb_call_operation.py",
-      "default_params": {
-        "operation_id": "monitoring_checks_index",
-
         "params": {}
       }
     },
     {
-
       "id": "vps.remoteBackup.remove",
       "title": "Удаление бэкапа",
       "service": "vps",
@@ -729,20 +668,10 @@
       "script": "automation/tasks/sweb_call_operation.py",
       "default_params": {
         "operation_id": "vps_remoteBackup_remove",
-
-      "id": "monitoring.contacts",
-      "title": "Monitoring contacts",
-      "service": "monitoring",
-      "description": "SpaceWeb API: monitoring_contacts_index (/monitoring/contacts/ · index).",
-      "script": "automation/tasks/sweb_call_operation.py",
-      "default_params": {
-        "operation_id": "monitoring_contacts_index",
-
         "params": {}
       }
     },
     {
-
       "id": "vps.ssl.index",
       "title": "Возвращает список сертификатов пользователя",
       "service": "vps",
@@ -750,20 +679,10 @@
       "script": "automation/tasks/sweb_call_operation.py",
       "default_params": {
         "operation_id": "vps_ssl_index",
-
-      "id": "vh.backups",
-      "title": "Virtual hosting backups",
-      "service": "vh",
-      "description": "SpaceWeb API: vh_backup_getList (/vh/backup/ · getList).",
-      "script": "automation/tasks/sweb_call_operation.py",
-      "default_params": {
-        "operation_id": "vh_backup_getList",
-
         "params": {}
       }
     },
     {
-
       "id": "vps.ssl.getOrderList",
       "title": "Получение списка сертификатов доступных для заказа",
       "service": "vps",
@@ -771,20 +690,10 @@
       "script": "automation/tasks/sweb_call_operation.py",
       "default_params": {
         "operation_id": "vps_ssl_getOrderList",
-
-      "id": "vh.cron",
-      "title": "Cron tasks",
-      "service": "vh",
-      "description": "SpaceWeb API: vh_cron_getTasks (/vh/cron/ · getTasks).",
-      "script": "automation/tasks/sweb_call_operation.py",
-      "default_params": {
-        "operation_id": "vh_cron_getTasks",
-
         "params": {}
       }
     },
     {
-
       "id": "vps.ssl.download",
       "title": "Возвращает архив с файлами сертификата",
       "service": "vps",
@@ -792,20 +701,10 @@
       "script": "automation/tasks/sweb_call_operation.py",
       "default_params": {
         "operation_id": "vps_ssl_download",
-
-      "id": "vh.databases",
-      "title": "Hosting databases",
-      "service": "vh",
-      "description": "SpaceWeb API: vh_hosting_databaseGetList (/vh/hosting/ · databaseGetList).",
-      "script": "automation/tasks/sweb_call_operation.py",
-      "default_params": {
-        "operation_id": "vh_hosting_databaseGetList",
-
         "params": {}
       }
     },
     {
-
       "id": "vps.ssl.editAutoprolong",
       "title": "Изменение режима автопродления сертификата",
       "service": "vps",
@@ -813,20 +712,10 @@
       "script": "automation/tasks/sweb_call_operation.py",
       "default_params": {
         "operation_id": "vps_ssl_editAutoprolong",
-
-      "id": "vh.load",
-      "title": "Hosting load",
-      "service": "vh",
-      "description": "SpaceWeb API: vh_load_index (/vh/load/ · index).",
-      "script": "automation/tasks/sweb_call_operation.py",
-      "default_params": {
-        "operation_id": "vh_load_index",
-
         "params": {}
       }
     },
     {
-
       "id": "vps.ssl.removeCertificate",
       "title": "Удаляет сертификат",
       "service": "vps",
@@ -834,20 +723,10 @@
       "script": "automation/tasks/sweb_call_operation.py",
       "default_params": {
         "operation_id": "vps_ssl_removeCertificate",
-
-      "id": "vh.mailboxes",
-      "title": "Mailboxes",
-      "service": "vh",
-      "description": "SpaceWeb API: vh_mail_getMailboxesList (/vh/mail/ · getMailboxesList).",
-      "script": "automation/tasks/sweb_call_operation.py",
-      "default_params": {
-        "operation_id": "vh_mail_getMailboxesList",
-
         "params": {}
       }
     },
     {
-
       "id": "vps.ssl.getProlongInfo",
       "title": "Получение информации о вариантах продления сертификата",
       "service": "vps",
@@ -855,20 +734,10 @@
       "script": "automation/tasks/sweb_call_operation.py",
       "default_params": {
         "operation_id": "vps_ssl_getProlongInfo",
-
-      "id": "vh.ssl",
-      "title": "SSL orders",
-      "service": "vh",
-      "description": "SpaceWeb API: vh_ssl_getOrderList (/vh/ssl/ · getOrderList).",
-      "script": "automation/tasks/sweb_call_operation.py",
-      "default_params": {
-        "operation_id": "vh_ssl_getOrderList",
-
         "params": {}
       }
     },
     {
-
       "id": "vps.ssl.orderSubmit",
       "title": "Отправка заказа",
       "service": "vps",
@@ -876,7 +745,76 @@
       "script": "automation/tasks/sweb_call_operation.py",
       "default_params": {
         "operation_id": "vps_ssl_orderSubmit",
-
+        "params": {}
+      }
+    },
+    {
+      "id": "vh.backups",
+      "title": "Virtual hosting backups",
+      "service": "vh",
+      "description": "SpaceWeb API: vh_backup_getList (/vh/backup/ · getList).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vh_backup_getList",
+        "params": {}
+      }
+    },
+    {
+      "id": "vh.cron",
+      "title": "Cron tasks",
+      "service": "vh",
+      "description": "SpaceWeb API: vh_cron_getTasks (/vh/cron/ · getTasks).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vh_cron_getTasks",
+        "params": {}
+      }
+    },
+    {
+      "id": "vh.databases",
+      "title": "Hosting databases",
+      "service": "vh",
+      "description": "SpaceWeb API: vh_hosting_databaseGetList (/vh/hosting/ · databaseGetList).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vh_hosting_databaseGetList",
+        "params": {}
+      }
+    },
+    {
+      "id": "vh.load",
+      "title": "Hosting load",
+      "service": "vh",
+      "description": "SpaceWeb API: vh_load_index (/vh/load/ · index).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vh_load_index",
+        "params": {}
+      }
+    },
+    {
+      "id": "vh.mailboxes",
+      "title": "Mailboxes",
+      "service": "vh",
+      "description": "SpaceWeb API: vh_mail_getMailboxesList (/vh/mail/ · getMailboxesList).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vh_mail_getMailboxesList",
+        "params": {}
+      }
+    },
+    {
+      "id": "vh.ssl",
+      "title": "SSL orders",
+      "service": "vh",
+      "description": "SpaceWeb API: vh_ssl_getOrderList (/vh/ssl/ · getOrderList).",
+      "script": "automation/tasks/sweb_call_operation.py",
+      "default_params": {
+        "operation_id": "vh_ssl_getOrderList",
+        "params": {}
+      }
+    },
+    {
       "id": "vh.disk_usage",
       "title": "Disk usage tasks",
       "service": "vh",
@@ -884,7 +822,6 @@
       "script": "automation/tasks/sweb_call_operation.py",
       "default_params": {
         "operation_id": "vh_utils_diskUsage_index",
-
         "params": {}
       }
     }
