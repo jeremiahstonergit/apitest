@@ -70,6 +70,8 @@ SCHEDULER_TASK: asyncio.Task | None = None
 SERVICE_INVENTORY: dict[str, list[dict[str, Any]]] = {}
 SECURITY = HTTPBasic()
 
+SERVICE_ID_KEYS = ("billingId", "billing_id", "id", "serverId", "serviceId")
+
 
 STYLE = """
 :root{color-scheme:dark;--bg:#0b1020;--panel:#11182c;--muted:#8fa3c7;--text:#edf4ff;--brand:#60a5fa;--ok:#34d399;--warn:#fbbf24;--bad:#fb7185}*{box-sizing:border-box}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;background:radial-gradient(circle at top left,#1d4ed833,transparent 34rem),var(--bg);color:var(--text)}main{max-width:1180px;margin:0 auto;padding:32px 20px 64px}.hero{display:flex;justify-content:space-between;gap:24px;align-items:flex-start;margin-bottom:28px}.badge{display:inline-flex;gap:8px;align-items:center;border:1px solid #2a3a5e;background:#0f172a;padding:8px 12px;border-radius:999px;color:#bfdbfe;font-size:14px}h1{font-size:clamp(32px,5vw,58px);line-height:1;margin:16px 0 12px;letter-spacing:-.04em}.lead{color:var(--muted);font-size:18px;max-width:760px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}.card{border:1px solid #253653;background:linear-gradient(180deg,#16213acc,#10172acc);border-radius:24px;padding:22px;box-shadow:0 20px 60px #0006}.card h2,.card h3{margin-top:0}.muted{color:var(--muted)}.pill{display:inline-block;border-radius:999px;padding:5px 10px;background:#1e293b;color:#bfdbfe;font-size:12px;margin:2px}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}.btn,button{border:0;border-radius:14px;background:linear-gradient(135deg,#3b82f6,#06b6d4);color:white;padding:10px 14px;font-weight:700;cursor:pointer;text-decoration:none}.btn.secondary{background:#1f2a44;color:#cfe2ff;border:1px solid #33476d}input,textarea,select{width:100%;border:1px solid #314262;background:#0b1222;color:var(--text);border-radius:14px;padding:11px;margin:6px 0 12px}textarea{min-height:110px;font-family:ui-monospace,Menlo,monospace}.status-ok{color:var(--ok)}.status-failed{color:var(--bad)}table{width:100%;border-collapse:collapse}td,th{border-bottom:1px solid #263653;padding:10px;text-align:left;vertical-align:top}code{color:#bfdbfe}.section{margin-top:26px}.small{font-size:13px}.split{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}.category-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.task-list{display:grid;gap:12px;margin-top:10px}.task-row{border:1px solid #263653;background:#0b122288;border-radius:18px;padding:14px}.task-row h4{margin:0 0 6px}.task-group-title{margin:18px 0 8px;color:#bfdbfe}.kv{display:grid;grid-template-columns:minmax(150px,.35fr) 1fr;gap:8px;border-bottom:1px solid #263653;padding:7px 0}.kv b{color:#bfdbfe}.json-list{margin:6px 0 0 18px}.empty-state{border:1px dashed #33476d;border-radius:16px;padding:14px;color:var(--muted)}@media(max-width:850px){.hero,.split{display:block}.card{margin-bottom:16px}}
@@ -321,31 +323,57 @@ def render_human_output(stdout: str, stderr: str) -> str:
     return render_json_value(payload)
 
 
-def extract_items(value: Any) -> list[dict[str, Any]]:
-    if isinstance(value, list):
-        return [item for item in value if isinstance(item, dict)]
-
-    if isinstance(value, dict):
-        preferred_keys = ("items", "list", "data", "vps", "servers", "services", "result")
-        for key in preferred_keys:
-            items = extract_items(value.get(key))
-            if items:
-                return items
-
-        for item in value.values():
-            items = extract_items(item)
-            if items:
-                return items
-
-    return []
+def has_service_id(value: dict[str, Any]) -> bool:
+    return any(value.get(key) not in (None, "") for key in SERVICE_ID_KEYS)
 
 
 def service_item_id(item: dict[str, Any]) -> str:
-    for key in ("billingId", "billing_id", "id", "serverId", "serviceId"):
+    for key in SERVICE_ID_KEYS:
         value = item.get(key)
         if value not in (None, ""):
             return str(value)
     return ""
+
+
+def dedupe_items(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    seen: set[str] = set()
+    result: list[dict[str, Any]] = []
+    for item in items:
+        key = service_item_id(item) or json.dumps(item, ensure_ascii=False, sort_keys=True)
+        if key in seen:
+            continue
+        seen.add(key)
+        result.append(item)
+    return result
+
+
+def extract_items(value: Any) -> list[dict[str, Any]]:
+    if isinstance(value, list):
+        items: list[dict[str, Any]] = []
+        for item in value:
+            if isinstance(item, dict) and has_service_id(item):
+                items.append(item)
+            else:
+                items.extend(extract_items(item))
+        return dedupe_items(items)
+
+    if isinstance(value, dict):
+        if has_service_id(value):
+            return [value]
+
+        items: list[dict[str, Any]] = []
+        preferred_keys = ("items", "list", "data", "vps", "servers", "services", "result")
+        for key in preferred_keys:
+            if key in value:
+                items.extend(extract_items(value.get(key)))
+
+        # Some SpaceWeb responses are maps keyed by billing id: {"123": {...}, "456": {...}}.
+        for item in value.values():
+            items.extend(extract_items(item))
+
+        return dedupe_items(items)
+
+    return []
 
 
 def service_item_title(item: dict[str, Any]) -> str:
@@ -431,14 +459,17 @@ async def refresh_inventory(service: str) -> None:
     )
 
     if log["status"] != "ok":
+        log.pop("stdout_full", None)
         return
 
     try:
-        payload = json.loads(log.get("stdout") or "{}")
+        payload = json.loads(log.get("stdout_full") or log.get("stdout") or "{}")
     except json.JSONDecodeError:
+        log.pop("stdout_full", None)
         return
 
     SERVICE_INVENTORY[service] = extract_items(payload.get("result", payload))
+    log.pop("stdout_full", None)
 
 
 async def execute_task(task_id: str, params: dict[str, Any], source: str) -> dict[str, Any]:
@@ -462,6 +493,8 @@ async def execute_task(task_id: str, params: dict[str, Any], source: str) -> dic
     )
 
     stdout, stderr = await proc.communicate()
+    stdout_text = stdout.decode(errors="replace")
+    stderr_text = stderr.decode(errors="replace")
     run_status = "ok" if proc.returncode == 0 else "failed"
 
     log = {
@@ -473,9 +506,12 @@ async def execute_task(task_id: str, params: dict[str, Any], source: str) -> dic
         "returncode": proc.returncode,
         "started_at": iso(started),
         "finished_at": iso(utc_now()),
-        "stdout": stdout.decode(errors="replace")[-4000:],
-        "stderr": stderr.decode(errors="replace")[-4000:],
+        "stdout": stdout_text[-4000:],
+        "stderr": stderr_text[-4000:],
     }
+
+    if source.startswith("inventory:"):
+        log["stdout_full"] = stdout_text
 
     RUN_LOGS.insert(0, log)
     del RUN_LOGS[MAX_LOGS:]

@@ -1,9 +1,5 @@
 """Application package for the SpaceWeb control plane."""
 
-
-
-
-
 import os
 
 
@@ -21,5 +17,6 @@ def _merge_optional_task_catalogs() -> None:
 
 
 _merge_optional_task_catalogs()
+
 
 
