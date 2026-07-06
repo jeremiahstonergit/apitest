@@ -3,17 +3,20 @@
 from __future__ import annotations
 
 import asyncio
+
 import base64
-import html
 import json
 import os
 import secrets
+import html
+import os
 import sys
 import uuid
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+
 
 from fastapi import Depends, FastAPI, Form, HTTPException, Request, status
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
@@ -24,8 +27,10 @@ REGISTRY_PATH = ROOT / 'automation' / 'tasks.registry.json'
 DATA_DIR = Path(os.getenv('SWEB_AUTOMATION_DATA_DIR', ROOT / '.runtime'))
 SCHEDULES_PATH = DATA_DIR / 'schedules.json'
 MAX_LOGS = int(os.getenv('SWEB_AUTOMATION_MAX_LOGS', '50'))
+
 CONTROL_PLANE_USER = os.getenv('CONTROL_PLANE_USER', 'shashkin')
 CONTROL_PLANE_PASSWORD = os.getenv('CONTROL_PLANE_PASSWORD', 'dumbilla')
+
 
 app = FastAPI(
     title='SpaceWeb Infrastructure Control Plane',
@@ -61,7 +66,9 @@ TASKS: dict[str, TaskDef] = {}
 SCHEDULES: dict[str, ScheduleDef] = {}
 RUN_LOGS: list[dict[str, Any]] = []
 SCHEDULER_TASK: asyncio.Task | None = None
+
 SECURITY = HTTPBasic()
+
 
 
 STYLE = """
@@ -100,6 +107,7 @@ def load_optional_tasks() -> dict[str, TaskDef]:
     return tasks
 
 
+
 def save_schedules() -> None:
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     payload = {'schedules': [schedule.__dict__ for schedule in SCHEDULES.values()]}
@@ -119,6 +127,7 @@ def render_page(content: str) -> HTMLResponse:
 
 def esc(value: Any) -> str:
     return html.escape(str(value), quote=True)
+
 
 
 def require_auth(credentials: HTTPBasicCredentials = Depends(SECURITY)) -> str:
@@ -171,6 +180,7 @@ async def enforce_basic_auth(request: Request, call_next):  # type: ignore[no-un
             headers={'WWW-Authenticate': 'Basic'},
         )
     return await call_next(request)
+
 
 
 def service_map() -> dict[str, list[TaskDef]]:
@@ -239,7 +249,10 @@ async def scheduler_loop() -> None:
 @app.on_event('startup')
 async def startup() -> None:
     global TASKS, SCHEDULES, SCHEDULER_TASK
+
     TASKS = load_all_tasks()
+    TASKS = load_tasks()
+    TASKS.update({task_id: task for task_id, task in load_optional_tasks().items() if task_id not in TASKS})
     SCHEDULES = load_schedules()
     SCHEDULER_TASK = asyncio.create_task(scheduler_loop())
 
@@ -256,6 +269,7 @@ def healthz() -> dict[str, str]:
 
 
 @app.get('/', response_class=HTMLResponse)
+
 def index(_user: str = Depends(require_auth)) -> HTMLResponse:
     ensure_tasks_loaded()
     service_cards = ''.join(
@@ -280,8 +294,10 @@ def index(_user: str = Depends(require_auth)) -> HTMLResponse:
 
 
 @app.get('/tasks/{task_id}', response_class=HTMLResponse)
+
 def task_page(task_id: str, _user: str = Depends(require_auth)) -> HTMLResponse:
     ensure_tasks_loaded()
+
     task = TASKS.get(task_id)
     if not task:
         raise HTTPException(status_code=404, detail='Unknown task')
@@ -290,8 +306,10 @@ def task_page(task_id: str, _user: str = Depends(require_auth)) -> HTMLResponse:
 
 
 @app.post('/tasks/{task_id}/run')
+
 async def run_task(task_id: str, params_json: str = Form('{}'), _user: str = Depends(require_auth)) -> RedirectResponse:
     ensure_tasks_loaded()
+
     params = json.loads(params_json or '{}')
     await execute_task(task_id, params, 'manual')
     return RedirectResponse('/', status_code=303)
@@ -300,6 +318,7 @@ async def run_task(task_id: str, params_json: str = Form('{}'), _user: str = Dep
 @app.post('/schedules')
 def create_schedule(task_id: str = Form(...), title: str = Form(''), interval_minutes: int = Form(60), params_json: str = Form('{}'), _user: str = Depends(require_auth)) -> RedirectResponse:
     ensure_tasks_loaded()
+
     if task_id not in TASKS:
         raise HTTPException(status_code=404, detail='Unknown task')
     schedule = ScheduleDef(
