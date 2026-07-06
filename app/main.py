@@ -71,7 +71,7 @@ SECURITY = HTTPBasic()
 
 
 STYLE = """
-:root{color-scheme:dark;--bg:#0b1020;--panel:#11182c;--muted:#8fa3c7;--text:#edf4ff;--brand:#60a5fa;--ok:#34d399;--warn:#fbbf24;--bad:#fb7185}*{box-sizing:border-box}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;background:radial-gradient(circle at top left,#1d4ed833,transparent 34rem),var(--bg);color:var(--text)}main{max-width:1180px;margin:0 auto;padding:32px 20px 64px}.hero{display:flex;justify-content:space-between;gap:24px;align-items:flex-start;margin-bottom:28px}.badge{display:inline-flex;gap:8px;align-items:center;border:1px solid #2a3a5e;background:#0f172a;padding:8px 12px;border-radius:999px;color:#bfdbfe;font-size:14px}h1{font-size:clamp(32px,5vw,58px);line-height:1;margin:16px 0 12px;letter-spacing:-.04em}.lead{color:var(--muted);font-size:18px;max-width:760px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}.card{border:1px solid #253653;background:linear-gradient(180deg,#16213acc,#10172acc);border-radius:24px;padding:22px;box-shadow:0 20px 60px #0006}.card h2,.card h3{margin-top:0}.muted{color:var(--muted)}.pill{display:inline-block;border-radius:999px;padding:5px 10px;background:#1e293b;color:#bfdbfe;font-size:12px;margin:2px}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}.btn,button{border:0;border-radius:14px;background:linear-gradient(135deg,#3b82f6,#06b6d4);color:white;padding:10px 14px;font-weight:700;cursor:pointer;text-decoration:none}.btn.secondary{background:#1f2a44;color:#cfe2ff;border:1px solid #33476d}input,textarea,select{width:100%;border:1px solid #314262;background:#0b1222;color:var(--text);border-radius:14px;padding:11px;margin:6px 0 12px}textarea{min-height:110px;font-family:ui-monospace,Menlo,monospace}.status-ok{color:var(--ok)}.status-failed{color:var(--bad)}table{width:100%;border-collapse:collapse}td,th{border-bottom:1px solid #263653;padding:10px;text-align:left;vertical-align:top}code{color:#bfdbfe}.section{margin-top:26px}.small{font-size:13px}.split{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}@media(max-width:850px){.hero,.split{display:block}.card{margin-bottom:16px}}
+:root{color-scheme:dark;--bg:#0b1020;--panel:#11182c;--muted:#8fa3c7;--text:#edf4ff;--brand:#60a5fa;--ok:#34d399;--warn:#fbbf24;--bad:#fb7185}*{box-sizing:border-box}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;background:radial-gradient(circle at top left,#1d4ed833,transparent 34rem),var(--bg);color:var(--text)}main{max-width:1180px;margin:0 auto;padding:32px 20px 64px}.hero{display:flex;justify-content:space-between;gap:24px;align-items:flex-start;margin-bottom:28px}.badge{display:inline-flex;gap:8px;align-items:center;border:1px solid #2a3a5e;background:#0f172a;padding:8px 12px;border-radius:999px;color:#bfdbfe;font-size:14px}h1{font-size:clamp(32px,5vw,58px);line-height:1;margin:16px 0 12px;letter-spacing:-.04em}.lead{color:var(--muted);font-size:18px;max-width:760px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}.card{border:1px solid #253653;background:linear-gradient(180deg,#16213acc,#10172acc);border-radius:24px;padding:22px;box-shadow:0 20px 60px #0006}.card h2,.card h3{margin-top:0}.muted{color:var(--muted)}.pill{display:inline-block;border-radius:999px;padding:5px 10px;background:#1e293b;color:#bfdbfe;font-size:12px;margin:2px}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}.btn,button{border:0;border-radius:14px;background:linear-gradient(135deg,#3b82f6,#06b6d4);color:white;padding:10px 14px;font-weight:700;cursor:pointer;text-decoration:none}.btn.secondary{background:#1f2a44;color:#cfe2ff;border:1px solid #33476d}input,textarea,select{width:100%;border:1px solid #314262;background:#0b1222;color:var(--text);border-radius:14px;padding:11px;margin:6px 0 12px}textarea{min-height:110px;font-family:ui-monospace,Menlo,monospace}.status-ok{color:var(--ok)}.status-failed{color:var(--bad)}table{width:100%;border-collapse:collapse}td,th{border-bottom:1px solid #263653;padding:10px;text-align:left;vertical-align:top}code{color:#bfdbfe}.section{margin-top:26px}.small{font-size:13px}.split{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}.category-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.task-list{display:grid;gap:12px;margin-top:10px}.task-row{border:1px solid #263653;background:#0b122288;border-radius:18px;padding:14px}.task-row h4{margin:0 0 6px}.task-group-title{margin:18px 0 8px;color:#bfdbfe}.kv{display:grid;grid-template-columns:minmax(150px,.35fr) 1fr;gap:8px;border-bottom:1px solid #263653;padding:7px 0}.kv b{color:#bfdbfe}.json-list{margin:6px 0 0 18px}.empty-state{border:1px dashed #33476d;border-radius:16px;padding:14px;color:var(--muted)}@media(max-width:850px){.hero,.split{display:block}.card{margin-bottom:16px}}
 """
 
 
@@ -226,6 +226,100 @@ def service_map() -> dict[str, list[TaskDef]]:
     return services
 
 
+def operation_id(task: TaskDef) -> str:
+    value = task.default_params.get("operation_id")
+    return value if isinstance(value, str) else ""
+
+
+def is_common_task(task: TaskDef) -> bool:
+    op_id = operation_id(task)
+    method = op_id.rsplit("_", 1)[-1] if "_" in op_id else op_id
+    return method in {
+        "index",
+        "getList",
+        "getAllIpList",
+        "plans",
+        "checks",
+        "getAvailableConfig",
+        "getFirstOrderInfo",
+        "getOrderInfo",
+    }
+
+
+def render_task_rows(tasks: list[TaskDef]) -> str:
+    if not tasks:
+        return '<div class="empty-state">Нет действий в этой группе</div>'
+
+    return (
+        '<div class="task-list">'
+        + "".join(
+            f"<div class='task-row'><h4>{esc(task.title)}</h4>"
+            f"<p class='muted small'>{esc(task.description)}</p>"
+            f"<p><span class='pill'>{esc(task.id)}</span><span class='pill'>{esc(operation_id(task) or 'local')}</span></p>"
+            f"<div class='actions'><a class='btn secondary' href='/tasks/{esc(task.id)}'>Открыть</a></div></div>"
+            for task in sorted(tasks, key=lambda item: item.title.lower())
+        )
+        + "</div>"
+    )
+
+
+def render_json_value(value: Any) -> str:
+    if isinstance(value, dict):
+        if not value:
+            return '<span class="muted">{}</span>'
+        return (
+            "<div>"
+            + "".join(
+                f"<div class='kv'><b>{esc(key)}</b><span>{render_json_value(item)}</span></div>"
+                for key, item in value.items()
+            )
+            + "</div>"
+        )
+
+    if isinstance(value, list):
+        if not value:
+            return '<span class="muted">пустой список</span>'
+        preview = value[:8]
+        suffix = (
+            f"<li class='muted'>… ещё {len(value) - len(preview)}</li>"
+            if len(value) > len(preview)
+            else ""
+        )
+        return (
+            '<ol class="json-list">'
+            + "".join(f"<li>{render_json_value(item)}</li>" for item in preview)
+            + suffix
+            + "</ol>"
+        )
+
+    if value is None:
+        return '<span class="muted">null</span>'
+
+    if isinstance(value, bool):
+        return '<span class="status-ok">да</span>' if value else '<span class="status-failed">нет</span>'
+
+    return esc(value)
+
+
+def render_human_output(stdout: str, stderr: str) -> str:
+    text = stdout or stderr
+    if not text:
+        return '<span class="muted">Нет вывода</span>'
+
+    try:
+        payload = json.loads(text)
+    except json.JSONDecodeError:
+        return f"<pre>{esc(text[:900])}</pre>"
+
+    if isinstance(payload, dict) and "result" in payload:
+        return "<b>Результат API</b>" + render_json_value(payload.get("result"))
+
+    if isinstance(payload, dict) and "error" in payload:
+        return '<b class="status-failed">Ошибка API</b>' + render_json_value(payload.get("error"))
+
+    return render_json_value(payload)
+
+
 async def execute_task(task_id: str, params: dict[str, Any], source: str) -> dict[str, Any]:
     task = TASKS.get(task_id)
     if not task:
@@ -333,17 +427,32 @@ def versionz() -> dict[str, Any]:
 def index(_user: str = Depends(require_auth)) -> HTMLResponse:
     ensure_tasks_loaded()
 
-    service_cards = "".join(
-        f"<div class='card'><h3>{esc(service)}</h3><p class='muted'>{len(tasks)} доступных действий</p>"
-        + "".join(
-            f"<div><span class='pill'>{esc(t.id)}</span><b>{esc(t.title)}</b>"
-            f"<p class='muted small'>{esc(t.description)}</p>"
-            f"<div class='actions'><a class='btn secondary' href='/tasks/{esc(t.id)}'>Открыть</a></div></div>"
-            for t in tasks
+    services = service_map()
+    category_cards = []
+
+    for service, tasks in sorted(services.items()):
+        common_tasks = [task for task in tasks if is_common_task(task)]
+        api_tasks = [task for task in tasks if task not in common_tasks]
+
+        category_cards.append(
+            f"""
+        <section class="card" id="service-{esc(service)}">
+          <div class="category-head">
+            <div>
+              <h3>{esc(service)}</h3>
+              <p class="muted">{len(tasks)} действий: {len(common_tasks)} общих, {len(api_tasks)} API-действий услуги</p>
+            </div>
+            <span class="pill">{esc(service)}</span>
+          </div>
+          <h4 class="task-group-title">Общие задачи категории</h4>
+          {render_task_rows(common_tasks)}
+          <h4 class="task-group-title">Действия API для услуг</h4>
+          {render_task_rows(api_tasks)}
+        </section>
+        """
         )
-        + "</div>"
-        for service, tasks in service_map().items()
-    )
+
+    service_cards = "".join(category_cards)
 
     schedules = "".join(
         f"<tr><td>{esc(s.title)}<br><span class='muted small'>{esc(s.task_id)}</span></td>"
@@ -357,9 +466,14 @@ def index(_user: str = Depends(require_auth)) -> HTMLResponse:
         f"<tr><td>{esc(l['finished_at'])}<br><span class='muted small'>{esc(l['source'])}</span></td>"
         f"<td>{esc(l['task_title'])}</td>"
         f"<td class='status-{esc(l['status'])}'>{esc(l['status'])}</td>"
-        f"<td><pre>{esc((l['stdout'] or l['stderr'])[:500])}</pre></td></tr>"
+        f"<td>{render_human_output(l.get('stdout', ''), l.get('stderr', ''))}</td></tr>"
         for l in RUN_LOGS[:10]
     ) or "<tr><td colspan='4' class='muted'>Запусков пока нет</td></tr>"
+
+    service_nav = "".join(
+        f'<a class="btn secondary" href="#service-{esc(service)}">{esc(service)} · {len(tasks)}</a>'
+        for service, tasks in sorted(services.items())
+    )
 
     task_options = "".join(
         f'<option value="{esc(t.id)}">{esc(t.service)} · {esc(t.title)}</option>'
@@ -368,7 +482,14 @@ def index(_user: str = Depends(require_auth)) -> HTMLResponse:
 
     return render_page(
         f"""
+    <div class="section card">
+      <h2>Категории услуг</h2>
+      <p class="muted">Сначала выберите категорию, затем общее действие или API-действие конкретной услуги.</p>
+      <div class="actions">{service_nav}</div>
+    </div>
+
     <div class="grid">{service_cards}</div>
+
     <div class="section split">
       <div class="card">
         <h2>Расписание</h2>
@@ -396,10 +517,11 @@ def index(_user: str = Depends(require_auth)) -> HTMLResponse:
         </form>
       </div>
     </div>
+
     <div class="section card">
       <h2>Последние запуски</h2>
       <table>
-        <tr><th>Время</th><th>Задача</th><th>Статус</th><th>Вывод</th></tr>
+        <tr><th>Время</th><th>Задача</th><th>Статус</th><th>Читаемый результат</th></tr>
         {logs}
       </table>
     </div>

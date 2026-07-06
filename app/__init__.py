@@ -2,6 +2,7 @@
 
 
 
+
 import os
 
 
@@ -19,4 +20,5 @@ def _merge_optional_task_catalogs() -> None:
 
 
 _merge_optional_task_catalogs()
+
 
