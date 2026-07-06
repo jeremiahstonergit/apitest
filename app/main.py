@@ -67,6 +67,7 @@ TASKS: dict[str, TaskDef] = {}
 SCHEDULES: dict[str, ScheduleDef] = {}
 RUN_LOGS: list[dict[str, Any]] = []
 SCHEDULER_TASK: asyncio.Task | None = None
+SERVICE_INVENTORY: dict[str, list[dict[str, Any]]] = {}
 SECURITY = HTTPBasic()
 
 
@@ -320,6 +321,126 @@ def render_human_output(stdout: str, stderr: str) -> str:
     return render_json_value(payload)
 
 
+def extract_items(value: Any) -> list[dict[str, Any]]:
+    if isinstance(value, list):
+        return [item for item in value if isinstance(item, dict)]
+
+    if isinstance(value, dict):
+        preferred_keys = ("items", "list", "data", "vps", "servers", "services", "result")
+        for key in preferred_keys:
+            items = extract_items(value.get(key))
+            if items:
+                return items
+
+        for item in value.values():
+            items = extract_items(item)
+            if items:
+                return items
+
+    return []
+
+
+def service_item_id(item: dict[str, Any]) -> str:
+    for key in ("billingId", "billing_id", "id", "serverId", "serviceId"):
+        value = item.get(key)
+        if value not in (None, ""):
+            return str(value)
+    return ""
+
+
+def service_item_title(item: dict[str, Any]) -> str:
+    for key in ("alias", "name", "title", "hostname", "domain", "ip", "mainIp"):
+        value = item.get(key)
+        if value not in (None, ""):
+            return str(value)
+
+    item_id = service_item_id(item)
+    return f"VPS {item_id}" if item_id else "VPS без идентификатора"
+
+
+def operation_params_for_item(task: TaskDef, item: dict[str, Any]) -> dict[str, Any]:
+    params = dict(task.default_params.get("params") or {})
+    item_id = service_item_id(item)
+    if item_id:
+        params.setdefault("billingId", item_id)
+    return {"operation_id": operation_id(task), "params": params}
+
+
+def action_requires_extra_params(task: TaskDef, params: dict[str, Any]) -> bool:
+    op_id = operation_id(task)
+    return op_id in {
+        "vps_rename",
+        "vps_create",
+        "vps_createFirst",
+        "vps_reinstallOs",
+        "vps_changePlan",
+    } or not params.get("billingId")
+
+
+def render_service_action(task: TaskDef, item: dict[str, Any]) -> str:
+    payload = operation_params_for_item(task, item)
+    params_json = json.dumps(payload, ensure_ascii=False)
+
+    if action_requires_extra_params(task, payload["params"]):
+        query = "&".join(f"{esc(key)}={esc(value)}" for key, value in payload["params"].items())
+        href = f"/tasks/{esc(task.id)}" + (f"?{query}" if query else "")
+        return f"<a class='btn secondary' href='{href}'>{esc(task.title)}</a>"
+
+    return (
+        f"<form action='/tasks/{esc(task.id)}/run' method='post' style='display:inline'>"
+        f"<input type='hidden' name='params_json' value='{esc(params_json)}'>"
+        f"<button type='submit'>{esc(task.title)}</button></form>"
+    )
+
+
+def render_vps_inventory(vps_tasks: list[TaskDef]) -> str:
+    items = SERVICE_INVENTORY.get("vps", [])
+    refresh_form = "<form action='/inventory/vps/refresh' method='post'><button type='submit'>Обновить список VPS</button></form>"
+
+    if not items:
+        return (
+            "<div class='empty-state'>Список VPS ещё не загружен. "
+            "Нажмите обновление или выполните общее действие «Список VPS».</div>"
+            f"<div class='actions'>{refresh_form}</div>"
+        )
+
+    rows = []
+    for item in items:
+        item_id = service_item_id(item)
+        actions = "".join(render_service_action(task, item) for task in vps_tasks)
+        rows.append(
+            f"<div class='task-row'><h4>{esc(service_item_title(item))}</h4>"
+            f"<p><span class='pill'>billingId: {esc(item_id or '—')}</span></p>"
+            f"<details><summary class='muted'>Параметры услуги</summary>{render_json_value(item)}</details>"
+            f"<div class='actions'>{actions}</div></div>"
+        )
+
+    return f"<div class='actions'>{refresh_form}</div><div class='task-list'>{''.join(rows)}</div>"
+
+
+async def refresh_inventory(service: str) -> None:
+    ensure_tasks_loaded()
+
+    if service != "vps" or "vps.index" not in TASKS:
+        return
+
+    log = await execute_task(
+        "vps.index",
+        {"operation_id": "vps_index", "params": {}},
+        f"inventory:{service}",
+    )
+
+    if log["status"] != "ok":
+        return
+
+    try:
+        payload = json.loads(log.get("stdout") or "{}")
+    except json.JSONDecodeError:
+        return
+
+    SERVICE_INVENTORY[service] = extract_items(payload.get("result", payload))
+
+
 async def execute_task(task_id: str, params: dict[str, Any], source: str) -> dict[str, Any]:
     task = TASKS.get(task_id)
     if not task:
@@ -397,6 +518,7 @@ async def startup() -> None:
 
     TASKS = load_all_tasks()
     SCHEDULES = load_schedules()
+    asyncio.create_task(refresh_inventory("vps"))
     SCHEDULER_TASK = asyncio.create_task(scheduler_loop())
 
 
@@ -423,36 +545,20 @@ def versionz() -> dict[str, Any]:
     }
 
 
+@app.post("/inventory/vps/refresh")
+async def refresh_vps_inventory(_user: str = Depends(require_auth)) -> RedirectResponse:
+    await refresh_inventory("vps")
+    return RedirectResponse("/", status_code=303)
+
+
 @app.get("/", response_class=HTMLResponse)
 def index(_user: str = Depends(require_auth)) -> HTMLResponse:
     ensure_tasks_loaded()
 
-    services = service_map()
-    category_cards = []
-
-    for service, tasks in sorted(services.items()):
-        common_tasks = [task for task in tasks if is_common_task(task)]
-        api_tasks = [task for task in tasks if task not in common_tasks]
-
-        category_cards.append(
-            f"""
-        <section class="card" id="service-{esc(service)}">
-          <div class="category-head">
-            <div>
-              <h3>{esc(service)}</h3>
-              <p class="muted">{len(tasks)} действий: {len(common_tasks)} общих, {len(api_tasks)} API-действий услуги</p>
-            </div>
-            <span class="pill">{esc(service)}</span>
-          </div>
-          <h4 class="task-group-title">Общие задачи категории</h4>
-          {render_task_rows(common_tasks)}
-          <h4 class="task-group-title">Действия API для услуг</h4>
-          {render_task_rows(api_tasks)}
-        </section>
-        """
-        )
-
-    service_cards = "".join(category_cards)
+    all_tasks = list(TASKS.values())
+    vps_common_tasks = [task for task in all_tasks if task.service == "vps" and is_common_task(task)]
+    vps_action_tasks = [task for task in all_tasks if task.service == "vps" and not is_common_task(task)]
+    common_tasks = [task for task in all_tasks if task.service != "vps"] + vps_common_tasks
 
     schedules = "".join(
         f"<tr><td>{esc(s.title)}<br><span class='muted small'>{esc(s.task_id)}</span></td>"
@@ -470,11 +576,6 @@ def index(_user: str = Depends(require_auth)) -> HTMLResponse:
         for l in RUN_LOGS[:10]
     ) or "<tr><td colspan='4' class='muted'>Запусков пока нет</td></tr>"
 
-    service_nav = "".join(
-        f'<a class="btn secondary" href="#service-{esc(service)}">{esc(service)} · {len(tasks)}</a>'
-        for service, tasks in sorted(services.items())
-    )
-
     task_options = "".join(
         f'<option value="{esc(t.id)}">{esc(t.service)} · {esc(t.title)}</option>'
         for t in TASKS.values()
@@ -483,12 +584,33 @@ def index(_user: str = Depends(require_auth)) -> HTMLResponse:
     return render_page(
         f"""
     <div class="section card">
-      <h2>Категории услуг</h2>
-      <p class="muted">Сначала выберите категорию, затем общее действие или API-действие конкретной услуги.</p>
-      <div class="actions">{service_nav}</div>
+      <h2>Выбор услуги</h2>
+      <p class="muted">
+        Сначала выберите конкретную услугу, затем команду.
+        Для VPS в запрос автоматически подставляется <code>billingId</code> выбранной услуги.
+      </p>
+      <div class="actions">
+        <a class="btn secondary" href="#vps-services">VPS услуги · {len(SERVICE_INVENTORY.get('vps', []))}</a>
+        <a class="btn secondary" href="#common-tasks">Общие задачи · {len(common_tasks)}</a>
+      </div>
     </div>
 
-    <div class="grid">{service_cards}</div>
+    <section class="section card" id="vps-services">
+      <div class="category-head">
+        <div>
+          <h2>VPS услуги</h2>
+          <p class="muted">Выберите VPS из списка и запустите команду — параметры услуги попадут в API-запрос автоматически.</p>
+        </div>
+        <span class="pill">{len(vps_action_tasks)} команд</span>
+      </div>
+      {render_vps_inventory(vps_action_tasks)}
+    </section>
+
+    <section class="section card" id="common-tasks">
+      <h2>Общие задачи</h2>
+      <p class="muted">Задачи категории и справочные API-вызовы, которые не привязаны к конкретной услуге.</p>
+      {render_task_rows(common_tasks)}
+    </section>
 
     <div class="section split">
       <div class="card">
@@ -530,14 +652,25 @@ def index(_user: str = Depends(require_auth)) -> HTMLResponse:
 
 
 @app.get("/tasks/{task_id}", response_class=HTMLResponse)
-def task_page(task_id: str, _user: str = Depends(require_auth)) -> HTMLResponse:
+def task_page(
+    task_id: str,
+    request: Request,
+    _user: str = Depends(require_auth),
+) -> HTMLResponse:
     ensure_tasks_loaded()
 
     task = TASKS.get(task_id)
     if not task:
         raise HTTPException(status_code=404, detail="Unknown task")
 
-    params = json.dumps(task.default_params, ensure_ascii=False, indent=2)
+    prefilled = json.loads(json.dumps(task.default_params, ensure_ascii=False))
+    if request.query_params:
+        task_params = dict(prefilled.get("params") or {})
+        for key, value in request.query_params.items():
+            task_params[key] = value
+        prefilled["params"] = task_params
+
+    params = json.dumps(prefilled, ensure_ascii=False, indent=2)
 
     return render_page(
         f"""
